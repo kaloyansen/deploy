@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="conception, concepteur, développement, développeur, logiciel, python, c++, java, django, pandas, base de donnée">
+  <meta name="author" content="{{ page_author }}">
+
+  <link rel="icon" type="image/x-icon" href="{{ page_ico }}">
+
+  <head>
+    <title>{{ page_title }}</title>
+    <!-- <link rel="stylesheet" href="static/css/bootstrap.css"> -->
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" /> -->
+    <!-- Google Fonts -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" /> -->
+    <!-- Bootstrap core CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400&family=Train+One&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+      font-family: 'Jost', sans-serif;
+      mont-mamily: 'Train One', cursive;
+      }
+    </style>        
+
+  </head>
+  <a title="warning: django administration still requires a super user account"
+     class="nav-link btn-outline-warning text-right"
+     href="/admin">django admininstration</a>
+  <body>
+    <!-- <nav class="navbar sticky-top navbar-dark bg-dark navbar-fixed-top"> -->
+
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark rounded shadow">
+        
+      <div class="container">
+
+        <a title="go to index"
+           class="navbar-brand btn-outline-secondary"
+           href="{% url 'index' %}">{{ page_title }}</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+              <a title="quoi de neuf"
+                 class="nav-link btn-outline-primary"
+                 href="{% url 'news_index' %}">news</a>
+            </li>
+            
+            <li class="nav-item active">
+              <a title="mes projets"
+                 class="nav-link btn-outline-secondary"
+                 href="{% url 'work_index' %}">work</a>
+            </li>
+            
+            <li class="nav-item active">
+              <a title="django rest framework"
+                 class="nav-link btn-outline-info"
+                 href="/rest">rest</a>
+            </li>
+
+            <li class="nav-item active">
+              <a title="curriculum vitæ"
+                 class="nav-link btn-outline-warning"
+                 href="/static/pdf/back-end.pdf">cv</a>
+            </li>
+            
+            <li class="nav-item active">
+              <a title="this page is a django application"
+                 class="nav-link btn-outline-success"
+                 href="{% url 'work_detail' 3 %}">about</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+
+    <div><br></div>
+    <div class="container">
+      {% block page_content %}{% endblock %}
+    </div>
+    <div><br></div>
+
+
+
+    <footer class="footer fixed-bottom text-light bg-dark text-center text-light rounded">
+      <a title="warning: django administration still requires a super user account and you will need one as well as a password to access the database - the guest access is under development and i will implement it as soon as possible - best wishes"
+         class="text-light"
+         href="/admin"><small>
+          &#127279; {{ page_author }},
+          {{ page_time | date:"ymd" }}, {{ page_place }}
+        </small>
+
+      </a>
+    </footer>
+
+    <!-- javascript bootstrap + -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>    
+    <!-- Bootstrap tooltips -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
+
+
+  </body>
+</html>

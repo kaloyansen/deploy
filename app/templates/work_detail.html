@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>{{ project.title }}</h1>
+<div class="row">
+  <div class="col-md-8">
+    <img src="{% static project.image %}" class="img-fluid" alt="{{ project.image }}" width="100%" title="{{ project.title }}">
+  </div>
+  <div class="col-md-4">
+    <a href="{% url 'work_index' %}"
+       class="btn btn-outline-primary"
+       title="go back to projects overview">
+      projects
+          </a>
+    <p>{{ project.place }}</p>
+    <p>{{ project.description }}</p>
+    <br>
+    <h5>technology used:</h5>
+    <p>{{ project.technology }}</p>
+  </div>
+</div>
+<div><br></div>
+
+
+{% endblock %}
