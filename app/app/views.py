@@ -12,6 +12,7 @@ def index(request):
 
 	context = {
 		'title': 'développeur back-end',
+#		'image': '/static/img/kalo.png',
 		'image': '/img/kalo.png',
 		'im1': '/img/mtv.png',
         'im2': '/img/calice.png',

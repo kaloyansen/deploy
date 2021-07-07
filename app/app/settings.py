@@ -29,8 +29,10 @@ DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 if socket.gethostname() == 'freeshell.de':
     DEBUG = TEMPLATE_DEBUG = False
 
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['142.93.171.130']
 
 
 # Application definition
@@ -45,9 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'demo',
     'work',
-    'news',
-    'django_user_agents',
-    'tracking_analyzer'	
+    'news'
+#    'django_user_agents',
+#    'tracking_analyzer'
 ]
 
 REST_FRAMEWORK = {
@@ -138,8 +140,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static'
+# STATIC_ROOT = '/static'
 STATIC_ROOT = BASE_DIR / 'static'
+print(STATIC_ROOT)
+# STATIC_ROOT = '/home/django/deploy/app/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type

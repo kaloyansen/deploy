@@ -5,7 +5,8 @@
 <h1>{{ title }}</h1>
 <div class="row">
   <div class="col-md-2">
-    <img src="{% static image %}" alt="{{ image }}" width="100%">
+    <img src="{% static image %}" alt="{{ image }} not found" width="100%">
+    <img src="{{ image }}" alt="{{ image }} not found" width="100%">
   </div>
   <div class="col-md-8">
     <h5>{{ about }}</h5>
@@ -17,7 +18,7 @@
   <div class="col-md-6">
 
     <h5>technology:</h5>
-    <p class="lead">{{ techno }}</p>
+    <p>{{ techno }}</p>
   </div>
 </div>
 
