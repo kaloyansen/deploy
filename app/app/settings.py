@@ -22,17 +22,36 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f)a=ez-m+g+vfg3n($&e+lqz3b&$+d2b#10v5-pdq&&n)&&ge&'
+# SECRET_KEY = 'django-insecure-f)a=ez-m+g+vfg3n($&e+lqz3b&$+d2b#10v5-pdq&&n)&&ge&'
+SECRET_KEY = 'T6l\AN;F2pcW0o>+/1-c3hHUI]DR~cpJFgT*iox@SU!ClF4sL0y'
+
+#SECURE_BROWSER_XSS_FILTER = True
+#SECURE_SSL_REDIRECT = True
+#SECURE_HSTS_SECONDS = 10
+#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#SECURE_HSTS_PRELOAD = True
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_DOMAIN = '127.0.0.3'
+"""
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_AGE = 86400 # sec
+SESSION_COOKIE_DOMAIN = None
+SESSION_COOKIE_NAME = 'DSESSIONID'
+SESSION_COOKIE_SECURE = False
+"""
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 if socket.gethostname() == 'freeshell.de':
     DEBUG = TEMPLATE_DEBUG = False
 
-DEBUG = True
+DEBUG = TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['142.93.171.130']
+ALLOWED_HOSTS = ['142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
 
 
 # Application definition
@@ -45,9 +64,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'demo',
+    # 'demo',
+    'memo',
     'work',
     'news'
+#    'app.apps.appConfig'
 #    'django_user_agents',
 #    'tracking_analyzer'
 ]
@@ -79,12 +100,13 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'app.context_processors.get_context',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'app.page_context.page_param'
-            ],
+                'django.contrib.messages.context_processors.messages'
+#                'work.processor.page_param'				
+            ]
         },
     },
 ]
@@ -142,7 +164,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = '/static'
 STATIC_ROOT = BASE_DIR / 'static'
-print(STATIC_ROOT)
+# print(STATIC_ROOT)
 # STATIC_ROOT = '/home/django/deploy/app/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

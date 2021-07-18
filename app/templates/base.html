@@ -6,7 +6,8 @@
   <meta name="description" content="conception, concepteur, développement, développeur, logiciel, python, c++, java, django, pandas, base de donnée">
   <meta name="author" content="{{ page_author }}">
 
-  <link rel="icon" type="image/x-icon" href="{{ page_ico }}">
+  <link rel="icon" type="image/x-icon" href="{{ page_ico }}" />
+  <link rel="SHORTCUT ICON" href="{{ page_ico }}" />
 
   <head>
     <title>{{ page_title }}</title>
@@ -32,13 +33,9 @@
     </style>        
 
   </head>
-  <a title="warning: django administration still requires a super user account"
-     class="nav-link btn-outline-warning text-right"
-     href="/admin">django admininstration</a>
-  <body>
-    <!-- <nav class="navbar sticky-top navbar-dark bg-dark navbar-fixed-top"> -->
-
-      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark rounded shadow">
+  <div><br></div>
+  <body class="alert alert-info" role="alert">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark rounded shadow">
         
       <div class="container">
 
@@ -58,7 +55,7 @@
                  class="nav-link btn-outline-primary"
                  href="{% url 'news_index' %}">news</a>
             </li>
-            
+
             <li class="nav-item active">
               <a title="mes projets"
                  class="nav-link btn-outline-secondary"
@@ -73,8 +70,14 @@
 
             <li class="nav-item active">
               <a title="curriculum vitæ"
-                 class="nav-link btn-outline-warning"
+                 class="nav-link btn-outline-danger"
                  href="/static/pdf/back-end.pdf">cv</a>
+            </li>
+            
+            <li class="nav-item active">
+              <a title="la Bulgarie"
+                 class="nav-link btn-outline-warning"
+                 href="/memo/bg/">bulgarie</a>
             </li>
             
             <li class="nav-item active">
@@ -96,15 +99,51 @@
 
 
 
-    <footer class="footer fixed-bottom text-light bg-dark text-center text-light rounded">
-      <a title="warning: django administration still requires a super user account and you will need one as well as a password to access the database - the guest access is under development and i will implement it as soon as possible - best wishes"
-         class="text-light"
-         href="/admin"><small>
+    <footer class="footer fixed-bottom sticky-bottom text-light bg-dark text-center text-light rounded">
+      <small title="warning: django administration still requires a super user account and you will need one as well as a password to access the database - the guest access is under development and i will implement it as soon as possible - best wishes"
+             class="text-light">
+        <small>
           &#127279; {{ page_author }},
           {{ page_time | date:"ymd" }}, {{ page_place }}
+
+          <small class="sr-only">
+            total({{ num_visits }}) unique({{ page_visit }})
+            welcome({{ page_test }}) ip({{ page_ip }})</small>
+
+          <a title="linkedin.com/kaloyansen"
+             class="btn-outline-info"
+             href="https://www.linkedin.com/in/kaloyan-k-krastev/">
+            <img src="https://www.linkedin.com/favicon.ico"
+                 height="20mm"
+                 alt="linkedin">
+          </a>
+
+          <a title="github.com/kaloyansen"
+             class="btn-outline-info"
+             href="https://github.com/kaloyansen">
+            <img src="https://www.github.com/favicon.ico"
+                 height="20mm"
+                 alt="github">
+          </a>
+
+
+          <a title="stackoverflow.com/users/3566444/morla"
+             class="btn-outline-info"
+             href="https://stackoverflow.com/users/3566444/morla">
+            <img src="https://stackoverflow.com/favicon.ico"
+                 height="20mm"
+                 alt="stackoverflow">
+          </a>
+          <a title="digitalocean.com/kaloyansen"
+             class="btn-outline-info"
+             href="https://cloud.digitalocean.com/account/profile?i=0a459e">
+            <img src="https://www.digitalocean.com/favicon.ico"
+                 height="20mm"
+                 alt="digitalocean">
+          </a>
         </small>
 
-      </a>
+      </small>
     </footer>
 
     <!-- javascript bootstrap + -->
@@ -120,4 +159,9 @@
 
 
   </body>
+  <a title="warning: django administration still requires a super user account"
+     class="nav-link btn-outline-warning text-right"
+     href="/admin">django admininstration</a>
+  <div><br></div>
+
 </html>

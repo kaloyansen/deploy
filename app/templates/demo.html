@@ -1,22 +1,17 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Open Bootstrap Modal on Page Load</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% extends "base.html" %}
 
-    <script>
-    $(window).on('load',function(){
-        var delayMs = 4444; // delay in milliseconds
+{% load static %}
+{% block page_content %}
+
+<script>
+  $(window).on('load',function(){
+  var delayMs = 4444; // delay in milliseconds
     
-        setTimeout(function(){
-            $('#myModal').modal('show');
-        }, delayMs);
-    });
-    </script>
+  setTimeout(function(){
+  $('#myModal').modal('show');
+  }, delayMs);
+  });
+</script>
 
     <!-- <script> -->
     <!--   $(document).ready(function(){ -->
@@ -24,36 +19,66 @@
     <!--   }); -->
     <!-- </script> -->
     
-  </head>
-  <body>
-    <div id="myModal" class="modal fade">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="row">
+
+  <div id="mmyModal" class="col-md-7">
+    <img src="/demo/0" width="100%"/>
+  </div>
+
+  <div id="mmyModal" class="col-md-3">
+    <div class="form-group">
+      <form action="/demo/" method = "post">
+        {% csrf_token %}
+          {{ form }}
+          <button type="submit" class="btn-outline-info">send</button>
+      </form>
+      <p><label>{{ party }}</label>
+    </div>
+  </div>
+
+  <div class="col-md-18">
+    <img src="{% static image %}" alt="{{ image }} not found" width="100%">
+  </div>
+
+</div>
+
+
+<!-- <div id="mmmyModal" class="col-md-2"> -->
+<!--   <p><img src="/demo/1" height="654mm"/></p> -->
+<!-- </div> -->
+
+<!-- <div id="mmmmyModal" class="col-md-3"> -->
+<!--   <p><img src="/demo/2" height="432mm"/></p> -->
+<!-- </div> -->
+
+
+    <!-- <div id="myModal" class="modal fade"> -->
+    <!--   <div class="modal-dialog modal-dialog-centered modal-lg"> -->
         
-        <div class="modal-content">
-          just one question
-          <div class="modal-header">
-            кой е вашият любим език за програмиране ?
-            <h5 class="modal-title">what is your favorit programming language ?</h5>
-          </div>
-          <div class="modal-body">
-            quel est votre langage de programmation préféré ?
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-outline-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" data-dismiss="modal">javascript</button>
-            <button class="btn btn-outline-primary mx-auto" data-dismiss="modal">c</button>
-            <button class="btn btn-outline-warning" data-bs-toggle="modal" data-dismiss="modal">php</button>
-            <button class="btn btn-outline-secondary mx-auto" data-dismiss="modal">c++</button>
-            <button class="btn btn-outline-success" data-dismiss="modal">python</button>
-            <button class="btn btn-outline-dark" data-dismiss="modal">perl</button>
-            <button class="btn btn-outline-info" data-dismiss="modal">java</button>
-            <button class="btn btn-outline-light" data-dismiss="modal">other</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--     <div class="modal-content"> -->
+    <!--       just one question -->
+    <!--       <div class="modal-header"> -->
+    <!--         кой е вашият любим език за програмиране ? -->
+    <!--         <h5 class="modal-title">what is your favorit programming language ?</h5> -->
+    <!--       </div> -->
+    <!--       <div class="modal-body"> -->
+    <!--         quel est votre langage de programmation préféré ? -->
+    <!--       </div> -->
+    <!--       <div class="modal-footer"> -->
+    <!--         <button class="btn btn-outline-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" data-dismiss="modal">javascript</button> -->
+    <!--         <button class="btn btn-outline-primary mx-auto" data-dismiss="modal">c</button> -->
+    <!--         <button class="btn btn-outline-warning" data-bs-toggle="modal" data-dismiss="modal">php</button> -->
+    <!--         <button class="btn btn-outline-secondary mx-auto" data-dismiss="modal">c++</button> -->
+    <!--         <button class="btn btn-outline-success" data-dismiss="modal">python</button> -->
+    <!--         <button class="btn btn-outline-dark" data-dismiss="modal">perl</button> -->
+    <!--         <button class="btn btn-outline-info" data-dismiss="modal">java</button> -->
+    <!--         <button class="btn btn-outline-light" data-dismiss="modal">other</button> -->
+    <!--       </div> -->
+    <!--     </div> -->
+    <!--   </div> -->
     
-    <div id="exampleModalToggle2">
-      <p><img src="{% static 'img/trigger.jpg' %}" /></p>
-    </div>
-  </body>
-</html>
+    <!-- </div> -->
+
+
+
+{% endblock %}

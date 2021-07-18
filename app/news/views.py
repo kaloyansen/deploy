@@ -5,7 +5,8 @@ from .forms import CommentForm
 def news_index(request):
     posts = Post.objects.all().order_by('-created_on')
     context = {
-        "posts": posts,
+        'posts': posts,
+		'slide': '/img/slideshow.gif'
     }
     return render(request, "news_index.html", context)
 
