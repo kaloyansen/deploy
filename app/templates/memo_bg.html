@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block page_content %}
+
+<!-- <p> -->
+<!--   <img src="/demo/1/" width="40%"/> -->
+<!--   ====> -->
+<!--   <img src="/demo/2/" width="40%"/> -->
+<!-- </p> -->
+
+
+
+<div class = "p-3 mb-2 alert-info">
+
+  <div class="row card alert-info">
+    <div class="card-header">
+      Il est temps de regarder les étoiles, a-t-il affirmé dans une vidéo filmée, sans question de journalistes. Le parti fondé et dirigé par Slavi, Ima takouv narod (itn, il y a un tel peuple) a obtenu plus de 23 % des voix.
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-4">
+        En Bulgarie, le chanteur Slavi remporte les législatives
+        <footer class="blockquote-footer">Le Monde<cite title="Le Monde"></cite></footer>
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      {% if graph1 %}
+      {{ graph1|safe }}
+      {% else %}
+      <p>No graph was provided.</p>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      {% if graph2 %}
+      {{ graph2|safe }}
+      {% else %}
+      <p>No graph was provided.</p>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

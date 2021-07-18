@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block page_content %}
+
+<script>
+  $(window).on('load',function(){
+  var delayMs = 4444; // delay in milliseconds
+    
+  setTimeout(function(){
+  $('#myModal').modal('show');
+  }, delayMs);
+  });
+</script>
+
+    <!-- <script> -->
+    <!--   $(document).ready(function(){ -->
+    <!--   $("#myModal").modal('show'); -->
+    <!--   }); -->
+    <!-- </script> -->
+    
+<div class="row">
+
+  <div id="plot" class="col-md-7">
+    <img src="/memo/0" width="100%"/>
+  </div>
+
+  <div id="voter" class="col-md-3">
+    <button type="button"
+            class="btn btn-outline-secondary"
+            data-toggle="modal"
+            data-target="#myModal">voter</button>
+    <div class="raw info">
+      <p><label>{{ party }}</label>
+    </div>
+  </div>
+</div>
+
+<div id="space" class="row"><br /></div>
+
+<div id="history" class="row">
+  <img src="{% static image %}" alt="{{ image }} not found" width="100%">
+</div>
+
+
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">what is yout favorite programming language ?
+      <form action="/memo/" method = "post">
+        <div class="modal-header">
+          <h5 class="modal-title">quel est votre langage de programmation préféré ?</h5>
+        </div>
+        <div class="modal-body">
+          {% csrf_token %}
+          {{ form }}
+          <label>{{ party }}</label>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-outline-info">send</button>
+          <button type="button" class="close btn btn-outline-warning" data-dismiss="modal">cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
