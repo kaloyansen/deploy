@@ -10,6 +10,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ project.title }}</h5>
         <p class="card-text">{{ project.description }}</p>
+        <p class="card-text">{{ project.content }}</p>
         <a href="{% url 'work_detail' project.pk %}"
            class="btn btn-outline-primary"
            title="go to project">

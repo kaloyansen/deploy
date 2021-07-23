@@ -67,7 +67,8 @@ INSTALLED_APPS = [
     # 'demo',
     'memo',
     'work',
-    'news'
+    'news',
+	'mdeditor'
 #    'app.apps.appConfig'
 #    'django_user_agents',
 #    'tracking_analyzer'
@@ -158,17 +159,20 @@ USE_L10N = True
 USE_TZ = True
 
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
 # STATIC_ROOT = '/static'
-STATIC_ROOT = BASE_DIR / 'static'
-# print(STATIC_ROOT)
 # STATIC_ROOT = '/home/django/deploy/app/static/'
-MEDIA_URL = '/media/'
+STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

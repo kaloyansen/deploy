@@ -2,8 +2,11 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.urls import path, include
 from django.views.static import serve
+from django.conf.urls.static import static
+from django.conf import settings
+
 from rest_framework import routers, serializers, viewsets
-#from demo import views as demoviews
+
 from work.models import Project, Visitor
 from news.models import Post, Comment, Category
 from memo.models import Langage, Child, Parent, Coder, Prog
@@ -18,7 +21,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Project
-		fields = ['title', 'description', 'technology', 'place', 'image']
+		fields = '__all__'
+		#fields = ['title', 'description', 'technology', 'place', 'image']
 
 class VisitorSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
@@ -125,7 +129,7 @@ router.register(r'parents', ParentViewSet)
 router.register(r'codes', CoderViewSet)
 router.register(r'progs', ProgViewSet)
 
-# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = [
 	path("", views.index, name="index"),
@@ -135,8 +139,12 @@ urlpatterns = [
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
+	path("mded/", include('mdeditor.urls')),
 	path("admin/", admin.site.urls)
 ]
+
+if settings.DEBUG:
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if False:
 	urlpatterns.append(
