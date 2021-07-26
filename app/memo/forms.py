@@ -1,15 +1,5 @@
 from django import forms
-from .models import Langage, Child, Parent, Coder, Prog
-
-class LangageForm(forms.ModelForm):
-
-	def __init__(self, *args, **kargs):
-		super(LangageForm, self).__init__(*args, **kargs)
-
-	class Meta:
-		model = Langage
-		fields = ['name']
-
+from .models import Child, Prog, Parent
 
 class ProgForm(forms.ModelForm):
 
@@ -18,7 +8,7 @@ class ProgForm(forms.ModelForm):
 
 	class Meta:
 		model = Prog
-		fields = '__all__'
+		fields = ['name']
 
 
 class ChildForm(forms.ModelForm):
@@ -40,12 +30,4 @@ class ParentForm(forms.ModelForm):
 		model = Parent
 		fields = '__all__'
 
-class CoderForm(forms.ModelForm):
-
-	def __init__(self, *args, **kargs):
-		super(CoderForm, self).__init__(*args, **kargs)
-
-	class Meta:
-		model = Coder
-		fields = '__all__'
 		

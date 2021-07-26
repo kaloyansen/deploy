@@ -3,30 +3,46 @@
 {% load static %}
 {% block page_content %}
 
+<!-- <script type="text/javascript"> -->
+<!--     $(window).load(function() { -->
+<!--         $('#bienvenue').modal('show'); -->
+<!--     }); -->
+<!-- </script> -->
+
 <h1>{{ title }}</h1>
 
-<div class="card-group">
-  <div class="card col-md-2 alert-info">
+<div class="card-group row" title="info info info">
+  <div class="card col-md-2 alert-info"
+       title="bonjour">
     <img class="card-img-top"
          src="{% static image %}"
+         title="Kaloyan KRASTEV"
          alt="{{ image }} not found">
     <div class="card-body">
       <p class="card-title"></p>
       <p class="card-text">
         <button type="button"
                 class="btn btn-outline-success"
+                title="manifest"
                 data-toggle="modal"
                 data-target="#bienvenue">Kaloyan<br />KRASTEV</button></p>
     </div>
   </div>
-  <div class="card col alert-primary">
+  <div class="card alert-info"
+       title="about">
     <div class="card-body">
       <h5 class="card-title">{{ about }}</h5>
     </div>
+  </div>
+  <div class="card alert-primary"
+       title="langages de programmation">
     <div class="card-body">
       <h5 class="card-title">langages de programmation:</h5>
       <p class="card-text">{{ lange }}</p>
     </div>
+  </div>
+  <div class="card alert-secondary"
+       title="technologie">
     <div class="card-body">
       <h5 class="card-title">technologie:</h5>
       <p class="card-text">{{ techno }}</p>
@@ -37,8 +53,9 @@
 
 <div class="row"><br class="clear" /></div>
 
-<div class="card-group">
-  <div class="card alert-secondary">
+<div class="card-group" title="all about me">
+  <div class="card alert-success"
+       title="expérience">
     <div class="card-body">
       <h5 class="card-title">expérience</h5>
       <p class="card-text">CNRS - Grenoble, France </p>
@@ -46,14 +63,16 @@
       <p class="card-text">INRNE - BAS - Sofia, Bulgarie</p>
     </div>
   </div>
-  <div class="card alert-success">
+  <div class="card alert-danger"
+       title="compétences">
     <div class="card-body">
       <h5 class="card-title">compétences</h5>
       <p class="card-text">{{ lange }}</p>
       <p class="card-text">{{ techno }}</p>
     </div>
   </div>
-  <div class="card alert-warning">
+  <div class="card alert-warning"
+       title="formation">
     <div class="card-body">
       <h5 class="card-title">formation</h5>
       <p class="card-text">simplon.co - Grenoble</p>
@@ -69,6 +88,7 @@
 
 <div id="carexind"
      class="row carousel slide"
+     title="class = row carousel slide"
      data-interval="6789"
      data-keyboard="true"
      data-pause="hover"
@@ -135,8 +155,8 @@
      tabindex="-1"
      id="bienvenue"
      role="dialog"
-     aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
+     aria-hidden="true"
+     aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content bg-danger">
       <div class="modal-header bg-dark text-primary">

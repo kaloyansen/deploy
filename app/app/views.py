@@ -29,7 +29,7 @@ def index(request):
 		'rsa': '/img/800x600/rsa.png',
 		'serverless': '/img/800x600/serverless.png',
 		'web': '/img/800x600/web.png',
-		'about': 'conception d\'applications, développement back-end, analyse de données scientifique, visualisation en-ligne',
+		'about': 'conception d\'applications, développement back-end, analyse de données scientifique et visualisation en-ligne',
 		'lange': 'python, C++, java, perl, fortran, c, php, javascript',
 		'techno': 'django, pandas, gnuplot, emacs, oracle, mysql, sql*loader, symfony, vue.js, react.js, angular, react',
 		'num_visits': num_visits

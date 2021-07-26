@@ -1,6 +1,8 @@
 from work.models import Project
 
-pindex = Project(
+work = {}
+
+work[3] = Project(
 	pk = 3,
 	title = 'page web statiques et responsive',
 	description = "Un site vitrine d'un développeur d'applications. Codé en python 3 avec django web framework. Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source. SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world. Plots are created with plotly.py, an interactive, open-source, and browser-based graphing library for Python. Le code est deployé d'abord sur google cloud après l'avoir containerisé en image docker et puis sur digitalocean.com. Il existe plusieurs des façons à gérer le contenu de la page web. Django administration est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Une autre possibilté est django rest framework. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.",
@@ -9,7 +11,7 @@ pindex = Project(
 	image = 'img/django.png'
 )
 
-ph1gas = Project(
+work[4] = Project(
 	pk = 4,
 	title='visualisation en-ligne des données expérimentales de H1 detector à HERA',
 	description='les données sont stoquées d\'abord dans la base de donnée oracle à l\'aide de sql*loader, puis la visualisation est faite après la demande du client et selon cette demande à l\'aide de gnuplpot',
@@ -18,7 +20,7 @@ ph1gas = Project(
 	image='img/h1.png'
 )
 
-ph1ana = Project(
+work[2] = Project(
 	pk = 2,
 	title='Jets in Photoproduction at HERA, analyse scientifique des données experimentales de H1 détecteur à HERA',
 	description='doctorat en physique des particles',
@@ -27,7 +29,7 @@ ph1ana = Project(
 	image='img/h1.old.png'
 )
 
-ph1trg = Project(
+work[5] = Project(
 	pk = 5,
 	title='H1 central trigger expert',
 	description='le H1 central trigger à la recherche des HERA électron - proton collisions à enrégistrer',
@@ -36,7 +38,7 @@ ph1trg = Project(
 	image='img/trigger.png'
 )
 
-pin2p3 = Project(
+work[6] = Project(
 	pk = 6,
 	title='CALICE calorimètre électromagnétique prototype physique R&D',
 	description='The CALICE collaboration (Calorimeter for Linear Collider Experiment) is undertaking a major program of R&D into calorimetry for the ILC, directed towards the design of an ILC calorimeter optimised for both performance and cost. It now has over 200 members from 41 institutes worldwide including all three major ILC regions, and is by far the largest group studying calorimetry for the ILC. New groups continue to join CALICE and these have recently included institutes in India, Canada and Spain.',
@@ -45,7 +47,7 @@ pin2p3 = Project(
 	image='img/calice.png'
 )
 
-lehoul = Project(
+work[7] = Project(
 	pk = 7,
 	title='Le Houl Association web site',
 	description='le site web d\'une association des artist, surtout des musiciens, avec des utils des adhérantes et des adhérants, des enregistrements à écouter et les évenments de l\'association',
@@ -54,7 +56,7 @@ lehoul = Project(
 	image='img/houl.png'
 )
 
-simplo = Project(
+work[1] = Project(
 	pk = 1,
 	title='concepteur développeur d\'applications',
 	place='Le·la concepteur·trice développeur·se d\'applications conçoit et développe des services numériques à destination des utilisateurs en respectant les normes et standards reconnus par la profession et en suivant l\'état de l\'art de la sécurité informatique à toutes les étapes. La connaissance du métier du client pour lequel il·elle réalise l\'application peut être demandée. Il·elle prend en compte les contraintes économiques, en termes de coûts et de délais, les exigences de sécurité propres à son domaine d\'intervention. Il·elle peut aussi être amené, à la demande du client, à intégrer les principes liés à la conception responsable de services numériques. Pour concevoir et développer les interfaces utilisateur de type desktop ou web, il·elle élabore une maquette avec les enchaînements d\'écrans, qu\'il·elle fait valider à l\'utilisateur. Il·elle code les formulaires de saisie et de résultats, ainsi que les états, en programmant de manière sécurisée les événements utilisateur et en accédant aux données stockées dans une base. Pour concevoir et mettre en œuvre la persistance des données, il·elle analyse un cahier des charges fonctionnel ou une demande utilisateur afin de modéliser et de créer une base de données de type relationnel ou NoSQL (Not only SQL) ou d\'adapter une base existante en l\'optimisant ou en ajoutant des éléments et en veillant à ne pas introduire de vulnérabilité dans le système d\'informations. Pour concevoir et développer une application multicouche répartie, il·elle analyse la demande en s\'appuyant sur une démarche permettant de construire les services numériques en plusieurs couches correspondant aux couches présentation, métier et persistance. Il·elle s\'adapte en continu aux évolutions technologiques et réglementaires de la filière Etudes et développement. Pour assurer cette veille, l\'usage de la langue anglaise est souvent requis pour la lecture et la compréhension de documentations techniques ainsi que pour assurer des échanges techniques au moyen de textes courts avec des développeurs distants pouvant être de nationalités différentes.',
@@ -64,33 +66,27 @@ simplo = Project(
 )
 
 
-info = True
+deb = True
 pro = Project.objects.all()
 
-if info:
-	for p in pro: print(p.id, p.title, p.image)#, p.description, p.technology)
-	print('buy')
-	exit(0)
-
-print('continue')
-
-"""
+print('à la base de données:')
 for p in pro:
 	print(p.id, p.title, p.image)#, p.description, p.technology)
-	p.delete()
-pro.delete()
+	if deb: x = 0
+	else: p.delete()
 
-pindex.save()
-ph1gas.save()
-ph1ana.save()
-ph1trg.save()
-pin2p3.save()
-lehoul.save()
-simplo.save()
-"""
+if not deb: pro.delete()# ???
 
+print('dans le fichier:')
+for w in work.values():
+	print(w.id, w.title, w.image)#, w.description, w.technology)
+	if deb:	x = 0
+	else: w.save()
+
+
+pro = Project.objects.all()
 print('{} slides detected'.format(pro.count()))
-print(pro.values_list())
+#print(pro.values_list())
 
 
-# exit('à toute à l\'heure')
+exit('à toute à l\'heure')

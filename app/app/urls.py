@@ -7,9 +7,9 @@ from django.conf import settings
 
 from rest_framework import routers, serializers, viewsets
 
-from work.models import Project, Visitor
+from work.models import Project, Visitor, Page
 from news.models import Post, Comment, Category
-from memo.models import Langage, Child, Parent, Coder, Prog
+from memo.models import Child, Prog, Parent
 from . import views
 
 # Serializers define the API representation.
@@ -29,6 +29,11 @@ class VisitorSerializer(serializers.HyperlinkedModelSerializer):
 		model = Visitor
 		fields = ['ip_address', 'page_visited', 'event_date']
 
+class PageSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = Page
+		fields = '__all__'
+
 class PostSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Post
@@ -44,11 +49,6 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
 		model = Category
 		fields = ['name']
 
-class LangageSerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
-		model = Langage
-		fields = '__all__'
-
 class ChildSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Child
@@ -57,11 +57,6 @@ class ChildSerializer(serializers.HyperlinkedModelSerializer):
 class ParentSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Parent
-		fields = '__all__'
-
-class CoderSerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
-		model = Coder
 		fields = '__all__'
 
 class ProgSerializer(serializers.HyperlinkedModelSerializer):
@@ -82,6 +77,10 @@ class VisitorViewSet(viewsets.ModelViewSet):
 	queryset = Visitor.objects.all()
 	serializer_class = VisitorSerializer
 
+class PageViewSet(viewsets.ModelViewSet):
+	queryset = Page.objects.all()
+	serializer_class = PageSerializer
+
 class PostViewSet(viewsets.ModelViewSet):
 	queryset = Post.objects.all()
 	serializer_class = PostSerializer
@@ -94,10 +93,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
 	queryset = Category.objects.all()
 	serializer_class = CategorySerializer
 
-class LangageViewSet(viewsets.ModelViewSet):
-	queryset = Langage.objects.all()
-	serializer_class = LangageSerializer
-
 class ChildViewSet(viewsets.ModelViewSet):
 	queryset = Child.objects.all()
 	serializer_class = ChildSerializer
@@ -105,10 +100,6 @@ class ChildViewSet(viewsets.ModelViewSet):
 class ParentViewSet(viewsets.ModelViewSet):
 	queryset = Parent.objects.all()
 	serializer_class = ParentSerializer
-
-class CoderViewSet(viewsets.ModelViewSet):
-	queryset = Coder.objects.all()
-	serializer_class = CoderSerializer
 
 class ProgViewSet(viewsets.ModelViewSet):
 	queryset = Prog.objects.all()
@@ -120,13 +111,12 @@ router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'projects', ProjectViewSet)
 router.register(r'visitors', VisitorViewSet)
+router.register(r'pages', PageViewSet)
 router.register(r'posts', PostViewSet)
 router.register(r'comments', CommentViewSet)
 router.register(r'categories', CategoryViewSet)
-router.register(r'langages', LangageViewSet)
 router.register(r'children', ChildViewSet)
 router.register(r'parents', ParentViewSet)
-router.register(r'codes', CoderViewSet)
 router.register(r'progs', ProgViewSet)
 
 admin.autodiscover()
@@ -139,7 +129,7 @@ urlpatterns = [
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
-	path("mded/", include('mdeditor.urls')),
+	#path("mded/", include('mdeditor.urls')),
 	path("admin/", admin.site.urls)
 ]
 

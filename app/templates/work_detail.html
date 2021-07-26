@@ -7,20 +7,20 @@
     <img src="{% static project.image %}" class="img-fluid" alt="{{ project.image }}" width="100%" title="{{ project.title }}">
   </div>
   <div class="col-md-4">
-    <a href="{% url 'work_index' %}"
-       class="btn btn-outline-primary"
-       title="go back to projects overview">
-      projects
-          </a>
     <p>{{ project.place }}</p>
     <p>{{ project.description }}</p>
-    <p>{{ project.content }}</p>
     <br>
     <h5>technology used:</h5>
     <p>{{ project.technology }}</p>
   </div>
 </div>
-<div><br></div>
+<div class='row'><br></div>
+<div class='row'>
+  <a href="{% url 'work_index' %}"
+     class="btn btn-outline-primary"
+     title="go back to projects overview">work</a>
+</div>
+<div class='row'><br></div>
 
 
 {% endblock %}

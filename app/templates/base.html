@@ -24,6 +24,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400&family=Train+One&display=swap" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
       body {
@@ -34,8 +36,13 @@
 
   </head>
   <div><br></div>
-  <body class="alert alert-info" role="alert">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark rounded shadow">
+  <body class="alert alert-info"
+        data-bs-toggle="tooltip"
+        data-bs-html="true"
+        title=""
+        role="alert">
+    <nav title="navbar sticky-top"
+         class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark rounded shadow">
         
       <div class="container">
 
@@ -99,9 +106,9 @@
 
 
 
-    <footer class="footer fixed-bottom sticky-bottom text-light bg-dark text-center text-light rounded">
-      <small title="warning: django administration still requires a super user account and you will need one as well as a password to access the database - the guest access is under development and i will implement it as soon as possible - best wishes"
-             class="text-light">
+    <footer title="footer fixed-bottom sticky-bottom rounded"
+            class="footer fixed-bottom sticky-bottom text-light bg-dark text-center text-light rounded">
+      <small class="text-light">
         <small>
           &#127279; {{ page_author }},
           {{ page_time | date:"ymd" }}, {{ page_place }}
@@ -110,37 +117,7 @@
             total({{ num_visits }}) unique({{ page_visit }})
             welcome({{ page_test }}) ip({{ page_ip }})</small>
 
-          <a title="linkedin.com/kaloyansen"
-             class="btn-outline-info"
-             href="https://www.linkedin.com/in/kaloyan-k-krastev/">
-            <img src="https://www.linkedin.com/favicon.ico"
-                 height="20mm"
-                 alt="linkedin">
-          </a>
-
-          <a title="github.com/kaloyansen"
-             class="btn-outline-info"
-             href="https://github.com/kaloyansen">
-            <img src="https://www.github.com/favicon.ico"
-                 height="20mm"
-                 alt="github">
-          </a>
-
-
-          <a title="stackoverflow.com/users/3566444/morla"
-             class="btn-outline-info"
-             href="https://stackoverflow.com/users/3566444/morla">
-            <img src="https://stackoverflow.com/favicon.ico"
-                 height="20mm"
-                 alt="stackoverflow">
-          </a>
-          <a title="digitalocean.com/kaloyansen"
-             class="btn-outline-info"
-             href="https://cloud.digitalocean.com/account/profile?i=0a459e">
-            <img src="https://www.digitalocean.com/favicon.ico"
-                 height="20mm"
-                 alt="digitalocean">
-          </a>
+          {% include "social.html" %}
         </small>
 
       </small>
@@ -148,8 +125,7 @@
 
     <!-- javascript bootstrap + -->
     <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>    
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>     -->
     <!-- Bootstrap tooltips -->
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
