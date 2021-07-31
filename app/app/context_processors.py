@@ -1,6 +1,23 @@
-from work.models import Visitor, Page
 import socket
 from django.utils import timezone
+from work.models import Visitor, Page
+
+
+def get_context(request):
+
+	ip, nova = tracker(request)
+	
+	return { # these are accesible from everywhere
+		'page_title': 'Kaloyan KRASTEV',
+		'page_author': 'Kaloyan KRASTEV',
+		'page_ico': '/favicon.ico',
+		'page_time': timezone.now(),
+		'page_place': 'Grenoble, FRANCE',
+		'page_nova': nova,
+		'page_not_voted': has_not_voted(request),
+		'page_ip': ip
+	}
+
 
 def get_ip(request):
 	ip = request.META.get('REMOTE_ADDR')
@@ -16,68 +33,40 @@ def get_ip(request):
 	return ip, is_valid
 
 
-def get_context(request):
+def tracker(request):
 
-	#present_date = datetime.datetime.now()
-	present_date = timezone.now()
-	welcome = 'unknown'
-
+	ip = 0
+	nova = False
+	
 	try:
-		"""
-		#----- get visitor ip -----#
-		x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-		if x_forwarded_for:
-			ip = x_forwarded_for.split(',')[0]
-		else:
-			ip = request.META.get('REMOTE_ADDR')
-		#----- check if ip adress is valid -----#
-		try:
-			socket.inet_aton(ip)
-			ip_valid = True
-		except socket.error:
-			ip_valid = False
-		"""
 		ip, ip_valid = get_ip(request)
+		req_path = request.path
+		is_admin = "admin" in '{}'.format(req_path)
 		
 		if ip_valid:
+
 			visited = Visitor.objects.filter(ip_address=ip).count()
 			visitor = 0
-			if visited == 0: # the first visit creates a new visitor
-				visitor = Visitor(ip_address = ip,
-								  page_visited = request.path,
-								  date = present_date,
-								  code = 0)
-				visitor.save()
-				welcome = 'created'
-			else: # more visits modifie the existing visitor
-				visitor = Visitor.objects.get(ip_address=ip)
-				visitor.date = present_date
-				visitor.code += 1
-				visitor.page_visited = request.path
-				visitor.save()
-				welcome = 'updated'
 
-			page = Page(name = request.path,
-						date = present_date,
-						mother = visitor)
-			# the new page is created as a child of the visitor
-			page.save()
+			if is_admin: x = 'do not track admin'
+			else:				
+				visitor, cr = Visitor.objects.get_or_create(ip_address=ip)
+				if cr: nova = True
+				else: visitor.code += 1
+				visitor.save()
+				
+				page, cr = Page.objects.get_or_create(name=req_path,
+													  mother=visitor)
+				page.date = timezone.now()
+				page.code += 1
+				page.save()
 
-		else: x = 0 # ip is not valid
+		else: x = 'ip is not valid'
+		
 	except:	pass
 
-	visit_ip = Visitor.objects.values_list('ip_address', flat=True).distinct().count()
-	
-	return {
-		'page_visit': visit_ip,
-		'page_title': 'Kaloyan KRASTEV',
-		'page_author': 'Kaloyan KRASTEV',
-		'page_ico': '/favicon.ico',
-		'page_time': present_date,
-		'page_place': 'Grenoble, FRANCE',
-		'page_test': welcome,
-		'page_ip': request.META['REMOTE_ADDR']
-	}
+	return ip, nova
+
 
 def get_visitor(request):
 	visitor = 0
@@ -87,9 +76,11 @@ def get_visitor(request):
 	except: pass
 	return visitor
 
-def has_not_voted(request):
+def has_not_voted(request): return not has_voted(request)
+def has_voted(request):
 	visitor = get_visitor(request)
-	return not visitor.voted
+	if not visitor: return False
+	return visitor.voted
 
 def set_voted(request):
 	visitor = get_visitor(request)

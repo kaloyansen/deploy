@@ -1,8 +1,6 @@
-from django.shortcuts import render
-
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-# from .models import Page
+
 
 def base(request):
 	return render(request, 'base.html', {})
@@ -13,7 +11,6 @@ def index(request):
 	request.session['num_visits'] = num_visits + 1
 	context = {
 		'title': 'développeur back-end',
-#		'image': '/static/img/kalo.png',
 		'image': '/img/kalo.png',
 		'slide': '/img/slideshow.gif',
 		'apirest': '/img/800x600/api.rest.png',

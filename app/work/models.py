@@ -1,14 +1,11 @@
 from django.db import models
-#import datetime
 from django.utils import timezone
-#from mdeditor.fields import MDTextField
 
 
 class Project(models.Model):
 	# index
 	title = models.CharField(max_length = 44)
 	description = models.TextField(default = 'description', blank = True)
-	#content = MDTextField(default = '## content ##')
 	# detail
 	technology = models.TextField(default = 'technology', blank = True)
 	place = models.CharField(max_length = 120)
@@ -19,7 +16,6 @@ class Project(models.Model):
 
 class Visitor(models.Model):
 	ip_address = models.GenericIPAddressField()
-	page_visited = models.TextField()
 	date = models.DateTimeField(default = timezone.now)
 	code = models.IntegerField(blank = False,
 							   default = 0,
@@ -31,7 +27,6 @@ class Visitor(models.Model):
 
 class Page(models.Model):
 	name = models.CharField(max_length = 255)
-	#name = models.TextField()
 	date = models.DateTimeField(default = timezone.now)
 	code = models.IntegerField(blank = False,
 							   default = 0,

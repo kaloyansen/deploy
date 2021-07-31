@@ -22,12 +22,11 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Project
 		fields = '__all__'
-		#fields = ['title', 'description', 'technology', 'place', 'image']
 
 class VisitorSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Visitor
-		fields = ['ip_address', 'page_visited', 'event_date']
+		fields = '__all__'
 
 class PageSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:

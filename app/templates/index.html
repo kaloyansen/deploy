@@ -3,11 +3,16 @@
 {% load static %}
 {% block page_content %}
 
-<!-- <script type="text/javascript"> -->
-<!--     $(window).load(function() { -->
-<!--         $('#bienvenue').modal('show'); -->
-<!--     }); -->
-<!-- </script> -->
+{% if page_nova %}
+<script>
+    $(window).on('load',function() {
+        setTimeout(function() {
+            $('#bienvenue').modal('show');
+        }, 3210); // delay in milliseconds
+    });
+</script>
+{% endif %}
+
 
 <h1>{{ title }}</h1>
 
@@ -176,24 +181,13 @@
   </div>
 </div>
 
-
-<div class="btn-group sr-only" role="group">
-  <button id="btnGroupDrop"
-          type="button"
-          class="btn btn-secondary dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">menu</button>
-  <div class="dropdown-menu" aria-labelledby="btnGroupDrop">
-    <a class="dropdown-item btn-outline-primary"
-       href="{% url 'news_index' %}">news</a>
-    <a class="dropdown-item btn-outline-secondary"
-       href="{% url 'work_index' %}">work</a>
-  </div>
-  count: {{ num_visits }}  ip({{ page_ip }}) test({{ page_test }})
-
+{% if page_not_voted %}
+<div class="row justify-content-center">
+  <a title = "vous n'avez pas voté pour votre langage préféré"
+     class = "btn btn-outline-warning text-right"
+     href = "{% url 'demo' %}">voter en-ligne</a>
 </div>
-
+{% endif %}
 
 <a class="btn btn-outline-info"
    href="#"

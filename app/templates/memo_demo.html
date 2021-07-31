@@ -3,16 +3,6 @@
 {% load static %}
 {% block page_content %}
 
-<!-- <script> -->
-<!--   $(window).on('load',function(){ -->
-<!--   var delayMs = 4444; // delay in milliseconds -->
-    
-<!--   setTimeout(function(){ -->
-<!--   $('#myModal').modal('show'); -->
-<!--   }, delayMs); -->
-<!--   }); -->
-<!-- </script> -->
-
 <div id="is_valid" class="row sr-only" color="red">
   {% if form.is_valid %}
   form is valid
@@ -41,17 +31,111 @@
   <!--   <img src="/memo/0" width="100%"/> -->
   <!-- </div> -->
 
-  <div id="voter" class="col-md-3">
-    {% if notvoted %}
+  <div id="voter" class="col-md-5">
+    {% if page_not_voted %}
     <button type="button"
-            class="btn btn-outline-secondary"
+            class="btn btn-outline-danger rounded-circle"
             data-toggle="modal"
-            data-target="#myModal">voter</button>
+            data-target="#myModal">vote</button>
+    <button type="button"
+            class="btn btn-outline-warning rounded"
+            data-toggle="modal"
+            data-target="#myModal">now</button>
+    <button type="button"
+            class="btn btn-outline-success rounded"
+            data-toggle="modal"
+            data-target="#myModal">votez</button>
+    <button type="button"
+            class="btn btn-outline-info rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">maintenant</button>
+    <button type="button"
+            class="btn btn-outline-dark rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">гласувайте</button>
+    <button type="button"
+            class="btn btn-outline-primary rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">сега</button>
+    <button type="button"
+            class="btn btn-outline-danger rounded"
+            data-toggle="modal"
+            data-target="#myModal">vote</button>
+    <button type="button"
+            class="btn btn-outline-warning rounded"
+            data-toggle="modal"
+            data-target="#myModal">now</button>
+    <button type="button"
+            class="btn btn-outline-success rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">votez</button>
+    <button type="button"
+            class="btn btn-outline-info rounded"
+            data-toggle="modal"
+            data-target="#myModal">maintenant</button>
+    <button type="button"
+            class="btn btn-outline-dark rounded"
+            data-toggle="modal"
+            data-target="#myModal">гласувайте</button>
+    <button type="button"
+            class="btn btn-outline-primary rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">сега</button>
+    <button type="button"
+            class="btn btn-outline-danger rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">vote</button>
+    <button type="button"
+            class="btn btn-outline-warning rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">now</button>
+    <button type="button"
+            class="btn btn-outline-success rounded"
+            data-toggle="modal"
+            data-target="#myModal">votez</button>
+    <button type="button"
+            class="btn btn-outline-info rounded"
+            data-toggle="modal"
+            data-target="#myModal">maintenant</button>
+    <button type="button"
+            class="btn btn-outline-dark rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">гласувайте</button>
+    <button type="button"
+            class="btn btn-outline-primary rounded"
+            data-toggle="modal"
+            data-target="#myModal">сега</button>
+    <button type="button"
+            class="btn btn-outline-danger rounded"
+            data-toggle="modal"
+            data-target="#myModal">vote</button>
+    <button type="button"
+            class="btn btn-outline-warning rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">now</button>
+    <button type="button"
+            class="btn btn-outline-success rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">votez</button>
+    <button type="button"
+            class="btn btn-outline-info rounded-circle"
+            data-toggle="modal"
+            data-target="#myModal">maintenant</button>
+    <button type="button"
+            class="btn btn-outline-dark rounded"
+            data-toggle="modal"
+            data-target="#myModal">гласувайте</button>
+    <button type="button"
+            class="btn btn-outline-primary rounded"
+            data-toggle="modal"
+            data-target="#myModal">сега</button>
     {% else %}
-    <h2>merci d'avoir voté</h2>
+    <h4>merci d'avoir voté</h4>
+    <h4>thank you</h4>
+    <h4>благодарности</h4>
     {% endif %}
     <div class="raw info">
-      <p><label>{{ party }}</label>
+      <p><label>à la base de données<br />{{ party }}</label>
     </div>
   </div>
   
@@ -59,7 +143,7 @@
 
 <div id="space" class="row"><br /></div>
 
-<div id="history" class="row">
+<div id="history" class="row" title="stack overflow">
   <img src="{% static image %}" alt="{{ image }} not found" width="100%">
 </div>
 

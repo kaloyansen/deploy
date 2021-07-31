@@ -26,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'T6l\AN;F2pcW0o>+/1-c3hHUI]DR~cpJFgT*iox@SU!ClF4sL0y'
 
 #SECURE_BROWSER_XSS_FILTER = True
-#SECURE_SSL_REDIRECT = True
-#SECURE_HSTS_SECONDS = 10
+#SECURE_SSL_REDIRECT = False
+#SECURE_HSTS_SECONDS = 6
 #SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#SECURE_HSTS_PRELOAD = True
+#SECURE_HSTS_PRELOAD = False
 
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = True
@@ -43,15 +43,13 @@ SESSION_COOKIE_NAME = 'DSESSIONID'
 SESSION_COOKIE_SECURE = False
 """
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 1)))
-if socket.gethostname() == 'freeshell.de':
-	DEBUG = TEMPLATE_DEBUG = False
-
-DEBUG = TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
+
+DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 1)))
+DEBUG = TEMPLATE_DEBUG = False
+if socket.gethostname() == 'inspiron.fr':
+	DEBUG = TEMPLATE_DEBUG = True
 
 
 # Application definition
