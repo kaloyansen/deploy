@@ -46,11 +46,9 @@ SESSION_COOKIE_SECURE = False
 ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
 
-DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 1)))
-DEBUG = TEMPLATE_DEBUG = False
-if socket.gethostname() == 'inspiron.fr':
-	DEBUG = TEMPLATE_DEBUG = True
-
+if socket.gethostname() == '142.93.171.130': DEBUG = TEMPLATE_DEBUG = False # production
+elif socket.gethostname() == 'inspiron.fr': DEBUG = TEMPLATE_DEBUG = True # developpement
+else: DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 1))) # integer external control
 
 # Application definition
 
@@ -143,6 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
@@ -160,7 +159,7 @@ USE_TZ = True
 # STATIC_ROOT = '/home/django/deploy/app/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_ROOT = BASE_DIR / 'uploads'
+# MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 

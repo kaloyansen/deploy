@@ -1,11 +1,13 @@
 import numpy as np
 import math
+import sys
+
+sys.path.insert(0, '/home/django/deploy/app/venv/lib/python3.8/site-packages')
+from plotly.offline import plot
+import plotly.graph_objects as go
 
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
-
-from plotly.offline import plot
-import plotly.graph_objects as go
 
 from .forms import ProgForm
 from .models import dicho, Child, Prog
@@ -26,7 +28,7 @@ def demo(request):
 
 	if request.method == 'POST':
 		postname = request.POST.get("name", None)
-		prog = Prog.objects.get(name = postname) 
+		prog = Prog.objects.get(name = postname)
 		form = ProgForm(request.POST, instance = prog)
 		if form.is_valid():
 			#prog = Prog.objects.get(name = form.cleaned_data["name"])
@@ -35,7 +37,7 @@ def demo(request):
 			set_voted(request)
 		else: print(form.errors) #raise Http404
 	else: form = ProgForm() # no post data because method == 'GET'
-	
+
 	party = ''
 	for p in Prog.objects.all():
 		party += '{}: {}, '.format(dicho[p.name], p.code1)
