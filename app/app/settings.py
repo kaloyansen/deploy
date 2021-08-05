@@ -31,7 +31,7 @@ SECRET_KEY = 'T6l\AN;F2pcW0o>+/1-c3hHUI]DR~cpJFgT*iox@SU!ClF4sL0y'
 #SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 #SECURE_HSTS_PRELOAD = False
 
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 # SESSION_COOKIE_DOMAIN = '127.0.0.3'
 """
@@ -48,7 +48,7 @@ ALLOWED_HOSTS = ['142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
 
 if socket.gethostname() == '142.93.171.130': DEBUG = TEMPLATE_DEBUG = False # production
 elif socket.gethostname() == 'inspiron.fr': DEBUG = TEMPLATE_DEBUG = True # developpement
-else: DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 1))) # integer external control
+else: DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 0))) # integer external control
 
 # Application definition
 

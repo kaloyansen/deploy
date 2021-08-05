@@ -66,7 +66,7 @@ work[1] = Project(
 )
 
 
-deb = True
+deb = False
 pro = Project.objects.all()
 
 print('à la base de données:')

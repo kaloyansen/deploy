@@ -1,7 +1,7 @@
 from django.utils import timezone
 from news.models import Post, Comment, Category
 
-deb = True
+deb = False
 """ categories """
 
 category = Category.objects.all()
@@ -21,8 +21,8 @@ print('category =========================> in this file')
 
 for c in cat.values():
 	print(c.pk, c.name)
-	if deb: x = 0
-	else: c.save()
+	#if deb: x = 0
+	#else: c.save()
 
 
 """ news """
@@ -51,29 +51,29 @@ post[2] = Post(pk = 2,
 			   body = "In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux. The key benefit of Docker is that it allows users to package an application with all of its dependencies into a standardized unit for software development. Unlike virtual machines, containers do not have high overhead and hence enable more efficient usage of the underlying system and resources.",
 			   created_on = timezone.now(),
 			   image = "/img/docker.png")
-post[2].categories.set([3, 4])
+#post[2].categories.set([3, 4])
 
 post[3] = Post(pk = 3,
 			   title = "Une API REST, qu'est-ce que c'est ?",
 			   body = "Une API est un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications. Elle est parfois considérée comme un contrat entre un fournisseur d'informations et un utilisateur d'informations, qui permet de définir le contenu demandé au consommateur (l'appel) et le contenu demandé au producteur (la réponse). Par exemple, l'API conçue pour un service de météo peut demander à l'utilisateur de fournir un code postal et au producteur de renvoyer une réponse en deux parties : la première concernant la température maximale et la seconde la température minimale.\n\nREST est un ensemble de contraintes architecturales. Il ne s'agit ni d'un protocole, ni d'une norme. Les développeurs d'API peuvent mettre en œuvre REST de nombreuses manières.\n\nLorsqu'un client émet une requête par le biais d'une API RESTful, celle-ci transfère une représentation de l'état de la ressource au demandeur ou point de terminaison. Cette information, ou représentation, est fournie via le protocole HTTP dans l'un des formats suivants : JSON (JavaScript Object Notation), HTML, XLT, Python, PHP ou texte brut. Le langage de programmation le plus communément utilisé est JSON, car, contrairement à ce que son nom indique, il ne dépend pas d'un langage et peut être lu aussi bien par les humains que par les machines.",
 			   created_on = timezone.now(),
 			   image = "/img/api.rest.png")
-post[3].categories.set([3, 4])
+#post[3].categories.set([3, 4])
 
 
 post[4] = Post(pk = 4,
 			   title = "DigotalOcean: Power your application with our infrastructure",
 			   body = "When you’re building a web or mobile application, you need to develop and deliver your app quickly. Equally important, your application needs to be fast for end users. That’s why you should consider DigitalOcean to power your app’s backend. We offer compute, storage, databases, and networking, through a developer-friendly interface optimized for productivity.\n\nNot only is DigitalOcean easy to operate, it’s built with best-in-class Intel processors that run your app at blazing speeds. Cloud Spectator, a renowned benchmarking firm, found that DigitalOcean delivers superior price-performance compared to Amazon and Google. With DigitalOcean, you can choose whether to run your app directly on VMs or Kubernetes.",
 			   created_on = timezone.now(),
-			   image = "/img/sammy-404.gif")
-post[4].categories.set([3, 4])
+			   image = "/img/sammy.gif")
+#post[4].categories.set([3, 4])
 
 post[5] = Post(pk = 5,
 			   title = "Get the latest official Django==3.2.5",
 			   body = "With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. Django is\nfree\nopen source\nridiculously fast\nfully loaded\nreassuringly secure\nexceedingly scalable\nand incredibly versatile.",
 			   created_on = timezone.now(),
 			   image = "/img/django-rocket.gif")
-post[5].categories.set([3, 4])
+#post[5].categories.set([3, 4])
 
 post[6] = Post(pk = 6,
 			   title = "RSA Public Key Cryptography",
@@ -87,7 +87,7 @@ C = M**e % n (eq. 1)\n\
 M = C**d % n (eq. 2)",
 			   created_on = timezone.now(),
 			   image = "/img/rsa.png")
-post[6].categories.set([3])
+#post[6].categories.set([3])
 
 
 print('post =========================> in this file')
