@@ -3,7 +3,7 @@ from memo.models import Child, Prog, Parent
 
 """ designed to be run once per deployment
 in real /deb = False/ mode """
-deb = False
+deb = True
 """ should turn deb back to True
 after initial tables are created
 NOT TESTED read code before run

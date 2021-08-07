@@ -2,5 +2,9 @@
 (/usr/bin/python3) manage.py shell -c 'import .content_manager'
 la point est differente elle est importante
 """
-import work.work_manager
-import news.news_manager
+import script.about
+import script.work_manager
+import script.news_manager
+
+exit("à toute à l'heure")
+

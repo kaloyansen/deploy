@@ -107,16 +107,19 @@
                    aria-labelledby="btnGroupDrop">
                 <a title = "curriculum vitæ"
                    class = "nav-link btn-outline-warning rounded"
-                   href = "/static/pdf/back-end.pdf">mon cv</a>
+                   href = "/static/pdf/back-end.pdf" />mon cv</a>
                 <a title = "django rest framework"
                    class = "nav-link btn-outline-primary rounded"
-                   href = "/rest">api rest</a>
+                   href = "/rest" />api rest</a>
                 <a title="warning: administration requires a super user"
                    class = "nav-link btn-outline-danger rounded"
-                   href = "/admin">django admininstration</a>
+                   href = "/admin" />django admininstration</a>
                 <a title = "this page is a django application"
                    class = "nav-link btn-outline-info rounded"
-                   href = "{% url 'work_detail' 3 %}">about this web page</a>
+                   href = "{% url 'work_detail' 3 %}" />about this web page</a>
+                <a title = "digitalocean.com"
+                   class = "nav-link btn-outline-secondary rounded"
+                   href = "https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
               </div>
             </li>            
 
@@ -131,7 +134,6 @@
       {% block page_content %}{% endblock %}
     </div>
     <div><br></div>
-
 
 
     <footer title="footer fixed-bottom sticky-bottom rounded"

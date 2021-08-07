@@ -3,10 +3,9 @@ from django.utils import timezone
 
 
 class Project(models.Model):
-	# index
+	# index title + slise de description
 	title = models.CharField(max_length = 44)
 	description = models.TextField(default = 'description', blank = True)
-	# detail
 	technology = models.TextField(default = 'technology', blank = True)
 	place = models.CharField(max_length = 120)
 	image = models.FilePathField(path="/img")

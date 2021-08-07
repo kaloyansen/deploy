@@ -8,17 +8,17 @@
   </div>
   <div class="col-md-4">
     <p>{{ project.place }}</p>
-    <p>{{ project.description }}</p>
+    <p>{{ project.description|linebreaks }}</p>
     <br>
     <h5>technology used:</h5>
-    <p>{{ project.technology }}</p>
+    <p>{{ project.technology|linebreaks }}</p>
   </div>
 </div>
 <div class='row'><br></div>
 <div class='row'>
   <a href="{% url 'work_index' %}"
      class="btn btn-outline-primary"
-     title="go back to projects overview">work</a>
+     title="go back to projects overview">more work</a>
 </div>
 <div class='row'><br></div>
 
