@@ -107,21 +107,29 @@
                    aria-labelledby="btnGroupDrop">
                 <a title = "curriculum vitæ"
                    class = "nav-link btn-outline-warning rounded"
-                   href = "/static/pdf/back-end.pdf" />mon cv</a>
+                   href = "/static/pdf/back-end.pdf">mon cv</a>
                 <a title = "django rest framework"
                    class = "nav-link btn-outline-primary rounded"
-                   href = "/rest" />api rest</a>
+                   href = "/rest">api rest</a>
                 <a title="warning: administration requires a super user"
                    class = "nav-link btn-outline-danger rounded"
-                   href = "/admin" />django admininstration</a>
+                   href = "/admin">django admininstration</a>
                 <a title = "this page is a django application"
                    class = "nav-link btn-outline-info rounded"
-                   href = "{% url 'work_detail' 3 %}" />about this web page</a>
+                   href = "{% url 'work_detail' 3 %}">about this web page</a>
                 <a title = "digitalocean.com"
                    class = "nav-link btn-outline-secondary rounded"
-                   href = "https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
+                   href = "https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge"></a>
               </div>
-            </li>            
+            </li>
+
+            <li class="nav-item active text-light">
+              <form method = "post" action = "">
+                {% csrf_token %}
+                <button class = "nav-link btn-outline-primary rounded-circle text-right"
+                        name = "fliplang">{{ page_newlang }}</button>
+              </form>
+            </li>
 
           </ul>
         </div>
@@ -137,7 +145,7 @@
 
 
     <footer title="footer fixed-bottom sticky-bottom rounded"
-            class="footer fixed-bottom sticky-bottom text-light bg-dark text-center text-light rounded">
+            class="footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light rounded">
       <small class="text-light">
         <small>
           &#127279; {{ page_author }},

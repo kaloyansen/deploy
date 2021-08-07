@@ -16,7 +16,7 @@
 
 <h1>{{ title }}</h1>
 
-<div class="card-group row" title="info info info">
+<div class="card-group row clearfix" title="info info info">
   <div class="card col-md-2 alert-info"
        title="bonjour">
     <img class="card-img-top"
@@ -36,20 +36,34 @@
   <div class="card alert-info"
        title="about">
     <div class="card-body">
-      <h5 class="card-title">{{ about }}</h5>
+      <h5 class="card-title">
+        {% if page_oldlang == "en" %}
+        {{ about_en }}
+        {% else %}
+        {{ about }}
+        {% endif %}
+      </h5>
     </div>
   </div>
   <div class="card alert-primary"
        title="langages de programmation">
     <div class="card-body">
-      <h5 class="card-title">langages de programmation:</h5>
+      <h5 class="card-title">
+        {% if page_oldlang == "en" %}programming languages:
+        {% else %}langages de programmation:
+        {% endif %}
+      </h5>
       <p class="card-text">{{ lange }}</p>
     </div>
   </div>
   <div class="card alert-secondary"
        title="technologie">
     <div class="card-body">
-      <h5 class="card-title">technologie:</h5>
+      <h5 class="card-title">
+        {% if page_oldlang == "en" %}technology:
+        {% else %}technologie:
+        {% endif %}
+      </h5>
       <p class="card-text">{{ techno }}</p>
     </div>
   </div>
@@ -62,7 +76,11 @@
   <div class="card alert-success"
        title="expérience">
     <div class="card-body">
-      <h5 class="card-title">expérience</h5>
+      <h5 class="card-title">
+        {% if page_oldlang == "en" %}experience
+        {% else %}expérience
+        {% endif %}
+      </h5>
       <p class="card-text">CNRS - Grenoble, France </p>
       <p class="card-text">DESY - Hamburg, Allemagne</p>
       <p class="card-text">INRNE - BAS - Sofia, Bulgarie</p>
@@ -71,7 +89,11 @@
   <div class="card alert-danger"
        title="compétences">
     <div class="card-body">
-      <h5 class="card-title">compétences</h5>
+      <h5 class="card-title">
+        {% if page_oldlang == "en" %}skills
+        {% else %}compétences
+        {% endif %}
+      </h5>
       <p class="card-text">{{ lange }}</p>
       <p class="card-text">{{ techno }}</p>
     </div>
@@ -79,7 +101,11 @@
   <div class="card alert-warning"
        title="formation">
     <div class="card-body">
-      <h5 class="card-title">formation</h5>
+      <h5 class="card-title">
+        {% if page_oldlang == "en" %}education
+        {% else %}formation
+        {% endif %}
+      </h5>
       <p class="card-text">simplon.co - Grenoble</p>
       <p class="card-text">la Conservatoire de Grenoble</p>
       <p class="card-text">Université de Hamburg</p>
@@ -154,7 +180,13 @@
 <div class="row"><br /></div>
 <div class="row"><br /></div>
 
-<div>{% include "welcome.html" %}</div>
+<div>
+  {% if page_oldlang == "en" %}
+  {% include "welcome.html" %}
+  {% else %}
+  {% include "bienvenue.html" %}
+  {% endif %}
+</div>
 
 <div class="modal fade bg-dark"
      tabindex="-1"

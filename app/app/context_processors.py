@@ -3,10 +3,26 @@ from django.utils import timezone
 from work.models import Visitor, Page
 
 
+def fliplanguage(old):
+	if old == 'fr': return 'en'
+	return 'fr'
+
+
 def get_context(request):
 
-	ip, nova = tracker(request)
-	
+	ip, nova, oldlang = tracker(request)
+
+	if "fliplang" in request.POST:
+		oldlang = fliplanguage(oldlang)
+		visitor = get_visitor(request)
+		if not visitor:
+			x = 0
+		else:
+			visitor.lang = oldlang
+			visitor.save()
+		
+	newlang = fliplanguage(oldlang)
+
 	return { # these are accesible from everywhere
 		'page_title': 'Kaloyan KRASTEV',
 		'page_author': 'Kaloyan KRASTEV',
@@ -15,7 +31,9 @@ def get_context(request):
 		'page_place': 'Grenoble, FRANCE',
 		'page_nova': nova,
 		'page_not_voted': has_not_voted(request),
-		'page_ip': ip
+		'page_ip': ip,
+		'page_oldlang': oldlang,
+		'page_newlang': newlang
 	}
 
 
@@ -37,6 +55,7 @@ def tracker(request):
 
 	ip = 0
 	nova = False
+	lang = ''
 	
 	try:
 		ip, ip_valid = get_ip(request)
@@ -53,6 +72,7 @@ def tracker(request):
 				visitor, cr = Visitor.objects.get_or_create(ip_address=ip)
 				if cr: nova = True
 				else: visitor.code += 1
+				lang = visitor.lang
 				visitor.save()
 				
 				page, cr = Page.objects.get_or_create(name=req_path,
@@ -65,11 +85,11 @@ def tracker(request):
 		
 	except:	pass
 
-	return ip, nova
+	return ip, nova, lang
 
 
 def get_visitor(request):
-	visitor = 0
+	visitor = False
 	try:
 		ip, ip_valid = get_ip(request)
 		if ip_valid: visitor = Visitor.objects.get(ip_address=ip)
@@ -84,5 +104,7 @@ def has_voted(request):
 
 def set_voted(request):
 	visitor = get_visitor(request)
+	if not visitor: return False
 	visitor.voted = True
 	visitor.save()
+	return True

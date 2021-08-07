@@ -20,6 +20,9 @@ class Visitor(models.Model):
 							   default = 0,
 							   verbose_name = 'range')
 	voted = models.BooleanField(default = False)
+	lang = models.CharField(default = 'fr',
+							max_length = 15,
+							verbose_name = 'user language')
 
 	def __str__(self): return '{}'.format(self.ip_address)
 
