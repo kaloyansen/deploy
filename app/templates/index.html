@@ -14,7 +14,11 @@
 {% endif %}
 
 
-<h1>{{ title }}</h1>
+<h1>
+  {% if page_oldlang == "en" %} {{ title_en }}
+  {% else %} {{ title }}
+  {% endif %}
+</h1>
 
 <div class="card-group row clearfix" title="info info info">
   <div class="card col-md-2 alert-info"
