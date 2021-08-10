@@ -8,6 +8,24 @@ def fliplanguage(old):
 	return 'fr'
 
 
+def linked(title, color, url, label):
+	x = '<a title = "{}"\
+	        class = "btn btn-outline-{} rounded-circle"\
+	        href = "{}">{}</a>'
+	return x.format(title, color, url, label)
+
+
+def linkedin():
+	return """
+      <a title="https://www.linkedin.com/in/kaloyan-k-krastev"
+         class="btn-outline-info"
+         href="https://www.linkedin.com/in/kaloyan-k-krastev/">
+        <img src="https://www.linkedin.com/favicon.ico"
+             height="20mm"
+             alt="linkedin"></a>
+	"""
+
+
 def get_context(request):
 
 	ip, nova, oldlang = tracker(request)
@@ -33,7 +51,14 @@ def get_context(request):
 		'page_not_voted': has_not_voted(request),
 		'page_ip': ip,
 		'page_oldlang': oldlang,
-		'page_newlang': newlang
+		'page_newlang': newlang,
+		'page_linkedin': linkedin(),
+		'page_ln_about': linked("this site", "success", "work/3/", "about"),
+		'page_ln_work': linked("work", "secondary", "work/", "work"),
+		'page_ln_news': linked("quoi de neuf", "primary", "news/", "news"),
+		'page_ln_demo': linked("programming", "danger", "memo/demo/", "language"),
+		'page_ln_sun': linked("le système solaire", "warning", "memo/sun/", "solaire"),
+		'page_ln_bg': linked("les élections bulgares anticipées", "info", "memo/bg/", "bulgare")
 	}
 
 

@@ -208,7 +208,11 @@
         </h4>
       </div>
       <div class="modal-body bg-primary">
+        {% if page_oldlang == "en" %}
         {% include "welcome.html" %}
+        {% else %}
+        {% include "bienvenue.html" %}
+        {% endif %}
       </div>
       <div class="modal-footer bg-dark">
         <a title="continue"

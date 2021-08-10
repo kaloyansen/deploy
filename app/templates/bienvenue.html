@@ -2,63 +2,17 @@
      title="modal-dialog modal-lg fade bg-dark bienvenue">
   <div class="card-header">bienvenue</div>
   <div class="card-body">
-    <h5 class="card-title">Welcome to my home page, dear friends, bienvenue sur mon site, добре дошли на моята страница в интернет, приятели,</h5>
-    <p class="card-text">My name is Kalo. You will find here text
-      <a title="https://www.linkedin.com/in/kaloyan-k-krastev"
-         class="btn-outline-info"
-         href="https://www.linkedin.com/in/kaloyan-k-krastev/">
-        <img src="https://www.linkedin.com/favicon.ico"
-             height="20mm"
-             alt="linkedin"></a>
-      english as well as
-      <a title="https://www.linkedin.com/in/kaloyan-k-krastev"
-         class="btn-outline-info"
-         href="https://www.linkedin.com/in/kaloyan-k-krastev/">
-        <img src="https://www.linkedin.com/favicon.ico"
-             height="20mm"
-             alt="linkedin"></a>
-      french and sometimes bulgarian. I hope the content is not interesting for software developpers only. Je comprends et je parle et je sais lire et écrire en français, en anglais et en bulgare. Phisicien de formations, de nationalité - bulgare, j'habite en France depuis dix ans. Je préfère la discution des technologies logiciel en anglais. I speak french, but I prefer talking about technology in english because I have learned it in english. And to be consistent, that's in bulgarian; Здравейте скъпи приятели и много здраве от Франция.</p>
-    <p class="card-text">Je suis développeur back-end et concepteur d'application. I am a software developer with special interest in databases, data analysis and software design. My favorite programming language is python. Django is the way I create web applications. In fact, what you see is a django project. Read
-      <a title="mes projets"
-         class="btn btn-outline-success rounded-circle"
-         href="{% url 'work_detail' 3 %}">about</a>
-      it and see other projects in
-      <a title="mes projets"
-         class="btn btn-outline-info rounded-circle"
-         href="{% url 'work_index' %}">work</a>.
-      Go to
-      <a title="quoi de neuf"
-         class="btn btn-outline-primary rounded-circle"
-         href="{% url 'news_index' %}">news</a>
-      to find more about the latest software technologies. Mon blog nouvelles technologies et logiciels s'appelle
-      <a title="quoi de neuf"
-         class="btn btn-outline-primary rounded-circle"
-         href="{% url 'news_index' %}">news</a>.</p>
-    <p class="card-text">Have fun is extremely important. Vote for your favorite programming
-      <a title = "programming languages"
-         class="btn btn-outline-warning rounded-circle"
-         href="{% url 'demo' %}">language</a>.
-      Voir le modèle 3d du système
-      <a title = "le système solaire"
-         class="btn btn-outline-success rounded-circle"
-         href="{% url 'sun' %}">solaire</a>
-      ou apprendre la politique
-      <a title = "les élections bulgare anticipées"
-         class="btn btn-outline-info rounded-circle"
-         href="{% url 'bg' %}">bulgare</a>
-      en couleur.</p>
-    <p class="card-text">Thank you
-      <a title="https://www.linkedin.com/in/kaloyan-k-krastev"
-         class="btn-outline-info rounded"
-         href="https://www.linkedin.com/in/kaloyan-k-krastev/">
-        <img src="https://www.linkedin.com/favicon.ico"
-             height="20mm"
-             alt="linkedin"></a>
-      advance for your messages, remarks, comments, notes, warnings. I am available for contract work. Merci par avance pour vos notes, messages, commentaires et recommandations. You can reach me at
+    <h5 class="card-title">Bienvenue sur la page d'accueil,</h5><br />
+    <p>The site default language is french. <form method = "post" action = "">{% csrf_token %}<button title = "translate in english" class = "nav-link btn-outline-primary rounded-circle text-right" name = "fliplang">go to english version</button></form>
+    </p><br />
+    <p class="card-text">Je m'appelle Kalo. Je comprends, je parle et je sais lire et écrire en français, en anglais et en bulgare. Phisicien de formations, de nationalité - bulgare, j'habite en France depuis dix ans.</p><br />
+    <p class="card-text">Je suis développeur back-end et concepteur d'application. Je m'intéresse de bases de données, d'analyse de données et de visualistion en-ligne. Mon langage de programmation préféré est python. La programmation orientée objet est facilitée par un ensemble de technologies dédiés : Java, C++, PHP, ... J'utilise des logiciels open source.</p><br />
+    <p class="card-text">Django est un cadre de développement web open source en Python. En fait, vous voyez un projet Django. Continuez à lire {{ page_ln_about | safe }} cette application ou voyez mes autre projets à {{ page_ln_work | safe }}. Trovez encore plus dans mon blog nouvelles technologies et logiciels {{ page_ln_news | safe }}.</p><br />
+    <p class="card-text">Votez pour votre {{ page_ln_demo | safe }} de programmation préféré. Voir le modèle 3d du système {{ page_ln_sun | safe }} ou apprendre la politique {{ page_ln_bg | safe }} en couleur.</p><br />
+    <p class="card-text">Merci par avance pour vos notes, messages, commentaires et recommandations. Je suis disponible par mail à 
       <a href="mailto:kaloyansen@gmail.com&subject=bonjour&body=merci"
-         title="Email">kaloyansen@gmail.com</a>
-      or call +336 812 44 812. Enjoy.
-    </p>
+         title="Email">kaloyansen@gmail.com</a></p>
+    <p>Le numéro de mon portable est +336 812 44 812.</p>
   </div>
 </div>
 

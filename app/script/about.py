@@ -7,7 +7,7 @@ work[3].title = "page web statiques et responsive"
 work[3].description = """
 Un logiciel opérationnel est la principale mesure d’avancement.
 
-Un site vitrine d'un développeur d'applications. Codé en python 3 avec django web framework.
+Un site vitrine d'un développeur d'applications. Codé en python 3 avec django web framework. Le site est bilangue anglais/français.
 
 Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
 

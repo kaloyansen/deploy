@@ -126,7 +126,8 @@
             <li class="nav-item active text-light">
               <form method = "post" action = "">
                 {% csrf_token %}
-                <button class = "nav-link btn-outline-primary rounded-circle text-right"
+                <button title = "toggle {{ page_oldlang }} to {{ page_newlang }} language"
+                        class = "nav-link btn-outline-primary rounded-circle text-right"
                         name = "fliplang">{{ page_newlang }}</button>
               </form>
             </li>
