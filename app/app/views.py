@@ -38,3 +38,5 @@ def index(request):
 
 def posoka(request):
 	return redirect('/datakosmata')
+
+

@@ -3,16 +3,15 @@
   <div class="card-header">bienvenue</div>
   <div class="card-body">
     <h5 class="card-title">Bienvenue sur la page d'accueil,</h5><br />
-    <p>The site default language is french. <form method = "post" action = "">{% csrf_token %}<button title = "translate in english" class = "nav-link btn-outline-primary rounded-circle text-right" name = "fliplang">go to english version</button></form>
+    <p>The default language is french. <form method = "post" action = "">{% csrf_token %}<button title = "translate in english" class = "nav-link btn-outline-primary rounded-circle text-right" name = "fliplang">navigate to english version</button></form>
     </p><br />
-    <p class="card-text">Je m'appelle Kalo. Je comprends, je parle et je sais lire et écrire en français, en anglais et en bulgare. Phisicien de formations, de nationalité - bulgare, j'habite en France depuis dix ans.</p><br />
+    <p class="card-text">Je m'appelle Kalo. Je comprends et je sais parler, lire et écrire en français, en anglais et en bulgare. Phisicien de formations, de nationalité - bulgare, j'habite en France depuis dix ans.</p><br />
     <p class="card-text">Je suis développeur back-end et concepteur d'application. Je m'intéresse de bases de données, d'analyse de données et de visualistion en-ligne. Mon langage de programmation préféré est python. La programmation orientée objet est facilitée par un ensemble de technologies dédiés : Java, C++, PHP, ... J'utilise des logiciels open source.</p><br />
-    <p class="card-text">Django est un cadre de développement web open source en Python. En fait, vous voyez un projet Django. Continuez à lire {{ page_ln_about | safe }} cette application ou voyez mes autre projets à {{ page_ln_work | safe }}. Trovez encore plus dans mon blog nouvelles technologies et logiciels {{ page_ln_news | safe }}.</p><br />
-    <p class="card-text">Votez pour votre {{ page_ln_demo | safe }} de programmation préféré. Voir le modèle 3d du système {{ page_ln_sun | safe }} ou apprendre la politique {{ page_ln_bg | safe }} en couleur.</p><br />
+    <p class="card-text">Django est un cadre de développement web open source en Python. En fait, vous voyez un projet Django. Trouvez le code à github.com {{ page_github | safe }}. Continuez à lire {{ page_ln_about | safe }} cette application ou voyez mes autre projets à {{ page_ln_work | safe }}. Trovez encore plus dans mon blog nouvelles technologies et logiciels {{ page_ln_news | safe }}.</p><br />
+    <p class="card-text">Puis, votez pour votre {{ page_ln_demo | safe }} de programmation préféré, voir le modèle 3d du système {{ page_ln_sun | safe }} ou apprendre la politique {{ page_ln_bg | safe }} en couleur.</p><br />
     <p class="card-text">Merci par avance pour vos notes, messages, commentaires et recommandations. Je suis disponible par mail à 
       <a href="mailto:kaloyansen@gmail.com&subject=bonjour&body=merci"
-         title="Email">kaloyansen@gmail.com</a></p>
-    <p>Le numéro de mon portable est +336 812 44 812.</p>
+         title="Email">kaloyansen@gmail.com</a> et mon numéro portable est +336 812 44 812.</p>
   </div>
 </div>
 

@@ -41,7 +41,7 @@
         data-bs-html="true"
         title=""
         role="alert">
-    <nav title="navbar sticky-top"
+    <nav title="bootstrap navbar sticky-top navbar-expand-lg rounded shadow"
          class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark rounded shadow">
         
       <div class="container">
@@ -117,22 +117,37 @@
                 <a title = "this page is a django application"
                    class = "nav-link btn-outline-info rounded"
                    href = "{% url 'work_detail' 3 %}">about this web page</a>
-                <a title = "digitalocean.com"
-                   class = "nav-link btn-outline-secondary rounded"
-                   href = "https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge"></a>
+                {{ page_digitalocean_grand | safe }}
+
               </div>
             </li>
 
-            <li class="nav-item active text-light">
+          </ul>
+          <ul class="navbar-nav mr-auto">
+
+            <li class = "nav-item active text-light"> 
               <form method = "post" action = "">
                 {% csrf_token %}
-                <button title = "toggle {{ page_oldlang }} to {{ page_newlang }} language"
-                        class = "nav-link btn-outline-primary rounded-circle text-right"
+                <button title = "toggle language {{ page_oldlang }} to {{ page_newlang }} language"
+                        class = "nav-link btn-outline-primary rounded-circle"
                         name = "fliplang">{{ page_newlang }}</button>
               </form>
             </li>
 
           </ul>
+
+          <form method = "post" class = "d-flex">
+            {% csrf_token %}
+            <input title = "m'envoyer un message"
+                   class = "form-control me-2 rounded-circle text-dark bg-outline-primary text-center"
+                   type = "search"
+                   placeholder = "{{ page_message }}"
+                   name = "message"
+                   aria-label = "Search">
+            <button class = "btn btn-outline-primary rounded-circle"
+                    type = "submit">go!</button>
+          </form>
+            
         </div>
       </div>
 

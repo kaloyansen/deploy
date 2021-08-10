@@ -17,14 +17,42 @@ def linked(title, color, url, label):
 
 def linkedin():
 	return """
-      <a title="https://www.linkedin.com/in/kaloyan-k-krastev"
-         class="btn-outline-info"
-         href="https://www.linkedin.com/in/kaloyan-k-krastev/">
-        <img src="https://www.linkedin.com/favicon.ico"
-             height="20mm"
-             alt="linkedin"></a>
+      <a title = "https://www.linkedin.com/in/kaloyan-k-krastev"
+         class = "btn-outline-info"
+         href = "https://www.linkedin.com/in/kaloyan-k-krastev/">
+        <img src = "https://www.linkedin.com/favicon.ico"
+             height = "20mm"
+             alt = "linkedin"></a>
 	"""
 
+def github():
+	return """
+      <a title = "https://github.com/kaloyansen/deploy"
+         class = "btn-outline-warning"
+         href = "https://github.com/kaloyansen/deploy.git">
+        <img src = "https://www.github.com/favicon.ico"
+             height = "20mm"
+             alt = "https://github.com/kaloyansen/deploy"></a>
+	"""
+
+
+"""
+def digitalocean(request, size = 24):
+	return render(request,
+				  'digitalocean.html',
+				  {'size': size})
+"""
+
+
+def digitalocean(request, size = 24):
+	return """
+	<a title = "digitalocean.com/kaloyansen"
+	   class = "btn-outline-info"
+       href = "https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
+      <img src = "https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"
+           height = "{}mm"
+           alt = "DigitalOcean Referral Badge" /></a>
+	""".format(size)
 
 def get_context(request):
 
@@ -41,6 +69,19 @@ def get_context(request):
 		
 	newlang = fliplanguage(oldlang)
 
+	message = "message rapide"
+	if "message" in request.POST:
+		message = "thank you"
+		message_content = request.POST.get("message", None)
+		visitor = get_visitor(request)
+		if not visitor:
+			message = "error"
+		elif message_content == '':
+			message = "écrivez un message"
+		else:
+			visitor.message = message_content
+			visitor.save()
+
 	return { # these are accesible from everywhere
 		'page_title': 'Kaloyan KRASTEV',
 		'page_author': 'Kaloyan KRASTEV',
@@ -52,7 +93,11 @@ def get_context(request):
 		'page_ip': ip,
 		'page_oldlang': oldlang,
 		'page_newlang': newlang,
+		'page_message': message,
 		'page_linkedin': linkedin(),
+		'page_github': github(),
+		'page_digitalocean': digitalocean(request),
+		'page_digitalocean_grand': digitalocean(request, 70),
 		'page_ln_about': linked("this site", "success", "work/3/", "about"),
 		'page_ln_work': linked("work", "secondary", "work/", "work"),
 		'page_ln_news': linked("quoi de neuf", "primary", "news/", "news"),

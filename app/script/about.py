@@ -20,7 +20,7 @@ Le code est deployé d'abord sur google cloud après l'avoir containerisé en im
 Il existe plusieurs des façons à gérer le contenu de la page web. Django administration est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Une autre possibilté est django rest framework. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
 """
 work[3].place = "simplon.co, Grenoble, FRANCE"
-work[3].technology = "python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3"
+work[3].technology = "python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4)"
 work[3].save()
 
 print(work[3])

@@ -20,6 +20,9 @@ class Visitor(models.Model):
 							   default = 0,
 							   verbose_name = 'range')
 	voted = models.BooleanField(default = False)
+	message = models.TextField(default = '',
+							   blank = True,
+							   verbose_name = 'message from user')
 	lang = models.CharField(default = 'fr',
 							max_length = 15,
 							verbose_name = 'user language')
