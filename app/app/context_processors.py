@@ -57,6 +57,7 @@ def digitalocean(request, size = 24):
 def get_context(request):
 
 	ip, nova, oldlang = tracker(request)
+	message = "message express"
 
 	if "fliplang" in request.POST:
 		oldlang = fliplanguage(oldlang)
@@ -69,7 +70,6 @@ def get_context(request):
 		
 	newlang = fliplanguage(oldlang)
 
-	message = "message rapide"
 	if "message" in request.POST:
 		message = "thank you"
 		message_content = request.POST.get("message", None)
@@ -77,7 +77,7 @@ def get_context(request):
 		if not visitor:
 			message = "error"
 		elif message_content == '':
-			message = "écrivez un message"
+			message = "envoyer un message rapide"
 		else:
 			visitor.message = message_content
 			visitor.save()
