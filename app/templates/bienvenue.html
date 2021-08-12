@@ -3,7 +3,16 @@
   <div class="card-header">bienvenue</div>
   <div class="card-body">
     <h5 class="card-title">Bienvenue sur la page d'accueil,</h5><br />
-    <p>The default language is french. <form method = "post" action = "">{% csrf_token %}<button title = "translate in english" class = "nav-link btn-outline-primary rounded-circle text-right" name = "fliplang">navigate to english version</button></form>
+    <p>The default language is french.
+      <form method = "post" action = "{% url 'index' %}">
+        {% csrf_token %}
+        <button title = "translate in english"
+                class = "btn-outline-primary text-right"
+                value = "en"
+                data-toggle = "modal"
+                data-target = "#bienvenue"
+                name = "fliplang">english version</button>
+      </form>
     </p><br />
     <p class="card-text">Je m'appelle Kalo. Je comprends et je sais parler, lire et écrire en français, en anglais et en bulgare. Phisicien de formations, de nationalité - bulgare, j'habite en France depuis dix ans.</p><br />
     <p class="card-text">Je suis développeur back-end et concepteur d'application. Je m'intéresse de bases de données, d'analyse de données et de visualistion en-ligne. Mon langage de programmation préféré est python. La programmation orientée objet est facilitée par un ensemble de technologies dédiés : Java, C++, PHP, ... J'utilise des logiciels open source.</p><br />

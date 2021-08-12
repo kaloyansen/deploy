@@ -130,6 +130,7 @@
                 {% csrf_token %}
                 <button title = "toggle language {{ page_oldlang }} to {{ page_newlang }} language"
                         class = "nav-link btn-outline-primary rounded-circle"
+                        value = {{ page_newlang }}
                         name = "fliplang">{{ page_newlang }}</button>
               </form>
             </li>

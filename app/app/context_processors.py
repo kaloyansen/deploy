@@ -54,22 +54,24 @@ def digitalocean(request, size = 24):
            alt = "DigitalOcean Referral Badge" /></a>
 	""".format(size)
 
-def get_context(request):
 
-	ip, nova, oldlang = tracker(request)
+	
+def get_context(request):
+	""" custom context processor delivers real ip, boolean True if unknown user, user language (fr/en))
+	in addition it is responsible for the quick message if sended and for the user language if changes """
+
+	ip, nova, lang = tracker(request)
 	message = "message express"
 
 	if "fliplang" in request.POST:
-		oldlang = fliplanguage(oldlang)
+		lang = fliplanguage(lang)
 		visitor = get_visitor(request)
 		if not visitor:
 			x = 0
 		else:
-			visitor.lang = oldlang
+			visitor.lang = lang
 			visitor.save()
 		
-	newlang = fliplanguage(oldlang)
-
 	if "message" in request.POST:
 		message = "thank you"
 		message_content = request.POST.get("message", None)
@@ -91,8 +93,9 @@ def get_context(request):
 		'page_nova': nova,
 		'page_not_voted': has_not_voted(request),
 		'page_ip': ip,
-		'page_oldlang': oldlang,
-		'page_newlang': newlang,
+		'page_oldlang': lang,
+		'page_newlang': fliplanguage(lang),
+		'page_en': lang == 'en',
 		'page_message': message,
 		'page_linkedin': linkedin(),
 		'page_github': github(),
@@ -151,7 +154,7 @@ def tracker(request):
 				page.code += 1
 				page.save()
 
-		else: x = 'ip is not valid'
+		else: x = "ip's not valid"
 		
 	except:	pass
 

@@ -1,5 +1,17 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+#from django.template import RequestContext
+from .context_processors import get_visitor
+
+
+def get_lang(request):
+
+	fliplang = request.POST.get("fliplang", False)
+	if fliplang: return fliplang
+
+	visitor = get_visitor(request)
+	if not visitor: return 'fr'
+	return visitor.lang
 
 
 def base(request):
@@ -9,9 +21,17 @@ def base(request):
 def index(request):
 	num_visits = request.session.get('num_visits', 0)
 	request.session['num_visits'] = num_visits + 1
+
+	title = {'fr': 'développeur back-end',
+			 'en': 'backend developer'}
+	about = {'fr': 'conception d\'applications, développement back-end, analyse de données scientifique et visualisation en-ligne',
+			 'en': 'software designer, backend developer, scientific data analysis and visualisation online'}
+			 
+	opt = get_lang(request)
+
 	context = {
-		'title': 'développeur back-end',
-		'title_en': 'backend developer',
+		'title': title[opt],
+		'about': about[opt],
 		'image': '/img/kalo.png',
 		'slide': '/img/slideshow.gif',
 		'apirest': '/img/800x600/api.rest.png',
@@ -27,8 +47,6 @@ def index(request):
 		'rsa': '/img/800x600/rsa.png',
 		'serverless': '/img/800x600/serverless.png',
 		'web': '/img/800x600/web.png',
-		'about': 'conception d\'applications, développement back-end, analyse de données scientifique et visualisation en-ligne',
-		'about_en': 'software designer, backend developer, scientific data analysis and visualisation online',
 		'lange': 'python, C++, java, perl, fortran, c, php, javascript',
 		'techno': 'django, pandas, gnuplot, emacs, oracle, mysql, sql*loader, symfony, vue.js, react.js, angular, react',
 		'num_visits': num_visits

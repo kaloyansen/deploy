@@ -14,11 +14,7 @@
 {% endif %}
 
 
-<h1>
-  {% if page_oldlang == "en" %} {{ title_en }}
-  {% else %} {{ title }}
-  {% endif %}
-</h1>
+<h1>{{ title }}</h1>
 
 <div class="card-group row clearfix" title="info info info">
   <div class="card col-md-2 alert-info"
@@ -40,20 +36,14 @@
   <div class="card alert-info"
        title="about">
     <div class="card-body">
-      <h5 class="card-title">
-        {% if page_oldlang == "en" %}
-        {{ about_en }}
-        {% else %}
-        {{ about }}
-        {% endif %}
-      </h5>
+      <h5 class="card-title">{{ about }}</h5>
     </div>
   </div>
   <div class="card alert-primary"
        title="langages de programmation">
     <div class="card-body">
       <h5 class="card-title">
-        {% if page_oldlang == "en" %}programming languages:
+        {% if page_en %}programming languages:
         {% else %}langages de programmation:
         {% endif %}
       </h5>
@@ -64,7 +54,7 @@
        title="technologie">
     <div class="card-body">
       <h5 class="card-title">
-        {% if page_oldlang == "en" %}technology:
+        {% if page_en %}technology:
         {% else %}technologie:
         {% endif %}
       </h5>
@@ -81,7 +71,7 @@
        title="expérience">
     <div class="card-body">
       <h5 class="card-title">
-        {% if page_oldlang == "en" %}experience
+        {% if page_en %}experience
         {% else %}expérience
         {% endif %}
       </h5>
@@ -94,7 +84,7 @@
        title="compétences">
     <div class="card-body">
       <h5 class="card-title">
-        {% if page_oldlang == "en" %}skills
+        {% if page_en %}skills
         {% else %}compétences
         {% endif %}
       </h5>
@@ -106,7 +96,7 @@
        title="formation">
     <div class="card-body">
       <h5 class="card-title">
-        {% if page_oldlang == "en" %}education
+        {% if page_en %}education
         {% else %}formation
         {% endif %}
       </h5>
@@ -185,7 +175,7 @@
 <div class="row"><br /></div>
 
 <div>
-  {% if page_oldlang == "en" %}
+  {% if page_en %}
   {% include "welcome.html" %}
   {% else %}
   {% include "bienvenue.html" %}
@@ -201,14 +191,10 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content bg-danger">
       <div class="modal-header bg-dark text-primary">
-        <h4 class="modal-title">
-          <a title = "digitalocean.com"
-             class = "nav-link btn-outline-secondary rounded"
-             href = "https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
-        </h4>
+        <h4 class="modal-title">{{ page_digitalocean_grand | safe }}</h4>
       </div>
       <div class="modal-body bg-primary">
-        {% if page_oldlang == "en" %}
+        {% if page_en %}
         {% include "welcome.html" %}
         {% else %}
         {% include "bienvenue.html" %}
@@ -227,7 +213,7 @@
 
 {% if page_not_voted %}
 <div class="row justify-content-center">
-  <a title = "vous n'avez pas voté pour votre langage préféré"
+  <a title = "pas encore voté votre langage de programmation préféré ?"
      class = "btn btn-outline-warning text-right"
      href = "{% url 'demo' %}">voter en-ligne</a>
 </div>
