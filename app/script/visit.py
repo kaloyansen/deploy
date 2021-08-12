@@ -18,10 +18,10 @@ visifilter = Visitor.objects.filter(message='').filter(voted=False).filter(code=
 print (visifilter.count(), ' robots')
 for v in visifilter:
 	print (v.code)
-	v.delete()
+	#v.delete()
 
 
 for v in visit:
-	print (v, v.code, v.voted, v.message)
+	print (v.id, v, v.code, v.voted, v.message)
 
 
