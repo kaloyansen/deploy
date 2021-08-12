@@ -132,14 +132,13 @@ urlpatterns = [
 	path("admin/", admin.site.urls)
 ]
 
-if settings.DEBUG:
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-if False:
-	urlpatterns.append(
-		path("stat/", serve, {'document_root': 'static',
-							  'path': "img",
-							  'show_indexes': True}))
-	urlpatterns.append(
-		path("cv/", serve, {'document_root': 'static/pdf',
-							'path': "back-end.pdf"}))
+#urlpatterns.append(
+#	path(settings.STATIC_URL, serve, {'document_root': settings.STATIC_ROOT,
+#									  'path': "img",
+#									  'show_indexes': True}))
+
+urlpatterns.append(
+	path("cv/", serve, {'document_root': 'static/pdf',
+						'path': "back-end.pdf"}))
