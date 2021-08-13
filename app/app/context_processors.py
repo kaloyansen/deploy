@@ -68,8 +68,24 @@ def get_context(request):
 	visitor = get_visitor(request)
 	
 	if "fliplang" in request.POST:
+		lang_content = request.POST.get('fliplang', None)
+		if lang_content == 'eng':
+			""" it happens only when asked for english
+			while reading the french manifest
+			gonna set manifeste auto appear ! """
+			nova = True
+			
+			"""
+			post = request.POST.copy() # to make it mutable
+			post['fliplang'] = 'en'
+			
+			request.POST = post # and update original POST in the end
+			request.POST.update({'fliplang': 'en'})
+
+			request.query_params._mutable = True
+			request.query_params['fliplang'] = 'en' """
+			
 		lang = fliplanguage(lang)
-		#visitor = get_visitor(request)
 		if not visitor:
 			x = 0
 		else:
@@ -81,7 +97,6 @@ def get_context(request):
 		send['submit'] = 'sent'		
 		
 		message_content = request.POST.get("message", None)
-		#visitor = get_visitor(request)
 		if not visitor:
 			send['message'] = 'error'
 			send['submit'] = 'nul'					
@@ -94,7 +109,7 @@ def get_context(request):
 
 	send['lang'] = lang
 	send['iseng'] = False
-	send['lancol'] = 'danger'
+	send['lancol'] = 'success'
 
 	if lang == 'fr': send['lancol'] = 'primary'
 	elif lang == 'en': send['iseng'] = True

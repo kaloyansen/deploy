@@ -5,7 +5,7 @@
 
 {% if page_nova %}
 <script>
-    $(window).on('load',function() {
+    $(window).on('load', function() {
         setTimeout(function() {
             $('#bienvenue').modal('show');
         }, 3210); // delay in milliseconds
@@ -16,95 +16,99 @@
 
 <h1>{{ title }}</h1>
 
-<div class="card-group row clearfix" title="info info info">
-  <div class="card col-md-2 alert-info"
-       title="bonjour">
-    <img class="card-img-top"
-         src="{% static image %}"
-         title="Kaloyan KRASTEV"
-         alt="{{ image }} not found">
-    <div class="card-body">
-      <p class="card-title"></p>
-      <p class="card-text">
-        <button type="button"
-                class="btn btn-outline-success"
-                title="manifest"
-                data-toggle="modal"
-                data-target="#bienvenue">Kaloyan<br />KRASTEV</button></p>
+<div class = "card-group row clearfix" title="info info info">
+  <div class = "card col-md-2 alert-info"
+       title = "bonjour">
+    <img class = "card-img-top"
+         src = "{% static image %}"
+         title = "Kaloyan KRASTEV"
+         alt = "{{ image }} not found">
+    <div class = "card-body">
+      <p class = "card-title"></p>
+      <p class = "card-text">
+        <button type = "button"
+                class = "btn btn-outline-success"
+                title = "manifest"
+                data-toggle = "modal"
+                data-target = "#bienvenue">Kaloyan<br />KRASTEV</button></p>
     </div>
   </div>
-  <div class="card alert-info"
-       title="about">
-    <div class="card-body">
-      <h5 class="card-title">{{ about }}</h5>
+  <div class = "card alert-info"
+       title = "about">
+    <div class = "card-body">
+      <h5 class = "card-title">{{ about }}</h5>
     </div>
   </div>
-  <div class="card alert-primary"
-       title="langages de programmation">
-    <div class="card-body">
-      <h5 class="card-title">
+  <div class = "card alert-primary"
+       title = "langages de programmation">
+    <div class = "card-body">
+      <h5 class = "card-title">
         {% if page_en %}programming languages:
         {% else %}langages de programmation:
         {% endif %}
       </h5>
-      <p class="card-text">{{ lange }}</p>
+      <p class = "card-text">{{ lange }}</p>
     </div>
   </div>
-  <div class="card alert-secondary"
-       title="technologie">
-    <div class="card-body">
-      <h5 class="card-title">
+  <div class = "card alert-secondary"
+       title = "technologie">
+    <div class = "card-body">
+      <h5 class = "card-title">
         {% if page_en %}technology:
         {% else %}technologie:
         {% endif %}
       </h5>
-      <p class="card-text">{{ techno }}</p>
+      <p class = "card-text">{{ techno }}</p>
     </div>
   </div>
 </div>
 
 
-<div class="row"><br class="clear" /></div>
+<div class = "row"><br class = "clear" /></div>
 
-<div class="card-group" title="all about me">
-  <div class="card alert-success"
-       title="expérience">
-    <div class="card-body">
-      <h5 class="card-title">
+<div class = "card-group" title = "all about me">
+  <div class = "card alert-success"
+       title = "expérience">
+    <div class = "card-body">
+      <h5 class = "card-title">
         {% if page_en %}experience
         {% else %}expérience
         {% endif %}
       </h5>
-      <p class="card-text">CNRS - Grenoble, France </p>
-      <p class="card-text">DESY - Hamburg, Allemagne</p>
-      <p class="card-text">INRNE - BAS - Sofia, Bulgarie</p>
+      <p class = "card-text">CNRS - Grenoble, France </p>
+      <p class = "card-text">DESY - Hamburg, Allemagne</p>
+      <p class = "card-text">INRNE - BAS - Sofia, Bulgarie</p>
     </div>
   </div>
-  <div class="card alert-danger"
-       title="compétences">
-    <div class="card-body">
-      <h5 class="card-title">
+  <div class = "card alert-danger"
+       title = "compétences">
+    <div class = "card-body">
+      <h5 class = "card-title">
         {% if page_en %}skills
         {% else %}compétences
         {% endif %}
       </h5>
-      <p class="card-text">{{ lange }}</p>
-      <p class="card-text">{{ techno }}</p>
+      <p class = "card-text">{{ lange }}</p>
+      <p class = "card-text">{{ techno }}</p>
     </div>
   </div>
-  <div class="card alert-warning"
-       title="formation">
-    <div class="card-body">
-      <h5 class="card-title">
+  <div class = "card alert-warning"
+       title = "formation">
+    <div class = "card-body">
+      <h5 class = "card-title">
         {% if page_en %}education
         {% else %}formation
         {% endif %}
       </h5>
-      <p class="card-text">simplon.co - Grenoble</p>
-      <p class="card-text">la Conservatoire de Grenoble</p>
-      <p class="card-text">Université de Hamburg</p>
-      <p class="card-text">Université de Sofia</p>
-      <p class="card-text"><small class="text-muted"><a title="curriculum vitæ" class="btn btn-outline-success" href="/static/pdf/back-end.pdf">curriculum vitæ</a></small></p>
+      <p class = "card-text">simplon.co - Grenoble</p>
+      <p class = "card-text">la Conservatoire de Grenoble</p>
+      <p class = "card-text">Université de Hamburg</p>
+      <p class = "card-text">Université de Sofia</p>
+      <p class = "card-text"><small class = "text-muted">
+          <a title = "curriculum vitæ"
+             class = "btn btn-outline-success"
+             href = "/static/pdf/back-end.pdf">curriculum vitæ</a>
+      </small></p>
     </div>
   </div>
 </div>
@@ -171,8 +175,8 @@
 </div>
 
 
-<div class="row"><br /></div>
-<div class="row"><br /></div>
+<div class = "row"><br /></div>
+<div class = "row"><br /></div>
 
 <div>
   {% if page_en %}
@@ -182,29 +186,33 @@
   {% endif %}
 </div>
 
-<div class="modal fade bg-dark"
-     tabindex="-1"
-     id="bienvenue"
-     role="dialog"
-     aria-hidden="true"
-     aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content bg-danger">
-      <div class="modal-header bg-dark text-primary">
-        <h4 class="modal-title">{{ page_digitalocean_grand | safe }}</h4>
+<div class = "modal fade bg-dark"
+     tabindex = "-1"
+     id = "bienvenue"
+     role = "dialog"
+     aria-hidden = "true"
+     aria-labelledby = "myLargeModalLabel">
+  <div class = "modal-dialog modal-lg">
+    <div class = "modal-content bg-danger">
+      <div class = "modal-header bg-dark text-primary">
+        <h4 class = "modal-title">{{ page_digitalocean_grand | safe }}</h4>
       </div>
-      <div class="modal-body bg-primary">
+      <div class = "modal-body bg-primary">
         {% if page_en %}
         {% include "welcome.html" %}
         {% else %}
         {% include "bienvenue.html" %}
         {% endif %}
       </div>
-      <div class="modal-footer bg-dark">
-        <a title="continue"
-           class="nav-link btn-outline-primary text-right"
-           data-dismiss="modal"
-           href="/">merci</a>
+      <div class = "modal-footer bg-dark">
+        <a title = "continue"
+           class = "nav-link btn-outline-primary text-right"
+           data-dismiss = "modal"
+           href = "/">
+          {% if page_en %} thank you
+          {% else %} merci
+          {% endif %}
+        </a>
       </div>
     </div>
       

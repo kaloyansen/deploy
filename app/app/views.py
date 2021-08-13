@@ -7,11 +7,11 @@ from .context_processors import get_visitor
 def get_lang(request):
 
 	fliplang = request.POST.get("fliplang", False)
-	if fliplang: return fliplang
+	if fliplang: return fliplang[:2]
 
 	visitor = get_visitor(request)
 	if not visitor: return 'fr'
-	return visitor.lang
+	return visitor.lang[:2]
 
 
 def base(request):
