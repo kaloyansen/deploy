@@ -28,7 +28,6 @@ def index(request):
 			 'en': 'software designer, backend developer, scientific data analysis and visualisation online'}
 			 
 	opt = get_lang(request)
-
 	context = {
 		'title': title[opt],
 		'about': about[opt],
