@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+id: {{ page_visitor.id }}
+date: {{ page_visitor.date | date:"ymd" }}
+<br />
+ip: {{ page_visitor.ip_address }}
+code: {{ page_visitor.code }}
+voted: {{ page_visitor.voted }}
+lang: {{ page_visitor.lang }}
+<br />
+message: {{ page_visitor.message }}
+<br />
+nova: {{ page_nova }}
+<br />
+oldlang: {{ page_oldlang }}
+newlang: {{ page_newlang }}
+iseng: {{ page_en }}
+color: {{ page_lancol }}
+<br />
+label: {{ page_message }}
+submit: {{ page_submit }}
+
+
+
+{% endblock %}
