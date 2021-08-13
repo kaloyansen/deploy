@@ -1,27 +1,28 @@
 from work.models import Visitor
 
 visitall = Visitor.objects.all()
-visit = visitall.order_by('-date')
+visit = visitall.order_by('date')
 
 print ('total ', visit.count())
 
 visifilter = Visitor.objects.filter(voted=True)
-print ('voted ', visifilter.count())
+print (visifilter.count(), ' voted')
 for v in visifilter: print (v)
 
 
 visifilter = Visitor.objects.exclude(message='')
 print (visifilter.count(), ' messages')
-for v in visifilter: print (v.message)
+for m in visifilter: print (m, '-->', m.message)
 
-visifilter = Visitor.objects.filter(message='').filter(voted=False).filter(code=0)
-print (visifilter.count(), ' robots')
-for v in visifilter:
-	print (v.code)
-	#v.delete()
+robot = visit.filter(voted=False).filter(lang='fr').filter(message='').filter(code__lte=2)
+roboco = robot.count()
 
-
-for v in visit:
-	print (v.id, v, v.code, v.voted, v.message)
-
+inpval = 'n'
+if roboco == 0:
+	print ('no robots')
+else:
+	inpval = input("delete {} robots (y/n) ? ".format(roboco))
+	for v in robot:
+		print (v.id, v.date, v.ip_address, v.code, v.voted, v.lang, v.message)
+		if inpval == 'y': v.delete()
 
