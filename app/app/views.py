@@ -17,6 +17,8 @@ def get_lang(request):
 def base(request):
 	return render(request, 'base.html', {})
 
+def face(request):
+	return render(request, 'face.html', {})
 
 def index(request):
 	num_visits = request.session.get('num_visits', 0)

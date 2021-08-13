@@ -121,14 +121,14 @@ router.register(r'progs', ProgViewSet)
 admin.autodiscover()
 
 urlpatterns = [
-	path("", views.index, name="index"),
-	path("base/", views.base, name="base"),
+	path("", views.index, name = "index"),
+	path("base/", views.base, name = "base"),
+	path("f/a/c/e/", views.face, name = "face"),
 	path('rest/', include(router.urls)),
-	path('auth/', include('rest_framework.urls', namespace='rest_framework')),
+	path('auth/', include('rest_framework.urls', namespace = 'rest_framework')),
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
-	#path("mded/", include('mdeditor.urls')),
 	path("admin/", admin.site.urls)
 ]
 

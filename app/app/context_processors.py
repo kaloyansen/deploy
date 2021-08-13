@@ -61,11 +61,15 @@ def get_context(request):
 	in addition it is responsible for the quick message if sended and for the user language if changes """
 
 	ip, nova, lang = tracker(request)
-	message = "message express"
+	send = {}
+	send['message'] = 'message express'
+	send['submit'] = 'go!'
 
+	visitor = get_visitor(request)
+	
 	if "fliplang" in request.POST:
 		lang = fliplanguage(lang)
-		visitor = get_visitor(request)
+		#visitor = get_visitor(request)
 		if not visitor:
 			x = 0
 		else:
@@ -73,16 +77,28 @@ def get_context(request):
 			visitor.save()
 		
 	if "message" in request.POST:
-		message = "thank you"
+		send['message'] = 'merci'
+		send['submit'] = 'sent'		
+		
 		message_content = request.POST.get("message", None)
-		visitor = get_visitor(request)
+		#visitor = get_visitor(request)
 		if not visitor:
-			message = "error"
+			send['message'] = 'error'
+			send['submit'] = 'nul'					
 		elif message_content == '':
-			message = "envoyer un message rapide"
+			send['message'] = 'envoyer un message'
+			send['submit'] = 'ok'
 		else:
 			visitor.message = message_content
 			visitor.save()
+
+	send['lang'] = lang
+	send['iseng'] = False
+	send['lancol'] = 'danger'
+
+	if lang == 'fr': send['lancol'] = 'primary'
+	elif lang == 'en': send['iseng'] = True
+	else: send['lancol'] = 'warning'
 
 	return { # these are accesible from everywhere
 		'page_title': 'Kaloyan KRASTEV',
@@ -91,12 +107,15 @@ def get_context(request):
 		'page_time': timezone.now(),
 		'page_place': 'Grenoble, FRANCE',
 		'page_nova': nova,
+		'page_visitor': visitor,
 		'page_not_voted': has_not_voted(request),
 		'page_ip': ip,
-		'page_oldlang': lang,
-		'page_newlang': fliplanguage(lang),
-		'page_en': lang == 'en',
-		'page_message': message,
+		'page_oldlang': send['lang'],
+		'page_newlang': fliplanguage(send['lang']),
+		'page_en': send['iseng'],
+		'page_lancol': send['lancol'],
+		'page_message': send['message'],
+		'page_submit': send['submit'],
 		'page_linkedin': linkedin(),
 		'page_github': github(),
 		'page_digitalocean': digitalocean(request),
