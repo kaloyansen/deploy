@@ -128,10 +128,10 @@
             <li class = "nav-item active text-light"> 
               <form method = "post" action = "">
                 {% csrf_token %}
-                <button title = "toggle language {{ page_oldlang }} to {{ page_newlang }} language"
-                        class = "nav-link btn-outline-primary rounded-circle"
+                <button title = "toggle {{ page_oldlang }}/{{ page_newlang }} language"
+                        class = "btn btn-outline-primary rounded-circle"
                         value = {{ page_newlang }}
-                        name = "fliplang">{{ page_newlang }}</button>
+                        name = "fliplang">{{ page_oldlang }}</button>
               </form>
             </li>
 
