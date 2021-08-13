@@ -2,15 +2,7 @@
 
 {% block page_content %}
 
-id: {{ page_visitor.id }}
-date: {{ page_visitor.date | date:"ymd" }}
-<br />
-ip: {{ page_visitor.ip_address }}
-code: {{ page_visitor.code }}
-voted: {{ page_visitor.voted }}
-lang: {{ page_visitor.lang }}
-<br />
-message: {{ page_visitor.message }}
+{{ page_visitor }}
 <br />
 nova: {{ page_nova }}
 <br />

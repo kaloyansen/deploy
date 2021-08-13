@@ -27,7 +27,15 @@ class Visitor(models.Model):
 							max_length = 15,
 							verbose_name = 'user language')
 
-	def __str__(self): return '{}'.format(self.ip_address)
+	def __unicode__(self): return '{}'.format(self.ip_address)
+	def __str__(self):
+		return "{} {} {} {} {} {} {}".format(self.id,
+											 self.date.strftime("%y%m%d"),
+											 self.ip_address,
+											 self.code,
+											 self.voted,
+											 self.lang,
+											 self.message)
 
 
 class Page(models.Model):
