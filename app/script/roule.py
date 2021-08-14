@@ -5,6 +5,7 @@ la point est differente elle est importante
 import script.about
 import script.work_manager
 import script.news_manager
+import script.visit
 
 exit("à toute à l'heure")
 
