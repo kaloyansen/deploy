@@ -7,7 +7,7 @@ from django.conf import settings
 
 from rest_framework import routers, serializers, viewsets
 
-from work.models import Project, Visitor, Page
+from work.models import Project, Visitor, Page, ColorStyle
 from news.models import Post, Comment, Category
 from memo.models import Child, Prog, Parent
 from . import views
@@ -31,6 +31,11 @@ class VisitorSerializer(serializers.HyperlinkedModelSerializer):
 class PageSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Page
+		fields = '__all__'
+
+class ColorStyleSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = ColorStyle
 		fields = '__all__'
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
@@ -80,6 +85,10 @@ class PageViewSet(viewsets.ModelViewSet):
 	queryset = Page.objects.all()
 	serializer_class = PageSerializer
 
+class ColorStyleViewSet(viewsets.ModelViewSet):
+	queryset = ColorStyle.objects.all()
+	serializer_class = ColorStyleSerializer
+
 class PostViewSet(viewsets.ModelViewSet):
 	queryset = Post.objects.all()
 	serializer_class = PostSerializer
@@ -111,6 +120,7 @@ router.register(r'users', UserViewSet)
 router.register(r'projects', ProjectViewSet)
 router.register(r'visitors', VisitorViewSet)
 router.register(r'pages', PageViewSet)
+router.register(r'colorstyles', ColorStyleViewSet)
 router.register(r'posts', PostViewSet)
 router.register(r'comments', CommentViewSet)
 router.register(r'categories', CategoryViewSet)

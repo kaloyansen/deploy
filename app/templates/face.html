@@ -2,21 +2,28 @@
 
 {% block page_content %}
 
-{{ style }} {{ total }}
-<div style = "{{ style }}">
-  {{ page_visitor }}
+<div style = "{{ style2 }}">
+  style: {{ style2 }}
+  <div style = "{{ style }}">
+    style: {{ style }}
+    <br />
+    {{ page_visitor }}
 
+  </div>
+  <div style = "{{ style1 }}">
+    style: {{ style1 }}
+    <br />
+    nova: {{ page_nova }}
+    <br />
+    oldlang: {{ page_oldlang }}
+    newlang: {{ page_newlang }}
+    iseng: {{ page_en }}
+    color: {{ page_lancol }}
+    <br />
+    label: {{ page_message }}
+    submit: {{ page_submit }}
+  </div>
 </div>
-<br />
-nova: {{ page_nova }}
-<br />
-oldlang: {{ page_oldlang }}
-newlang: {{ page_newlang }}
-iseng: {{ page_en }}
-color: {{ page_lancol }}
-<br />
-label: {{ page_message }}
-submit: {{ page_submit }}
 
 
 

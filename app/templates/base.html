@@ -72,7 +72,7 @@
             <li class="nav-item active">
               <a title="la Bulgarie"
                  class="nav-link btn-outline-warning rounded-circle"
-                 href="/memo/bg/">bulgarie</a>
+                 href="/memo/bg/">Bulgarie</a>
             </li>
             
             <li class = "btn-group nav-item active">
@@ -137,10 +137,12 @@
 
           </ul>
 
+          <div style = "{{ styyle }}">
           <form method = "post" class = "d-flex">
             {% csrf_token %}
             <input title = "m'envoyer un message"
-                   class = "form-control me-2 rounded text-dark bg-outline-primary text-center"
+                   style = "{{ page_style }}"
+                   class = "form-control me-2 rounded text-center"
                    type = "search"
                    placeholder = "{{ page_message }}"
                    name = "message"
@@ -148,6 +150,7 @@
             <button class = "btn btn-outline-primary rounded-circle"
                     type = "submit">{{ page_submit }}</button>
           </form>
+          </div>
             
         </div>
       </div>

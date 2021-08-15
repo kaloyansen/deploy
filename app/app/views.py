@@ -1,8 +1,8 @@
-import random
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-#from django.template import RequestContext
+from .otverka import safeStyle
 from .context_processors import get_visitor
+
 
 
 def get_lang(request):
@@ -18,28 +18,12 @@ def get_lang(request):
 def base(request):
 	return render(request, 'base.html', {})
 
+
+		
 def face(request):
-	
-	force = 1 / 3
-	lala = lambda: random.randint(0, 255)
-
-	r = lala()
-	g = lala()
-	b = lala()
-	rr = lala()
-	gg = lala()
-	bb = lala()
-
-	totnorm = (r + g + b) / 765
-	bgtotnorm = (rr + gg + bb) / 765
-	k = force / totnorm
-	r *= k
-	g *= k
-	b *= k
-
-	style = 'background-color:rgb({}, {}, {}); color:rgb({}, {}, {});'.format(int(r), int(g), int(b), int(g), int(b), int(r))
-	return render(request, 'face.html', {'style': style,
-										 'total': totnorm})
+	return render(request, 'face.html', {'style': safeStyle('zero'),
+										 'style1': safeStyle('une'),
+										 'style2': safeStyle('deux')})
 
 def index(request):
 	num_visits = request.session.get('num_visits', 0)

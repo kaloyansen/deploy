@@ -2,6 +2,22 @@ from django.db import models
 from django.utils import timezone
 
 
+class ColorStyle(models.Model):
+	title = models.CharField(max_length = 15)
+	fred = models.IntegerField(default = 0)
+	fgre = models.IntegerField(default = 0)
+	fblu = models.IntegerField(default = 0)
+	bred = models.IntegerField(default = 0)
+	bgre = models.IntegerField(default = 0)
+	bblu = models.IntegerField(default = 0)
+
+	def __str__(self):
+		bg = 'rgb({}, {}, {})'.format(self.bred, self.bgre, self.bblu)
+		fg = 'rgb({}, {}, {})'.format(self.fred, self.fgre, self.fblu)
+		return 'background-color:{}; color:{};'.format(bg, fg)
+
+
+
 class Project(models.Model):
 	# index title + slise de description
 	title = models.CharField(max_length = 44)
@@ -11,6 +27,7 @@ class Project(models.Model):
 	image = models.FilePathField(path="/img")
 
 	def __str__(self): return self.title
+
 
 
 class Visitor(models.Model):
@@ -36,6 +53,7 @@ class Visitor(models.Model):
 											 self.voted,
 											 self.lang,
 											 self.message)
+
 
 
 class Page(models.Model):
