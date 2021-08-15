@@ -54,7 +54,7 @@ def index(request):
 		'serverless': '/img/800x600/serverless.png',
 		'web': '/img/800x600/web.png',
 		'lange': 'python, C++, java, perl, fortran, c, php, javascript',
-		'techno': 'django, pandas, gnuplot, emacs, oracle, mysql, sql*loader, symfony, vue.js, react.js, angular, react',
+		'techno': 'django, pandas, gnuplot, emacs, oracle, mysql, sql*loader, symfony, vue.js, react.js, angular',
 		'num_visits': num_visits
 	}
 	return render(request, 'index.html', context)
