@@ -44,7 +44,17 @@ class Visitor(models.Model):
 							max_length = 15,
 							verbose_name = 'user language')
 
-	def __unicode__(self): return '{}'.format(self.ip_address)
+	def has_message(self):
+		if self.message == '': return False
+		return True
+
+	def is_robo(self):
+		if self.voted: return False
+		if self.lang == 'en': return False
+		if self.message != '': return False
+		if self.code > 1: return False
+		return True
+
 	def __str__(self):
 		return "{} {} {} {} {} {} {}".format(self.id,
 											 self.date.strftime("%y%m%d"),

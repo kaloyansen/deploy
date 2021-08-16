@@ -2,26 +2,48 @@
 
 {% block page_content %}
 
-<div style = "{{ style2 }}">
-  style: {{ style2 }}
-  <div style = "{{ style }}">
-    style: {{ style }}
-    <br />
-    {{ page_visitor }}
+<div class = "container" style = "{{ style1 }}">
+  <div class = "row" style = "{{ style2 }}">
+    style: {{ style2 }}
+    <div style = "{{ style }}">
+      style: {{ style }}
+      <br />
+      {{ page_visitor }}
 
+    </div>
+    <div style = "{{ style1 }}">
+      style: {{ style1 }}
+      <br />
+      nova: {{ page_nova }}
+      <br />
+      oldlang: {{ page_oldlang }}
+      newlang: {{ page_newlang }}
+      iseng: {{ page_en }}
+      color: {{ page_lancol }}
+      <br />
+      label: {{ page_message }}
+      submit: {{ page_submit }}
+    </div>
   </div>
-  <div style = "{{ style1 }}">
-    style: {{ style1 }}
-    <br />
-    nova: {{ page_nova }}
-    <br />
-    oldlang: {{ page_oldlang }}
-    newlang: {{ page_newlang }}
-    iseng: {{ page_en }}
-    color: {{ page_lancol }}
-    <br />
-    label: {{ page_message }}
-    submit: {{ page_submit }}
+
+  <div class = "row" style = "{{ style }}">
+    {% for visa in visit %}
+    <div class = "col-md-4">
+      {% if visa.is_robo %}
+      <div class = "card mb-2 bg-dark text-light">
+      {% elif visa.has_message %}
+      <div class = "card mb-2 bg-warning">
+      {% elif visa.voted %}
+      <div class = "card mb-2 bg-danger text-warning">
+      {% else %}
+      <div class = "card mb-2 bg-light text-dark">
+        {% endif %}
+        <div class = "card-body">
+          <p class = "card-text">{{ visa }}</p>
+        </div>
+      </div>
+    </div>
+      {% endfor %}
   </div>
 </div>
 

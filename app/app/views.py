@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import user_passes_test
 from .otverka import safeStyle
 from .context_processors import get_visitor
+from work.models import Visitor
 
 
 
@@ -18,12 +20,6 @@ def get_lang(request):
 def base(request):
 	return render(request, 'base.html', {})
 
-
-		
-def face(request):
-	return render(request, 'face.html', {'style': safeStyle('zero'),
-										 'style1': safeStyle('une'),
-										 'style2': safeStyle('deux')})
 
 def index(request):
 	num_visits = request.session.get('num_visits', 0)
@@ -58,6 +54,15 @@ def index(request):
 		'num_visits': num_visits
 	}
 	return render(request, 'index.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def face(request):
+	context = {'style': safeStyle('zero'),
+			   'style1': safeStyle('une'),
+			   'style2': safeStyle('deux'),
+			   'visit': Visitor.objects.all().order_by('date')}
+	return render(request, 'face.html', context)
 
 
 def posoka(request):

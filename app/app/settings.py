@@ -162,6 +162,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+LOGIN_URL = '/admin/login/'
 
 
 # Default primary key field type
