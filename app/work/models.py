@@ -1,20 +1,89 @@
+import random
 from django.db import models
 from django.utils import timezone
 
 
+
 class ColorStyle(models.Model):
+
 	title = models.CharField(max_length = 15)
-	fred = models.IntegerField(default = 0)
-	fgre = models.IntegerField(default = 0)
-	fblu = models.IntegerField(default = 0)
-	bred = models.IntegerField(default = 0)
-	bgre = models.IntegerField(default = 0)
-	bblu = models.IntegerField(default = 0)
+	
+	fr = models.IntegerField(default = 0)
+	fg = models.IntegerField(default = 0)
+	fb = models.IntegerField(default = 0)
+	br = models.IntegerField(default = 0)
+	bg = models.IntegerField(default = 0)
+	bb = models.IntegerField(default = 0)
+
+	mini = 0
+	maxi = 255
+	step = 3
+		
+	def fill(self):
+
+		neuf = False
+		if self.fr + self.fg + self. fb + self.br + self.bg + self. bb == 0:
+			neuf = True
+			
+		if neuf:
+			self.fr = self.rand_ot_do()
+			self.fg = self.rand_ot_do()
+			self.fb = self.rand_ot_do()
+			self.br = self.rand_ot_do()
+			self.bg = self.rand_ot_do()
+			self.bb = self.rand_ot_do()
+		else:
+			self.fr += self.rand_ot_do(-1 * self.step, self.step)
+			self.fg += self.rand_ot_do(-1 * self.step, self.step)
+			self.fb += self.rand_ot_do(-1 * self.step, self.step)
+			self.br += self.rand_ot_do(-1 * self.step, self.step)
+			self.bg += self.rand_ot_do(-1 * self.step, self.step)
+			self.bb += self.rand_ot_do(-1 * self.step, self.step)
+			self.correct_all()
+		
+	
+	def is_not_contrast(self, force = 0.333):
+
+		dirr = abs(self.fr - self.br) / (self.maxi - self.mini)
+		digg = abs(self.fg - self.bg) / (self.maxi - self.mini)
+		dibb = abs(self.fb - self.bb) / (self.maxi - self.mini)
+
+		if dirr < force: return True
+		if digg < force: return True
+		if dibb < force: return True
+		if dibb + digg + dirr < 3 * force: return True
+
+		return False
+	
+		
+	def rand_ot_do(self, ot = False, do = False):
+		mini = self.mini
+		maxi = self.maxi
+		if ot: mini = ot
+		if do: maxi = do
+		return random.randint(mini, maxi)
+
+
+	def correct_all(self):
+
+		self.fr = self.correct(self.fr)
+		self.fg = self.correct(self.fg)
+		self.fb = self.correct(self.fb)
+		self.br = self.correct(self.br)
+		self.bg = self.correct(self.bg)
+		self.bb = self.correct(self.bb)
+		
+
+	def correct(self, x):
+		if x > self.maxi: x -= self.maxi
+		if x < self.mini: x += self.maxi
+		return x
+
 
 	def __str__(self):
-		bg = 'rgb({}, {}, {})'.format(self.bred, self.bgre, self.bblu)
-		fg = 'rgb({}, {}, {})'.format(self.fred, self.fgre, self.fblu)
-		return 'background-color:{}; color:{};'.format(bg, fg)
+		bgr = 'rgb({}, {}, {})'.format(self.br, self.bg, self.bb)
+		fgr = 'rgb({}, {}, {})'.format(self.fr, self.fg, self.fb)
+		return 'background-color:{}; color:{};'.format(bgr, fgr)
 
 
 

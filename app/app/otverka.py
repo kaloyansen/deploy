@@ -68,88 +68,11 @@ def get_ip(request):
 	return ip, is_valid
 
 
-class rgbColor:
-
-	mini = 0
-	maxi = 255
-	step = 11
-	
-	def __init__(self, r = -1, g = -1, b = -1): 
-		self.colo = {}
-		if r < 0: self.colo['red'] = self.randotdo()
-		else: self.colo['red'] = r
-		if g < 0: self.colo['green'] = self.randotdo()
-		else: self.colo['green'] = g
-		if b < 0: self.colo['blue'] = self.randotdo()
-		else: self.colo['blue'] = b
-
-	def slide(self, color):
-		c = self.colo[color]
-		c += self.randotdo(-1 * self.step, self.step)
-		if c > self.maxi: c -= self.maxi
-		if c < self.mini: c += self.maxi
-		self.colo[color] = c
-		
-	def reload(self):
-		self.slide('red')
-		self.slide('green')
-		self.slide('blue')
-
-	def __str__(self):
-		return 'rgb({}, {}, {})'.format(self.colo['red'],
-										self.colo['green'],
-										self.colo['blue'])
-
-	def randotdo(self, ot = 0, do = 0):
-		# lala = lambda: random.randint(0, 255)
-		mini = self.mini
-		maxi = self.maxi
-		if ot != 0: mini = ot
-		if do != 0: maxi = do
-		return random.randint(mini, maxi)
-
-	def normcol(self, color): return self.colo[color] / self.maxi
-	def totnorm(self): return round(self.tot() / 3 / self.maxi, 3)
-	def tot(self):
-		return self.colo['red'] + self.colo['green'] + self.colo['blue']
-
-
-		
 def safeStyle(title = 'default', force = 0.333):
+
 	cs, created = ColorStyle.objects.get_or_create(title=title)
-	fg = bg = 0
-	if created: # first time
-		bg = rgbColor()
-		fg = rgbColor()
-	else:
-		bg = rgbColor(cs.bred, cs.bgre, cs.bblu)
-		bg.reload()
-		fg = rgbColor(cs.fred, cs.fgre, cs.fblu)
-		fg.reload()
+	cs.fill()
+	while cs.is_not_contrast(force): cs.fill()
 
-	cont = True
-	while cont:
-		cont = False
-
-		dired = fg.normcol('red') - bg.normcol('red')
-		digre = fg.normcol('green') - bg.normcol('green')
-		diblu = fg.normcol('blue') - bg.normcol('blue')
-
-		if abs(dired) < force or\
-		   abs(digre) < force or\
-		   abs(diblu) < force or\
-		   abs(dired) + abs(digre) + abs(diblu) < 3 * force: cont = True
-
-		if cont:
-			fg.reload()
-			bg.reload()
-
-	cs.bred = bg.colo['red']
-	cs.bgre = bg.colo['green']
-	cs.bblu = bg.colo['blue']
-	cs.fred = fg.colo['red']
-	cs.fgre = fg.colo['green']
-	cs.fblu = fg.colo['blue']
-	cs.save()
-	
+	cs.save()	
 	return cs
