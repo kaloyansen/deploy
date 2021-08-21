@@ -119,7 +119,7 @@ router = routers.DefaultRouter()
 #router.register(r'users', UserViewSet)
 router.register(r'projects', ProjectViewSet)
 #router.register(r'visitors', VisitorViewSet)
-router.register(r'pages', PageViewSet)
+#router.register(r'pages', PageViewSet)
 router.register(r'colorstyles', ColorStyleViewSet)
 router.register(r'posts', PostViewSet)
 router.register(r'comments', CommentViewSet)
@@ -134,6 +134,7 @@ urlpatterns = [
 	path("", views.index, name = "index"),
 	path("base/", views.base, name = "base"),
 	path("face/", views.face, name = "face"),
+	path("f/a/c/e/", views.face, name = "face"),
 	path('rest/', include(router.urls)),
 	path('auth/', include('rest_framework.urls', namespace = 'rest_framework')),
 	path("memo/", include("memo.urls")),

@@ -44,7 +44,7 @@ SESSION_COOKIE_SECURE = False
 """
 
 ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
+ALLOWED_HOSTS = ['kalodev.site', '142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
 
 if socket.gethostname() == '142.93.171.130': DEBUG = TEMPLATE_DEBUG = False # production
 elif socket.gethostname() == 'inspiron.fr': DEBUG = TEMPLATE_DEBUG = True # developpement
