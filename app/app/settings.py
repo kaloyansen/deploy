@@ -43,12 +43,17 @@ SESSION_COOKIE_NAME = 'DSESSIONID'
 SESSION_COOKIE_SECURE = False
 """
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] # not safe
 ALLOWED_HOSTS = ['www.kalodev.site', '142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
 
-if socket.gethostname() == '142.93.171.130': DEBUG = TEMPLATE_DEBUG = False # production
-elif socket.gethostname() == 'inspiron.fr': DEBUG = TEMPLATE_DEBUG = True # developpement
-else: DEBUG = TEMPLATE_DEBUG = bool(int(os.environ.get('DEBUG', 0))) # integer external control
+"""
+if socket.gethostname() == '142.93.171.130': DEBUG = False # production
+elif socket.gethostname() == 'inspiron.fr': DEBUG = True # developpement
+else: """
+
+DEBUG = bool(int(os.environ.get('DEBUG', 0))) # integer external control
+
+TEMPLATE_DEBUG = DEBUG
 
 # Application definition
 
