@@ -1,6 +1,8 @@
+import socket
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import user_passes_test
+from django.conf import settings
 from .otverka import safeStyle
 from .context_processors import get_visitor
 from work.models import Visitor
@@ -61,6 +63,8 @@ def face(request):
 	context = {'style': safeStyle('zero'),
 			   'style1': safeStyle('une'),
 			   'style2': safeStyle('deux'),
+			   'debug': settings.DEBUG,
+			   'hostname': socket.gethostname(),
 			   'visit': Visitor.objects.all().order_by('date')}
 	return render(request, 'face.html', context)
 

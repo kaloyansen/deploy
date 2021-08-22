@@ -49,13 +49,19 @@ ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130', 'ka.lo', '127.0.0.1', '127.0
 """
 if socket.gethostname() == '142.93.171.130': DEBUG = False # production
 elif socket.gethostname() == 'inspiron.fr': DEBUG = True # developpement
-else: """
+else:
 
 DEBUG = bool(int(os.environ.get('DEBUG', 0))) # integer external control
+"""
+DEBUG = False
+if 'inspiron.fr' in socket.gethostname(): DEBUG = True
+if '127.0.0.' in socket.gethostname(): DEBUG = True
 
-if 'ka.lo' in socket.gethostname(): DEBUG = True
-elif '127.0.0.' in socket.gethostname(): DEBUG = True
+if os.environ.get('DJANGO_SET_DEBUG'): DEBUG = True
 else: DEBUG = False
+""" to turn ON the debug DO as root
+1. export DJANGO_SET_DEBUG=1
+2. systemctl restart gunicorn """
 
 TEMPLATE_DEBUG = DEBUG
 

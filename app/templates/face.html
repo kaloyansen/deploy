@@ -23,12 +23,15 @@
       <br />
       label: {{ page_message }}
       submit: {{ page_submit }}
+      <br />
+      debug: {{ debug }}
+      hostname: {{ hostname }}
     </div>
   </div>
 
   <div class = "row" style = "{{ style }}">
     {% for visa in visit %}
-    <div class = "col-md-4">
+    <div class = "col-md-3">
       {% if visa.is_robo %}
       <div class = "card mb-2 bg-dark text-light">
       {% elif visa.has_message %}
