@@ -56,12 +56,13 @@ DEBUG = bool(int(os.environ.get('DEBUG', 0))) # integer external control
 DEBUG = False
 if 'inspiron.fr' in socket.gethostname(): DEBUG = True
 if '127.0.0.' in socket.gethostname(): DEBUG = True
-
-if os.environ.get('DJANGO_SET_DEBUG'): DEBUG = True
-else: DEBUG = False
-""" to turn ON the debug DO as root
-1. export DJANGO_SET_DEBUG=1
-2. systemctl restart gunicorn """
+if 'DJANGO_DEBUG' in os.environ:
+	DEBUG = True
+	if os.environ['DJANGO_DEBUG'] == '0': DEBUG = False
+""" to turn ON/OFF the debug DO as root
+csh: 1. setenv DJANGO_DEBUG 1
+bash: 1. export DJANGO_DEBUG='1'/'0'
+      2. systemctl restart gunicorn """
 
 TEMPLATE_DEBUG = DEBUG
 
