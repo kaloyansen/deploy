@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.utils import timezone
 from app.otverka import safeStyle, flip_language, tracker, get_visitor
 
@@ -51,6 +53,7 @@ def digitalocean(request, size = 24):
 
 
 	
+	
 def get_context(request):
 	""" custom context processor delivers real ip, boolean True if unknown user, user language (fr/en))
 	in addition it is responsible for the quick message if sended and for the user language if changes """
@@ -59,6 +62,7 @@ def get_context(request):
 	send = {}
 	send['message'] = 'message express'
 	send['submit'] = 'go!'
+	send['redirect'] = False
 
 	visitor = get_visitor(request)
 	
@@ -96,8 +100,16 @@ def get_context(request):
 			send['message'] = 'error'
 			send['submit'] = 'nul'					
 		elif message_content == '':
-			send['message'] = 'envoyer un message'
+			send['message'] = 'envoyez un message'
 			send['submit'] = 'ok'
+		elif message_content == 'on':
+			send['redirect'] = '/online'
+		elif message_content == 'off':
+			send['redirect'] = '/offline'
+		elif message_content == 'morla':
+			send['redirect'] = '/morla'
+		elif message_content == 'face':
+			send['redirect'] = '/face'
 		else:
 			visitor.message = message_content
 			visitor.save()
@@ -109,6 +121,11 @@ def get_context(request):
 	if lang == 'fr': send['lancol'] = 'primary'
 	elif lang == 'en': send['iseng'] = True
 	else: send['lancol'] = 'warning'
+
+	if send['redirect']:
+		send['message'] = 'redirecting'
+		send['submit'] = '...'
+
 
 	return { # these are accesible from everywhere
 		'page_title': 'Kaloyan KRASTEV',
@@ -126,6 +143,7 @@ def get_context(request):
 		'page_lancol': send['lancol'],
 		'page_message': send['message'],
 		'page_submit': send['submit'],
+		'page_redirect': send['redirect'],
 		'page_style': safeStyle('page'),
 		'page_linkedin': linkedin(),
 		'page_github': github(),

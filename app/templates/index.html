@@ -13,6 +13,15 @@
 </script>
 {% endif %}
 
+<script>
+  function init() {
+      window.location.href = "{{ page_redirect }}";
+  }
+</script>
+
+{% if page_redirect %}
+<body onload = "init()"></body>
+{% endif %}
 
 <h1>{{ title }}</h1>
 

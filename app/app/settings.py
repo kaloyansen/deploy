@@ -46,13 +46,6 @@ SESSION_COOKIE_SECURE = False
 ALLOWED_HOSTS = ['*'] # not safe
 ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
 
-"""
-if socket.gethostname() == '142.93.171.130': DEBUG = False # production
-elif socket.gethostname() == 'inspiron.fr': DEBUG = True # developpement
-else:
-
-DEBUG = bool(int(os.environ.get('DEBUG', 0))) # integer external control
-"""
 DEBUG = False
 if 'inspiron.fr' in socket.gethostname(): DEBUG = True
 if '127.0.0.' in socket.gethostname(): DEBUG = True

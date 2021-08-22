@@ -17,31 +17,35 @@ class ColorStyle(models.Model):
 
 	mini = 0
 	maxi = 255
-	step = 3
+	step = int(abs(maxi - mini) / 50)
+	carr = []
 		
+
 	def fill(self):
 
 		neuf = False
-		if self.fr + self.fg + self. fb + self.br + self.bg + self. bb == 0:
+		if len(self.carr) == 0:
+			self.set_color_array()
 			neuf = True
 			
-		if neuf:
-			self.fr = self.rand_ot_do()
-			self.fg = self.rand_ot_do()
-			self.fb = self.rand_ot_do()
-			self.br = self.rand_ot_do()
-			self.bg = self.rand_ot_do()
-			self.bb = self.rand_ot_do()
-		else:
-			self.fr += self.rand_ot_do(-1 * self.step, self.step)
-			self.fg += self.rand_ot_do(-1 * self.step, self.step)
-			self.fb += self.rand_ot_do(-1 * self.step, self.step)
-			self.br += self.rand_ot_do(-1 * self.step, self.step)
-			self.bg += self.rand_ot_do(-1 * self.step, self.step)
-			self.bb += self.rand_ot_do(-1 * self.step, self.step)
-			self.correct_all()
+		for cname in self.carr:
+			nv = 0
+			if neuf:
+				nv = self.rand_ot_do()
+			else:
+				nv = self.correct(getattr(self, cname) + self.rand_ot_do(-1 * self.step, self.step))
+
+			setattr(self, cname, nv)
+
 		
 	
+	def set_color_array(self):
+		fi = self._meta.get_fields()
+		for f in fi: self.carr.append(f.name)
+		self.carr.pop(0) # remove id #
+		self.carr.pop(0) # and title #
+		
+
 	def is_not_contrast(self, force = 0.333):
 
 		dirr = abs(self.fr - self.br) / (self.maxi - self.mini)
@@ -62,16 +66,6 @@ class ColorStyle(models.Model):
 		if ot: mini = ot
 		if do: maxi = do
 		return random.randint(mini, maxi)
-
-
-	def correct_all(self):
-
-		self.fr = self.correct(self.fr)
-		self.fg = self.correct(self.fg)
-		self.fb = self.correct(self.fb)
-		self.br = self.correct(self.br)
-		self.bg = self.correct(self.bg)
-		self.bb = self.correct(self.bb)
 		
 
 	def correct(self, x):

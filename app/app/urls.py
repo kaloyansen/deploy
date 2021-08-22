@@ -1,9 +1,11 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.urls import path, include
+from django.views.generic import RedirectView
 from django.views.static import serve
-from django.conf.urls.static import static
-from django.conf import settings
+
 
 from rest_framework import routers, serializers, viewsets
 
@@ -135,8 +137,17 @@ urlpatterns = [
 	path("base/", views.base, name = "base"),
 	path("face/", views.face, name = "face"),
 	path("f/a/c/e/", views.face, name = "face"),
-	path('rest/', include(router.urls)),
-	path('auth/', include('rest_framework.urls', namespace = 'rest_framework')),
+	path("morla/",
+		view = RedirectView.as_view(url = "https://freeshell.de/morla"),
+		name = "morla"),
+	path("online/",
+		view = RedirectView.as_view(url = "http://www.kalodev.site"),
+		name = "online"),
+	path("offline/",
+		view = RedirectView.as_view(url = "ka.lo"),
+		name = "offline"),
+	path("rest/", include(router.urls)),
+	path("auth/", include("rest_framework.urls", namespace = "rest_framework")),
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
@@ -151,5 +162,5 @@ urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #									  'show_indexes': True}))
 
 urlpatterns.append(
-	path("cv/", serve, {'document_root': 'static/pdf',
-						'path': "back-end.pdf"}))
+	path("cv/", serve, {"document_root": 'static/pdf',
+						"path": 'back-end.pdf'}))

@@ -58,6 +58,8 @@ def index(request):
 	return render(request, 'index.html', context)
 
 
+
+
 @user_passes_test(lambda u: u.is_superuser)
 def face(request):
 	context = {'style': safeStyle('zero'),
@@ -67,9 +69,4 @@ def face(request):
 			   'hostname': socket.gethostname(),
 			   'visit': Visitor.objects.all().order_by('date')}
 	return render(request, 'face.html', context)
-
-
-def posoka(request):
-	return redirect('/datakosmata')
-
 

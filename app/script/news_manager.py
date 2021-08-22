@@ -90,23 +90,62 @@ post[4].image = "/img/sammy.gif"
 post[4].categories.set([3, 4])
 
 post[5], cr = Post.objects.get_or_create(pk = 5)
-post[5].title = "Get the latest official Django==3.2.5"
+post[5].title = "Understanding Django’s Apps and AppConfig"
 post[5].body = """
-With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. Django is
+With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. Django is free, open source, fast, fully loaded, secure, scalable and versatile.
 
-free
+Introduction
+=========================
+A Django project is a collection of apps that work together to deliver a set of functions. This collection consists of apps provided by Django, ourselves and other developers. In a project, the full set of apps belonging to a project is found in the projects settings.py , declared as the INSTALLED_APPS variable.
 
-open source
 
-ridiculously fast
+Apps and AppConfig creation
+===============================
+When the application server starts (django-dev server or uwsgiserver), it loads the settings defined for the project to configure the site. The variable DJANGO_SETTINGS_MODULE defines the correct settings for the environment where your app is running i-e development or production. The loading process involves the loading of the URL configurations defined by each app and creating the URL tree structure. But before it does this and any of the other settingstasks, it needs to know about all the apps in the project. Hence as part of loading the project settings, the application server takes the INSTALLED_APPS and loads or generates an AppConfig object for each app. This collection of AppConfig objects are then stored in an instance of theApps class. This instance of the Apps class is called the master registry. This master registry is the registry for the entire Django project that is being run by this application server.
 
-fully loaded
 
-reassuringly secure
+Interaction with Apps and AppConfig
+=======================================
+Using Django shell we can interact with this master registry for our project and get the AppConfig object for any of the installed apps.
 
-exceedingly scalable and
+The AppConfig objects have two very important attributes, name and label. The attribute name is exclusively set. The attribute label is however derived from this name attribute. Therefore when creating a custom AppConfig class it is compulsory to set the name attribute. The difference between the two will be clarified in the following code that was run in the Django shell.
 
-incredibly versatile.
+
+>>> from django.apps import apps as proj_apps
+>>> shop_app = proj_apps.get_app_config('shop')
+>>> shop_app.name
+'shop'
+>>> shop_app.label
+'shop'
+>>> auth_app = proj_apps.get_app_config('auth')
+>>> auth_app.label
+'auth'
+>>> auth_app.name
+'django.contrib.auth'
+
+
+From the above code, we learn that the name attribute is the Python import path to the app from the project’s base. To import, shop we only need to use import shop but for Django’s auth app we need to use django.contrib.auth. The label can be exclusively declared in the AppConfig class just like name but if not will be generated from the name attribute.
+
+The instance of AppConfig for an app can also be used to access all the models in that application. The AppConfig class provides two methods for this purpose, get_models() and get_model(model_name) the functionality of each method is evident from the method names.
+
+
+Defining custom AppConfig class
+==================================
+Custom AppConfig classes need to be defined in <app>/apps.py file. This file is generated for us by Django when we run the startapp management command. Anytime we create a custom AppConfig class in an app we need to inform Django about its existence. This is done by setting the variable default_app_config in the __init__.py file for that app. So if I wanted to define a custom AppConfig class in my shop app, I will have to update the __init__.py file of the shop app as follows.
+
+default_app_config = 'shop.apps.<custom_config_class_name>'
+
+The key reason to define a custom AppConfig class is to implement the ready() method, that has been declared in django.apps.Appconfig class. When Django loads the project and its apps, the ready() method is called on the AppConfig instnace of each app. Hence we can use the ready() method to change any of our app’s existing setup or to add to it. This method is mainly used to tell Django about signalhandlers in an app so that Django knows about their existence. Apart from signal handlers, we can inform Django about any tool that can’t be integrated with views templates or models.
+
+
+Conclusion
+======================
+Apps and AppConfig are powerful tools. Understanding them clarifies in our mind how the Django project is loaded and how the server running the project accesses each part of our application and also how to add and register new tools in our apps. However, we need to be very careful when defining new tools and registering them with Django through AppConfig.ready(). The ready() method is called when an instance of the AppConfig class for that app is created. The URL configuration and translation systems are created only after each AppConfig instance has been created and added to the Apps class (as mentioned above in the Apps and AppConfig creation section). Attempts to access URLs before all the apps have been loaded will generate some funny errors. This is why the lazy versions of some tools exist such as reverse_lazy() and ugettext_lazy().
+
+
+=============================
+Written by Mohammad Asim Ayub
+=============================
 """
 post[5].created_on = timezone.now()
 post[5].image = "/img/django-rocket.gif"
