@@ -15,17 +15,17 @@ server {
         alias /home/django/deploy/app/static/ico/favicon.ico;
     }
 
-    # Your Django project's media files - amend as required
+    # django project media files
     location /media  {
         alias /home/django/deploy/app/media;
     }
 
-    # your Django project's static files - amend as required
+    # django project static files
     location /static {
         alias /home/django/deploy/app/static;
     }
 
-    # Proxy the static assests for the Django Admin panel
+    # proxy the static assests for the django admin panel
     location /static/admin {
        alias /home/django/deploy/app/static/admin;
     }

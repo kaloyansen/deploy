@@ -315,16 +315,14 @@ Written by Mitchell Anicas
 print('post                         =====================> in this file')
 for p in post.values():             #
 	p.created_on = timezone.now()   #
-	print(p.pk, p.title, p.image)   #
-	dormir(0.3)                     #
 	if deb: x = 0                   #
 	else: p.save() ##################
 
 
 print('post                                        ===> in the database')
 for ppp in Post.objects.all():                     #
-	dormir(0.6)                                    #
-	print(ppp.pk, ppp.title, ppp.image, ppp.body)  #
+	dormir(0.4)                                    #
+	print(ppp.pk, ppp.title, ppp.image)            #
 	################################################
 
 

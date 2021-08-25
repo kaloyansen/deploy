@@ -1,3 +1,4 @@
+from time import sleep as dormir
 from work.models import Project
 
 work = {}
@@ -64,9 +65,10 @@ pro = Project.objects.all()
 
 print('dans le fichier:')
 for w in work.values():
-	print(w.id, w.title, w.image, w.description, w.technology)
+	print(w.id, w.title, w.image)#, w.description, w.technology)
 	if deb:	x = 0
 	else: w.save()
+	dormir(0.4)
 
 
 print('{} slides detected'.format(pro.count()))

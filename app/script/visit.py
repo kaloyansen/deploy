@@ -1,14 +1,18 @@
+from pathlib import Path
 from colorama import init, Fore, Back, Style
 from work.models import Visitor
 
 init(autoreset = True)
+print(Fore.BLACK + Back.CYAN + '~~~ {} ~~~'.format(Path(__file__)))
 
 visitall = Visitor.objects.all()
+
 visit = visitall.order_by('date')
 print(Fore.GREEN + 'total {}'.format(visit.count()))
 
 visivote = Visitor.objects.filter(voted=True)
 print(Back.BLUE + '\n{} voted'.format(visivote.count()))
+
 for v in visivote: print(v)
 
 visimess = Visitor.objects.exclude(message='')
@@ -20,7 +24,7 @@ roboco = robot.count()
 
 inpval = 'n'
 if roboco == 0:
-	print('no robots')
+	print(Fore.MAGENTA + Back.CYAN + 'no robots')
 else:
 	print(Fore.MAGENTA + Back.CYAN + '\nrobots:')
 	for v in robot: print(v)

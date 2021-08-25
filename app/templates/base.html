@@ -35,7 +35,20 @@
     </style>        
 
   </head>
-  <div><br></div>
+
+  <div>
+    <script>
+      function init() {
+          window.location.href = "{{ page_redirect }}";
+      }
+    </script>
+    <br />
+  </div>
+
+  {% if page_redirect %}
+  <body onload = "init()"></body></html>
+  {% endif %}
+
   <body class="alert alert-info"
         data-bs-toggle="tooltip"
         data-bs-html="true"
