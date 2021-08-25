@@ -30,7 +30,7 @@ def index(request):
 	title = {'fr': 'développeur back-end',
 			 'en': 'backend developer'}
 	about = {'fr': 'conception d\'applications, développement back-end, analyse de données scientifique et visualisation en-ligne',
-			 'en': 'software design, backend development, scientific data analysis and visualization online'}
+			 'en': 'software design, backend development, scientific data analysis and online visualization'}
 			 
 	opt = get_lang(request)
 	context = {
