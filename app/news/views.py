@@ -3,12 +3,11 @@ from news.models import Post, Comment
 from .forms import CommentForm
 
 def news_index(request):
-    posts = Post.objects.all().order_by('-created_on')
-    context = {
-        'posts': posts,
-		'slide': '/img/slideshow.gif'
-    }
-    return render(request, "news_index.html", context)
+    posts = Post.objects.all().order_by('pk')
+    
+    return render(request, 'news_index.html', {'posts': posts,
+											   'slide': '/img/slideshow.gif'})
+
 
 def news_category(request, category):
     posts = Post.objects.filter(
@@ -16,11 +15,9 @@ def news_category(request, category):
     ).order_by(
         '-created_on'
     )
-    context = {
-        "category": category,
-        "posts": posts
-    }
-    return render(request, "news_category.html", context)
+    
+    return render(request, 'news_category.html', {'category': category,
+												  'posts': posts})
 
 def news_detail(request, pk):
     post = Post.objects.get(pk=pk)
@@ -30,27 +27,23 @@ def news_detail(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = Comment(
-                author=form.cleaned_data["author"],
-                body=form.cleaned_data["body"],
+                author=form.cleaned_data['author'],
+                body=form.cleaned_data['body'],
                 post=post
             )
             comment.save()
             # post_comment(request, comment)
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post)    
 
-    context = {
-        "post": post,
-        "comments": comments,
-        "form": form
-    }
-
-    return render(request, "news_detail.html", context)
+    return render(request, 'news_detail.html', {'post': post,
+												'comments': comments,
+												'form': form})
 
 def post_comment(request, new_comment):
     if request.session.get('has_commented', False):
-        return HttpResponse("You've already commented.")
+        return HttpResponse('you have already commented')
     comments = Comment.objects.filter(post=post)
     c = comments.Comment(comment=new_comment)
     c.save()
     request.session['has_commented'] = True
-    return HttpResponse('Thanks for your comment!')
+    return HttpResponse('thanks for your comment')

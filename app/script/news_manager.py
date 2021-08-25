@@ -1,3 +1,4 @@
+from time import sleep as dormir
 from django.utils import timezone
 from news.models import Post, Category
 
@@ -18,20 +19,103 @@ cat[3].name = "django"
 cat[4], cr = Category.objects.get_or_create(pk = 2)
 cat[4].name = "fun"
 
-print('category =========================> in this file')
-
-for c in cat.values():
-	print(c.pk, c.name)
-	if deb: x = 0
-	else: c.save()
+print('category           ================> in this file')
+for c in cat.values():    #
+	print(c.pk, c.name)   #
+	if deb: x = 0         #
+	else: c.save() ########
 
 
 """ news """
 
-post = {}
+post = {} # as posts appear ordered by 'pk':
+# you will just need to edit 'pk' if you wish to change the order
 
-post[1], cr = Post.objects.get_or_create(pk = 1)
+post[1], cr = Post.objects.get_or_create(pk = 4)
 post[1].title = "Serverless"
+post[1].image = "/img/serverless.png"
+post[1].categories.set([3, 4])
+
+post[2], cr = Post.objects.get_or_create(pk = 3)
+post[2].title = "Google Trends for Docker"
+post[2].image = "/img/docker.png"
+post[2].categories.set([3, 4])
+
+post[3], cr = Post.objects.get_or_create(pk = 6)
+post[3].title = "Une API REST, qu'est-ce que c'est ?"
+post[3].image = "/img/api.rest.png"
+post[3].categories.set([3, 4])
+
+post[4], cr = Post.objects.get_or_create(pk = 2)
+post[4].title = "Power your application with DigitalOcean"
+post[4].image = "/img/sammy.gif"
+post[4].categories.set([3, 4])
+
+post[5], cr = Post.objects.get_or_create(pk = 5)
+post[5].title = "Understanding Django’s Apps and AppConfig"
+post[5].image = "/img/django-rocket.gif"
+post[5].categories.set([3, 4])
+
+post[6], cr = Post.objects.get_or_create(pk = 1)
+post[6].title = "RSA Public Key Cryptography"
+post[6].image = "/img/rsa.png"
+post[6].categories.set([3])
+
+post[7], cr = Post.objects.get_or_create(pk = 7)
+post[7].title = "How To Secure Nginx with Let's Encrypt"
+post[7].image = "/img/ssl.png"
+post[7].categories.set([2])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 post[1].body = """
 Over the years cloud providers have started to offer more and more services, which abstract away the underlying infrastructure. The most common ones being:
 
@@ -52,20 +136,14 @@ These abstractions have led to the new term of serverless. This doesn’t mean t
 The services can be the services described above (also called managed services, managed cloud, backend-as-a-service or BaaS), but it can also be services directly offered to developers in the form of functions which can be requested to be executed via an API. This type of serverless is called "Functions-as-a-service" (FaaS), with the most known ambassador being AWS Lambda, which is the implementation of Amazon of this service. Of course the other cloud providers have in the meantime similar offers like Google Cloud Functions, Azure Functions or IBM OpenWhisk.
 """
 			   
-post[1].created_on = timezone.now()
-post[1].image = "/img/serverless.png"
-post[1].categories.set([3, 4])
 
 
-post[2], cr = Post.objects.get_or_create(pk = 2)
-post[2].title = "Google Trends for Docker"
+
+
 post[2].body = "In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux. The key benefit of Docker is that it allows users to package an application with all of its dependencies into a standardized unit for software development. Unlike virtual machines, containers do not have high overhead and hence enable more efficient usage of the underlying system and resources."
-post[2].created_on = timezone.now()
-post[2].image = "/img/docker.png"
-post[2].categories.set([3, 4])
 
-post[3], cr = Post.objects.get_or_create(pk = 3)
-post[3].title = "Une API REST, qu'est-ce que c'est ?"
+
+
 post[3].body = """
 Une API est un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications. Elle est parfois considérée comme un contrat entre un fournisseur d'informations et un utilisateur d'informations, qui permet de définir le contenu demandé au consommateur (l'appel) et le contenu demandé au producteur (la réponse). Par exemple, l'API conçue pour un service de météo peut demander à l'utilisateur de fournir un code postal et au producteur de renvoyer une réponse en deux parties : la première concernant la température maximale et la seconde la température minimale.
 
@@ -73,24 +151,17 @@ REST est un ensemble de contraintes architecturales. Il ne s'agit ni d'un protoc
 
 Lorsqu'un client émet une requête par le biais d'une API RESTful, celle-ci transfère une représentation de l'état de la ressource au demandeur ou point de terminaison. Cette information, ou représentation, est fournie via le protocole HTTP dans l'un des formats suivants : JSON (JavaScript Object Notation), HTML, XLT, Python, PHP ou texte brut. Le langage de programmation le plus communément utilisé est JSON, car, contrairement à ce que son nom indique, il ne dépend pas d'un langage et peut être lu aussi bien par les humains que par les machines.
 """
-post[3].created_on = timezone.now()
-post[3].image = "/img/api.rest.png"
-post[3].categories.set([3, 4])
 
 
-post[4], cr = Post.objects.get_or_create(pk = 4)
-post[4].title = "DigotalOcean: Power your application with our infrastructure"
+
 post[4].body = """
-When you’re building a web or mobile application, you need to develop and deliver your app quickly. Equally important, your application needs to be fast for end users. That’s why you should consider DigitalOcean to power your app’s backend. We offer compute, storage, databases, and networking, through a developer-friendly interface optimized for productivity.
+When building a web or mobile application, we need to develop and deliver the app quickly. Equally important, the application needs to be fast for end users. That’s why you should consider DigitalOcean to power your app’s backend. It offers compute, storage, databases, and networking, through a developer-friendly interface optimized for productivity.
 
-Not only is DigitalOcean easy to operate, it’s built with best-in-class Intel processors that run your app at blazing speeds. Cloud Spectator, a renowned benchmarking firm, found that DigitalOcean delivers superior price-performance compared to Amazon and Google. With DigitalOcean, you can choose whether to run your app directly on VMs or Kubernetes.
+Not only is DigitalOcean easy to operate, it’s built with best-in-class Intel processors that run your app at blazing speeds. Cloud Spectator, a renowned benchmarking firm, found that DigitalOcean delivers superior price-performance compared to Amazon and Google. With DigitalOcean, one can choose whether to run the app directly on VMs or Kubernetes.
 """
-post[4].created_on = timezone.now()
-post[4].image = "/img/sammy.gif"
-post[4].categories.set([3, 4])
 
-post[5], cr = Post.objects.get_or_create(pk = 5)
-post[5].title = "Understanding Django’s Apps and AppConfig"
+
+
 post[5].body = """
 With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. Django is free, open source, fast, fully loaded, secure, scalable and versatile.
 
@@ -147,13 +218,10 @@ Apps and AppConfig are powerful tools. Understanding them clarifies in our mind 
 Written by Mohammad Asim Ayub
 =============================
 """
-post[5].created_on = timezone.now()
-post[5].image = "/img/django-rocket.gif"
-post[5].categories.set([3, 4])
 
 
-post[6], cr = Post.objects.get_or_create(pk = 6)
-post[6].title = "RSA Public Key Cryptography"
+
+
 post[6].body = """
 Here are the basic steps to create an RSA public/private key pair. The cryptography depends on four integer numbers ;
 
@@ -172,22 +240,91 @@ C = M**e % n (eq. 1)
 
 M = C**d % n (eq. 2)
 """
-post[6].created_on = timezone.now()
-post[6].image = "/img/rsa.png"
-post[6].categories.set([3])
 
 
-print('post =========================> in this file')
-for p in post.values():
-	print(p.pk, p.title, p.image)
-	if deb: x = 0
-	else: p.save()
+
+post[7].body = """
+Introduction
+==================
+Let’s Encrypt is a Certificate Authority (CA) that provides an easy way to obtain and install free TLS/SSL certificates, thereby enabling encrypted HTTPS on web servers. It simplifies the process by providing a software client, Certbot, that attempts to automate most (if not all) of the required steps. Currently, the entire process of obtaining and installing a certificate is fully automated on both Apache and Nginx.
+
+In this tutorial, you will use Certbot to obtain a free SSL certificate for Nginx on Ubuntu 16.04 and set up your certificate to renew automatically.
+
+This tutorial uses the default Nginx configuration file instead of a separate server block file. We recommend creating new Nginx server block files for each domain because it helps to avoid some common mistakes and maintains the default files as a fallback configuration as intended. If you want to set up SSL using server blocks instead, you can follow this Nginx server blocks with Let’s Encrypt tutorial.
 
 
-print('post =========================> in the database')
-po = Post.objects.all()
-#if deb: print(po.values_list())
-for ppp in po:
-    print(ppp.pk, ppp.title, ppp.image, ppp.body)
+
+Prerequisites
+======================
+To follow this tutorial, you will need:
+
+
+- One Ubuntu 16.04 server set up by following this initial server setup for Ubuntu 16.04 tutorial, including a sudo non-root user and a firewall.
+
+
+- A fully registered domain name. This tutorial will use example.com throughout. You can purchase a domain name on Namecheap, get one for free on Freenom, or use the domain registrar of your choice.
+
+
+- Both of the following DNS records set up for your server. You can follow this hostname tutorial for details on how to add them.
+
+-- An A record with example.com pointing to your server’s public IP address.
+-- An A record with www.example.com pointing to your server’s public IP address.
+
+
+- Nginx installed by following How To Install Nginx on Ubuntu 16.04.
+
+
+
+Step 1 — Installing Certbot
+=============================================
+
+The first step to using Let’s Encrypt to obtain an SSL certificate is to install the Certbot software on your server.
+
+Certbot is in very active development, so the Certbot packages provided by Ubuntu tend to be outdated. However, the Certbot developers maintain a Ubuntu software repository with up-to-date versions, so we’ll use that repository instead.
+
+
+Step 2 — Setting up Nginx
+=============================================
+
+Certbot can automatically configure SSL for Nginx, but it needs to be able to find the correct server block in your config. It does this by looking for a server_name directive that matches the domain you’re requesting a certificate for.
+
+
+Step 3 — Allowing HTTPS Through the Firewall
+=============================================
+
+If you have the ufw firewall enabled, as recommended by the prerequisite guides, you’ll need to adjust the settings to allow for HTTPS traffic. Luckily, Nginx registers a few profiles with ufw upon installation.
+
+Step 4 — Obtaining an SSL Certificate
+=============================================
+
+Certbot provides a variety of ways to obtain SSL certificates, through various plugins. The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever necessary.
+
+
+Step 5 — Verifying Certbot Auto-Renewal
+=============================================
+
+Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage users to automate their certificate renewal process. The certbot package we installed takes care of this for us by running ‘certbot renew’ twice a day via a systemd timer. On non-systemd distributions this functionality is provided by a script placed in /etc/cron.d. This task runs twice a day and will renew any certificate that’s within thirty days of expiration.
+
+
+================================================
+Written by Mitchell Anicas
+================================================
+"""
+
+
+print('post                         =====================> in this file')
+for p in post.values():             #
+	p.created_on = timezone.now()   #
+	print(p.pk, p.title, p.image)   #
+	dormir(0.3)                     #
+	if deb: x = 0                   #
+	else: p.save() ##################
+
+
+print('post                                        ===> in the database')
+for ppp in Post.objects.all():                     #
+	dormir(0.6)                                    #
+	print(ppp.pk, ppp.title, ppp.image, ppp.body)  #
+	################################################
 
 

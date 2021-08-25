@@ -132,20 +132,18 @@ router.register(r'progs', ProgViewSet)
 
 admin.autodiscover()
 
+url_m = "https://freeshell.de/morla"
+url_k = "http://www.kalodev.site"
+url_h = "http://ka.lo"
+
 urlpatterns = [
 	path("", views.index, name = "index"),
 	path("base/", views.base, name = "base"),
 	path("face/", views.face, name = "face"),
 	path("f/a/c/e/", views.face, name = "face"),
-	path("morla/",
-		view = RedirectView.as_view(url = "https://freeshell.de/morla"),
-		name = "morla"),
-	path("online/",
-		view = RedirectView.as_view(url = "http://www.kalodev.site"),
-		name = "online"),
-	path("offline/",
-		view = RedirectView.as_view(url = "ka.lo"),
-		name = "offline"),
+	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),
+	path("on/",	RedirectView.as_view(url = url_k), name = "on"),
+	path("off/", RedirectView.as_view(url = url_h), name = "off"),
 	path("rest/", include(router.urls)),
 	path("auth/", include("rest_framework.urls", namespace = "rest_framework")),
 	path("memo/", include("memo.urls")),

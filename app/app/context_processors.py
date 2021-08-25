@@ -103,9 +103,9 @@ def get_context(request):
 			send['message'] = 'envoyez un message'
 			send['submit'] = 'ok'
 		elif message_content == 'on':
-			send['redirect'] = '/online'
+			send['redirect'] = '/on'
 		elif message_content == 'off':
-			send['redirect'] = '/offline'
+			send['redirect'] = '/off'
 		elif message_content == 'morla':
 			send['redirect'] = '/morla'
 		elif message_content == 'face':

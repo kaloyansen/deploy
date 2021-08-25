@@ -2,6 +2,7 @@
 {% load static %}
 {% block page_content %}
 
+
 <div class="col-md-8 offset-md-2 alert-primary">
   {% for post in posts %}
   <hr>
@@ -30,5 +31,18 @@
        id="wows1"/>
 </div>
 
+
+<div id = "pause"><br /></div>
+
+<div class="col-md-8 offset-md-2 alert-info">
+  <h2>Last Update:</h2>
+  <ul>
+  {% for post in posts %}
+  <li class = "nav_item active">
+    <a href = "{% url 'news_detail' post.pk%}">
+      {{ post.title }}</a></li>
+  {% endfor %}
+  </ul>
+</div>
 
 {% endblock %}
