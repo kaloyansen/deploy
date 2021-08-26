@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
+
+{{ page_pause | safe }}
+{{ page_pause | safe }}
 <div class="col-md-8 offset-md-2">
     <h1>{{ post.title }}</h1>
     <img src="{% static post.image %}" alt="{{ post.image }}" class="img-fluid">
@@ -13,7 +16,7 @@
         </a>&nbsp;
         {% endfor %}
     </small>
-    <p>{{ post.body | linebreaks }}</p>
+    <p>{{ post.body | safe | linebreaks }}</p>
     <h3>Leave a comment:</h3>
     <form action="/news/{{ post.pk }}/" method="post">
         {% csrf_token %}

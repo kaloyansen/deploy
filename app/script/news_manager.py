@@ -244,8 +244,8 @@ M = C**d % n (eq. 2)
 
 
 post[7].body = """
-Introduction
-==================
+<strong>Introduction</strong>
+<hr>
 Let’s Encrypt is a Certificate Authority (CA) that provides an easy way to obtain and install free TLS/SSL certificates, thereby enabling encrypted HTTPS on web servers. It simplifies the process by providing a software client, Certbot, that attempts to automate most (if not all) of the required steps. Currently, the entire process of obtaining and installing a certificate is fully automated on both Apache and Nginx.
 
 In this tutorial, you will use Certbot to obtain a free SSL certificate for Nginx on Ubuntu 16.04 and set up your certificate to renew automatically.
@@ -254,8 +254,8 @@ This tutorial uses the default Nginx configuration file instead of a separate se
 
 
 
-Prerequisites
-======================
+<strong>Prerequisites</strong>
+<hr>
 To follow this tutorial, you will need:
 
 
@@ -275,40 +275,38 @@ To follow this tutorial, you will need:
 
 
 
-Step 1 — Installing Certbot
-=============================================
+<strong>Step 1 — Installing Certbot</strong>
+<hr>
 
 The first step to using Let’s Encrypt to obtain an SSL certificate is to install the Certbot software on your server.
 
 Certbot is in very active development, so the Certbot packages provided by Ubuntu tend to be outdated. However, the Certbot developers maintain a Ubuntu software repository with up-to-date versions, so we’ll use that repository instead.
 
 
-Step 2 — Setting up Nginx
-=============================================
+<strong>Step 2 — Setting up Nginx</strong>
+<hr>
 
 Certbot can automatically configure SSL for Nginx, but it needs to be able to find the correct server block in your config. It does this by looking for a server_name directive that matches the domain you’re requesting a certificate for.
 
 
-Step 3 — Allowing HTTPS Through the Firewall
-=============================================
+<strong>Step 3 — Allowing HTTPS Through the Firewall</strong>
+<hr>
 
 If you have the ufw firewall enabled, as recommended by the prerequisite guides, you’ll need to adjust the settings to allow for HTTPS traffic. Luckily, Nginx registers a few profiles with ufw upon installation.
 
-Step 4 — Obtaining an SSL Certificate
-=============================================
+<strong>Step 4 — Obtaining an SSL Certificate</strong>
+<hr>
 
 Certbot provides a variety of ways to obtain SSL certificates, through various plugins. The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever necessary.
 
 
-Step 5 — Verifying Certbot Auto-Renewal
-=============================================
+<strong>Step 5 — Verifying Certbot Auto-Renewal</strong>
+<hr>
 
 Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage users to automate their certificate renewal process. The certbot package we installed takes care of this for us by running ‘certbot renew’ twice a day via a systemd timer. On non-systemd distributions this functionality is provided by a script placed in /etc/cron.d. This task runs twice a day and will renew any certificate that’s within thirty days of expiration.
 
 
-================================================
-Written by Mitchell Anicas
-================================================
+<strong><hr>Written by Mitchell Anicas<hr></strong>
 """
 
 

@@ -13,7 +13,6 @@
 </script>
 {% endif %}
 
-
 <h1>{{ title }}</h1>
 
 <div class = "card-group row clearfix" title="info info info">
@@ -64,7 +63,7 @@
 </div>
 
 
-<div class = "row"><br class = "clear" /></div>
+{{ page_pause | safe }}
 
 <div class = "card-group" title = "all about me">
   <div class = "card alert-success"
@@ -113,8 +112,7 @@
   </div>
 </div>
 
-<div class="row"><br /></div>
-
+{{ page_pause | safe }}
 <div id="carexind"
      class="row carousel slide"
      title="class = row carousel slide"
@@ -175,8 +173,8 @@
 </div>
 
 
-<div class = "row"><br /></div>
-<div class = "row"><br /></div>
+{{ page_pause | safe }}
+{{ page_pause | safe }}
 
 <div>
   {% if page_en %}

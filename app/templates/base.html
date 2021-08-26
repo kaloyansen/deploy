@@ -29,8 +29,16 @@
 
     <style>
       body {
-      font-family: 'Jost', sans-serif;
-      mont-mamily: 'Train One', cursive;
+          font-family: 'Jost', sans-serif;
+          mont-mamily: 'Train One', cursive;
+      }
+
+      .container-fluid {
+          width: 100%;
+          padding-right: 0px;
+          padding-left: 0px;
+          margin-right: 0px;
+          margin-left: 0px;
       }
     </style>        
 
@@ -49,19 +57,23 @@
   <body onload = "init()"></body></html>
   {% endif %}
 
-  <body class="alert alert-info"
-        data-bs-toggle="tooltip"
-        data-bs-html="true"
-        title=""
-        role="alert">
-    <nav title="bootstrap navbar sticky-top navbar-expand-lg rounded shadow"
-         class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark rounded shadow">
+  <body class = "alert alert-info"
+        data-bs-toggle = "tooltip"
+        data-bs-html = "true"
+        title = ""
+        role = "alert">
+
+    <div class = "header-nav"><div class = "container-fluid"><header>
+
+    
+    <nav title = "bootstrap navbar sticky-top navbar-expand-lg rounded shadow"
+         class = "navbar fixed-top navbar-expand-lg navbar-info bg-dark">
         
-      <div class="container">
+      <div class = "container-fluid">
 
         <a title="go to index"
            class="navbar-brand btn-outline-secondary rounded"
-           href="{% url 'index' %}">{{ page_title }}</a>
+           href="{% url 'index' %}"><strong>{{ page_title }}</strong></a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -150,44 +162,49 @@
 
           </ul>
 
-          <div style = "{{ styyle }}">
-          <form method = "post" class = "d-flex">
-            {% csrf_token %}
-            <input title = "m'envoyer un message"
-                   style = "{{ page_style }}"
-                   class = "form-control me-2 rounded text-center"
-                   type = "search"
-                   placeholder = "{{ page_message }}"
-                   name = "message"
-                   aria-label = "commentaire">
-            <button class = "btn btn-outline-primary rounded-circle"
-                    type = "submit">{{ page_submit }}</button>
-          </form>
-          </div>
-            
+          <div class = "nav_item">
+            <form method = "post" class = "d-flex">
+              {% csrf_token %}
+              <input title = "m'envoyer un message"
+                     style = "{{ page_style }}"
+                     class = "form-control me-2 rounded text-center"
+                     type = "search"
+                     placeholder = "{{ page_message }}"
+                     name = "message"
+                     aria-label = "commentaire">
+              <button class = "btn btn-outline-primary rounded-circle"
+                      type = "submit">{{ page_submit }}</button>
+            </form>
+          </div>            
         </div>
       </div>
-
     </nav>
 
-    <div><br></div>
-    <div class = "container">
+    </header></div></div>
+
+    {{ page_pause | safe }}
+
+    <div class = "container-fluid">
       {% block page_content %}{% endblock %}
     </div>
-    <div><br></div>
 
+    {{ page_pause | safe }}
 
-    <footer title="footer fixed-bottom sticky-bottom rounded"
-            class="footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light rounded">
-      <small class="text-light">
-        <small>
-          &#127279; {{ page_author }},
-          {{ page_time | date:"ymd" }}, {{ page_place }}
-          {% include "social.html" %}
-        </small>
+    <div class = "footer">
+      <div class = "container-fluid">
+        <footer title="footer fixed-bottom sticky-bottom rounded"
+                class="footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
+          <small class="text-light">
+            <small>
+              &#127279; {{ page_author }},
+              {{ page_time | date:"ymd" }}, {{ page_place }}
+              {% include "social.html" %}
+            </small>
 
-      </small>
-    </footer>
+          </small>
+        </footer>
+      </div>
+    </div>
 
     <!-- javascript bootstrap + -->
     <!-- JQuery -->
@@ -201,6 +218,5 @@
 
 
   </body>
-  <div><br></div>
 
 </html>

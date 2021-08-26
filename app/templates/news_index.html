@@ -17,7 +17,7 @@
     </a>&nbsp;
     {% endfor %}
   </small>
-  <p>{{ post.body | slice:":321" }} ...
+  <p>{{ post.body | safe | slice:":321" }} ...
     <a href="{% url 'news_detail' post.pk%}">continuer à lire</a></p>
 
   {% endfor %}

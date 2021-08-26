@@ -40,6 +40,18 @@ def digitalocean(request, size = 24):
 				  {'size': size})
 """
 
+def pause():
+	return """
+<div class = "container-fluid">
+  <div class = "row" id = "pause">
+    <br class = "clear" />
+  </div>
+  <div class = "row" id = "pause">
+    <br class = "clear" />
+  </div>
+</div>
+	"""
+
 
 def digitalocean(request, size = 24):
 	return """
@@ -145,6 +157,7 @@ def get_context(request):
 		'page_submit': send['submit'],
 		'page_redirect': send['redirect'],
 		'page_style': safeStyle('page'),
+		'page_pause': pause(),
 		'page_linkedin': linkedin(),
 		'page_github': github(),
 		'page_digitalocean': digitalocean(request),
