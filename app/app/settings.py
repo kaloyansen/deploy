@@ -168,10 +168,12 @@ USE_TZ = True
 # STATIC_ROOT = '/home/django/deploy/app/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_ROOT = BASE_DIR / 'media'
+ENCRYPT_ROOT = STATIC_ROOT / '.well-known/'
 # MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 LOGIN_URL = '/admin/login/'
+ENCRYPT_URL = '/.well-known/'
 
 
 # Default primary key field type

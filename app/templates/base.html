@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -35,8 +37,8 @@
 
       .container-fluid {
           width: 100%;
-          padding-right: 0px;
-          padding-left: 0px;
+          padding-right: 66px;
+          padding-left: 66px;
           margin-right: 0px;
           margin-left: 0px;
       }
@@ -71,12 +73,23 @@
         
       <div class = "container-fluid">
 
-        <a title="go to index"
-           class="navbar-brand btn-outline-secondary rounded"
-           href="{% url 'index' %}"><strong>{{ page_title }}</strong></a>
+        <a title = "home"
+           class = "navbar-brand btn-outline-secondary rounded-circle"
+           href = "{% url 'index' %}">
+          <img src = "{% static page_brand %}"
+               alt = "home"
+               height = "44"
+               class = "d-inline-block align-text-left"></a>
         
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button title = "navbar-toggler"
+                class = "navbar-toggler btn-outline-primary rounded-circle"
+                type = "button"
+                data-toggle = "collapse"
+                data-target = "#navbarSupportedContent"
+                aria-controls = "navbarSupportedContent"
+                aria-expanded = "false"
+                aria-label = "Toggle navigation">
+          <span class = "navbar-toggler-icon">v</span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

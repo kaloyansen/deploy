@@ -25,6 +25,11 @@ server {
         alias /home/django/deploy/app/static;
     }
 
+    location ~ /.well-known { 
+        root /home/django/deploy/app/static;
+        allow all;
+    }
+
     # proxy the static assests for the django admin panel
     location /static/admin {
        alias /home/django/deploy/app/static/admin;

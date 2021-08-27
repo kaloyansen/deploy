@@ -153,6 +153,7 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.ENCRYPT_URL, document_root=settings.ENCRYPT_ROOT)
 
 #urlpatterns.append(
 #	path(settings.STATIC_URL, serve, {'document_root': settings.STATIC_ROOT,

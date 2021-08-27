@@ -8,6 +8,7 @@
   <hr>
   <h2><a href="{% url 'news_detail' post.pk%}">{{ post.title }}</a></h2>
   <img src="{% static post.image %}" alt="{{ post.image }}" class="img-thumbnail">
+  <br />
   <small>
     {{ post.created_on.date }} |&nbsp;
     Categories:&nbsp;
