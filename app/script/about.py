@@ -7,9 +7,10 @@ work[3].title = "page web statiques et responsive"
 work[3].description = """
 Un logiciel opérationnel est la principale mesure d’avancement.
 
+https://kalodev.site
 http://142.93.171.130
 
-Un site vitrine d'un développeur d'applications. Codé en python 3 avec Django web framework. Le site est bilangue anglais/français et il s'adapte à la taille de n'importe quel écran sur lequel il s'affiche.
+Un site vitrine d'un développeur d'applications. Codé en python 3 avec Django web framework. Le site est bilangue anglais/français et il s'adapte à la taille de n'importe quel écran sur lequel il s'affiche. Le site est entièrement crypté.
 
 Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
 
@@ -22,7 +23,7 @@ Le code est deployé d'abord sur google cloud après l'avoir containerisé en im
 Il existe plusieurs des façons à gérer le contenu de la page web. Django administration est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Une autre possibilté est django rest framework. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
 """
 work[3].place = "simplon.co, Grenoble, FRANCE"
-work[3].technology = "python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), git version 2.32.0, git repository: https://github.com/kaloyansen/deploy"
+work[3].technology = "python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), certbot 0.40.0, git version 2.32.0, git repository: https://github.com/kaloyansen/deploy"
 work[3].save()
 
 print(work[3])

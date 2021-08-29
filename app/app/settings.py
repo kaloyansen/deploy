@@ -25,11 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-f)a=ez-m+g+vfg3n($&e+lqz3b&$+d2b#10v5-pdq&&n)&&ge&'
 SECRET_KEY = 'T6l\AN;F2pcW0o>+/1-c3hHUI]DR~cpJFgT*iox@SU!ClF4sL0y'
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = False
-
-
 """
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_HSTS_SECONDS = 6
@@ -46,11 +41,21 @@ SESSION_COOKIE_NAME = 'DSESSIONID'
 SESSION_COOKIE_SECURE = False
 """
 
+SESSION_COOKIE_SECURE = True # True one stops admin
+CSRF_COOKIE_SECURE = True
+
+
+SECURE_SSL_REDIRECT = False # True may close your page for weeks; view next
+# SECURE_HSTS_SECONDS = 6
+
+
 ALLOWED_HOSTS = ['*'] # not safe
 ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130', 'ka.lo', '127.0.0.1', '127.0.0.3']
 
 DEBUG = False
-if 'inspiron.fr' in socket.gethostname(): DEBUG = True
+if 'inspiron.fr' in socket.gethostname():
+	DEBUG = True
+	SESSION_COOKIE_SECURE = False # if you want admin to work at home
 if '127.0.0.' in socket.gethostname(): DEBUG = True
 if 'DJANGO_DEBUG' in os.environ:
 	DEBUG = True

@@ -10,8 +10,12 @@ server {
     # SSL configuration
     listen 443 ssl http2 default_server;
     listen [::]:443 ssl http2 default_server;
+
     include snippets/ssl-www.kalodev.site.conf;
     include snippets/ssl-params.conf;
+
+    access_log /var/log/nginx/kalodev_access.log combined;
+    error_log /var/log/nginx/kalodev_error.log error;
 
     root /usr/share/nginx/html;
     index index.html index.htm;
@@ -32,6 +36,10 @@ server {
     # django project static files
     location /static {
         alias /home/django/deploy/app/static;
+    }
+
+    location  /robots.txt {
+        alias  /home/django/deploy/app/static/robots.txt;
     }
 
     location ~ /.well-known { 

@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.urls import path, include
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 from django.views.static import serve
 
 
@@ -149,11 +149,16 @@ urlpatterns = [
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
+	path("robots.txt",
+		 TemplateView.as_view(template_name = "robots.txt",
+							  content_type = "text/plain"),
+		 name = "robots"),
 	path("admin/", admin.site.urls)
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.ENCRYPT_URL, document_root=settings.ENCRYPT_ROOT)
+
 
 #urlpatterns.append(
 #	path(settings.STATIC_URL, serve, {'document_root': settings.STATIC_ROOT,
