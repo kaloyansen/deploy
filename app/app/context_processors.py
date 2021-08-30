@@ -158,7 +158,7 @@ def get_context(request):
 		'page_redirect': send['redirect'],
 		'page_style': safeStyle('page'),
 		'page_pause': pause(),
-		'page_brand': '/img/snake.png',
+		'page_brand': '/img/kalodev.png',
 		'page_linkedin': linkedin(),
 		'page_github': github(),
 		'page_digitalocean': digitalocean(request),

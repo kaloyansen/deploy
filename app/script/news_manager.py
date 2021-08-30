@@ -244,6 +244,8 @@ M = C**d % n (eq. 2)
 
 
 post[7].body = """
+<a href = "https://ramonmelo.me/en/blog/regarding-ssl">start here</a>
+
 <strong>Introduction</strong>
 <hr>
 Let’s Encrypt is a Certificate Authority (CA) that provides an easy way to obtain and install free TLS/SSL certificates, thereby enabling encrypted HTTPS on web servers. It simplifies the process by providing a software client, Certbot, that attempts to automate most (if not all) of the required steps. Currently, the entire process of obtaining and installing a certificate is fully automated on both Apache and Nginx.

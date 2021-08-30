@@ -35,7 +35,7 @@
   <div class = "card alert-info"
        title = "about">
     <div class = "card-body">
-      <h5 class = "card-title">{{ about }}</h5>
+      <h5 class = "card-title">{{ about | safe }}</h5>
     </div>
   </div>
   <div class = "card alert-primary"
@@ -46,7 +46,7 @@
         {% else %}langages de programmation:
         {% endif %}
       </h5>
-      <p class = "card-text">{{ lange }}</p>
+      <p class = "card-text">{{ lange | safe }}</p>
     </div>
   </div>
   <div class = "card alert-secondary"
@@ -57,7 +57,7 @@
         {% else %}technologie:
         {% endif %}
       </h5>
-      <p class = "card-text">{{ techno }}</p>
+      <p class = "card-text">{{ techno | safe }}</p>
     </div>
   </div>
 </div>
@@ -87,8 +87,8 @@
         {% else %}compétences
         {% endif %}
       </h5>
-      <p class = "card-text">{{ lange }}</p>
-      <p class = "card-text">{{ techno }}</p>
+      <p class = "card-text">{{ lange | safe }}</p>
+      <p class = "card-text">{{ techno | safe }}</p>
     </div>
   </div>
   <div class = "card alert-warning"
