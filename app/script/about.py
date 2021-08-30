@@ -8,25 +8,26 @@ work[3].description = """
 Un logiciel opérationnel est la principale mesure d’avancement.
 
 kalodev.site
-https://kalodev.site
+<strong>https://kalodev.site</strong>
 www.kalodev.site
 https://www.kalodev.site
-142.93.171.130
+<strong>142.93.171.130</strong>
 
-Un site vitrine d'un développeur d'applications. Codé en python 3 avec Django web framework. Le site est 
-- bilangue anglais/français
-- responsiv
-- crypté (ssl)
+Un <strong>site vitrine</strong> d'un développeur d'applications. Codé en python 3 avec Django web framework. Le site est 
 
-Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
+<ul class = "mr-auto"><li>responsif,</li><li>bilangue anglais/français et</li><li>crypté (secure sockets layer).</li></ul>
 
-SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world.
+<strong>Django</strong> est un framework web gratuit et open-source écrit en python. Un framework web est un ensemble de composants qui vous aide à développer des sites web plus rapidement et plus facilement. Les frameworks existent pour vous éviter d'avoir à réinventer la roue et aider à réduire les frais généraux lorsque vous construisez de nouveaux sites.
 
-Plots are created with plotly.py, an interactive, open-source, and browser-based graphing library for Python.
+<strong>SQLite</strong> est une bibliothèque écrite en langage c qui propose un moteur de base de données relationnelle accessible par le langage SQL. SQLite est le moteur de base de données le plus utilisé au monde, grâce à son utilisation:
 
-Le code est deployé d'abord sur google cloud après l'avoir containerisé en image docker et puis sur digitalocean.com.
+<ul class = "mr-auto"><li>dans de nombreux logiciels grand public comme Firefox, Skype, Google Gears,</li><li>dans certains produits d'Apple, d'Adobe et de McAfee,</li><li>dans les bibliothèques standards de nombreux langages comme PHP ou Python.</li></ul>
 
-Il existe plusieurs des façons à gérer le contenu de la page web. Django administration est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Une autre possibilté est django rest framework. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
+Représentation graphique avec <strong>plotly</strong>, python plotting library for collaborative, interactive, publication-quality graphs. 
+
+Le code est deployé d'abord sur <strong>google cloud</strong> après l'avoir containerisé en image <strong>docker</strong> et puis sur <strong>digitalocean.com</strong>. <strong>Gunicorn</strong> est l'outil (serveur) qui permet de mettre en production le site Django. <strong>Nginx</strong> gère les fichiers statiques, comprenez par là les images, *.css, *.js, ...
+
+Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Django administration</strong> est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Une autre possibilté est <strong>django rest framework</strong>. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
 """
 work[3].place = "simplon.co, Grenoble, FRANCE"
 work[3].technology = "python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), certbot 0.40.0, git version 2.32.0, git repository: https://github.com/kaloyansen/deploy"
@@ -34,8 +35,7 @@ work[3].save()
 
 print(work[3])
 
-work[8], cr = Project.objects.get_or_create(pk = 8)
-work[8].description = """
+lettre_aux_petites_entreprises = """
 Madame, Monsieur,
 
 

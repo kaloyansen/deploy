@@ -9,7 +9,7 @@
       <img class="card-img-top" src="{% static project.image %}" alt="{{ project.image }}" title="{{ project.title }}">
       <div class="card-body">
         <h5 class="card-title">{{ project.title }}</h5>
-        <p class="card-text">{{ project.description|linebreaks|slice:"123" }} ...</p>
+        <p class="card-text">{{ project.description | safe | linebreaks | slice:"123" }} ...</p>
         <a href="{% url 'work_detail' project.pk %}"
            class="btn btn-outline-primary"
            title="go to project">
