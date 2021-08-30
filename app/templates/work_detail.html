@@ -1,31 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
+
 <h1>{{ project.title }}</h1>
-<div class="row">
-  <div class="col-md-8">
-    <img src="{% static project.image %}" class="img-fluid" alt="{{ project.image }}" width="100%" title="{{ project.title }}">
-  </div>
-  <div class="col-md-4">
+
+
+{{ page_pause | safe }}
+
+<div title = "{{ project.title }}"
+     class = "clearfix">
+  <img title = "{{ project.image }}"
+       src = "{% static project.image %}"
+       class = "col-md-7 float-right"
+       alt = "{{ project.image }}">
+
+  <div title = "{{ project.title }}"
+       class = "d-inline">
     <p>{{ project.place }}</p>
     <p>{{ project.description | safe | linebreaks }}</p>
-    <br>
+    {{ page_pause | safe }}
     <h5>technology used:</h5>
     <p>{{ project.technology | safe | linebreaks }}</p>
   </div>
 </div>
-<div class='row'><br></div>
-<div class='row'>
-  <div class="col-md-8">
-    <a href="{% url 'work_index' %}"
-       class="btn btn-outline-primary"
-       title="go back to projects overview">more work</a>
+
+
+{{ page_pause | safe }}
+
+<div class = 'row'>
+  <div class = "col-md-8">
+    <a href = "{% url 'work_index' %}"
+       class = "btn btn-outline-primary"
+       title = "go back to projects overview">other projects</a>
   </div>
-  <div class="col-md-2">
+  <div class = "col-md-2">
     {{ page_digitalocean_grand | safe }}
   </div>
 </div>
-<div class='row'><br></div>
 
+{{ page_pause | safe }}
 
 {% endblock %}
