@@ -164,7 +164,7 @@ def get_context(request):
 		'page_digitalocean': digitalocean(request),
 		'page_digitalocean_grand': digitalocean(request, 70),
 		'page_ln_about': linked("this site", "success", "work/3/", "about"),
-		'page_ln_work': linked("work", "secondary", "work/", "work"),
+		'page_ln_work': linked("work", "info", "work/", "work"),
 		'page_ln_news': linked("quoi de neuf", "primary", "news/", "news"),
 		'page_ln_demo': linked("programming", "danger", "memo/demo/", "language"),
 		'page_ln_sun': linked("le système solaire", "warning", "memo/sun/", "solaire"),
