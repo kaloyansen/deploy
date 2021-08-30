@@ -57,179 +57,181 @@
 
   {% if page_redirect %}
   <body onload = "init()"></body></html>
-  {% endif %}
+{% endif %}
 
-  <body class = "alert alert-info"
-        data-bs-toggle = "tooltip"
-        data-bs-html = "true"
-        title = ""
-        role = "alert">
+<body class = "alert alert-info"
+      data-bs-toggle = "tooltip"
+      data-bs-html = "true"
+      title = ""
+      role = "alert">
 
-    <div class = "header-nav"><div class = "container-fluid"><header>
-
-    
-    <nav title = "bootstrap navbar sticky-top navbar-expand-lg rounded shadow"
-         class = "navbar fixed-top navbar-expand-lg navbar-info bg-dark">
-        
-      <div class = "container-fluid">
-
-        <a title = "home"
-           class = "navbar-brand btn-outline-secondary"
-           href = "{% url 'index' %}">
-          <img src = "{% static page_brand %}"
-               alt = "home"
-               height = "45"
-               class = "d-inline-block align-text-left"></a>
-        
-        <button title = "navbar-toggler"
-                class = "navbar-toggler btn-outline-primary rounded-circle"
-                type = "button"
-                data-toggle = "collapse"
-                data-target = "#navbarSupportedContent"
-                aria-controls = "navbarSupportedContent"
-                aria-expanded = "false"
-                aria-label = "Toggle navigation">
-          <span class = "navbar-toggler-icon">v</span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-
-            <li class="nav-item active">
-              <a title="quoi de neuf"
-                 class="nav-link btn-outline-primary rounded-circle"
-                 href="{% url 'news_index' %}">news</a>
-            </li>
-
-            <li class="nav-item active">
-              <a title="mes projets"
-                 class="nav-link btn-outline-secondary rounded-circle"
-                 href="{% url 'work_index' %}">work</a>
-            </li>
-
-            <li class="nav-item active">
-              <a title="la Bulgarie"
-                 class="nav-link btn-outline-warning rounded-circle"
-                 href="/memo/bg/">Bulgarie</a>
-            </li>
-            
-            <li class = "btn-group nav-item active">
-              <a id = "btnGroupDrop"
-                 title = "les visualisations en-ligne"
-                 class = "nav-link btn-outline-info text-light dropdown-toggle rounded-circle"
-                 data-toggle = "dropdown"
-                 aria-haspopup = "true"
-                 aria-expanded = "true">plotter</a>
-              <div class="dropdown-menu text-light bg-info"
-                   aria-labelledby="btnGroupDrop">
-                <a title = "langages de programmation"
-                   class = "nav-link btn-outline-success rounded"
-                   href = "{% url 'demo' %}">langages de programmation</a>
-                <a title = "un modèle 3D du système"
-                   class = "nav-link btn-outline-danger rounded"
-                   href = "{% url 'sun' %}">le système solaire</a>
-                <a title = "les élections bulgare anticipées en couleur"
-                   class="nav-link btn-outline-warning rounded"
-                   href = "{% url 'bg' %}">élections bulgares anticipées</a>
-              </div>
-            </li>
-
-            <li class = "btn-group nav-item active">
-              <a id = "btnGroupDrop"
-                 title = "credit"
-                 class = "nav-link btn-outline-success text-light dropdown-toggle rounded-circle"
-                 data-toggle = "dropdown"
-                 aria-haspopup = "true"
-                 aria-expanded = "true">about</a>
-              <div class="dropdown-menu text-light bg-success"
-                   aria-labelledby="btnGroupDrop">
-                <a title = "curriculum vitæ"
-                   class = "nav-link btn-outline-warning rounded"
-                   href = "/static/pdf/back-end.pdf">mon cv</a>
-                <a title = "django rest framework"
-                   class = "nav-link btn-outline-primary rounded"
-                   href = "/rest">api rest</a>
-                <a title="warning: administration requires a super user"
-                   class = "nav-link btn-outline-danger rounded"
-                   href = "/admin">django admininstration</a>
-                <a title = "this page is a django application"
-                   class = "nav-link btn-outline-info rounded"
-                   href = "{% url 'work_detail' 3 %}">about this web page</a>
-                {{ page_digitalocean_grand | safe }}
-
-              </div>
-            </li>
-
-          </ul>
-          <ul class="navbar-nav mr-auto">
-
-            <li class = "nav-item active text-light"> 
-              <form method = "post" action = "">
-                {% csrf_token %}
-                <button title = "toggle {{ page_oldlang }}/{{ page_newlang }} language"
-                        class = "btn btn-outline-{{ page_lancol }} rounded-circle"
-                        value = {{ page_newlang }}
-                        name = "fliplang"><strong>{{ page_oldlang }}</strong></button>
-              </form>
-            </li>
-
-          </ul>
-
-          <div class = "nav_item">
-            <form method = "post" class = "d-flex">
-              {% csrf_token %}
-              <input title = "m'envoyer un message"
-                     style = "{{ page_style }}"
-                     class = "form-control me-2 rounded text-center"
-                     type = "search"
-                     placeholder = "{{ page_message }}"
-                     name = "message"
-                     aria-label = "commentaire">
-              <button class = "btn btn-outline-primary rounded-circle"
-                      type = "submit">{{ page_submit }}</button>
-            </form>
-          </div>            
-        </div>
-      </div>
-    </nav>
-
-    </header></div></div>
-
-    {{ page_pause | safe }}
-
+  <div class = "header-nav">
     <div class = "container-fluid">
-      {% block page_content %}{% endblock %}
+      <header>        
+        <nav title = "bootstrap navbar sticky-top navbar-expand-lg rounded shadow"
+             class = "navbar fixed-top navbar-expand-lg navbar-info bg-dark">
+          
+          <div class = "container-fluid">
+
+            <a title = "home"
+               class = "navbar-brand btn-outline-secondary"
+               href = "{% url 'index' %}">
+              <img src = "{% static page_brand %}"
+                   alt = "home"
+                   height = "45"
+                   class = "d-inline-block align-text-left"></a>
+            
+            <button title = "menu"
+                    class = "navbar-toggler btn-outline-primary rounded-circle"
+                    type = "button"
+                    data-toggle = "collapse"
+                    data-target = "#navbarSupportedContent"
+                    aria-controls = "navbarSupportedContent"
+                    aria-expanded = "false"
+                    aria-label = "Toggle navigation">
+              <span class = "navbar-toggler-icon">v</span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item active">
+                  <a title="quoi de neuf"
+                     class="nav-link btn-outline-primary rounded-circle"
+                     href="{% url 'news_index' %}">news</a>
+                </li>
+
+                <li class="nav-item active">
+                  <a title="mes projets"
+                     class="nav-link btn-outline-secondary rounded-circle"
+                     href="{% url 'work_index' %}">work</a>
+                </li>
+
+                <li class="nav-item active">
+                  <a title="la Bulgarie"
+                     class="nav-link btn-outline-warning rounded-circle"
+                     href="/memo/bg/">Bulgarie</a>
+                </li>
+                
+                <li class = "btn-group nav-item active">
+                  <a id = "btnGroupDrop"
+                     title = "les visualisations en-ligne"
+                     class = "nav-link btn-outline-info text-light dropdown-toggle rounded-circle"
+                     data-toggle = "dropdown"
+                     aria-haspopup = "true"
+                     aria-expanded = "true">plotter</a>
+                  <div class="dropdown-menu text-light bg-info"
+                       aria-labelledby="btnGroupDrop">
+                    <a title = "langages de programmation"
+                       class = "nav-link btn-outline-success rounded"
+                       href = "{% url 'demo' %}">langages de programmation</a>
+                    <a title = "un modèle 3D du système"
+                       class = "nav-link btn-outline-danger rounded"
+                       href = "{% url 'sun' %}">le système solaire</a>
+                    <a title = "les élections bulgare anticipées en couleur"
+                       class="nav-link btn-outline-warning rounded"
+                       href = "{% url 'bg' %}">élections bulgares anticipées</a>
+                  </div>
+                </li>
+
+                <li class = "btn-group nav-item active">
+                  <a id = "btnGroupDrop"
+                     title = "credit"
+                     class = "nav-link btn-outline-success text-light dropdown-toggle rounded-circle"
+                     data-toggle = "dropdown"
+                     aria-haspopup = "true"
+                     aria-expanded = "true">about</a>
+                  <div class="dropdown-menu text-light bg-success"
+                       aria-labelledby="btnGroupDrop">
+                    <a title = "curriculum vitæ"
+                       class = "nav-link btn-outline-warning rounded"
+                       href = "/static/pdf/back-end.pdf">mon cv</a>
+                    <a title = "django rest framework"
+                       class = "nav-link btn-outline-primary rounded"
+                       href = "/rest">api rest</a>
+                    <a title="warning: administration requires a super user"
+                       class = "nav-link btn-outline-danger rounded"
+                       href = "/admin">django admininstration</a>
+                    <a title = "this page is a django application"
+                       class = "nav-link btn-outline-info rounded"
+                       href = "{% url 'work_detail' 3 %}">about this web page</a>
+                    {{ page_digitalocean_grand | safe }}
+
+                  </div>
+                </li>
+
+              </ul>
+              <ul class="navbar-nav mr-auto">
+
+                <li class = "nav-item active text-light"> 
+                  <form method = "post" action = "">
+                    {% csrf_token %}
+                    <button title = "toggle {{ page_oldlang }}/{{ page_newlang }} language"
+                            class = "btn btn-outline-{{ page_lancol }} rounded-circle"
+                            value = {{ page_newlang }}
+                            name = "fliplang"><strong>{{ page_oldlang }}</strong></button>
+                  </form>
+                </li>
+
+              </ul>
+
+              <div class = "nav_item">
+                <form method = "post" class = "d-flex">
+                  {% csrf_token %}
+                  <input title = "m'envoyer un message"
+                         style = "{{ page_style }}"
+                         class = "form-control me-2 rounded text-center"
+                         type = "search"
+                         placeholder = "{{ page_message }}"
+                         name = "message"
+                         aria-label = "commentaire">
+                  <button class = "btn btn-outline-primary rounded-circle"
+                          type = "submit">{{ page_submit }}</button>
+                </form>
+              </div>            
+            </div>
+          </div>
+        </nav>
+
+      </header>
     </div>
+  </div>
 
-    {{ page_pause | safe }}
+  {{ page_pause | safe }}
 
-    <div class = "footer">
-      <div class = "container-fluid">
-        <footer title="footer fixed-bottom sticky-bottom rounded"
-                class="footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
-          <small class="text-light">
-            <small>
-              &#127279; {{ page_author }},
-              {{ page_time | date:"ymd" }}, {{ page_place }}
-              {% include "social.html" %}
-            </small>
+  <div class = "container-fluid">
+    {% block page_content %}{% endblock %}
+  </div>
 
+  {{ page_pause | safe }}
+
+  <div class = "footer">
+    <div class = "container-fluid">
+      <footer title="footer fixed-bottom sticky-bottom rounded"
+              class="footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
+        <small class="text-light">
+          <small>
+            &#127279; {{ page_author }},
+            {{ page_time | date:"ymd" }}, {{ page_place }}
+            {% include "social.html" %}
           </small>
-        </footer>
-      </div>
+
+        </small>
+      </footer>
     </div>
+  </div>
 
-    <!-- javascript bootstrap + -->
-    <!-- JQuery -->
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>     -->
-    <!-- Bootstrap tooltips -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <!-- Bootstrap core JavaScript -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
+  <!-- javascript bootstrap + -->
+  <!-- JQuery -->
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>     -->
+  <!-- Bootstrap tooltips -->
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <!-- Bootstrap core JavaScript -->
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
 
 
-  </body>
+</body>
 
 </html>
