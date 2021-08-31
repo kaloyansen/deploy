@@ -133,7 +133,7 @@ router.register(r'progs', ProgViewSet)
 admin.autodiscover()
 
 url_m = "https://freeshell.de/morla"
-url_k = "http://www.kalodev.site"
+url_k = "https://kalodev.site"
 url_h = "http://ka.lo"
 
 urlpatterns = [
@@ -146,25 +146,15 @@ urlpatterns = [
 	path("off/", RedirectView.as_view(url = url_h), name = "off"),
 	path("rest/", include(router.urls)),
 	path("auth/", include("rest_framework.urls", namespace = "rest_framework")),
-	path("memo/", include("memo.urls")),
+	path("memo/", include("memo.urls"), name = "memo"),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
-	path("robots.txt",
-		 TemplateView.as_view(template_name = "robots.txt",
-							  content_type = "text/plain"),
-		 name = "robots"),
+	path("robots.txt", TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain"), name = "robots"),
+	#path("cv", TemplateView.as_view(template_name = "pdf/back-end.pdf", content_type = "pdf"), name = "cv"),
+	#path("cv/", serve, {"document_root": 'static/pdf', "path": 'back-end.pdf'}),
 	path("admin/", admin.site.urls)
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.ENCRYPT_URL, document_root=settings.ENCRYPT_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+urlpatterns += static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT)
 
-
-#urlpatterns.append(
-#	path(settings.STATIC_URL, serve, {'document_root': settings.STATIC_ROOT,
-#									  'path': "img",
-#									  'show_indexes': True}))
-
-urlpatterns.append(
-	path("cv/", serve, {"document_root": 'static/pdf',
-						"path": 'back-end.pdf'}))

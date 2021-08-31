@@ -38,8 +38,27 @@ server {
         alias /home/django/deploy/app/static;
     }
 
-    location  /robots.txt {
-        alias  /home/django/deploy/app/static/robots.txt;
+    # proxy the static assests for the django admin panel
+    location /static/admin {
+        alias /home/django/deploy/app/static/admin;
+    }
+
+    location /robots.txt {
+        alias /home/django/deploy/app/static/robots.txt;
+    }
+
+    location /cv {
+        alias /home/django/deploy/app/static/pdf/back-end.pdf;
+    }
+
+    location ~ /pdf {
+        root /home/django/deploy/app/static;
+        allow all;
+    }
+
+    location ~ /img {
+        root /home/django/deploy/app/static;
+        allow all;
     }
 
     location ~ /.well-known { 
@@ -47,17 +66,11 @@ server {
         allow all;
     }
 
-    # proxy the static assests for the django admin panel
-    location /static/admin {
-       alias /home/django/deploy/app/static/admin;
-    }
-
     location / {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header Host $host;
             proxy_redirect off;
             proxy_buffering off;
-
             proxy_pass http://unix:/home/django/gunicorn.socket;
     }
 
