@@ -6,13 +6,13 @@ server {
 }
 
 server {
-
     # SSL configuration
     listen 443 ssl http2 default_server;
     listen [::]:443 ssl http2 default_server;
 
     include snippets/ssl-www.kalodev.site.conf;
     include snippets/ssl-params.conf;
+    include /etc/nginx/mime.types;
 
     access_log /var/log/nginx/kalodev_access.log combined;
     error_log /var/log/nginx/kalodev_error.log error;
@@ -47,17 +47,19 @@ server {
         alias /home/django/deploy/app/static/robots.txt;
     }
 
+    location /img {
+        alias /home/django/deploy/app/static/img;
+        autoindex on;
+    }
+
+    location /pdf {
+        alias /home/django/deploy/app/static/pdf;
+        autoindex on;
+    }
+
     location /cv {
-        alias /home/django/deploy/app/static/pdf/back-end.pdf;
-    }
-
-    location ~ /pdf {
-        root /home/django/deploy/app/static;
-        allow all;
-    }
-
-    location ~ /img {
-        root /home/django/deploy/app/static;
+        alias /home/django/deploy/app/static/pdf;
+        index back-end.pdf;
         allow all;
     }
 
@@ -67,11 +69,10 @@ server {
     }
 
     location / {
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Host $host;
-            proxy_redirect off;
-            proxy_buffering off;
-            proxy_pass http://unix:/home/django/gunicorn.socket;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_redirect off;
+        proxy_buffering off;
+        proxy_pass http://unix:/home/django/gunicorn.socket;
     }
-
 }
