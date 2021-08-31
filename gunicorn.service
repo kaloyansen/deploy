@@ -1,5 +1,5 @@
 [Unit]
-Description=Gunicorn daemon for Django Project
+Description=Gunicorn fucks Django /etc/systemd/system/gunicorn.service
 Before=nginx.service
 After=network.target
 
