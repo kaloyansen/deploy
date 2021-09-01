@@ -7,10 +7,10 @@ work[3].title = "page web statiques et responsive"
 work[3].description = """
 Un logiciel opérationnel est la principale mesure d’avancement.
 
-kalodev.site
-<strong>https://kalodev.site</strong>
+<strong>kalodev.site</strong>
+<a href = "https://kalodev.site">https://kalodev.site</a>
 www.kalodev.site
-https://www.kalodev.site
+<a href = "https://www.kalodev.site">https://www.kalodev.site</a>
 <strong>142.93.171.130</strong>
 
 Un <strong>site vitrine</strong> d'un développeur d'applications. Codé en python 3 avec Django web framework. Le site est 
@@ -30,7 +30,9 @@ Le code est deployé d'abord sur <strong>google cloud</strong> après l'avoir co
 Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Django administration</strong> est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Une autre possibilté est <strong>django rest framework</strong>. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
 """
 work[3].place = "simplon.co, Grenoble, FRANCE"
-work[3].technology = "python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), certbot 0.40.0, git version 2.32.0, git repository: https://github.com/kaloyansen/deploy"
+work[3].technology = """
+python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), certbot 0.40.0, powered by <a href = "https://digitalocean.com">https://digitalocean.com</a>, logo: kalo web development(<a href = "https://www.kalo.dev">https://www.kalo.dev</a>), git version 2.32.0, git repository: <a href = "https://github.com/kaloyansen/deploy">https://github.com/kaloyansen/deploy</a>
+"""
 work[3].save()
 
 print(work[3])
