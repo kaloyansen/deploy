@@ -2,28 +2,29 @@ from pathlib import Path
 import environ
 
 env = environ.Env()
+""" make use of django-environ to store environment variables outside version control (in .gitignore for git); two type of variables need to be stored at envirenment dependent location; 1. the secret keys that must be hidden for secutity reasons and 2. the variables with different value in production/development envirenment, for example DEBUG and TEMPLATE_DEBUG are True during development, but should be False in production again for security reasons """
 environ.Env.read_env()
 
-# build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-ALLOWED_HOSTS = ['*'] # not safe
-is_production = env.bool('IS_PRODUCTION', default = True)
-
-if is_production:
-	ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130']
-	SESSION_COOKIE_SECURE = True
-else: # is_development:
-	ALLOWED_HOSTS = ['ka.lo', '127.0.0.3']
-	SESSION_COOKIE_SECURE = False # needed for admin in development
-
+# build paths inside the project like this: BASE_DIR / 'subdir'
+DEBUG = env.bool('DJANGO_DEBUG', default = False)
+TEMPLATE_DEBUG = DEBUG
 SECRET_KEY = env('SECRET_KEY', default = 'secret key not found')
 ENCRYPT_KEY = env('ENCRYPT_KEY', default = 'encrypt key not found')
+is_prod = env.bool('IS_PRODUCTION', default = True)
+# is_dev = not is_prod
+ALLOWED_HOSTS = ['*'] # not safe
+
+if is_prod:
+	ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130']
+	SESSION_COOKIE_SECURE = True
+else: # is_dev:
+	ALLOWED_HOSTS = ['ka.lo', '127.0.0.3']
+	SESSION_COOKIE_SECURE = False # needed by admin in development
+
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False # SSL_REDIRECT = True does not work, but ...
 # SECURE_HSTS_SECONDS = 6 # ... one may try with SECURE_HSTS_SECONDS
-DEBUG = env.bool('DJANGO_DEBUG', default = False)
-TEMPLATE_DEBUG = DEBUG
 
 # Application definition
 INSTALLED_APPS = [
@@ -78,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-
 # Database
 DATABASES = {
 	'default': {
@@ -86,7 +86,6 @@ DATABASES = {
 		'NAME': BASE_DIR / 'db.sqlite3',
 	}
 }
-
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -104,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
 	},
 ]
 
-
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -121,7 +119,6 @@ STATIC_ROOT = BASE_DIR / 'static'
 ENCRYPT_URL = '/.well-known/'
 ENCRYPT_ROOT = STATIC_ROOT / '.well-known/'
 LOGIN_URL = '/admin/login/'
-
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
