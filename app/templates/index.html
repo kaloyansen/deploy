@@ -15,31 +15,32 @@
 
 <h1>{{ title }}</h1>
 
-<div class = "card-group row clearfix" title="info info info">
-  <div class = "card col-md-2 alert-info"
-       title = "bonjour">
-    <img class = "card-img-top rounded-circle"
+<div title = "info info info"
+     class = "card-group row clearfix">
+  <div title = "bonjour"
+       class = "card col-md-2 alert-info">
+    <img title = "Kaloyan KRASTEV"
+         class = "card-img-top rounded-circle"
          src = "{% static image %}"
-         title = "Kaloyan KRASTEV"
          alt = "{{ image }} not found">
     <div class = "card-body">
       <p class = "card-title"></p>
       <p class = "card-text">
-        <button type = "button"
-                class = "btn btn-outline-success"
-                title = "manifest"
+        <button title = "manifest"
+                type = "button"
+                class = "btn btn-outline-success btn-lg"                
                 data-toggle = "modal"
-                data-target = "#bienvenue">Kaloyan<br />KRASTEV</button></p>
+                data-target = "#bienvenue"><h3>Kaloyan<br />KRASTEV</h3></button></p>
     </div>
   </div>
-  <div class = "card alert-info"
-       title = "about">
+  <div title = "about"
+       class = "card alert-info">
     <div class = "card-body">
-      <h5 class = "card-title">{{ about | safe }}</h5>
+      <h3 class = "card-title">{{ about | safe }}</h3>
     </div>
   </div>
-  <div class = "card alert-primary"
-       title = "langages de programmation">
+  <div title = "langages de programmation"
+       class = "card alert-primary">       
     <div class = "card-body">
       <h5 class = "card-title">
         {% if page_en %}programming languages:
@@ -49,8 +50,8 @@
       <p class = "card-text">{{ lange | safe }}</p>
     </div>
   </div>
-  <div class = "card alert-secondary"
-       title = "technologie">
+  <div title = "technologie"
+       class = "card alert-secondary">       
     <div class = "card-body">
       <h5 class = "card-title">
         {% if page_en %}technology:
@@ -61,13 +62,10 @@
     </div>
   </div>
 </div>
-
-
-{{ page_pause | safe }}
-
-<div class = "card-group" title = "all about me">
-  <div class = "card alert-success"
-       title = "expérience">
+<div title = "about me"
+     class = "card-group">
+  <div title = "expérience"
+       class = "card alert-success">       
     <div class = "card-body">
       <h5 class = "card-title">
         {% if page_en %}experience
@@ -79,8 +77,8 @@
       <p class = "card-text">INRNE - BAS - Sofia, Bulgarie</p>
     </div>
   </div>
-  <div class = "card alert-danger"
-       title = "compétences">
+  <div title = "compétences"
+       class = "card alert-danger">       
     <div class = "card-body">
       <h5 class = "card-title">
         {% if page_en %}skills
@@ -91,8 +89,8 @@
       <p class = "card-text">{{ techno | safe }}</p>
     </div>
   </div>
-  <div class = "card alert-warning"
-       title = "formation">
+  <div title = "formation"
+       class = "card alert-warning">       
     <div class = "card-body">
       <h5 class = "card-title">
         {% if page_en %}education
@@ -193,7 +191,7 @@
   <div class = "modal-dialog modal-lg">
     <div class = "modal-content bg-danger">
       <div class = "modal-header bg-dark text-primary">
-        <h4 class = "modal-title">{{ page_digitalocean_grand | safe }}</h4>
+        <div class = "modal-title">{{ page_digitalocean_grand | safe }}</div>
       </div>
       <div class = "modal-body bg-primary">
         {% if page_en %}

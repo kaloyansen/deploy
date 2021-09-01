@@ -7,7 +7,7 @@ from app.otverka import safeStyle, flip_language, tracker, get_visitor
 
 def linked(title, color, url, label):
 	x = '<a title = "{}"\
-	        class = "btn btn-outline-{} rounded-circle"\
+	        class = "btn btn-outline-{} btn-lg rounded-circle"\
 	        href = "{}">{}</a>'
 	return x.format(title, color, url, label)
 

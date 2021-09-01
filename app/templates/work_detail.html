@@ -16,7 +16,7 @@
 
   <div title = "{{ project.title }}"
        class = "d-inline">
-    <p>{{ project.place }}</p>
+    <p>{{ project.place | safe }}</p>
     <p>{{ project.description | safe | linebreaks }}</p>
     {{ page_pause | safe }}
     <h5>technology used:</h5>

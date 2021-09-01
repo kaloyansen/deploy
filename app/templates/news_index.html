@@ -3,12 +3,47 @@
 {% block page_content %}
 
 
-<div class="col-md-8 offset-md-2 alert-primary">
-  {% for post in posts %}
+<div class = "container-fluid row g-0 alert-info bg-dark">
+
+  <div class = "col-md-6 offset-md-1">
+    <h5 class = "text-light"><br />last update:</h5>
+    <div title = "update"
+         class = "list-group">
+      {% for post in posts %}
+      <a title = "{{ post.title }}"
+         class = "list-group-item rounded bg-info text-light text-center"
+         href = "{% url 'news_detail' post.pk%}">
+        {{ post.title }}</a>
+      {% endfor %}
+    </div>
+    {{ page_pause | safe }}
+  </div>
+
+  <figure class = "col-md-4 figure">
+    {{ page_pause | safe }}
+    <img title = "slide show"
+         src = "{% static slide %}"
+         class = "figure-img img-fluid rounded-circle"
+         alt = "{{ slide }}"
+         id = "wows1"/>
+    <figcaption class = "figure-caption text-center text-light">slide show</figcaption>
+  </figure>
+
+</div>
+
+
+
+{% for post in posts %}
+{{ page_pause | safe }}
+
+<div class = "col-md-8 offset-md-2 bg-dark text-light">
   <hr>
   <h2><a href="{% url 'news_detail' post.pk%}">{{ post.title }}</a></h2>
-  <img src="{% static post.image %}" alt="{{ post.image }}" class="img-thumbnail">
-  <br />
+  <img title = "{{ post.title }}"
+       src = "{% static post.image %}"
+       alt = "{{ post.image }} not found"
+       width = "100%"
+       class = "img-fluid mx-auto d-block">
   <small>
     {{ post.created_on.date }} |&nbsp;
     Categories:&nbsp;
@@ -18,32 +53,14 @@
     </a>&nbsp;
     {% endfor %}
   </small>
-  <p>{{ post.body | safe | slice:":321" }} ...
+  <p>{{ post.body | safe | slice:":432" }} ...
     <a href="{% url 'news_detail' post.pk%}">continuer à lire</a></p>
-
-  {% endfor %}
 </div>
-
-<div class="row justify-content-center">
-  <img src="{% static slide %}"
-       class="img-fluid"
-       alt="slideshow"
-       title="slide show"
-       id="wows1"/>
-</div>
+{% endfor %}
 
 
-<div id = "pause"><br /></div>
 
-<div class="col-md-8 offset-md-2 alert-info">
-  <h2>Last Update:</h2>
-  <ul>
-  {% for post in posts %}
-  <li class = "nav_item active">
-    <a href = "{% url 'news_detail' post.pk%}">
-      {{ post.title }}</a></li>
-  {% endfor %}
-  </ul>
-</div>
+{{ page_pause | safe }}
+
 
 {% endblock %}
