@@ -5,98 +5,114 @@
 
 {% if page_nova %}
 <script>
-    $(window).on('load', function() {
-        setTimeout(function() {
-            $('#bienvenue').modal('show');
-        }, 3210); // delay in milliseconds
-    });
+  $(window).on('load', function() {
+  setTimeout(function() {
+  $('#bienvenue').modal('show');
+  }, 3210); // delay in milliseconds
+  });
 </script>
 {% endif %}
 
 <h1>{{ title }}</h1>
 
 <div title = "info info info"
-     class = "card-group row clearfix">
+     class = "card-group container-fluid">
+  <!-- class = "card-group row clearfix"> -->
+
   <div title = "bonjour"
-       class = "card col-md-2 alert-info">
-    <img title = "Kaloyan KRASTEV"
-         class = "card-img-top rounded-circle"
-         src = "{% static image %}"
-         alt = "{{ image }} not found">
+       class = "card col-md-3 alert-info">
     <div class = "card-body">
-      <p class = "card-title"></p>
-      <p class = "card-text">
-        <button title = "manifest"
-                type = "button"
-                class = "btn btn-outline-success btn-lg"                
-                data-toggle = "modal"
-                data-target = "#bienvenue"><h3>Kaloyan<br />KRASTEV</h3></button></p>
+        <a title = "manifest"
+           class = "card-text btn btn-outline-info rounded-circle"                
+           style = "font-size:9.6mm;"
+           data-toggle = "modal"
+           data-target = "#bienvenue">
+          <img title = "Kaloyan KRASTEV"
+               class = "card-img-top rounded-circle"
+               src = "{% static image %}"
+               alt = "{{ image }} not found"></a>
     </div>
   </div>
+
   <div title = "about"
-       class = "card alert-info">
+       class = "card col-md-4 alert-info">
     <div class = "card-body">
-      <h3 class = "card-title">{{ about | safe }}</h3>
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        {{ about | safe }}
+      </div>
     </div>
   </div>
+
   <div title = "langages de programmation"
-       class = "card alert-primary">       
+       class = "card col-md-2 alert-primary">       
     <div class = "card-body">
-      <h5 class = "card-title">
+      <div class = "card-title"
+           style = "font-size:7mm;">
         {% if page_en %}programming languages:
         {% else %}langages de programmation:
         {% endif %}
-      </h5>
+      </div>
       <p class = "card-text">{{ lange | safe }}</p>
     </div>
   </div>
+
   <div title = "technologie"
-       class = "card alert-secondary">       
+       class = "card col-md-3 alert-secondary">       
     <div class = "card-body">
-      <h5 class = "card-title">
+      <div class = "card-title"
+           style = "font-size:8mm;">
         {% if page_en %}technology:
         {% else %}technologie:
         {% endif %}
-      </h5>
+      </div>
       <p class = "card-text">{{ techno | safe }}</p>
     </div>
   </div>
+
 </div>
+
 <div title = "about me"
-     class = "card-group">
+     class = "card-group container-fluid">
+
   <div title = "expérience"
-       class = "card alert-success">       
+       class = "card col-md-3 alert-success">       
     <div class = "card-body">
-      <h5 class = "card-title">
-        {% if page_en %}experience
-        {% else %}expérience
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        {% if page_en %}experience:
+        {% else %}expérience:
         {% endif %}
-      </h5>
+      </div>
       <p class = "card-text">CNRS - Grenoble, France </p>
       <p class = "card-text">DESY - Hamburg, Allemagne</p>
       <p class = "card-text">INRNE - BAS - Sofia, Bulgarie</p>
     </div>
   </div>
+
   <div title = "compétences"
-       class = "card alert-danger">       
+       class = "card col-md-5 alert-danger">       
     <div class = "card-body">
-      <h5 class = "card-title">
-        {% if page_en %}skills
-        {% else %}compétences
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        {% if page_en %}skills:
+        {% else %}compétences:
         {% endif %}
-      </h5>
+      </div>
       <p class = "card-text">{{ lange | safe }}</p>
       <p class = "card-text">{{ techno | safe }}</p>
     </div>
   </div>
+
   <div title = "formation"
-       class = "card alert-warning">       
+       class = "card col-md-4 alert-warning">       
     <div class = "card-body">
-      <h5 class = "card-title">
-        {% if page_en %}education
-        {% else %}formation
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        {% if page_en %}education:
+        {% else %}formation:
         {% endif %}
-      </h5>
+      </div>
       <p class = "card-text">simplon.co - Grenoble</p>
       <p class = "card-text">la Conservatoire de Grenoble</p>
       <p class = "card-text">Université de Hamburg</p>
@@ -211,7 +227,7 @@
         </a>
       </div>
     </div>
-      
+    
   </div>
 </div>
 
