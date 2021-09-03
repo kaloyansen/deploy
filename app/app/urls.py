@@ -139,6 +139,8 @@ url_h = "http://ka.lo"
 urlpatterns = [
 	path("", views.index, name = "index"),
 	path("base/", views.base, name = "base"),
+	path("err/", views.erreur, name = "erreur"),
+	path("erreur/", views.erreur, name = "erreur"),
 	path("face/", views.face, name = "face"),
 	path("f/a/c/e/", views.face, name = "face"),
 	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),

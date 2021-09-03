@@ -19,8 +19,9 @@ def get_lang(request):
 	return visitor.lang[:2]
 
 
-def base(request):
-	return render(request, 'base.html', {})
+def erreur(request): return render(request, 'erreur.html', {'message': "<p>something wrong or at least not forseen happened</p>if you like it is possible to send an e-mail to"})
+
+def base(request): return render(request, 'base.html')
 
 
 def index(request):
@@ -56,8 +57,6 @@ def index(request):
 		'num_visits': num_visits
 	}
 	return render(request, 'index.html', context)
-
-
 
 
 @user_passes_test(lambda u: u.is_superuser)

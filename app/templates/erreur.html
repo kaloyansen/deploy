@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block page_content %}
+{{ page_pause | safe }}
+
+<div title = "error"
+     style = "font-size:55mm"
+     class = "container-fluid text-center alert-danger">{{ message | safe }}
+  <a title = "error"
+     cless = "link-warning rounded-circle"
+     style = "font-size:66mm"
+     href = "mailto:kaloyansen@gmail.com&subject=error&body=description">
+    webmaster</a><p>thank you</p>
+</div>
+
+{% endblock %}
