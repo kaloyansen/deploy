@@ -66,6 +66,8 @@ class Child(models.Model):
 								verbose_name = 'avril2021')
 	code2 = models.IntegerField(default = 11,
 								verbose_name = 'juillet2021')
+	code3 = models.IntegerField(default = 11,
+								verbose_name = 'octobre2021')
 	mother = models.ForeignKey(Parent,
 							   related_name = 'children',
 							   on_delete = models.CASCADE)

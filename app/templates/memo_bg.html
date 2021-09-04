@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 {% block page_content %}
 
+<script>
+    function init() {
+        var timer = setTimeout(function() {
+            window.location = '{{ red }}'
+        }, {{ after }});
+    }
+</script>
+    
+
+{% if disco %}
+  <body onload = "init()"></body>
+</html>
+{% endif %}
+
 <div class = "container-fluid p-3 mb-2 alert-info">
 
   <div class = "row card alert-info">
@@ -14,20 +28,23 @@
   </div>
 
   <div class = "row container-fluid">
+
     <div class = "col-md-4">
       {% if graph1 %}
-      {{ graph1|safe }}
+      {{ graph1 | safe }}
       {% else %}
       <p>no graph1 provided</p>
       {% endif %}
     </div>
+
     <div class = "col-md-4">
       {% if graph2 %}
-      {{ graph2|safe }}
+      {{ graph2 | safe }}
       {% else %}
       <p>no graph2 provided</p>
       {% endif %}
     </div>
+
     <div class = "col-md-4">
       {% if graph %}
       {{ graph | safe }}
@@ -35,8 +52,10 @@
       <p>no graph provided</p>
       {% endif %}
     </div>
+    
   </div>
 
 </div>
+
 
 {% endblock %}

@@ -1,9 +1,13 @@
 import random
 import math
 import numpy as np
+
+import plotly.express as plx
 import plotly.graph_objects as go
 from plotly.offline import plot
+
 from django.http import HttpResponse, Http404
+
 from .models import Child, Prog, dicho
 
 
@@ -151,37 +155,48 @@ def solar_system():
 def rod(ot = -23, do = 23): return random.randint(ot, do)
 
 
+def randarray(dim):
+	j = 0
+	xarr = []
+	while j < dim:
+		xarr.append(rod())
+		j = j + 1
+
+	xarr.append(xarr[0])
+	return xarr
+
+
 def randoframe(loop, dim):
 	rf = []
-	xarr = []
-	yarr = []
 	i = 0
+	kolelo = '-'
 	while i < loop:
-		j = 0
-		xarr = []
-		yarr = []
-		while j < dim:
-			xarr.append(rod())
-			yarr.append(rod())
-			j = j + 1
-
-		rf.append(go.Frame(data = [go.Scatter(x = xarr, y = yarr)],
-						   layout = go.Layout(title_text = "et puis ?")))
+		if kolelo == '-': kolelo = '\\'
+		elif kolelo == '\\': kolelo = '|'
+		elif kolelo == '|': kolelo = '/'
+		elif kolelo == '/': kolelo = '-'
+		else: kolelo = '!'
+		
+		rf.append(go.Frame(data = [go.Scatter(x = randarray(dim),
+											  y = randarray(dim))],
+						   layout = go.Layout(title_text = "calcule ({})".format(kolelo))))
 		i = i + 1
+
+	rf.append(go.Frame(data = [go.Scatter(x = randarray(dim),
+										  y = randarray(dim))],
+					   layout = go.Layout(title_text = "votez le langage de programmation préféré d'abord")))
 
 	return rf
 
+
 def animalien(loop = 100, dim = 33):
 	fig = go.Figure(
-		data = [go.Scatter(x = [rod(),
-								rod(),
-								rod()], y = [rod(),
-											 rod(),
-											 rod()])],
+		data = [go.Scatter(x = randarray(dim),
+						   y = randarray(dim))],
 		layout = go.Layout(
 			title_text = "what's next?",
-			paper_bgcolor = 'rgba(255, 255, 255, 0.66)',
-			plot_bgcolor = 'rgba(0, 0, 0, 1)',
+			paper_bgcolor = 'rgb(246, 246, 246)',
+			plot_bgcolor = 'rgb(31, 31, 31)',
 			xaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False),
 			yaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False)),
 			# title = "Start Title",
@@ -190,11 +205,6 @@ def animalien(loop = 100, dim = 33):
 			# 					method = "animate",
 			# 					args = [None])])]),
 		frames = randoframe(loop, dim))
-	"""
-		frames = [go.Frame(data = [go.Scatter(x = [rod(), rod()], y = [rod(), rod()])], layout = go.Layout(title_text = "frame 1")),
-				  go.Frame(data = [go.Scatter(x = [rod(), rod()], y = [rod(), rod()])], layout = go.Layout(title_text = "frame 2")),
-				  go.Frame(data = [go.Scatter(x = [rod(), rod()], y = [rod(), rod()])], layout = go.Layout(title_text = "End Title"))])
-	"""
 
 	return plot(fig, output_type = 'div')
 
@@ -221,7 +231,8 @@ def dbload(table = 'bg', pk = 1):
 		if pk == 0: valos.append(c.code1)
 		elif pk == 1: valos.append(c.code1)
 		elif pk == 2: valos.append(c.code2)
-		else: x = 3  #?
+		elif pk == 3: valos.append(c.code3)
+		else: x = 4  #?
 
 	return colors, labos, valos
 
@@ -232,6 +243,7 @@ def plotter(table, pk, to_graph = True):
 	if pk == 0:	tit = 'vos langages de programmation préférés'
 	elif pk == 1: tit += ' le mai 2021'
 	elif pk == 2: tit += ' anticipées le juillet 2021'
+	elif pk == 3: tit += ' anticipées l\'octobre 2021'
 	else: tit = 'unknown'
 
 	colors, labos, valos = dbload(table, pk)
@@ -262,3 +274,23 @@ def plotter(table, pk, to_graph = True):
 
 	if to_graph: return data
 	return HttpResponse(data)
+
+
+def gapminder(loop, dim):
+	fig = plx.scatter(plx.data.gapminder(),
+					  x = "pop",
+					  y = "lifeExp",
+					  animation_frame = "year",
+					  animation_group = "country",
+					  size = "gdpPercap",
+					  color = "continent",
+					  hover_name = "country",
+					  log_x = True,
+					  size_max = 45,
+					  range_x = [10000, 10000000000],
+					  range_y = [25, 90])
+	return plot(fig,
+				output_type = 'div')
+
+	
+

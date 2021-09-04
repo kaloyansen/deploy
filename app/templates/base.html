@@ -47,17 +47,16 @@
 
   </head>
 
-  <div>
-    <script>
+  <script>
       function init() {
           window.location.href = "{{ page_redirect }}";
       }
-    </script>
-    <br />
-  </div>
+  </script>
 
+  {{ page_pause | safe }}
   {% if page_redirect %}
-  <body onload = "init()"></body></html>
+  <body onload = "init()"></body>
+</html>
 {% endif %}
 
 <body class = "alert alert-info"

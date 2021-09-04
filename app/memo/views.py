@@ -12,9 +12,27 @@ from .plot import solar_system, plotter, animalien
 from app.context_processors import set_voted
 
 def bg(request):
-	return render(request, 'memo_bg.html', {'graph': animalien(321, 44),
+	redirection = True
+	redire = '/memo/bg/bg/bg'
+	time_in_miliseconds = 12345
+	return render(request, 'memo_bg.html', {'graph': animalien(123, 44),
 											'graph1': plotter('bg', 1),
-											'graph2': plotter('bg', 2)})
+											'graph2': plotter('bg', 2),
+											'disco': redirection,
+											'after': time_in_miliseconds,
+											'red': redire})
+
+
+def bgbgbg(request):
+	redirection = True
+	redire = '/memo/bg'
+	time_in_miliseconds = 54321
+	return render(request, 'memo_bg.html', {'graph': plotter('bg', 3),
+											'graph1': plotter('bg', 1),
+											'graph2': plotter('bg', 2),
+											'disco': redirection,
+											'after': time_in_miliseconds,
+											'red': redire})
 
 
 def sun(request):

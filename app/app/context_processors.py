@@ -138,39 +138,39 @@ def get_context(request):
 		send['message'] = 'redirecting'
 		send['submit'] = '...'
 
-
-	return { # these are accesible from everywhere
-		'page_title': 'Kaloyan KRASTEV',
+	context = { # these are accesible from everywhere
 		'page_author': 'Kaloyan KRASTEV',
-		'page_ico': '/favicon.ico',
-		'page_time': timezone.now(),
-		'page_place': 'Grenoble, FRANCE',
-		'page_nova': nova,
-		'page_visitor': visitor,
-		'page_not_voted': has_not_voted(request),
-		'page_ip': ip,
-		'page_oldlang': send['lang'],
-		'page_newlang': flip_language(send['lang']),
-		'page_en': send['iseng'],
-		'page_lancol': send['lancol'],
-		'page_message': send['message'],
-		'page_submit': send['submit'],
-		'page_redirect': send['redirect'],
-		'page_style': safeStyle('page'),
-		'page_pause': pause(),
 		'page_brand': '/img/kalodev.png',
-		'page_linkedin': linkedin(),
-		'page_github': github(),
 		'page_digitalocean': digitalocean(request),
 		'page_digitalocean_grand': digitalocean(request, 70),
+		'page_en': send['iseng'],
+		'page_github': github(),
+		'page_ico': '/favicon.ico',
+		'page_lancol': send['lancol'],
+		'page_nova': nova,
+		'page_not_voted': has_not_voted(request),
+		'page_ip': ip,
+		'page_linkedin': linkedin(),
 		'page_ln_about': linked("this site", "success", "work/3/", "about"),
-		'page_ln_work': linked("work", "info", "work/", "work"),
-		'page_ln_news': linked("quoi de neuf", "primary", "news/", "news"),
+		'page_ln_bg': linked("les élections bulgares anticipées", "info", "memo/bg/", "bulgare"),
 		'page_ln_demo': linked("programming", "danger", "memo/demo/", "language"),
+		'page_ln_news': linked("quoi de neuf", "primary", "news/", "news"),
 		'page_ln_sun': linked("le système solaire", "warning", "memo/sun/", "solaire"),
-		'page_ln_bg': linked("les élections bulgares anticipées", "info", "memo/bg/", "bulgare")
-	}
+		'page_ln_work': linked("work", "info", "work/", "work"),
+		'page_message': send['message'],
+		'page_newlang': flip_language(send['lang']),
+		'page_oldlang': send['lang'],
+		'page_pause': pause(),
+		'page_place': 'Grenoble, FRANCE',
+		'page_redirect': send['redirect'],
+		'page_style': safeStyle('page'),
+		'page_submit': send['submit'],
+		'page_time': timezone.now(),
+		'page_title': 'Kaloyan KRASTEV',
+		'page_visitor': visitor,
+		'page_voted': has_voted(request)}
 
+	return context
 
 
 def has_not_voted(request): return not has_voted(request)
