@@ -1,14 +1,12 @@
 {% extends "base.html" %}
-
-{% load static %}
 {% block page_content %}
 
 
 <div class = "container">
   <div class = "row card alert-info".
-       title = "le système solaire modèle simple">
+       title = "plot">
     {% if graph %}
-    {{ graph|safe }}
+    {{ graph | safe }}
     {% else %}
     <p>no graph provided</p>
     {% endif %}
