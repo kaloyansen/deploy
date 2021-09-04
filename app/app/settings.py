@@ -25,6 +25,7 @@ else: # is_dev:
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False # SSL_REDIRECT = True does not work, but ...
 # SECURE_HSTS_SECONDS = 6 # ... one may try with SECURE_HSTS_SECONDS
+X_FRAME_OPTIONS = 'DENY' # 'SAMEORIGIN' enable frames
 
 # Application definition
 INSTALLED_APPS = [

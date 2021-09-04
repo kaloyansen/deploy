@@ -5,7 +5,7 @@ from django.conf import settings
 from .otverka import safeStyle
 from .context_processors import get_visitor
 from work.models import Visitor
-
+from memo.plot import animalien
 
 
 def get_lang(request):
@@ -18,7 +18,11 @@ def get_lang(request):
 	return visitor.lang[:2]
 
 
-def erreur(request): return render(request, 'erreur.html', {'message': "<p>something wrong or at least not forseen happened</p>if you like it is possible to send an e-mail to"})
+def erreur(request):
+	context = {'message': "<p>something wrong or at least not forseen happened</p>if you like it is possible to send an e-mail to",
+			   'graph': animalien()}
+	return render(request, 'erreur.html', context)
+
 
 def base(request): return render(request, 'base.html')
 

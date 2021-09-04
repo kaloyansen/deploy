@@ -12,14 +12,19 @@ from .plot import solar_system, plotter, animalien
 from app.context_processors import set_voted
 
 def bg(request):
-	return render(request, 'memo_bg.html', {'graph1': plotter('bg', 1),
+	return render(request, 'memo_bg.html', {'graph': animalien(321),
+											'graph1': plotter('bg', 1),
 											'graph2': plotter('bg', 2)})
 
 
 def sun(request):
 	context = {'graph': solar_system()}
-	context = {'graph': animalien()}
 	return render(request, 'memo_sun.html', context)
+
+
+def spider(request):
+	context = {'graph': animalien()}
+	return render(request, 'memo_spider.html', context)
 
 
 def demo(request):

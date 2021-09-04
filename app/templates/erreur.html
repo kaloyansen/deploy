@@ -2,9 +2,19 @@
 {% block page_content %}
 {{ page_pause | safe }}
 
+
+<div title = "spider"
+     class = "conteiner-fluid col-md-10 offset-md-1">       
+  {% if graph %}
+  {{ graph | safe }}
+  {% else %}
+  <p>no graph provided</p>
+  {% endif %}
+</div>
+
 <div title = "error"
      style = "font-size:55mm"
-     class = "container-fluid text-center alert-danger">{{ message | safe }}
+     class = "container-fluid col-md-10 offset-md-2 text-center alert-danger">{{ message | safe }}
   <a title = "error"
      cless = "link-warning rounded-circle"
      style = "font-size:66mm"

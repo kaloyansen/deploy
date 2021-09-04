@@ -151,37 +151,48 @@ def solar_system():
 def rod(ot = -50, do = 50): return random.randint(ot, do)
 
 
-def randoframe(combien):
+def randoframe(loop = 100):
 	rf = []
+	xarr = []
+	yarr = []
+	dim = 15
 	i = 0
-	while i < combien:
-		x0 = rod()
-		x1 = rod()
-		x2 = rod()
-		x3 = rod()
-		y0 = rod()
-		y1 = rod()
-		y2 = rod()
-		y3 = rod()
-		rf.append(go.Frame(data = [go.Scatter(x = [x0, x1, x2, x3], y = [y0, y1, y2, y3])],
-						   layout = go.Layout(title_text = "wild spider in a box {}: {} {} {} {} {} {} {} {}".format(i, x0, x1, x2, x3, y0, y1, y2, y3))))
+	while i < loop:
+		j = 0
+		xarr = []
+		yarr = []
+		while j < dim:
+			xarr.append(rod())
+			yarr.append(rod())
+			j = j + 1
+
+		rf.append(go.Frame(data = [go.Scatter(x = xarr, y = yarr)],
+						   layout = go.Layout(title_text = "what's next?",
+											  paper_bgcolor = 'rgba(0,0,0,0)',
+											  plot_bgcolor='rgba(0,0,0,0)')))
 		i = i + 1
 
 	return rf
 
-def animalien():
+def animalien(loop = 100):
 	fig = go.Figure(
-		data = [go.Scatter(x = [rod(), rod(), rod()], y = [rod(), rod(), rod()])],
+		data = [go.Scatter(x = [rod(),
+								rod(),
+								rod()], y = [rod(),
+											 rod(),
+											 rod()])],
 		layout = go.Layout(
-			xaxis = dict(range = [-50, 50], autorange = False),
-			yaxis = dict(range = [-50, 50], autorange = False),
-			title = "Start Title",
-			updatemenus = [dict(
-				type = "buttons",
-				buttons = [dict(label = "Play",
-								method = "animate",
-								args = [None])])]),
-		frames = randoframe(10))
+			title_text = "ô la Bugarie !",
+			paper_bgcolor = 'rgba(0, 0, 0, 0)',
+			plot_bgcolor = 'rgba(0, 0, 0, 0)',
+			xaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False),
+			yaxis = dict(range = [-50, 50], autorange = True, showgrid = False, zeroline = False, visible = False)),
+			# title = "Start Title",
+			# updatemenus = [dict(type = "buttons",
+			# 	buttons = [dict(label = "Play",
+			# 					method = "animate",
+			# 					args = [None])])]),
+		frames = randoframe(loop))
 	"""
 		frames = [go.Frame(data = [go.Scatter(x = [rod(), rod()], y = [rod(), rod()])], layout = go.Layout(title_text = "frame 1")),
 				  go.Frame(data = [go.Scatter(x = [rod(), rod()], y = [rod(), rod()])], layout = go.Layout(title_text = "frame 2")),
