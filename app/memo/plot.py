@@ -148,14 +148,13 @@ def solar_system():
 	return plot(fig, output_type = 'div')
 
 
-def rod(ot = -50, do = 50): return random.randint(ot, do)
+def rod(ot = -23, do = 23): return random.randint(ot, do)
 
 
-def randoframe(loop = 100):
+def randoframe(loop, dim):
 	rf = []
 	xarr = []
 	yarr = []
-	dim = 15
 	i = 0
 	while i < loop:
 		j = 0
@@ -167,14 +166,12 @@ def randoframe(loop = 100):
 			j = j + 1
 
 		rf.append(go.Frame(data = [go.Scatter(x = xarr, y = yarr)],
-						   layout = go.Layout(title_text = "what's next?",
-											  paper_bgcolor = 'rgba(0,0,0,0)',
-											  plot_bgcolor='rgba(0,0,0,0)')))
+						   layout = go.Layout(title_text = "et puis ?")))
 		i = i + 1
 
 	return rf
 
-def animalien(loop = 100):
+def animalien(loop = 100, dim = 33):
 	fig = go.Figure(
 		data = [go.Scatter(x = [rod(),
 								rod(),
@@ -182,17 +179,17 @@ def animalien(loop = 100):
 											 rod(),
 											 rod()])],
 		layout = go.Layout(
-			title_text = "ô la Bugarie !",
-			paper_bgcolor = 'rgba(0, 0, 0, 0)',
-			plot_bgcolor = 'rgba(0, 0, 0, 0)',
+			title_text = "what's next?",
+			paper_bgcolor = 'rgba(255, 255, 255, 0.66)',
+			plot_bgcolor = 'rgba(0, 0, 0, 1)',
 			xaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False),
-			yaxis = dict(range = [-50, 50], autorange = True, showgrid = False, zeroline = False, visible = False)),
+			yaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False)),
 			# title = "Start Title",
 			# updatemenus = [dict(type = "buttons",
 			# 	buttons = [dict(label = "Play",
 			# 					method = "animate",
 			# 					args = [None])])]),
-		frames = randoframe(loop))
+		frames = randoframe(loop, dim))
 	"""
 		frames = [go.Frame(data = [go.Scatter(x = [rod(), rod()], y = [rod(), rod()])], layout = go.Layout(title_text = "frame 1")),
 				  go.Frame(data = [go.Scatter(x = [rod(), rod()], y = [rod(), rod()])], layout = go.Layout(title_text = "frame 2")),

@@ -12,7 +12,7 @@ from .plot import solar_system, plotter, animalien
 from app.context_processors import set_voted
 
 def bg(request):
-	return render(request, 'memo_bg.html', {'graph': animalien(321),
+	return render(request, 'memo_bg.html', {'graph': animalien(321, 44),
 											'graph1': plotter('bg', 1),
 											'graph2': plotter('bg', 2)})
 
