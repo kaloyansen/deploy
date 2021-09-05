@@ -243,7 +243,7 @@ def plotter(table, pk, to_graph = True):
 	if pk == 0:	tit = 'vos langages de programmation préférés'
 	elif pk == 1: tit += ' le mai 2021'
 	elif pk == 2: tit += ' anticipées le juillet 2021'
-	elif pk == 3: tit += ' anticipées l\'octobre 2021'
+	elif pk == 3: tit += ' anticipées le november 2021'
 	else: tit = 'unknown'
 
 	colors, labos, valos = dbload(table, pk)
