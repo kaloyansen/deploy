@@ -166,25 +166,32 @@ def randarray(dim):
 	return xarr
 
 
+def rotation(kol):
+	if kol == '-': return '\\'
+	elif kol == '\\': return '|'
+	elif kol == '|': return '/'
+	elif kol == '/': return '-'
+	else: return '-'
+	
 def randoframe(loop, dim):
 	rf = []
-	i = 0
+	loop = int(loop)
+	treta = loop / 3
 	kolelo = '-'
-	while i < loop:
-		if kolelo == '-': kolelo = '\\'
-		elif kolelo == '\\': kolelo = '|'
-		elif kolelo == '|': kolelo = '/'
-		elif kolelo == '/': kolelo = '-'
-		else: kolelo = '!'
-		
+	while loop > 1:
+		kolelo = rotation(kolelo)
+		texte = "data load ({})".format(kolelo)
+		if loop < 2 * treta: texte = "process data ({})".format(kolelo)
+		if loop < treta: texte = "iteration {}".format(loop)
 		rf.append(go.Frame(data = [go.Scatter(x = randarray(dim),
 											  y = randarray(dim))],
-						   layout = go.Layout(title_text = "calcule ({})".format(kolelo))))
-		i = i + 1
+						   layout = go.Layout(title_text = texte)))
+		loop -= 1
 
+	texte = "plot ..."
 	rf.append(go.Frame(data = [go.Scatter(x = randarray(dim),
 										  y = randarray(dim))],
-					   layout = go.Layout(title_text = "votez le langage de programmation préféré d'abord")))
+					   layout = go.Layout(title_text = texte)))
 
 	return rf
 
@@ -194,16 +201,21 @@ def animalien(loop = 100, dim = 33):
 		data = [go.Scatter(x = randarray(dim),
 						   y = randarray(dim))],
 		layout = go.Layout(
-			title_text = "what's next?",
+			title_text = "lienar iteration",
 			paper_bgcolor = 'rgb(246, 246, 246)',
 			plot_bgcolor = 'rgb(31, 31, 31)',
 			xaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False),
-			yaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False)),
+			yaxis = dict(range = [-50, 50], autorange = False, showgrid = False, zeroline = False, visible = False),
+			font = dict(
+				family = "Courier New, monospace",
+				color = "#008800",
+				size = 12
+            )),
 			# title = "Start Title",
 			# updatemenus = [dict(type = "buttons",
-			# 	buttons = [dict(label = "Play",
-			# 					method = "animate",
-			# 					args = [None])])]),
+			# 					buttons = [dict(label = "Play",
+			# 									method = "animate",
+			# 									args = [None])])]),
 		frames = randoframe(loop, dim))
 
 	return plot(fig, output_type = 'div')

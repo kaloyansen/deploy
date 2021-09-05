@@ -14,24 +14,26 @@ from app.context_processors import set_voted
 def bg(request):
 	redirection = True
 	redire = '/memo/bg/bg/bg'
-	time_in_miliseconds = 12345
-	return render(request, 'memo_bg.html', {'graph': animalien(123, 44),
+	stay_time = 34 # sec
+	loop = stay_time * 1.8
+	dim = 44
+	return render(request, 'memo_bg.html', {'graph': animalien(loop, dim),
 											'graph1': plotter('bg', 1),
 											'graph2': plotter('bg', 2),
 											'disco': redirection,
-											'after': time_in_miliseconds,
+											'after': stay_time * 1000,
 											'red': redire})
 
 
 def bgbgbg(request):
 	redirection = True
 	redire = '/memo/bg'
-	time_in_miliseconds = 54321
+	stay_time = 15 # min
 	return render(request, 'memo_bg.html', {'graph': plotter('bg', 3),
 											'graph1': plotter('bg', 1),
 											'graph2': plotter('bg', 2),
 											'disco': redirection,
-											'after': time_in_miliseconds,
+											'after': stay_time * 60000,
 											'red': redire})
 
 
