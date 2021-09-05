@@ -3,6 +3,6 @@ echo setting envirenment django development ...
 # kaloyansen@gmail.com
 cd $DEPLOY
 source venv/bin/activate.csh
-manage.py check --deploy
-git status
 echo '(: envirenment django development active run <<deactivate>> to quit ;)'
+manage.py check # --deploy
+git status
