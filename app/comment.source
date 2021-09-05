@@ -5,5 +5,6 @@ cd $DEPLOY
 source venv/bin/activate.csh
 echo '(: envirenment django development active'
 echo 'run <<deactivate>> to quit ;)'
-manage.py check # --deploy
-git status
+./manage.py check # --deploy
+/usr/bin/git fetch
+/usr/bin/git status -uno
