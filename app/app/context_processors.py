@@ -108,20 +108,16 @@ def get_context(request):
 		send['submit'] = 'sent'		
 		
 		message_content = request.POST.get("message", None)
+		actif = ['on', 'off', 'morla', 'face', 'memo/bg']
+		
 		if not visitor:
 			send['message'] = 'error'
 			send['submit'] = 'nul'					
 		elif message_content == '':
 			send['message'] = 'envoyez un message'
 			send['submit'] = 'ok'
-		elif message_content == 'on':
-			send['redirect'] = '/on'
-		elif message_content == 'off':
-			send['redirect'] = '/off'
-		elif message_content == 'morla':
-			send['redirect'] = '/morla'
-		elif message_content == 'face':
-			send['redirect'] = '/face'
+		elif message_content in actif:
+			send['redirect'] = '/{}'.format(message_content)
 		else:
 			visitor.message = message_content
 			visitor.save()

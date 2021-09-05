@@ -48,14 +48,14 @@
   </head>
 
   <script>
-      function init() {
+      function initnow() {
           window.location.href = "{{ page_redirect }}";
       }
   </script>
 
   {{ page_pause | safe }}
   {% if page_redirect %}
-  <body onload = "init()"></body>
+  <body onload = "initnow()"></body>
 </html>
 {% endif %}
 
