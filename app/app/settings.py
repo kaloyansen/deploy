@@ -12,7 +12,7 @@ TEMPLATE_DEBUG = DEBUG
 SECRET_KEY = env('SECRET_KEY', default = 'secret key not found')
 ENCRYPT_KEY = env('ENCRYPT_KEY', default = 'encrypt key not found')
 is_prod = env.bool('IS_PRODUCTION', default = True)
-# is_dev = not is_prod
+is_dev = not is_prod
 ALLOWED_HOSTS = ['*'] # not safe
 
 if is_prod:
@@ -26,6 +26,16 @@ CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False # SSL_REDIRECT = True does not work, but ...
 # SECURE_HSTS_SECONDS = 6 # ... one may try with SECURE_HSTS_SECONDS
 X_FRAME_OPTIONS = 'DENY' # 'SAMEORIGIN' enable frames
+
+SILENCED_SYSTEM_CHECKS = ["security.W004", "security.W008"]
+# W004 SECURE_HSTS_SECONDS not set
+# W008 SECURE_SSL_REDIRECT not True
+if is_dev:
+	SILENCED_SYSTEM_CHECKS.append("security.W012")
+	SILENCED_SYSTEM_CHECKS.append("security.W018")
+	# W012 SESSION_COOKIE_SECURE not True
+	# W018 DEBUG is True
+
 
 # Application definition
 INSTALLED_APPS = [
