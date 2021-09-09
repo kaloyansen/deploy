@@ -2,9 +2,17 @@ from pathlib import Path
 import environ
 
 env = environ.Env()
-""" make use of django-environ to store environment variables outside version control (in .gitignore for git); two type of variables need to be stored at envirenment dependent location; 1. the secret keys that must be hidden for secutity reasons and 2. the variables with different value in production/development envirenment, for example DEBUG and TEMPLATE_DEBUG are True during development, but should be False in production again for security reasons """
+
+""" make use of django-environ to store environment variables
+outside version control (must include the file name in .gitignore for git);
+two type of variables need to be stored at envirenment dependent location;
+1. the secret keys that must be hidden for secutity reasons and
+2. the variables with different value in production/development envirenment,
+for example DEBUG and TEMPLATE_DEBUG are True during development,
+but should be False in production again for security reasons """
+
 env.read_env()
-#environ.Env.read_env()
+
 SECRET_KEY = env('SECRET_KEY', default = 'secret key not found')
 ENCRYPT_KEY = env('ENCRYPT_KEY', default = 'encrypt key not found')
 DEBUG = env.bool('DJANGO_DEBUG', default = False)
@@ -13,10 +21,12 @@ is_prod = env.bool('IS_PRODUCTION', default = True)
 is_dev = not is_prod
 TEMPLATE_DEBUG = DEBUG
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 # build paths inside the project like this: BASE_DIR / 'subdir'
 
 ALLOWED_HOSTS = ['*'] # not safe
+SILENCED_SYSTEM_CHECKS = ["security.W004", "security.W008"]
 
 if is_prod:
 	ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130']
@@ -24,21 +34,12 @@ if is_prod:
 else: # is_dev:
 	ALLOWED_HOSTS = ['ka.lo', '127.0.0.3']
 	SESSION_COOKIE_SECURE = False # needed by admin in development
+	SILENCED_SYSTEM_CHECKS.extend(["security.W012", "security.W018"])
 
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False # SSL_REDIRECT = True does not work, but ...
 # SECURE_HSTS_SECONDS = 6 # ... one may try with SECURE_HSTS_SECONDS
 X_FRAME_OPTIONS = 'DENY' # 'SAMEORIGIN' enable frames
-
-SILENCED_SYSTEM_CHECKS = ["security.W004", "security.W008"]
-# W004 SECURE_HSTS_SECONDS not set
-# W008 SECURE_SSL_REDIRECT not True
-if is_dev:
-	SILENCED_SYSTEM_CHECKS.append("security.W012")
-	SILENCED_SYSTEM_CHECKS.append("security.W018")
-	# W012 SESSION_COOKIE_SECURE not True
-	# W018 DEBUG is True
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -137,6 +138,7 @@ LOGIN_URL = '/admin/login/'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 """
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_HSTS_SECONDS = 6
@@ -151,4 +153,11 @@ SESSION_COOKIE_AGE = 86400 # sec
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_NAME = 'DSESSIONID'
 SESSION_COOKIE_SECURE = False
+
+système code signification
+W004 SECURE_HSTS_SECONDS not set
+W008 SECURE_SSL_REDIRECT not True
+W012 SESSION_COOKIE_SECURE not True
+W018 DEBUG is True
+
 """

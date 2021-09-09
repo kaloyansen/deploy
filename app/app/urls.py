@@ -159,6 +159,7 @@ urlpatterns = [
 	path("admin/", admin.site.urls)
 ]
 
+
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 urlpatterns += static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT)
 urlpatterns += static('/robots.txt/', document_root = settings.STATIC_ROOT / 'robots.txt')
