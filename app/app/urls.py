@@ -160,8 +160,13 @@ urlpatterns = [
 ]
 
 
-urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
-urlpatterns += static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT)
-urlpatterns += static('/robots.txt/', document_root = settings.STATIC_ROOT / 'robots.txt')
-urlpatterns += static('/favicon.ico/', document_root = settings.STATIC_ROOT / 'ico/favicon.ico')
-urlpatterns += static('/cv/', document_root = settings.STATIC_ROOT / 'pdf/back-end.pdf')
+urlpatterns += static(settings.STATIC_URL,
+					  document_root = settings.STATIC_ROOT)
+urlpatterns += static(settings.ENCRYPT_URL,
+					  document_root = settings.ENCRYPT_ROOT)
+urlpatterns += static(settings.ROBOTS_URL,
+					  document_root = settings.ROBOTS_ROOT)
+urlpatterns += static(settings.FAVICON_URL,
+					  document_root = settings.FAVICON_ROOT)
+urlpatterns += static(settings.CV_URL,
+					  document_root = settings.CV_ROOT)

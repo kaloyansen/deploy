@@ -133,6 +133,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 ENCRYPT_URL = '/.well-known/'
 ENCRYPT_ROOT = STATIC_ROOT / '.well-known/'
+ROBOTS_URL = '/robots.txt/'
+ROBOTS_ROOT = STATIC_ROOT / 'robots.txt'
+FAVICON_URL = '/favicon.ico/'
+FAVICON_ROOT = STATIC_ROOT / 'ico/favicon.ico'
+CV_URL = '/cv/'
+CV_ROOT = STATIC_ROOT / 'pdf/back-end.pdf'
 LOGIN_URL = '/admin/login/'
 
 # Default primary key field type
