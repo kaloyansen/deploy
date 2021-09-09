@@ -1,7 +1,7 @@
 import random
 from django.db import models
 from django.utils import timezone
-
+from app.encdec import decrypt
 
 
 class ColorStyle(models.Model):
@@ -107,9 +107,17 @@ class Visitor(models.Model):
 							max_length = 15,
 							verbose_name = 'user language')
 
+	def save(self, *args, **kwargs):
+		super(Model, self).save(*args, **kwargs)		
+
 	def has_message(self):
 		if self.message == '': return False
 		return True
+
+	def dessage(self):
+		dec = decrypt(self.message)
+		if dec == None: return self.message
+		return dec
 
 	def is_robo(self):
 		if self.voted: return False
@@ -125,8 +133,7 @@ class Visitor(models.Model):
 											 self.code,
 											 self.voted,
 											 self.lang,
-											 self.message)
-
+											 self.dessage())
 
 
 class Page(models.Model):

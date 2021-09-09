@@ -3,16 +3,19 @@ import environ
 
 env = environ.Env()
 """ make use of django-environ to store environment variables outside version control (in .gitignore for git); two type of variables need to be stored at envirenment dependent location; 1. the secret keys that must be hidden for secutity reasons and 2. the variables with different value in production/development envirenment, for example DEBUG and TEMPLATE_DEBUG are True during development, but should be False in production again for security reasons """
-environ.Env.read_env()
+env.read_env()
+#environ.Env.read_env()
+SECRET_KEY = env('SECRET_KEY', default = 'secret key not found')
+ENCRYPT_KEY = env('ENCRYPT_KEY', default = 'encrypt key not found')
+DEBUG = env.bool('DJANGO_DEBUG', default = False)
+is_prod = env.bool('IS_PRODUCTION', default = True)
+
+is_dev = not is_prod
+TEMPLATE_DEBUG = DEBUG
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 # build paths inside the project like this: BASE_DIR / 'subdir'
-DEBUG = env.bool('DJANGO_DEBUG', default = False)
-TEMPLATE_DEBUG = DEBUG
-SECRET_KEY = env('SECRET_KEY', default = 'secret key not found')
-ENCRYPT_KEY = env('ENCRYPT_KEY', default = 'encrypt key not found')
-is_prod = env.bool('IS_PRODUCTION', default = True)
-is_dev = not is_prod
+
 ALLOWED_HOSTS = ['*'] # not safe
 
 if is_prod:

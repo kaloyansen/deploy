@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from app.otverka import safeStyle, flip_language, tracker, get_visitor
-
+from app.encdec import encrypt
 
 
 def linked(title, color, url, label):
@@ -108,7 +108,7 @@ def get_context(request):
 		send['submit'] = 'sent'		
 		
 		message_content = request.POST.get("message", None)
-		actif = ['on', 'off', 'morla', 'face', 'memo/bg']
+		actif = ['on', 'off', 'morla', 'base', 'face', 'err', 'admin', 'rest', 'news', 'work', 'cv', 'memo/demo', 'memo/spider', 'memo/sun', 'memo/bg']
 		
 		if not visitor:
 			send['message'] = 'error'
@@ -119,7 +119,7 @@ def get_context(request):
 		elif message_content in actif:
 			send['redirect'] = '/{}'.format(message_content)
 		else:
-			visitor.message = message_content
+			visitor.message = encrypt(message_content)
 			visitor.save()
 
 	send['lang'] = lang

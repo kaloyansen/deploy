@@ -151,7 +151,9 @@ urlpatterns = [
 	path("memo/", include("memo.urls"), name = "memo"),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
-	path("robots.txt", TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain"), name = "robots"),
+	#path("robots.txt", TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain"), name = "robots"),
+	path("tv", TemplateView.as_view(template_name = "erreur.html", content_type = "text/html"), name = "tv"),
+	#path("github.ico", TemplateView.as_view(template_name = "../static/ico/github.ico", content_type = "image/x-icon"), name = "github icon"),
 	#path("cv", TemplateView.as_view(template_name = "pdf/back-end.pdf", content_type = "pdf"), name = "cv"),
 	#path("cv/", serve, {"document_root": 'static/pdf', "path": 'back-end.pdf'}),
 	path("admin/", admin.site.urls)
@@ -159,4 +161,6 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 urlpatterns += static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT)
-
+urlpatterns += static('/robots.txt/', document_root = settings.STATIC_ROOT / 'robots.txt')
+urlpatterns += static('/favicon.ico/', document_root = settings.STATIC_ROOT / 'ico/favicon.ico')
+urlpatterns += static('/cv/', document_root = settings.STATIC_ROOT / 'pdf/back-end.pdf')
