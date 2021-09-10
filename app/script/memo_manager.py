@@ -1,14 +1,6 @@
 from django.utils import timezone
 from memo.models import Child, Prog, Parent
 
-""" designed to be run once per deployment
-in real /deb = False/ mode """
-deb = False
-""" should turn deb back to True
-after initial tables are created
-NOT TESTED read code before run
-consider django administration instead """
-
 p = {}
 i = 0
 bgexiste = False
@@ -23,11 +15,8 @@ for parent in Parent.objects.all():
 	i += 1
 
 lenp = len(p)
-print(lenp, 'tables existe')
+print(lenp, 'tables existent')
 
-if deb:
-	print('warning: deb = False to create new tables')
-	exit(1)
 	
 if progexiste:
 	print('progexiste')
@@ -84,9 +73,6 @@ for prog in Prog.objects.all():
 		  prog.code1,
 		  prog.color)
 
-if deb:
-	print('info: tables ok, try deb = True to prevent tables to be created')
-	exit(1)
 
 exit(0)
 

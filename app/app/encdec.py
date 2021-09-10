@@ -39,6 +39,7 @@ def decrypt(txt):
 		decoded_text = cipher_suite.decrypt(txt).decode("ascii")     
 		return decoded_text
 	except Exception as e:
+		return '{} (n.e.)'.format(txt)
 		# log the error
-		logging.getLogger("error_logger").error(traceback.format_exc())
-		return None
+		# logging.getLogger("error_logger").error(traceback.format_exc())
+		# return None

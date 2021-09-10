@@ -114,10 +114,10 @@ class Visitor(models.Model):
 		if self.message == '': return False
 		return True
 
-	def dessage(self):
-		dec = decrypt(self.message)
-		if dec == None: return self.message
-		return dec
+	def dessage(self): return decrypt(self.message)
+		#dec = decrypt(self.message)
+		#if dec == None: return self.message
+		#return dec
 
 	def is_robo(self):
 		if self.voted: return False

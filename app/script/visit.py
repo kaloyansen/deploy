@@ -3,7 +3,7 @@ from colorama import init, Fore, Back, Style
 from work.models import Visitor
 
 init(autoreset = True)
-print(Fore.BLACK + Back.CYAN + '~~~ {} ~~~'.format(Path(__file__)))
+print(Fore.BLACK + Back.CYAN + '******* {} *******'.format(Path(__file__)))
 
 visitall = Visitor.objects.all()
 
@@ -13,11 +13,11 @@ print(Fore.GREEN + 'total {}'.format(visit.count()))
 visivote = Visitor.objects.filter(voted=True)
 print(Back.BLUE + '\n{} voted'.format(visivote.count()))
 
-for v in visivote: print(v)
+for v in visivote: print(v.ip_address)
 
 visimess = Visitor.objects.exclude(message='')
 print(Back.MAGENTA + '\n{} messages'.format(visimess.count()))
-for v in visimess: print('message[{}] = {}'.format(v.ip_address, v.message))
+for v in visimess: print('message[{}] = {}'.format(v.ip_address, v.dessage()))
 
 robot = visit.filter(voted=False).filter(lang='fr').filter(message='').filter(code__lte=2)
 roboco = robot.count()
