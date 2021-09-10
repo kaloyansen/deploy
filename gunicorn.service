@@ -1,17 +1,18 @@
 [Unit]
-Description=Gunicorn fucks Django /etc/systemd/system/gunicorn.service
+Description=gunicorn serves django /etc/systemd/system/gunicorn.service
 Before=nginx.service
 After=network.target
 
 [Service]
 WorkingDirectory=/home/django/deploy/app
 ExecStart=/usr/bin/gunicorn3 app.wsgi:application \
---name=app \
---pythonpath=/home/django/deploy/app/venv/lib/python3.8/site-packages \
+--name app \
+--pythonpath /home/django/deploy/app/venv/lib/python3.8/site-packages \
 --bind unix:/home/django/gunicorn.socket \
 --error-logfile /home/django/deploy/app/gunicorn.error.log \
 --access-logfile /home/django/deploy/app/gunicorn.access.log \
---workers 5 \
+--log-syslog \
+--workers 4 \
 --config /etc/gunicorn.d/gunicorn.py
 Restart=always
 SyslogIdentifier=gunicorn
