@@ -117,7 +117,8 @@ class Visitor(models.Model):
 
 	def dessage(self):
 		if self.mencrypted:	return decrypt(self.message)
-		return '{} n-e.'.format(self.message)
+		if self.has_message(): return '{} n-e.'.format(self.message)
+		return self.message
 		#dec = decrypt(self.message)
 		#if dec == None: return self.message
 		#return dec
