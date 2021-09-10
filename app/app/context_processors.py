@@ -120,6 +120,7 @@ def get_context(request):
 			send['redirect'] = '/{}'.format(message_content)
 		else:
 			visitor.message = encrypt(message_content)
+			visitor.mencrypted = True
 			visitor.save()
 
 	send['lang'] = lang

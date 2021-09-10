@@ -41,6 +41,36 @@ SECURE_SSL_REDIRECT = False # SSL_REDIRECT = True does not work, but ...
 # SECURE_HSTS_SECONDS = 6 # ... one may try with SECURE_HSTS_SECONDS
 X_FRAME_OPTIONS = 'DENY' # 'SAMEORIGIN' enable frames
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name)-12s %(levelname)-8s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+			'formatter': 'console'
+        },
+        'file': {
+            'level':'DEBUG',
+            'class':'logging.FileHandler',
+			'formatter': 'file',			
+            'filename': BASE_DIR / 'django.log'
+        }
+    },
+    'root': {
+        'level': 'INFO',
+        'handlers': ['console', 'file']
+    },
+}
+
 # Application definition
 INSTALLED_APPS = [
 	'rest_framework',

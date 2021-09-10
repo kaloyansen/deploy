@@ -1,4 +1,5 @@
 import socket
+import logging
 from django.shortcuts import render
 from django.contrib.auth.decorators import user_passes_test
 from django.conf import settings
@@ -7,6 +8,7 @@ from .context_processors import get_visitor
 from work.models import Visitor
 from memo.plot import animalien
 
+logger = logging.getLogger(__name__)
 
 def get_lang(request):
 
@@ -28,6 +30,7 @@ def base(request): return render(request, 'base.html')
 
 
 def index(request):
+	logger.info('index')
 	num_visits = request.session.get('num_visits', 0)
 	request.session['num_visits'] = num_visits + 1
 

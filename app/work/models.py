@@ -100,6 +100,7 @@ class Visitor(models.Model):
 							   default = 0,
 							   verbose_name = 'range')
 	voted = models.BooleanField(default = False)
+	mencrypted = models.BooleanField(default = False)
 	message = models.TextField(default = '',
 							   blank = True,
 							   verbose_name = 'message from user')
@@ -107,16 +108,16 @@ class Visitor(models.Model):
 							max_length = 15,
 							verbose_name = 'user language')
 
-	def save(self, *args, **kwargs):
-		super(Model, self).save(*args, **kwargs)		
+	# def save(self, *args, **kwargs):
+	# 	super(Model, self).save(*args, **kwargs)		
 
 	def has_message(self):
 		if self.message == '': return False
 		return True
 
 	def dessage(self):
-		if self.has_message(): return decrypt(self.message)
-		return self.message
+		if self.mencrypted:	return decrypt(self.message)
+		return '{} n-e.'.format(self.message)
 		#dec = decrypt(self.message)
 		#if dec == None: return self.message
 		#return dec
