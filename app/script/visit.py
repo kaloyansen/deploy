@@ -17,7 +17,7 @@ for v in visivote: print(v.ip_address)
 
 visimess = Visitor.objects.exclude(message='')
 print(Back.MAGENTA + '\n{} messages'.format(visimess.count()))
-for v in visimess: print('message[{}] = {}'.format(v.ip_address, v.dessage()))
+for v in visimess: print('message[{}] = {}, decrypted = {}'.format(v.ip_address, v.message, v.dessage()))
 
 robot = visit.filter(voted=False).filter(lang='fr').filter(message='').filter(code__lte=2)
 roboco = robot.count()
