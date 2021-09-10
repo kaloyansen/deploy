@@ -114,7 +114,9 @@ class Visitor(models.Model):
 		if self.message == '': return False
 		return True
 
-	def dessage(self): return decrypt(self.message)
+	def dessage(self):
+		if self.has_message(): return decrypt(self.message)
+		return self.message
 		#dec = decrypt(self.message)
 		#if dec == None: return self.message
 		#return dec
