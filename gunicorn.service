@@ -11,6 +11,7 @@ ExecStart=/usr/bin/gunicorn3 app.wsgi:application \
 --bind unix:/home/django/gunicorn.socket \
 --error-logfile /home/django/deploy/app/gunicorn.error.log \
 --access-logfile /home/django/deploy/app/gunicorn.access.log \
+--workers 5 \
 --config /etc/gunicorn.d/gunicorn.py
 Restart=always
 SyslogIdentifier=gunicorn
