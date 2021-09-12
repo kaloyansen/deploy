@@ -8,6 +8,7 @@ from django.views.static import serve
 
 
 from rest_framework import routers, serializers, viewsets
+import debug_toolbar
 
 from work.models import Project, Visitor, Page, ColorStyle
 from news.models import Post, Comment, Category
@@ -153,7 +154,7 @@ urlpatterns = [
 	path("off/", RedirectView.as_view(url = url_h), name = "off"),
 	path("rest/", include(router.urls)),
 	path("auth/", include("rest_framework.urls", namespace = "rest_framework")),
-	path("memo/", include("memo.urls"), name = "memo"),
+	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
 	#path("robots.txt", TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain"), name = "robots"),
@@ -164,6 +165,7 @@ urlpatterns = [
 	path("admin/", admin.site.urls)
 ]
 
+if settings.DEBUG: urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))
 
 urlpatterns += static(settings.STATIC_URL,
 					  document_root = settings.STATIC_ROOT)

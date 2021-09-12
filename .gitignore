@@ -63,6 +63,8 @@ db.sqlite3
 db.sqlite3-journal
 migrations/
 app/static/admin
+app/static/debug_toolbar
+app/static/rest_framework
 
 # Flask stuff:
 instance/

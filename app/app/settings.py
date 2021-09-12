@@ -27,12 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = ['*'] # not safe
 SILENCED_SYSTEM_CHECKS = ["security.W004", "security.W008"]
+INTERNAL_IPS = ['ka.lo', '127.0.0.3']
+
 
 if is_prod:
 	ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130']
 	SESSION_COOKIE_SECURE = True
 else: # is_dev:
-	ALLOWED_HOSTS = ['ka.lo', '127.0.0.3']
+	ALLOWED_HOSTS = INTERNAL_IPS
 	SESSION_COOKIE_SECURE = False # needed by admin in development
 	SILENCED_SYSTEM_CHECKS.extend(["security.W012", "security.W018"])
 
@@ -80,6 +82,8 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+	'debug_toolbar',
+	'bootstrap4',
 	'memo',
 	'work',
 	'news'
@@ -93,6 +97,27 @@ REST_FRAMEWORK = {
 	]
 }
 
+def show_toolbar(request): return DEBUG
+DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK" : show_toolbar}
+if DEBUG:
+	import mimetypes
+	mimetypes.add_type("application/javascript", ".js", True)
+
+# DEBUG_TOOLBAR_PANELS = [
+# 	'debug_toolbar.panels.versions.VersionsPanel',
+# 	'debug_toolbar.panels.timer.TimerPanel',
+# 	'debug_toolbar.panels.settings.SettingsPanel',
+# 	'debug_toolbar.panels.headers.HeadersPanel',
+# 	'debug_toolbar.panels.request.RequestPanel',
+# 	'debug_toolbar.panels.sql.SQLPanel',
+# 	'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+# 	'debug_toolbar.panels.templates.TemplatesPanel',
+# 	'debug_toolbar.panels.cache.CachePanel',
+# 	'debug_toolbar.panels.signals.SignalsPanel',
+# 	'debug_toolbar.panels.logging.LoggingPanel',
+# 	'debug_toolbar.panels.redirects.RedirectsPanel'
+# ]
+
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
@@ -100,7 +125,8 @@ MIDDLEWARE = [
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
-	'django.middleware.clickjacking.XFrameOptionsMiddleware'
+	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'app.urls'

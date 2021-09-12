@@ -16,6 +16,7 @@ def news_category(request, category):
         '-created_on'
     )
     
+    if posts.count() < 1: category = 'sorry <<{}>> not found'.format(category)
     return render(request, 'news_category.html', {'category': category,
 												  'posts': posts})
 
