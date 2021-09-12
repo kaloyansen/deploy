@@ -175,10 +175,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-LANGUAGE_CODE = 'en-us'
+USE_I18N = True
+LANGUAGE_CODE = 'en'
+LANGUAGES = [
+    ('en','English'),
+    ('fr', 'French')
+]
+LANGUAGE_BIDI = False
 TIME_ZONE = 'UTC'
 TIME_ZONE = 'Europe/Paris'
-USE_I18N = True
+
 USE_L10N = True
 USE_TZ = True
 #X_FRAME_OPTIONS = 'SAMEORIGIN'

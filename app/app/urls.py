@@ -153,6 +153,7 @@ urlpatterns = [
 	path("on/",	RedirectView.as_view(url = url_k), name = "on"),
 	path("off/", RedirectView.as_view(url = url_h), name = "off"),
 	path("rest/", include(router.urls)),
+	path('i18n/', include('django.conf.urls.i18n')),
 	path("auth/", include("rest_framework.urls", namespace = "rest_framework")),
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
