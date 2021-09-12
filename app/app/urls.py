@@ -132,6 +132,11 @@ router.register(r'progs', ProgViewSet)
 
 admin.autodiscover()
 
+handler400 = 'app.views.handler400'
+handler403 = 'app.views.handler403'
+handler404 = 'app.views.handler404'
+handler500 = 'app.views.handler500'
+
 url_m = "https://freeshell.de/morla"
 url_k = "https://kalodev.site"
 url_h = "http://ka.lo"

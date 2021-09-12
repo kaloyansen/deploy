@@ -4,22 +4,26 @@
 
 
 <div title = "spider"
-     class = "conteiner-fluid col-md-10 offset-md-1">       
-  {% if graph %}
-  {{ graph | safe }}
-  {% else %}
-  <p>no graph provided</p>
-  {% endif %}
-</div>
+     class = "conteiner-fluid">       
+  <!-- <div title = "spider" -->
+  <!--      class = "conteiner-fluid row">        -->
+  <!--   {% if graph %} -->
+  <!--   {{ graph | safe }} -->
+  <!--   {% else %} -->
+  <!--   <p>no graph provided</p> -->
+  <!--   {% endif %} -->
+  <!-- </div> -->
 
-<div title = "error"
-     style = "font-size:55mm"
-     class = "container-fluid col-md-10 offset-md-2 text-center alert-danger">{{ message | safe }}
-  <a title = "error"
-     cless = "link-warning rounded-circle"
-     style = "font-size:66mm"
-     href = "mailto:kaloyansen@gmail.com&subject=error&body=description">
-    webmaster</a><p>thank you</p>
+  <div title = "error"
+       style = "font-size:33mm"
+       class = "container-fluid row">{{ message | safe }}
+    <a title = "error"
+       class = "link-warning rounded-circle"
+       style = "font-size:44mm"
+       href = "mailto:kaloyansen@gmail.com&subject=error&body=description">
+      webmaster</a>
+  </div>
+
 </div>
 
 {% endblock %}

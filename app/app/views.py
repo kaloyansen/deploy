@@ -1,14 +1,31 @@
 import socket
 import logging
-from django.shortcuts import render
-from django.contrib.auth.decorators import user_passes_test
 from django.conf import settings
+from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import render
+from django.template import RequestContext
 from .otverka import safeStyle
 from .context_processors import get_visitor
 from work.models import Visitor
 from memo.plot import animalien
 
 logger = logging.getLogger(__name__)
+
+
+def handler400(request, *args, **argv): return handlerxxx(400, 'bad request', request, *args, **argv)
+
+def handler403(request, *args, **argv): return handlerxxx(403, 'permission denied', request, *args, **argv)
+
+def handler404(request, *args, **argv): return handlerxxx(404, 'page not found', request, *args, **argv)
+
+def handler500(request, *args, **argv): return handlerxxx(500, 'error', request, *args, **argv)
+
+def handlerxxx(code, message, request, *args, **argv):
+	message = '[{}] {}<br />** {} **'.format(code, message, request.path_info)
+	response = render(request, 'erreur.html', {'message': "<strong><p>{}</p></strong>if you like it is possible to send an e-mail to".format(message)})
+	response.status_code = code
+	return response
+
 
 def get_lang(request):
 
@@ -20,13 +37,9 @@ def get_lang(request):
 	return visitor.lang[:2]
 
 
-def erreur(request):
-	context = {'message': "<p>something wrong or at least not forseen happened</p>if you like it is possible to send an e-mail to",
-			   'graph': animalien()}
-	return render(request, 'erreur.html', context)
-
-
 def base(request): return render(request, 'base.html')
+def erreur(request): return render(request, 'erreur.html', {'message': "<p>something wrong or at least not forseen happened</p>if you like it is possible to send an e-mail to"})
+
 
 
 def index(request):
