@@ -1,6 +1,7 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
-from django.utils import timezone
+#from django.conf import settings
+#from django.http import HttpResponseRedirect
+#from django.shortcuts import redirect, render
+from django.utils import timezone, translation
 from app.otverka import safeStyle, flip_language, tracker, get_visitor
 from app.encdec import encrypt
 
@@ -102,7 +103,8 @@ def get_context(request):
 		else:
 			visitor.lang = lang
 			visitor.save()
-		
+			translation.activate(lang)
+
 	if "message" in request.POST:
 		send['message'] = 'merci'
 		send['submit'] = 'sent'		

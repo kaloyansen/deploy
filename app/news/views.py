@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import ugettext as _
 from news.models import Post, Comment
 from .forms import CommentForm
 
@@ -16,7 +17,7 @@ def news_category(request, category):
         '-created_on'
     )
     
-    if posts.count() < 1: category = 'sorry <<{}>> not found'.format(category)
+    if posts.count() < 1: category = '<<{}>> {}'.format(category, _('NotFound'))
     return render(request, 'news_category.html', {'category': category,
 												  'posts': posts})
 

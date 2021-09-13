@@ -1,5 +1,6 @@
-from pathlib import Path
 import environ
+from pathlib import Path
+from django.utils.translation import ugettext_lazy as _
 
 env = environ.Env()
 
@@ -24,6 +25,8 @@ TEMPLATE_DEBUG = DEBUG
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 # build paths inside the project like this: BASE_DIR / 'subdir'
+# PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+
 
 ALLOWED_HOSTS = ['*'] # not safe
 SILENCED_SYSTEM_CHECKS = ["security.W004", "security.W008"]
@@ -175,19 +178,20 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-USE_I18N = True
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'fr'
 LANGUAGES = [
-    ('en','English'),
-    ('fr', 'French')
+    ('en-us',_('English')),
+    ('fr', _('French'))
 ]
 LANGUAGE_BIDI = False
 TIME_ZONE = 'UTC'
 TIME_ZONE = 'Europe/Paris'
 
+USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 #X_FRAME_OPTIONS = 'SAMEORIGIN'
+LOCALE_PATHS = (BASE_DIR / 'locale',)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
