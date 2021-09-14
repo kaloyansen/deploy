@@ -6,6 +6,7 @@
 {% bootstrap_messages %}
 
 {% load static %}
+{% load i18n %}
 
 
 <!DOCTYPE html>
@@ -97,56 +98,50 @@
               <ul class = "navbar-nav mr-auto">
 
                 <li class = "nav-item active">
-                  <a title = "quoi de neuf"
+                  <a title = "{% trans 'News' %}"
                      class = "nav-link btn-outline-primary rounded-circle"
-                     href = "{% url 'news_index' %}">news</a>
+                     href = "{% url 'news_index' %}">{% trans 'News' %}</a>
                 </li>
 
                 <li class = "nav-item active">
-                  <a title = "mes projets"
+                  <a title = "{% trans 'Work' %}"
                      class = "nav-link btn-outline-info rounded-circle"
-                     href = "{% url 'work_index' %}">work</a>
+                     href = "{% url 'work_index' %}">{% trans 'Work' %}</a>
                 </li>
 
-                <!-- <li class = "nav-item active"> -->
-                <!--   <a title = "la Bulgarie" -->
-                <!--      class = "nav-link btn-outline-warning rounded-circle" -->
-                <!--      href = "/memo/bg/">Bulgarie</a> -->
-                <!-- </li> -->
-                
                 <li class = "btn-group nav-item active">
                   <a id = "btnGroupDrop"
-                     title = "les visualisations en-ligne"
+                     title = "{% trans 'PlotMainDesc' %}"
                      class = "nav-link btn-outline-warning text-light dropdown-toggle rounded-circle"
                      data-toggle = "dropdown"
                      aria-haspopup = "true"
-                     aria-expanded = "true">plotter</a>
+                     aria-expanded = "true">{% trans 'PlotMain' %}</a>
                   <div class = "dropdown-menu text-light bg-info"
                        aria-labelledby = "btnGroupDrop">
-                    <a title = "langages de programmation"
+                    <a title = "{% trans 'PlotLang' %}"
                        class = "nav-link btn-outline-success rounded"
-                       href = "{% url 'demo' %}">langages de programmation</a>
-                    <a title = "un modèle 3D du système"
+                       href = "{% url 'demo' %}">{% trans 'PlotLang' %}</a>
+                    <a title = "{% trans 'PlotSun' %}"
                        class = "nav-link btn-outline-danger rounded"
-                       href = "{% url 'sun' %}">le système solaire</a>
-                    <a title = "les élections bulgare anticipées en couleur"
+                       href = "{% url 'sun' %}">{% trans 'PlotSun' %}</a>
+                    <a title = "{% trans 'PlotBg' %}"
                        class="nav-link btn-outline-warning rounded"
-                       href = "{% url 'bg' %}">élections bulgares anticipées</a>
+                       href = "{% url 'bg' %}">{% trans 'PlotBg' %}</a>
                   </div>
                 </li>
 
                 <li class = "btn-group nav-item active">
                   <a id = "btnGroupDrop"
-                     title = "credit"
+                     title = "{% trans 'About' %}"
                      class = "nav-link btn-outline-success text-light dropdown-toggle rounded-circle"
                      data-toggle = "dropdown"
                      aria-haspopup = "true"
-                     aria-expanded = "true">about</a>
+                     aria-expanded = "true">{% trans 'About' %}</a>
                   <div class = "dropdown-menu text-light bg-success"
                        aria-labelledby = "btnGroupDrop">
                     <a title = "curriculum vitæ"
                        class = "nav-link btn-outline-warning rounded"
-                       href = "/static/pdf/back-end.pdf">mon cv</a>
+                       href = "/static/pdf/back-end.pdf">{% trans 'MyCV' %}</a>
                     <a title = "django rest framework"
                        class = "nav-link btn-outline-primary rounded"
                        href = "/rest">api rest</a>
@@ -155,33 +150,35 @@
                        href = "/admin">django admininstration</a>
                     <a title = "this page is a django application"
                        class = "nav-link btn-outline-info rounded"
-                       href = "{% url 'work_detail' 3 %}">about this web page</a>
+                       href = "{% url 'work_detail' 3 %}">{% trans 'ThisPage' %}</a>
                     {{ page_digitalocean_grand | safe }}
 
                   </div>
                 </li>
 
               </ul>
-              <ul class="navbar-nav mr-auto">
 
-                <li class = "nav-item active text-light"> 
-                  <form method = "post" action = "">
-                    {% csrf_token %}
+
+              <ul class = "navbar-nav text-right">
+                <li class = "nav-item">
+                  <form method = "post">{% csrf_token %}
                     {% buttons %}
-                    <button title = "toggle {{ page_oldlang }}/{{ page_newlang }} language"
-                            class = "btn btn-outline-{{ page_lancol }} rounded-circle"
-                            value = {{ page_newlang }}
-                            name = "fliplang"><strong>{{ page_oldlang }}</strong></button>
+                    <button title = "{{ page_oldlang }}/{{ page_newlang }}"
+                            type = "submit"                              
+                            value = "{{ page_newlang }}"
+                            class = "btn btn-outline-{{page_lancol}} rounded"
+                            name = "fliplang"><strong>{% trans 'ChengeLangInverse' %}</strong>
+                    </button>
                     {% endbuttons %}
                   </form>
                 </li>
-
               </ul>
 
-              <div class = "nav_item">
+
+              <div class = "nav_item col-md-3 offset-md-1">
                 <form method = "post" class = "d-flex">
                   {% csrf_token %}
-                  <input title = "m'envoyer un message"
+                  <input title = "{% trans 'SendMeMessage' %}"
                          style = "{{ page_style }}"
                          class = "form-control me-2 rounded text-center"
                          type = "search"

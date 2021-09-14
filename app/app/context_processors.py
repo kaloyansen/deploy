@@ -1,10 +1,12 @@
 #from django.conf import settings
-#from django.http import HttpResponseRedirect
 #from django.shortcuts import redirect, render
+import logging
+from django.http import HttpResponse
 from django.utils import timezone, translation
 from app.otverka import safeStyle, flip_language, tracker, get_visitor
 from app.encdec import encrypt
 
+logger = logging.getLogger(__name__)
 
 def linked(title, color, url, label):
 	x = '<a title = "{}"\
@@ -103,7 +105,6 @@ def get_context(request):
 		else:
 			visitor.lang = lang
 			visitor.save()
-			translation.activate(lang)
 
 	if "message" in request.POST:
 		send['message'] = 'merci'
@@ -132,6 +133,12 @@ def get_context(request):
 	if lang == 'fr': send['lancol'] = 'primary'
 	elif lang == 'en': send['iseng'] = True
 	else: send['lancol'] = 'warning'
+
+	if lang == request.LANGUAGE_CODE:
+		x = 0
+	else:
+		translation.activate(lang)
+		request.session[translation.LANGUAGE_SESSION_KEY] = lang
 
 	if send['redirect']:
 		send['message'] = 'redirecting'

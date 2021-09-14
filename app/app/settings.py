@@ -101,10 +101,17 @@ REST_FRAMEWORK = {
 }
 
 def show_toolbar(request): return DEBUG
-DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK" : show_toolbar}
+DEBUG_TOOLBAR_CONFIG = {'SHOW_TOOLBAR_CALLBACK' : show_toolbar,
+						'INTERCEPT_REDIRECTS': False}
 if DEBUG:
 	import mimetypes
 	mimetypes.add_type("application/javascript", ".js", True)
+	mimetypes.add_type("image/png", ".png", True)
+	mimetypes.add_type("image/jpg", ".jpg", True)
+	mimetypes.add_type("image/x-icon", ".ico", True)
+	mimetypes.add_type("image/svg+xml", ".svg", True)
+	mimetypes.add_type("text/css", ".css", True)
+	mimetypes.add_type("text/plain", ".txt", True)
 
 # DEBUG_TOOLBAR_PANELS = [
 # 	'debug_toolbar.panels.versions.VersionsPanel',
@@ -122,14 +129,15 @@ if DEBUG:
 # ]
 
 MIDDLEWARE = [
+	'debug_toolbar.middleware.DebugToolbarMiddleware',
 	'django.middleware.security.SecurityMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.locale.LocaleMiddleware', # you
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -180,7 +188,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 LANGUAGE_CODE = 'fr'
 LANGUAGES = [
-    ('en-us',_('English')),
+    ('en', _('English')),
     ('fr', _('French'))
 ]
 LANGUAGE_BIDI = False

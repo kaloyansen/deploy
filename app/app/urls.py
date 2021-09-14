@@ -136,7 +136,11 @@ admin.autodiscover()
 handler400 = 'app.views.handler400'
 handler403 = 'app.views.handler403'
 handler404 = 'app.views.handler404'
+handler418 = 'app.views.handler418'
+handler451 = 'app.views.handler451'
 handler500 = 'app.views.handler500'
+handler502 = 'app.views.handler502'
+handler503 = 'app.views.handler503'
 
 url_m = "https://freeshell.de/morla"
 url_k = "https://kalodev.site"
@@ -169,7 +173,7 @@ urlpatterns = [
 if settings.DEBUG: urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))
 
 urlpatterns += static(settings.STATIC_URL,
-					  document_root = settings.STATIC_ROOT)
+					  document_root = settings.STATIC_ROOT, show_indexes = True)
 urlpatterns += static(settings.ENCRYPT_URL,
 					  document_root = settings.ENCRYPT_ROOT)
 urlpatterns += static(settings.ROBOTS_URL,

@@ -31,7 +31,7 @@ Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Dja
 """
 work[3].place = "<a href = \"https://simplon.co\">simplon.co</a>, Grenoble, FRANCE"
 work[3].technology = """
-python3.8, Django-3.2.4, django rest framework 3.12.4, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), certbot 0.40.0, powered by <a href = "https://digitalocean.com">https://digitalocean.com</a>, logo: kalo web development(<a href = "https://www.kalo.dev">https://www.kalo.dev</a>), git version 2.32.0, git repository: <a href = "https://github.com/kaloyansen/deploy">https://github.com/kaloyansen/deploy</a>
+python3.8, Django-3.2.4, Django REST framework 3.12.4, Debug Toolbar 3.2.2, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), certbot 0.40.0, powered by <a href = "https://digitalocean.com">https://digitalocean.com</a>, logo: kalo web development(<a href = "https://www.kalo.dev">https://www.kalo.dev</a>), git version 2.32.0, git repository: <a href = "https://github.com/kaloyansen/deploy">https://github.com/kaloyansen/deploy</a>
 """
 work[3].save()
 

@@ -12,15 +12,6 @@ CHOICE = ((0, 'unknown'),
 		  (9, 'php'),
 		  (10, 'perl'))
 
-# ELEBG = ((0, 'gerb'),
-# 		 (1, 'db'),
-# 		 (2, 'itn'),
-# 		 (3, 'bsp'),
-# 		 (4, 'dps'),
-# 		 (5, 'fachaux'),
-# 		 (6, 'c'),
-# 		 (7, 'imv'))
-
 dicho = dict(CHOICE)
 
 
@@ -37,7 +28,7 @@ class Prog(models.Model):
 							   default = 2,
 							   unique = True,
 							   choices = CHOICE,
-							   verbose_name = "programming language")
+							   verbose_name = 'option')
 	code1 = models.IntegerField(blank = False,
 								default = 11,
 								verbose_name = 'range')

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-12 23:54+0200\n"
+"POT-Creation-Date: 2021-09-14 00:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/settings.py:183
+#: app/settings.py:191
 msgid "English"
 msgstr "anglais"
 
-#: app/settings.py:184
+#: app/settings.py:192
 msgid "French"
 msgstr "français"
 
 #: news/views.py:20
 msgid "NotFound"
-msgstr "n'est pas touvé"
+msgstr "pas trouvé"
+
+#: templates/base.html:101 templates/base.html:103
+msgid "News"
+msgstr "nouvelles"
+
+#: templates/base.html:107 templates/base.html:109
+msgid "Work"
+msgstr "travail"
+
+#: templates/base.html:114
+msgid "PlotMainDesc"
+msgstr "des visualisations en-ligne"
+
+#: templates/base.html:118
+msgid "PlotMain"
+msgstr "traceur"
+
+#: templates/base.html:121 templates/base.html:123
+msgid "PlotLang"
+msgstr "vos langages de programmation"
+
+#: templates/base.html:124 templates/base.html:126
+msgid "PlotSun"
+msgstr "un model 3D du système solaire"
+
+#: templates/base.html:127 templates/base.html:129
+msgid "PlotBg"
+msgstr "les élections bulgare anticipées"
+
+#: templates/base.html:135 templates/base.html:139
+msgid "About"
+msgstr "à propos"
+
+#: templates/base.html:144
+msgid "MyCV"
+msgstr "mon CV"
+
+#: templates/base.html:153
+msgid "ThisPage"
+msgstr "pour cette page"
+
+#: templates/base.html:184
+msgid "ChengeLangInverse"
+msgstr "go to engish version"
+
+#: templates/base.html:194
+msgid "SendMeMessage"
+msgstr "m'envoyez un message"
+
+#: templates/memo_demo.html:37
+msgid "NoGraph"
+msgstr "problème de la visualisation"
+
+#: templates/memo_demo.html:48 templates/memo_demo.html:52
+msgid "VoteNow"
+msgstr "votez maintenant"
+
+#: templates/memo_demo.html:54
+msgid "VoteThanx"
+msgstr "marci d'avoir voté"
+
+#: templates/memo_demo.html:57
+msgid "InDataBase"
+msgstr "à la base de donnée"
+
+#: templates/memo_demo.html:84
+msgid "LangQuestion"
+msgstr "quel est vorte langage de programmation préféré ?"
+
+#: templates/memo_demo.html:95
+msgid "SendNow"
+msgstr "envoyez"
+
+#: templates/memo_demo.html:98
+msgid "CancelNow"
+msgstr "annulez"

@@ -12,15 +12,15 @@ from memo.plot import animalien
 logger = logging.getLogger(__name__)
 
 
-def handler400(request, *args, **argv): return handlerxxx(400, 'bad request', request, *args, **argv)
-
-def handler403(request, *args, **argv): return handlerxxx(403, 'permission denied', request, *args, **argv)
-
-def handler404(request, *args, **argv): return handlerxxx(404, 'page not found', request, *args, **argv)
-
-def handler500(request, *args, **argv): return handlerxxx(500, 'error', request, *args, **argv)
-
-def handlerxxx(code, message, request, *args, **argv):
+def handler400(request, e): return lerxxx(400, 'bad request', request)
+def handler403(request, e): return lerxxx(403, 'permission denied', request)
+def handler404(request, e): return lerxxx(404, 'page not found', request)
+def handler418(request): return lerxxx(418, 'i am a teapot', request)
+def handler451(request): return lerxxx(451, 'unavailable for legal reasons', request)
+def handler500(request): return lerxxx(500, 'internal server error', request)
+def handler502(request): return lerxxx(502, 'bad gateway', request)
+def handler503(request): return lerxxx(503, 'service unavailable', request)
+def lerxxx(code, message, request):
 	message = '[{}] {}<br />** {} **'.format(code, message, request.path_info)
 	response = render(request, 'erreur.html', {'message': "<strong><p>{}</p></strong>if you like it is possible to send an e-mail to".format(message)})
 	response.status_code = code

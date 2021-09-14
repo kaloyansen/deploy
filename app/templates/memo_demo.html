@@ -1,6 +1,13 @@
 {% extends "base.html" %}
-{% load static %}
 {% block page_content %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
 
 <div id = "is_valid"
      class = "row sr-only"
@@ -27,7 +34,7 @@
     {% if graph %}
     {{ graph | safe }}
     {% else %}
-    <p>No graph was provided.</p>
+    <p>{% trans 'NoGraph' %}</p>
     {% endif %}
   </div>
 
@@ -38,106 +45,16 @@
     <button type = "button"
             class = "btn btn-outline-danger rounded-circle"
             data-toggle = "modal"
-            data-target = "#myModal">vote</button>
-    <button type = "button"
-            class = "btn btn-outline-warning rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">now</button>
-    <button type = "button"
-            class = "btn btn-outline-success rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">votez</button>
-    <button type = "button"
-            class = "btn btn-outline-info rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">maintenant</button>
-    <button type = "button"
-            class = "btn btn-outline-dark rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">гласувайте</button>
-    <button type = "button"
-            class = "btn btn-outline-primary rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">сега</button>
-    <button type = "button"
-            class = "btn btn-outline-danger rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">vote</button>
-    <button type = "button"
-            class = "btn btn-outline-warning rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">now</button>
-    <button type = "button"
-            class = "btn btn-outline-success rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">votez</button>
-    <button type = "button"
-            class = "btn btn-outline-info rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">maintenant</button>
-    <button type = "button"
-            class = "btn btn-outline-dark rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">гласувайте</button>
-    <button type = "button"
-            class = "btn btn-outline-primary rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">сега</button>
-    <button type = "button"
-            class = "btn btn-outline-danger rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">vote</button>
-    <button type = "button"
-            class = "btn btn-outline-warning rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">now</button>
-    <button type = "button"
-            class = "btn btn-outline-success rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">votez</button>
-    <button type = "button"
-            class = "btn btn-outline-info rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">maintenant</button>
-    <button type = "button"
-            class = "btn btn-outline-dark rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">гласувайте</button>
+            data-target = "#myModal">{% trans 'VoteNow' %}</button>
     <button type = "button"
             class = "btn btn-outline-primary rounded"
             data-toggle = "modal"
-            data-target = "#myModal">сега</button>
-    <button type = "button"
-            class = "btn btn-outline-danger rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">vote</button>
-    <button type = "button"
-            class = "btn btn-outline-warning rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">now</button>
-    <button type = "button"
-            class = "btn btn-outline-success rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">votez</button>
-    <button type = "button"
-            class = "btn btn-outline-info rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">maintenant</button>
-    <button type = "button"
-            class = "btn btn-outline-dark rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">гласувайте</button>
-    <button type = "button"
-            class = "btn btn-outline-primary rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">сега</button>
+            data-target = "#myModal">{% trans 'VoteNow' %}</button>
     {% else %}
-    <h4>merci d'avoir voté</h4>
-    <h4>thank you</h4>
-    <h4>благодарности</h4>
+    <h4>{% trans 'VoteThanx' %}</h4>
     {% endif %}
     <div class = "raw info">
-      <p><label>à la base de données<br />{{ party }}</label>
+      <p><label>{% trans 'InDataBase' %}<br />{{ party }}</label>
     </div>
   </div>
   
@@ -160,23 +77,26 @@
      id = "myModal"
      class = "modal fade">
   <div class = "modal-dialog modal-dialog-centered modal-lg">
-    <div class = "modal-content">what is yout favorite programming language ?
+    <div class = "modal-content">{{ page_digitalocean_grand | safe }}
       <form action = ""
             method = "post">
         <div class = "modal-header">
-          <h5 class = "modal-title">quel est votre langage de programmation préféré ?</h5>
+          <h5 class = "modal-title">{% trans 'LangQuestion' %}
         </div>
         <div class = "modal-body">
           {% csrf_token %}
-          {{ form }}
+          {% bootstrap_form form layout='inline' form_group_class='w3-input w3-border-100 w3-large' %}
+          <!-- {{ form }} -->
           <label>{{ party }}</label>
         </div>
         <div class = "modal-footer">
+          {% buttons %}
           <button type = "submit"
-                  class = "btn-outline-info">send</button>
+                  class = "btn-outline-info">{% trans 'SendNow' %}</button>
           <button type = "button"
                   class = "close btn btn-outline-warning"
-                  data-dismiss = "modal">cancel</button>
+                  data-dismiss = "modal">{% trans 'CancelNow' %}</button>
+          {% endbuttons %}
         </div>
       </form>
     </div>
