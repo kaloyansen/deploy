@@ -199,9 +199,14 @@
 
   {{ page_pause | safe }}
 
-  <div class = "container-fluid">
-    {% block page_content %}{% endblock %}
+  <div title = "block page_content"
+       class = "col container-fluid">
+    {% block page_content %}
+    <!-- here is the extended page extended is here -->
+    {% endblock %}
   </div>
+
+
 
   {{ page_pause | safe }}
 

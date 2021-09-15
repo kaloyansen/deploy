@@ -99,7 +99,7 @@ def rgb(x, stdev = 1, inverse = False):
 	return 'rgb({}, {}, {})'.format(int(r), int(g), int(b))
 
 
-def rainbow(stdev = 77, delta = 10, mini = 345, maxi = 678):
+def rainbow(stdev = 77, delta = 16, mini = 345, maxi = 678):
 	masif = []
 	x = mini
 	while x < maxi:

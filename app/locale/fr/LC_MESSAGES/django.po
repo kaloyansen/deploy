@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-15 05:09+0200\n"
+"POT-Creation-Date: 2021-09-15 16:37+0200\n"
 "PO-Revision-Date: 2021-09-15 00:11+0200\n"
 "Last-Translator: Kaloyan KRASTEV <kaloyansen@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,11 +51,11 @@ msgstr "vos langages de programmation"
 msgid "PlotSun"
 msgstr "un model 3D du système solaire"
 
-#: app/settings.py:194
+#: app/settings.py:190
 msgid "English"
 msgstr "anglais"
 
-#: app/settings.py:194
+#: app/settings.py:190
 msgid "French"
 msgstr "français"
 

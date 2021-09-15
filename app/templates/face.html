@@ -2,15 +2,17 @@
 
 {% block page_content %}
 
-<div class = "container" style = "{{ style1 }}">
+<div class = "container-fluid" style = "{{ style1 }}">
+
   <div class = "row" style = "{{ style2 }}">
     style: {{ style2 }}
+
     <div style = "{{ style }}">
       style: {{ style }}
       <br />
       {{ page_visitor }}
-
     </div>
+    
     <div style = "{{ style1 }}">
       style: {{ style1 }}
       <br />
@@ -27,32 +29,28 @@
       debug: {{ debug }}
       hostname: {{ hostname }}
     </div>
+
   </div>
 
-  <div class = "row" style = "{{ style }}">
+  <div class = "row container-fluid" style = "{{ style }}">
     {% for visa in visit %}
-    <div class = "col-md-3">
+    <div class = "col container">
       {% if visa.is_robo %}
-      <div class = "card mb-2 bg-dark text-light">
-        {% elif visa.has_message %}
-        <div class = "card mb-2 bg-warning">
-          {% elif visa.voted %}
-          <div class = "card mb-2 bg-danger text-warning">
-            {% else %}
-            <div class = "card mb-2 bg-light text-dark">
-              {% endif %}
-              <div class = "card-body">
-                <p class = "card-text">{{ visa }}</p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
+      <div class = "card bg-dark text-light">
+      {% elif visa.has_message %}
+      <div class = "card bg-warning">
+      {% elif visa.voted %}
+      <div class = "card bg-danger text-warning">
+      {% else %}
+      <div class = "card bg-light text-dark">
+        {% endif %}
+        <div class = "card-body">
+          <p class = "card-text">{{ visa }}</p>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
-</div>
-
 
 <!-- {% for rcode in colcode %} -->
 <!-- {% for gcode in colcode %} -->
@@ -62,8 +60,11 @@
 <!-- {% endfor %} -->
 <!-- {% endfor %} -->
 
-{% for rain in rainbow %}
-<div style = "{{ rain }}">{{ rain }}</div>
-{% endfor %}
+  {% for rain in rainbow %}
+  <div title = "{{ rain }}"
+       class = "row"
+       style = "{{ rain }}">{{ rain }}</div>
+  {% endfor %}
 
+</div>
 {% endblock %}

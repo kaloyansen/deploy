@@ -18,17 +18,17 @@ echo
 echo ==========================================
 echo check for new translations:
 manage.py makemessages -ai venv -i static
-# manage.py compilemessages -i venv -i static
+echo manage.py compilemessages -i venv -i static
 
 echo
 echo ==========================================
 echo check database if model update is needed:
 manage.py makemigrations --dry-run
-# manage.py migrate
+echo manage.py migrate
 
 echo
 echo ==========================================
 touch app/wsgi.py
 echo wsgi reload signal sent to gunicorn ha-ha-ha
-# sudo ./reloadapache.csh
+echo sudo ./reloadapache.csh
 echo
