@@ -19,23 +19,20 @@ ENCRYPT_KEY = env('ENCRYPT_KEY', default = 'encrypt key not found')
 DEBUG = env.bool('DJANGO_DEBUG', default = False)
 is_prod = env.bool('IS_PRODUCTION', default = True)
 
-is_dev = not is_prod
+is_dev = not is_prod # vive la france
 TEMPLATE_DEBUG = DEBUG
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 # build paths inside the project like this: BASE_DIR / 'subdir'
 # PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-
 ALLOWED_HOSTS = ['*'] # not safe
 SILENCED_SYSTEM_CHECKS = ["security.W004", "security.W008"]
 INTERNAL_IPS = ['ka.lo', '127.0.0.3']
-
+SESSION_COOKIE_SECURE = True
 
 if is_prod:
 	ALLOWED_HOSTS = ['.kalodev.site', '142.93.171.130']
-	SESSION_COOKIE_SECURE = True
 else: # is_dev:
 	ALLOWED_HOSTS = INTERNAL_IPS
 	SESSION_COOKIE_SECURE = False # needed by admin in development
@@ -44,7 +41,8 @@ else: # is_dev:
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False # SSL_REDIRECT = True does not work, but ...
 # SECURE_HSTS_SECONDS = 6 # ... one may try with SECURE_HSTS_SECONDS
-X_FRAME_OPTIONS = 'DENY' # 'SAMEORIGIN' enable frames
+X_FRAME_OPTIONS = 'SAMEORIGIN' # enable frames
+X_FRAME_OPTIONS = 'DENY' # disable frames
 
 LOGGING = {
     'version': 1,
@@ -186,21 +184,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
+USE_I18N = USE_L10N = USE_TZ = True
+
+LOCALE_PATHS = (BASE_DIR / 'locale', BASE_DIR / 'i18n')
+LANGUAGES = [('en', _('English')), ('fr', _('French'))]
 LANGUAGE_CODE = 'fr'
-LANGUAGES = [
-    ('en', _('English')),
-    ('fr', _('French'))
-]
 LANGUAGE_BIDI = False
-TIME_ZONE = 'UTC'
 TIME_ZONE = 'Europe/Paris'
 
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-#X_FRAME_OPTIONS = 'SAMEORIGIN'
-LOCALE_PATHS = (BASE_DIR / 'locale',)
-
+# static server
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_URL = '/static/'
@@ -233,6 +225,8 @@ SESSION_COOKIE_AGE = 86400 # sec
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_NAME = 'DSESSIONID'
 SESSION_COOKIE_SECURE = False
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 système code signification
 W004 SECURE_HSTS_SECONDS not set

@@ -22,9 +22,7 @@ server {
     index index.html index.htm;
 
     client_max_body_size 4G;
-
     keepalive_timeout 5;
-
     autoindex_localtime on;
 
     location /favicon.ico  {

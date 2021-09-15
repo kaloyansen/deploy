@@ -1,16 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Kaloyan KRASTEV <kaloyansen@gmail.com>, 2021.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-15 03:21+0200\n"
+"POT-Creation-Date: 2021-09-15 05:09+0200\n"
 "PO-Revision-Date: 2021-09-15 00:11+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Kaloyan KRASTEV <kaloyansen@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -51,11 +51,11 @@ msgstr "vos langages de programmation"
 msgid "PlotSun"
 msgstr "un model 3D du système solaire"
 
-#: app/settings.py:191
+#: app/settings.py:194
 msgid "English"
 msgstr "anglais"
 
-#: app/settings.py:192
+#: app/settings.py:194
 msgid "French"
 msgstr "français"
 
@@ -101,7 +101,7 @@ msgstr "marci d'avoir voté"
 
 #: templates/memo_demo.html:57
 msgid "InDataBase"
-msgstr "à la base de donnée"
+msgstr "à la base de données"
 
 #: templates/memo_demo.html:84
 msgid "LangQuestion"
