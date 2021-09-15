@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
 from django.template import RequestContext
-from .otverka import safeStyle
+from .otverka import safeStyle, rainbow
 from .context_processors import get_visitor
 from work.models import Visitor
 from memo.plot import animalien
@@ -85,6 +85,8 @@ def face(request):
 			   'style2': safeStyle('deux'),
 			   'debug': settings.DEBUG,
 			   'hostname': socket.gethostname(),
+			   'colcode': [31, 63, 127, 255],
+			   'rainbow': rainbow(),
 			   'visit': Visitor.objects.all().order_by('date')}
 	return render(request, 'face.html', context)
 

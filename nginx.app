@@ -1,4 +1,5 @@
 server {
+    # /etc/nginx/sites-available/app
     listen 80 default_server;
     listen [::]:80 default_server;
     server_name kalodev.site www.kalodev.site;
@@ -14,8 +15,8 @@ server {
     include snippets/ssl-params.conf;
     include /etc/nginx/mime.types;
 
-    access_log /var/log/nginx/kalodev_access.log combined;
-    error_log /var/log/nginx/kalodev_error.log error;
+    access_log /home/django/deploy/app/log/nginx_kalodev_access.log combined;
+    error_log /home/django/deploy/app/log/nginx_kalodev_error.log error;
 
     root /usr/share/nginx/html;
     index index.html index.htm;

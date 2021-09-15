@@ -1,3 +1,0 @@
-git status
-manage.py check
-touch app/wsgi.py

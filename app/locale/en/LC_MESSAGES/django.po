@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 00:36+0200\n"
+"POT-Creation-Date: 2021-09-15 02:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/context_processors.py:151 templates/base.html:101
+#: templates/base.html:103
+msgid "News"
+msgstr "news"
+
+#: app/context_processors.py:152 templates/base.html:107
+#: templates/base.html:109
+msgid "Work"
+msgstr "work"
+
+#: app/context_processors.py:153 templates/base.html:153
+msgid "ThisPage"
+msgstr "about this page"
+
+#: app/context_processors.py:154 templates/base.html:127
+#: templates/base.html:129
+msgid "PlotBg"
+msgstr "elections in Bulgaria"
+
+#: app/context_processors.py:154
+msgid "Bulgarian"
+msgstr "bulgarian"
+
+#: app/context_processors.py:155 templates/base.html:121
+#: templates/base.html:123
+msgid "PlotLang"
+msgstr "your programming languages"
+
+#: app/context_processors.py:156 templates/base.html:124
+#: templates/base.html:126
+msgid "PlotSun"
+msgstr "3D model of the sun system"
 
 #: app/settings.py:191
 msgid "English"
@@ -30,14 +63,6 @@ msgstr "french"
 msgid "NotFound"
 msgstr "not found"
 
-#: templates/base.html:101 templates/base.html:103
-msgid "News"
-msgstr "news"
-
-#: templates/base.html:107 templates/base.html:109
-msgid "Work"
-msgstr "work"
-
 #: templates/base.html:114
 msgid "PlotMainDesc"
 msgstr "visualisations online"
@@ -45,18 +70,6 @@ msgstr "visualisations online"
 #: templates/base.html:118
 msgid "PlotMain"
 msgstr "plotter"
-
-#: templates/base.html:121 templates/base.html:123
-msgid "PlotLang"
-msgstr "your programming languages"
-
-#: templates/base.html:124 templates/base.html:126
-msgid "PlotSun"
-msgstr "3D model of the sun system"
-
-#: templates/base.html:127 templates/base.html:129
-msgid "PlotBg"
-msgstr "elections in Bulgaria"
 
 #: templates/base.html:135 templates/base.html:139
 msgid "About"
@@ -66,15 +79,11 @@ msgstr "about"
 msgid "MyCV"
 msgstr "my CV"
 
-#: templates/base.html:153
-msgid "ThisPage"
-msgstr "about this page"
-
-#: templates/base.html:184
+#: templates/base.html:170
 msgid "ChengeLangInverse"
-msgstr "ver la version française"
+msgstr "vers la version française"
 
-#: templates/base.html:194
+#: templates/base.html:181
 msgid "SendMeMessage"
 msgstr "send a message to me"
 
@@ -88,7 +97,7 @@ msgstr "vote now"
 
 #: templates/memo_demo.html:54
 msgid "VoteThanx"
-msgstr "thanx for your vote"
+msgstr "thank you for your vote"
 
 #: templates/memo_demo.html:57
 msgid "InDataBase"

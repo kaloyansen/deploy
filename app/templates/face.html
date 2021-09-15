@@ -34,22 +34,36 @@
     <div class = "col-md-3">
       {% if visa.is_robo %}
       <div class = "card mb-2 bg-dark text-light">
-      {% elif visa.has_message %}
-      <div class = "card mb-2 bg-warning">
-      {% elif visa.voted %}
-      <div class = "card mb-2 bg-danger text-warning">
-      {% else %}
-      <div class = "card mb-2 bg-light text-dark">
-        {% endif %}
-        <div class = "card-body">
-          <p class = "card-text">{{ visa }}</p>
+        {% elif visa.has_message %}
+        <div class = "card mb-2 bg-warning">
+          {% elif visa.voted %}
+          <div class = "card mb-2 bg-danger text-warning">
+            {% else %}
+            <div class = "card mb-2 bg-light text-dark">
+              {% endif %}
+              <div class = "card-body">
+                <p class = "card-text">{{ visa }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
-      {% endfor %}
   </div>
 </div>
 
 
+<!-- {% for rcode in colcode %} -->
+<!-- {% for gcode in colcode %} -->
+<!-- {% for bcode in colcode %} -->
+<!-- <div style = "background-color:rgb({{ rcode }}, {{ gcode }}, {{ bcode }}); color:rgb(200, 0, 200);">{{ rcode }}, {{ gcode}}, {{ bcode }}</div> -->
+<!-- {% endfor %} -->
+<!-- {% endfor %} -->
+<!-- {% endfor %} -->
+
+{% for rain in rainbow %}
+<div style = "{{ rain }}">{{ rain }}</div>
+{% endfor %}
 
 {% endblock %}

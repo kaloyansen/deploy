@@ -1,5 +1,6 @@
 import socket
 import random
+import math
 from work.models import Visitor, Page, ColorStyle
 
 
@@ -76,3 +77,36 @@ def safeStyle(title = 'default', force = 0.333):
 
 	cs.save()	
 	return cs
+
+
+def gaussian(mean, stdev, x, norm = 255): return math.exp(((x - mean) / stdev) ** 2 / -2) * norm
+def rgb(x, stdev = 1, inverse = False):
+
+	r = gaussian(666, stdev, x)
+	g = gaussian(543, stdev, x)
+	b = gaussian(456, stdev, x)
+
+	norm = 255
+	den = norm / 2
+	if inverse:
+		if r > den: r -= den
+		else: r += den
+		if g > den: g -= den
+		else: g += den
+		if b > den: b -= den
+		else: b += den
+
+	return 'rgb({}, {}, {})'.format(int(r), int(g), int(b))
+
+
+def rainbow(stdev = 77, delta = 10, mini = 345, maxi = 678):
+	masif = []
+	x = mini
+	while x < maxi:
+		txt = rgb(x, stdev)
+		txti = rgb(x, stdev, True)
+		print(x, txt)
+		masif.append('background-color:{}; color:{};'.format(txt, txti))
+		x += delta
+
+	return masif

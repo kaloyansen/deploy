@@ -9,8 +9,8 @@ ExecStart=/usr/bin/gunicorn3 app.wsgi:application \
 --name app \
 --pythonpath /home/django/deploy/app/venv/lib/python3.8/site-packages \
 --bind unix:/home/django/gunicorn.socket \
---error-logfile /home/django/deploy/app/gunicorn.error.log \
---access-logfile /home/django/deploy/app/gunicorn.access.log \
+--error-logfile /home/django/deploy/app/log/gunicorn.error.log \
+--access-logfile /home/django/deploy/app/log/gunicorn.access.log \
 --log-syslog \
 --workers 4 \
 --config /etc/gunicorn.d/gunicorn.py

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 00:36+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2021-09-15 02:40+0200\n"
+"PO-Revision-Date: 2021-09-15 00:11+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,6 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: app/context_processors.py:151 templates/base.html:101
+#: templates/base.html:103
+msgid "News"
+msgstr "actualités"
+
+#: app/context_processors.py:152 templates/base.html:107
+#: templates/base.html:109
+msgid "Work"
+msgstr "projets"
+
+#: app/context_processors.py:153 templates/base.html:153
+msgid "ThisPage"
+msgstr "pour cette page"
+
+#: app/context_processors.py:154 templates/base.html:127
+#: templates/base.html:129
+msgid "PlotBg"
+msgstr "les élections bulgare anticipées"
+
+#: app/context_processors.py:154
+msgid "Bulgarian"
+msgstr "bulgare"
+
+#: app/context_processors.py:155 templates/base.html:121
+#: templates/base.html:123
+msgid "PlotLang"
+msgstr "vos langages de programmation"
+
+#: app/context_processors.py:156 templates/base.html:124
+#: templates/base.html:126
+msgid "PlotSun"
+msgstr "un model 3D du système solaire"
 
 #: app/settings.py:191
 msgid "English"
@@ -28,15 +61,7 @@ msgstr "français"
 
 #: news/views.py:20
 msgid "NotFound"
-msgstr "pas trouvé"
-
-#: templates/base.html:101 templates/base.html:103
-msgid "News"
-msgstr "nouvelles"
-
-#: templates/base.html:107 templates/base.html:109
-msgid "Work"
-msgstr "travail"
+msgstr "n'est pas trouvé"
 
 #: templates/base.html:114
 msgid "PlotMainDesc"
@@ -46,18 +71,6 @@ msgstr "des visualisations en-ligne"
 msgid "PlotMain"
 msgstr "traceur"
 
-#: templates/base.html:121 templates/base.html:123
-msgid "PlotLang"
-msgstr "vos langages de programmation"
-
-#: templates/base.html:124 templates/base.html:126
-msgid "PlotSun"
-msgstr "un model 3D du système solaire"
-
-#: templates/base.html:127 templates/base.html:129
-msgid "PlotBg"
-msgstr "les élections bulgare anticipées"
-
 #: templates/base.html:135 templates/base.html:139
 msgid "About"
 msgstr "à propos"
@@ -66,15 +79,11 @@ msgstr "à propos"
 msgid "MyCV"
 msgstr "mon CV"
 
-#: templates/base.html:153
-msgid "ThisPage"
-msgstr "pour cette page"
-
-#: templates/base.html:184
+#: templates/base.html:170
 msgid "ChengeLangInverse"
 msgstr "go to engish version"
 
-#: templates/base.html:194
+#: templates/base.html:181
 msgid "SendMeMessage"
 msgstr "m'envoyez un message"
 

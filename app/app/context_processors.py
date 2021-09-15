@@ -3,6 +3,7 @@
 import logging
 from django.http import HttpResponse
 from django.utils import timezone, translation
+from django.utils.translation import ugettext_lazy as _
 from app.otverka import safeStyle, flip_language, tracker, get_visitor
 from app.encdec import encrypt
 
@@ -89,16 +90,6 @@ def get_context(request):
 			gonna set manifeste auto appear ! """
 			nova = True
 			
-			"""
-			post = request.POST.copy() # to make it mutable
-			post['fliplang'] = 'en'
-			
-			request.POST = post # and update original POST in the end
-			request.POST.update({'fliplang': 'en'})
-
-			request.query_params._mutable = True
-			request.query_params['fliplang'] = 'en' """
-			
 		lang = flip_language(lang)
 		if not visitor:
 			x = 0
@@ -157,12 +148,12 @@ def get_context(request):
 		'page_not_voted': has_not_voted(request),
 		'page_ip': ip,
 		'page_linkedin': linkedin(),
-		'page_ln_about': linked("this site", "success", "work/3/", "about"),
-		'page_ln_bg': linked("les élections bulgares anticipées", "info", "memo/bg/", "bulgare"),
-		'page_ln_demo': linked("programming", "danger", "memo/demo/", "language"),
-		'page_ln_news': linked("quoi de neuf", "primary", "news/", "news"),
-		'page_ln_sun': linked("le système solaire", "warning", "memo/sun/", "solaire"),
-		'page_ln_work': linked("work", "info", "work/", "work"),
+		'page_ln_news': linked(_("News"), "primary", "news/", _("News")),
+		'page_ln_work': linked(_("Work"), "info", "work/", _("Work")),
+		'page_ln_about': linked(_("ThisPage"), "success", "work/3/", _("ThisPage")),
+		'page_ln_bg': linked(_("PlotBg"), "info", "memo/bg/", _("Bulgarian")),
+		'page_ln_demo': linked(_("PlotLang"), "danger", "memo/demo/", _("PlotLang")),
+		'page_ln_sun': linked(_("PlotSun"), "warning", "memo/sun/", _("PlotSun")),
 		'page_message': send['message'],
 		'page_newlang': flip_language(send['lang']),
 		'page_oldlang': send['lang'],
