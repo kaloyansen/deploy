@@ -17,7 +17,7 @@ manage.py check
 echo
 echo ==========================================
 echo check for new translations:
-manage.py makemessages -ai venv -i static
+echo manage.py makemessages -ai venv -i static
 echo manage.py compilemessages -i venv -i static
 
 echo
