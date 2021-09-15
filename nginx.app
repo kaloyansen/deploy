@@ -25,6 +25,8 @@ server {
 
     keepalive_timeout 5;
 
+    autoindex_localtime on;
+
     location /favicon.ico  {
         alias /home/django/deploy/app/static/ico/favicon.ico;
     }
