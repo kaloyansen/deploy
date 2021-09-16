@@ -47,7 +47,7 @@ def index(request):
 	num_visits = request.session.get('num_visits', 0)
 	request.session['num_visits'] = num_visits + 1
 
-	title = {'fr': 'développeur back-end',
+	title = {'fr': 'concepteur développeur d\'applications',
 			 'en': 'backend developer'}
 	about = {'fr': '<p>conception d\'applications</p><p>développement back-end</p><p>analyse de données scientifique</p><p>visualisation en-ligne</p>',
 			 'en': '<p>software design</p><p>backend development</p><p>scientific data analysis</p><p>online visualization</p>'}
