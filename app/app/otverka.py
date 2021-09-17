@@ -20,11 +20,13 @@ def tracker(request):
 		
 		if ip_valid:
 
-			visitor = 0
+			visitor, cr = Visitor.objects.get_or_create(ip_address = ip)
+			if cr: nova = True
+			else: visitor.code += 1
+			lang = visitor.lang				
 
-			# if is_admin: x = 'do not track admin'
-			if False:
-				logger.error('False')
+			if is_admin:
+				x = 'do not wanna track admin'
 			else:
 				mage, cr = Mage.objects.get_or_create(name = req_path)
 				if cr:
@@ -32,11 +34,6 @@ def tracker(request):
 				else:
 					mage.code = mage.code + 1
 					mage.date = timezone.now()
-				
-				visitor, cr = Visitor.objects.get_or_create(ip_address = ip)
-				if cr: nova = True
-				else: visitor.code += 1
-				lang = visitor.lang
 				
 				visitor.mages.add(mage)
 				visitor.save()
