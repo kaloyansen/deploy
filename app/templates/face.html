@@ -32,24 +32,46 @@
 
   </div>
 
-  <div class = "row container-fluid" style = "{{ style }}">
-    {% for visa in visit %}
-    <div class = "col container">
-      {% if visa.is_robo %}
-      <div class = "card bg-dark text-light">
-      {% elif visa.has_message %}
-      <div class = "card bg-warning">
-      {% elif visa.voted %}
-      <div class = "card bg-danger text-warning">
-      {% else %}
-      <div class = "card bg-light text-dark">
-        {% endif %}
-        <div class = "card-body">
-          <p class = "card-text">{{ visa }}</p>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
+  <div title = "div work.visitor"
+       class = "table-responsive"
+       style = "{{ style }}">
+    <table title = "table work.visitor"
+           class = "table table-hover table-bordered table-dark"
+           style = "">
+      <caption>work.visitor</caption>
+      <thead>
+        <tr>
+          <th scope = "col">date</th>
+          <th scope = "col">ip</th>
+          <th scope = "col">code</th>
+          <th scope = "col">voted</th>
+          <th scope = "col">lang</th>
+          <th scope = "col">message</th>
+          <th scope = "col">mencrypted</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for visa in visit %}
+        {% if visa.is_robo %}
+        <tr class = "bg-dark text-light">
+        {% elif visa.has_message %}
+        <tr class = "bg-warning">
+        {% elif visa.voted %}
+        <tr class = "bg-danger text-warning">
+        {% else %}
+        <tr class = "bg-light text-dark">
+          {% endif %}
+          <th scope = "row">{{ visa.date }}</th>
+          <td>{{ visa.ip_address }}</td>
+          <td>{{ visa.code }}</td>
+          <td>{{ visa.voted }}</td>
+          <td>{{ visa.lang }}</td>
+          <td>{{ visa.dessage }}</td>
+          <td>{{ visa.mencrypted }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 
 <!-- {% for rcode in colcode %} -->
