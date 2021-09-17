@@ -92,6 +92,15 @@ class Project(models.Model):
 	def __str__(self): return self.title
 
 
+class Mage(models.Model):
+	name = models.CharField(max_length = 255)
+	date = models.DateTimeField(default = timezone.now)
+	code = models.IntegerField(blank = False,
+							   default = 0,
+							   verbose_name = 'range')
+
+	def __str__(self): return self.name
+
 
 class Visitor(models.Model):
 	ip_address = models.GenericIPAddressField()
@@ -107,9 +116,10 @@ class Visitor(models.Model):
 	lang = models.CharField(default = 'fr',
 							max_length = 15,
 							verbose_name = 'user language')
+	mages = models.ManyToManyField(Mage,
+								   blank = True,
+								   related_name = 'mage_visitors')
 
-	# def save(self, *args, **kwargs):
-	# 	super(Model, self).save(*args, **kwargs)		
 
 	def has_message(self):
 		if self.message == '': return False
@@ -119,9 +129,6 @@ class Visitor(models.Model):
 		if self.mencrypted:	return decrypt(self.message)
 		if self.has_message(): return '{} n-e.'.format(self.message)
 		return self.message
-		#dec = decrypt(self.message)
-		#if dec == None: return self.message
-		#return dec
 
 	def is_robo(self):
 		if self.voted: return False
@@ -140,16 +147,3 @@ class Visitor(models.Model):
 											 self.dessage())
 
 
-class Page(models.Model):
-	name = models.CharField(max_length = 255)
-	date = models.DateTimeField(default = timezone.now)
-	code = models.IntegerField(blank = False,
-							   default = 0,
-							   verbose_name = 'range')
-	mother = models.ForeignKey(Visitor,
-							   default = 1,
-							   related_name = 'son',
-							   verbose_name = 'visitor',
-							   on_delete = models.CASCADE)
-
-	def __str__(self): return self.name

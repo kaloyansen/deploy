@@ -1,8 +1,11 @@
 import socket
 import random
 import math
-from work.models import Visitor, Page, ColorStyle
+import logging
+from django.utils import timezone
+from work.models import Visitor, Mage, ColorStyle
 
+logger = logging.getLogger(__name__)
 
 def tracker(request):
 
@@ -17,26 +20,29 @@ def tracker(request):
 		
 		if ip_valid:
 
-			visited = Visitor.objects.filter(ip_address=ip).count()
 			visitor = 0
 
-			if is_admin: x = 'do not track admin'
-			else:				
-				visitor, cr = Visitor.objects.get_or_create(ip_address=ip)
+			# if is_admin: x = 'do not track admin'
+			if False:
+				logger.error('False')
+			else:
+				mage, cr = Mage.objects.get_or_create(name = req_path)
+				if cr:
+					pass
+				else:
+					mage.code = mage.code + 1
+					mage.date = timezone.now()
+				
+				visitor, cr = Visitor.objects.get_or_create(ip_address = ip)
 				if cr: nova = True
 				else: visitor.code += 1
 				lang = visitor.lang
-				visitor.save()
 				
-				page, cr = Page.objects.get_or_create(name=req_path,
-													  mother=visitor)
-				page.date = timezone.now()
-				page.code += 1
-				page.save()
+				visitor.mages.add(mage)
+				visitor.save()
 
-		else: x = "ip's not valid"
-		
-	except:	pass
+		else: logger.error('ip {} is not valid'.format(ip))		
+	except:	logger.error('general exception')
 
 	return ip, nova, lang
 
@@ -79,7 +85,10 @@ def safeStyle(title = 'default', force = 0.333):
 	return cs
 
 
-def gaussian(mean, stdev, x, norm = 255): return math.exp(((x - mean) / stdev) ** 2 / -2) * norm
+def gaussian(mean, stdev, x, norm = 255):
+	return math.exp(((x - mean) / stdev) ** 2 / -2) * norm
+
+
 def rgb(x, stdev = 1, inverse = False):
 
 	r = gaussian(666, stdev, x)
@@ -96,17 +105,20 @@ def rgb(x, stdev = 1, inverse = False):
 		if b > den: b -= den
 		else: b += den
 
-	return 'rgb({}, {}, {})'.format(int(r), int(g), int(b))
+	return int(r), int(g), int(b)
 
 
 def rainbow(stdev = 77, delta = 16, mini = 345, maxi = 678):
 	masif = []
 	x = mini
 	while x < maxi:
-		txt = rgb(x, stdev)
-		txti = rgb(x, stdev, True)
-		print(x, txt)
-		masif.append('background-color:{}; color:{};'.format(txt, txti))
+		front = rgb(x, stdev, True)
+		back = rgb(x, stdev, False)
+		costi = ColorStyle(title = 'star {}'.format(x),
+						   br = back[0], bg = back[1], bb = back[2],
+						   fr = front[0], fg = front[1], fb = front[2])
+		masif.append(costi)
 		x += delta
+		del costi
 
 	return masif

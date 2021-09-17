@@ -1,6 +1,6 @@
 from pathlib import Path
 from colorama import init, Fore, Back, Style
-from work.models import Visitor
+from work.models import Visitor, Mage
 
 init(autoreset = True)
 print(Fore.BLACK + Back.CYAN + '******* {} *******'.format(Path(__file__)))
@@ -17,7 +17,11 @@ for v in visivote: print(v.ip_address)
 
 visimess = Visitor.objects.exclude(message='')
 print(Back.MAGENTA + '\n{} messages'.format(visimess.count()))
-for v in visimess: print('message[{}] = {}'.format(v.ip_address, v.dessage()))
+for v in visimess:
+	print('message[{}] = {} {}'.format(v.ip_address,
+									v.dessage(),
+									len(v.mages.all())))
+	#for m in v.mages.all(): print(m.name, m.date, m.code)
 
 robot = visit.filter(voted=False).filter(lang='fr').filter(message='').filter(code__lte=2)
 roboco = robot.count()
@@ -34,3 +38,14 @@ else:
 			v.delete()
 
 
+vv = Visitor.objects.all()
+mm = Mage.objects.all()
+
+for m in mm:
+	print(m)
+	for v in vv:
+		if m in v.mages.all():
+			print(v)
+
+
+def run(): pass

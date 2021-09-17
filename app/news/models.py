@@ -10,17 +10,20 @@ class Comment(models.Model):
 	author = models.CharField(max_length=60)
 	body = models.TextField()
 	created_on = models.DateTimeField(auto_now_add=True)
-	post = models.ForeignKey('Post', default = 1, on_delete=models.CASCADE)
+	post = models.ForeignKey('Post',
+							 default = 1,
+							 on_delete=models.CASCADE)
 
 	def __str__(self): return self.author
 
 
 class Post(models.Model):
-	title = models.CharField(max_length=255)
+	title = models.CharField(max_length = 255)
 	body = models.TextField()
-	created_on = models.DateTimeField(auto_now_add=True)
-	last_modified = models.DateTimeField(auto_now=True)
-	categories = models.ManyToManyField('Category', related_name='posts')
-	image = models.FilePathField(path="/img")
+	created_on = models.DateTimeField(auto_now_add = True)
+	last_modified = models.DateTimeField(auto_now = True)
+	categories = models.ManyToManyField('Category',
+										related_name = 'posts')
+	image = models.FilePathField(path = "/img")
 
 	def __str__(self): return self.title

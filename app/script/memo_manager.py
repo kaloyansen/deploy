@@ -43,7 +43,7 @@ for prog in Prog.objects.all():
 	if avec:
 		print(prog.mother.name + ' =====================================')
 		avec = False
-	print(prog.name, prog.code1, prog.color)
+	print(prog.name, prog, prog.code1, prog.color)
 
 avec = True
 for child in Child.objects.all():

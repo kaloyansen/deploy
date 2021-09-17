@@ -27,7 +27,7 @@ Représentation graphique avec <strong>plotly</strong>, python plotting library 
 
 Le code est deployé d'abord sur <strong>google cloud</strong> après l'avoir containerisé en image <strong>docker</strong> et puis sur <strong>digitalocean.com</strong>. <strong>Gunicorn</strong> est l'outil (serveur) qui permet de mettre en production le site Django. <strong>Nginx</strong> gère les fichiers statiques, comprenez par là les images, *.css, *.js, ...
 
-Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Django administration</strong> est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Une autre possibilté est <strong>django rest framework</strong>. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
+Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Django administration</strong> est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Voyez les <a href = "/model">models</a> s'il vous plaît. Une autre possibilté est <strong>django rest framework</strong>. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
 """
 work[3].place = "<a href = \"https://simplon.co\">simplon.co</a>, Grenoble, FRANCE"
 work[3].technology = """
@@ -37,7 +37,9 @@ work[3].save()
 
 print(work[3])
 
-lettre_aux_petites_entreprises = """
+def run():
+
+	lettre_aux_petites_entreprises = """
 Madame, Monsieur,
 
 

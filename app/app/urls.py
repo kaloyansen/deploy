@@ -10,7 +10,7 @@ from django.views.static import serve
 from rest_framework import routers, serializers, viewsets
 import debug_toolbar
 
-from work.models import Project, Visitor, Page, ColorStyle
+from work.models import Project, Visitor, Mage, ColorStyle
 from news.models import Post, Comment, Category
 from memo.models import Child, Prog, Parent
 from . import views
@@ -31,9 +31,9 @@ class VisitorSerializer(serializers.HyperlinkedModelSerializer):
 		model = Visitor
 		fields = '__all__'
 
-class PageSerializer(serializers.HyperlinkedModelSerializer):
+class MageSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
-		model = Page
+		model = Mage
 		fields = '__all__'
 
 class ColorStyleSerializer(serializers.HyperlinkedModelSerializer):
@@ -84,9 +84,9 @@ class VisitorViewSet(viewsets.ModelViewSet):
 	queryset = Visitor.objects.all()
 	serializer_class = VisitorSerializer
 
-class PageViewSet(viewsets.ModelViewSet):
-	queryset = Page.objects.all()
-	serializer_class = PageSerializer
+class MageViewSet(viewsets.ModelViewSet):
+	queryset = Mage.objects.all()
+	serializer_class = MageSerializer
 
 class ColorStyleViewSet(viewsets.ModelViewSet):
 	queryset = ColorStyle.objects.all()
@@ -122,7 +122,7 @@ router = routers.DefaultRouter()
 #router.register(r'users', UserViewSet)
 router.register(r'projects', ProjectViewSet)
 #router.register(r'visitors', VisitorViewSet)
-#router.register(r'pages', PageViewSet)
+#router.register(r'mages', MageViewSet)
 router.register(r'colorstyles', ColorStyleViewSet)
 router.register(r'posts', PostViewSet)
 router.register(r'comments', CommentViewSet)
@@ -164,6 +164,7 @@ urlpatterns = [
 	path("work/", include("work.urls")),
 	#path("robots.txt", TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain"), name = "robots"),
 	path("tv", TemplateView.as_view(template_name = "erreur.html", content_type = "text/html"), name = "tv"),
+	path("model/", TemplateView.as_view(template_name = "model.html", content_type = "text/html"), name = "model"),
 	#path("github.ico", TemplateView.as_view(template_name = "../static/ico/github.ico", content_type = "image/x-icon"), name = "github icon"),
 	#path("cv", TemplateView.as_view(template_name = "pdf/back-end.pdf", content_type = "pdf"), name = "cv"),
 	#path("cv/", serve, {"document_root": 'static/pdf', "path": 'back-end.pdf'}),

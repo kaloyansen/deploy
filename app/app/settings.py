@@ -85,6 +85,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'debug_toolbar',
 	'bootstrap4',
+	'django_extensions',
 	'memo',
 	'work',
 	'news'
