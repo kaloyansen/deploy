@@ -1,80 +1,59 @@
 from django.utils import timezone
 from memo.models import Child, Prog, Parent
 
-p = {}
-i = 0
-bgexiste = False
-progexiste = False
+p, cr = Parent.objects.get_or_create(name = "bg")
+danni = {
+	'db': {'code1': 27, 'code2': 34, 'code3': 41, 'color': "blue", 'mother': p},
+	'itn': {'code1': 51, 'code2': 65, 'code3': 79, 'color': "cyan",	'mother': p},
+	'imv': {'code1': 14, 'code2': 13, 'code3': 12, 'color': "green", 'mother': p},
+	'bsp': {'code1': 43, 'code2': 36, 'code3': 29, 'color': "red", 'mother': p},
+	'dps': {'code1': 30, 'code2': 29, 'code3': 28, 'color': "violet", 'mother': p},
+	'gerb': {'code1': 75, 'code2': 63, 'code3': 51, 'color': "yellow", 'mother': p}}
 
-for parent in Parent.objects.all():
-	pn = parent.name
-	print('parent found', pn)
-	if pn == "bg": bgexiste = True	
-	if pn == "prog": progexiste = True	
-	p[i] = parent
-	i += 1
+for da in danni.keys():
+	Child.objects.update_or_create(name = da,
+								   defaults = danni[da])
+p.save()
 
-lenp = len(p)
-print(lenp, 'tables existent')
 
-	
-if progexiste:
-	print('progexiste')
-else:
-	cc = {}
-	pp = Parent(name = "prog")
-	cc[0] = Prog(name = 0, code1 = 1, color = "black", mother = pp)
-	cc[1] = Prog(name = 1, code1 = 1, color = "white", mother = pp)
-	cc[2] = Prog(name = 2, code1 = 14, color = "blue", mother = pp)
-	cc[3] = Prog(name = 3, code1 = 11, color = "red", mother = pp)
-	cc[4] = Prog(name = 4, code1 = 7, color = "green", mother = pp)
-	cc[5] = Prog(name = 5, code1 = 5, color = "magenta", mother = pp)
-	cc[6] = Prog(name = 6, code1 = 4, color = "cyan", mother = pp)
-	cc[7] = Prog(name = 7, code1 = 3, color = "violet", mother = pp)
-	cc[8] = Prog(name = 8, code1 = 3, color = "yellow", mother = pp)
-	cc[9] = Prog(name = 9, code1 = 6, color = "orange", mother = pp)
-	cc[10] = Prog(name = 10, code1 = 3, color = "brown", mother = pp)
+pp, cr = Parent.objects.get_or_create(name = "prog")
+panni = {
+	0: {'code1': 1, 'color': "black", 'mother': pp},
+	1: {'code1': 1, 'color': "white", 'mother': pp},
+	2: {'code1': 14, 'color': "blue", 'mother': pp},
+	3: {'code1': 11, 'color': "red", 'mother': pp},
+	4: {'code1': 7, 'color': "green", 'mother': pp},
+	5: {'code1': 5, 'color': "magenta", 'mother': pp},
+	6: {'code1': 4, 'color': "cyan", 'mother': pp},
+	7: {'code1': 3, 'color': "violet", 'mother': pp},
+	8: {'code1': 3, 'color': "yellow", 'mother': pp},
+	9: {'code1': 6, 'color': "orange", 'mother': pp},
+	10: {'code1': 3, 'color': "brown", 'mother': pp}}
 
+if cr:
+	for pa in panni.keys():
+		Prog.objects.update_or_create(name = pa,
+									  defaults = panni[pa])
 	pp.save()
-	for prog in cc.values(): prog.save()
-
-
-if bgexiste:
-	print('bgexiste')
 else:
-	c = {}
-	p = Parent(name = "bg")
-	c[0] = Child(name ='db', code1 = 27, code2 = 34, code3 = 41, color = "blue", mother = p)
-	c[1] = Child(name = 'itn', code1 = 51, code2 = 65, code3 = 79, color = "cyan", mother = p)
-	c[2] = Child(name = 'imv', code1 = 14, code2 = 13, code3 = 12, color = "green", mother = p)
-	c[3] = Child(name = 'bsp', code1 = 43, code2 = 36, code3 = 29, color = "red", mother = p)
-	c[4] = Child(name = 'dps', code1 = 30, code2 = 29, code3 = 28, color = "violet", mother = p)
-	c[5] = Child(name = 'gerb', code1 = 75, code2 = 63, code3 = 51, color = "yellow", mother = p)
+	print('not touch prog once created to prevent user data lost')
 
-	p.save()
-	for child in c.values(): child.save()
-
-
-for child in Child.objects.all():
-	parent = child.mother
-	print(parent.name,
-		  child.code,
-		  child.name,
-		  child.color,
-		  child.image,
-		  child.code1,
-		  child.code2,
-		  child.code3)
-
+avec = True
 for prog in Prog.objects.all():
-	parent = prog.mother
-	print(parent.name,
-		  prog.name,
-		  prog.code1,
-		  prog.color)
+	if avec:
+		print(prog.mother.name + ' =====================================')
+		avec = False
+	print(prog.name, prog.code1, prog.color)
+
+avec = True
+for child in Child.objects.all():
+	if avec:
+		print(child.mother.name + ' =====================================')
+		avec = False
+	print(child.code, child.name, child.color,
+		  child.image, child.code1, child.code2, child.code3)
 
 
-exit(0)
 
 
 
