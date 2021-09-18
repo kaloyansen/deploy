@@ -233,10 +233,12 @@
     <div class = "row">
 
       <small class = "col-md-6">
-        copyleft &#127279; {{ page_author }}
-        <span class = "text-muted mx-2">|</span>
-        {% trans 'LastUpdate' %}
-        {{ page_time | date:"F, jS Y" }}, {{ page_place }}
+        <small>
+          copyleft &#127279; {{ page_author }}
+          <span class = "text-muted mx-2">|</span>
+          {% trans 'LastUpdate' %}
+          {{ page_time | date:"F, jS Y" }}, {{ page_place }}
+        </small>
       </small>
 
       <div class = "col-md-6 text-md-right">
