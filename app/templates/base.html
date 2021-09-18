@@ -15,20 +15,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="conception, concepteur, développement, développeur, logiciel, python, c++, java, django, pandas, base de donnée">
-  <meta name="author" content="{{ page_author }}">
+  <meta name = "author" content = "{{ page_author }}">
 
   <link rel="icon" type="image/x-icon" href="{{ page_ico }}" />
   <link rel="SHORTCUT ICON" href="{{ page_ico }}" />
 
   <head>
     <title>{{ page_title }}</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400&family=Train+One&display=swap" rel="stylesheet">
-    <!-- JQuery -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
     <style>
       body {
@@ -69,7 +66,7 @@
   <div class = "header-nav">
     <div class = "container-fluid">
       <header>        
-        <nav title = "bootstrap navbar sticky-top navbar-expand-lg rounded shadow"
+        <nav title = "navbar fixed-top"
              class = "navbar fixed-top navbar-expand-lg navbar-info bg-dark">
           
           <div class = "container-fluid">
@@ -176,8 +173,9 @@
 
 
               <div class = "nav_item col-md-3 offset-md-1">
-                <form method = "post" class = "d-flex">
-                  {% csrf_token %}
+                <form title = "form"
+                      method = "post"
+                      class = "d-flex">{% csrf_token %}
                   <input title = "{% trans 'SendMeMessage' %}"
                          style = "{{ page_style }}"
                          class = "form-control me-2 rounded text-center"
@@ -185,7 +183,8 @@
                          placeholder = "{{ page_message }}"
                          name = "message"
                          aria-label = "commentaire">
-                  <button class = "btn btn-outline-primary rounded-circle"
+                  <button title = "btn btn-outline-primary rounded-circle"
+                          class = "btn btn-outline-primary rounded-circle"
                           type = "submit">{{ page_submit }}</button>
                 </form>
               </div>            
@@ -202,22 +201,28 @@
   <div title = "block page_content"
        class = "col container-fluid">
     {% block page_content %}
-    <!-- here is the extended page extended is here -->
+    <!--   here -->
+    <!--    is   -->
+    <!--    the   -->
+    <!-- extended  -->
+    <!--   page     -->
+    <!-- extended  -->
+    <!--    est   -->
+    <!--    ici  -->
     {% endblock %}
   </div>
-
-
 
   {{ page_pause | safe }}
 
   <div class = "footer">
     <div class = "container-fluid">
-      <footer title="footer fixed-bottom sticky-bottom rounded"
-              class="footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
-        <small class="text-light">
+      <footer title = "footer fixed-bottom sticky-bottom"
+              class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
+        <small class = "text-light">
           <small>
+            copyleft
             &#127279; {{ page_author }},
-            {{ page_time | date:"ymd" }}, {{ page_place }}
+            le {{ page_time | date:"d/m/Y" }} à {{ page_place }}
             {% include "social.html" %}
           </small>
 
@@ -225,11 +230,6 @@
       </footer>
     </div>
   </div>
-
-  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
-  <!-- <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>     -->
-
 
 </body>
 

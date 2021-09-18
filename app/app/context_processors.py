@@ -163,7 +163,7 @@ def get_context(request):
 		'page_style': safeStyle('page'),
 		'page_submit': send['submit'],
 		'page_time': timezone.now(),
-		'page_title': 'Kaloyan KRASTEV',
+		'page_title': 'Kalo KRASTEV',
 		'page_visitor': visitor,
 		'page_voted': has_voted(request)}
 

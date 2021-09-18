@@ -1,12 +1,12 @@
-<div class = "card text-white bg-secondary mb-3 text-monospace"
-     title = "modal-dialog modal-lg fade bg-dark bienvenue">
+<div title = "card mb-3 text-monospace"
+     class = "card text-white bg-secondary mb-3 text-monospace">     
   <div class = "card-header">bienvenue</div>
   <div class = "card-body">
     <h5 class = "card-title">Bienvenue sur la page d'accueil,</h5><br />
-    <p>The default language is french.
-      <form method = "post" action = "{% url 'index' %}">
-        {% csrf_token %}
-        <button title = "translate in english"
+    <p>La langue par défaut est le français.
+      <form method = "post"
+            action = "{% url 'index' %}">{% csrf_token %}
+        <button title = "english translation"
                 class = "btn-outline-primary text-right"
                 value = "eng"
                 data-toggle = "modal"
