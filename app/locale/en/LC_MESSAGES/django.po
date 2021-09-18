@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-15 16:37+0200\n"
+"POT-Creation-Date: 2021-09-18 20:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kaloyan KRASTEV <kaloyansen@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/context_processors.py:151 templates/base.html:101
-#: templates/base.html:103
+#: app/context_processors.py:151 templates/base.html:110
+#: templates/base.html:112
 msgid "News"
 msgstr "news"
 
-#: app/context_processors.py:152 templates/base.html:107
-#: templates/base.html:109
+#: app/context_processors.py:152 templates/base.html:116
+#: templates/base.html:118
 msgid "Work"
 msgstr "work"
 
-#: app/context_processors.py:153 templates/base.html:153
+#: app/context_processors.py:153 templates/base.html:162
 msgid "ThisPage"
 msgstr "about this page"
 
-#: app/context_processors.py:154 templates/base.html:127
-#: templates/base.html:129
+#: app/context_processors.py:154 templates/base.html:136
+#: templates/base.html:138
 msgid "PlotBg"
 msgstr "elections in Bulgaria"
 
@@ -41,21 +41,21 @@ msgstr "elections in Bulgaria"
 msgid "Bulgarian"
 msgstr "bulgarian"
 
-#: app/context_processors.py:155 templates/base.html:121
-#: templates/base.html:123
+#: app/context_processors.py:155 templates/base.html:130
+#: templates/base.html:132
 msgid "PlotLang"
 msgstr "your programming languages"
 
-#: app/context_processors.py:156 templates/base.html:124
-#: templates/base.html:126
+#: app/context_processors.py:156 templates/base.html:133
+#: templates/base.html:135
 msgid "PlotSun"
 msgstr "3D model of the sun system"
 
-#: app/settings.py:190
+#: app/settings.py:191
 msgid "English"
 msgstr "english"
 
-#: app/settings.py:190
+#: app/settings.py:191
 msgid "French"
 msgstr "french"
 
@@ -63,54 +63,58 @@ msgstr "french"
 msgid "NotFound"
 msgstr "not found"
 
-#: templates/base.html:114
+#: templates/base.html:123
 msgid "PlotMainDesc"
 msgstr "visualisations online"
 
-#: templates/base.html:118
+#: templates/base.html:127
 msgid "PlotMain"
 msgstr "plotter"
 
-#: templates/base.html:135 templates/base.html:139
+#: templates/base.html:144 templates/base.html:148
 msgid "About"
 msgstr "about"
 
-#: templates/base.html:144
+#: templates/base.html:153
 msgid "MyCV"
 msgstr "my CV"
 
-#: templates/base.html:170
+#: templates/base.html:179
 msgid "ChengeLangInverse"
 msgstr "vers la version française"
 
-#: templates/base.html:181
+#: templates/base.html:191
 msgid "SendMeMessage"
 msgstr "send a message to me"
 
-#: templates/memo_demo.html:37
+#: templates/base.html:238
+msgid "LastUpdate"
+msgstr "last updated on"
+
+#: templates/memo_demo.html:34
 msgid "NoGraph"
 msgstr "no graph provided"
 
-#: templates/memo_demo.html:48 templates/memo_demo.html:52
+#: templates/memo_demo.html:45 templates/memo_demo.html:49
 msgid "VoteNow"
 msgstr "vote now"
 
-#: templates/memo_demo.html:54
+#: templates/memo_demo.html:51
 msgid "VoteThanx"
 msgstr "thank you for your vote"
 
-#: templates/memo_demo.html:57
+#: templates/memo_demo.html:54
 msgid "InDataBase"
 msgstr "in the database"
 
-#: templates/memo_demo.html:84
+#: templates/memo_demo.html:81
 msgid "LangQuestion"
 msgstr "what is your favorite programing language?"
 
-#: templates/memo_demo.html:95
+#: templates/memo_demo.html:92
 msgid "SendNow"
 msgstr "send"
 
-#: templates/memo_demo.html:98
+#: templates/memo_demo.html:95
 msgid "CancelNow"
 msgstr "cancel"

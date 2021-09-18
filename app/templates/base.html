@@ -13,6 +13,7 @@
 <html>
 
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="conception, concepteur, développement, développeur, logiciel, python, c++, java, django, pandas, base de donnée">
   <meta name = "author" content = "{{ page_author }}">
@@ -73,6 +74,7 @@
       title = ""
       role = "alert">
 
+  <hr>
   <div class = "header-nav">
     <div class = "container-fluid">
       <header>        
@@ -224,7 +226,30 @@
 
   {{ page_pause | safe }}
 
-  <div class = "footer">
+
+  <hr>
+  <footer title = "footer fixed-bottom sticky-bottom"
+          class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
+    <div class = "row">
+
+      <small class = "col-md-6">
+        copyleft &#127279; {{ page_author }}
+        <span class = "text-muted mx-2">|</span>
+        {% trans 'LastUpdate' %}
+        {{ page_time | date:"F, jS Y" }}, {{ page_place }}
+      </small>
+
+      <div class = "col-md-6 text-md-right">
+        {% include "social.html" %}
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <div class = "footer sr-only">
     <div class = "container-fluid">
       <footer title = "footer fixed-bottom sticky-bottom"
               class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
@@ -240,6 +265,10 @@
       </footer>
     </div>
   </div>
+
+
+
+  
 
 </body>
 
