@@ -2,61 +2,78 @@
 {% block page_content %}
 
 <script>
-    function initafter() {
-        var timer = setTimeout(function() {
-            window.location = '{{ red }}'
-        }, {{ after }});
-    }
+  function initafter() {
+  var timer = setTimeout(function() {
+  window.location = '{{ red }}'
+  }, {{ after }});
+  }
 </script>
-    
+
 
 {% if disco %}
-  <body onload = "initafter()"></body>
+<body onload = "initafter()"></body>
 </html>
 {% endif %}
 
-<div class = "container-fluid p-3 mb-2 alert-info">
 
-  <div class = "row card alert-info">
-    <div class = "card-header">En Bulgarie, le chanteur Slavi remporte les législatives.<p>La participation a été beaucoup plus faible que lors du vote précédent, 0.39 contre 0.51 en avril. Environ 2 600 000 de Bulgares ont voté le 11 juillet, contre 3 300 000 il y a six mois. Ce dimanche, 3 électeurs sur 5 ne sont pas allés voter.</p>
-    </div>
-    <div class = "card-body">
-      <blockquote class = "blockquote mb-4">Il est temps de regarder les étoiles, affirme (Slavi) Trifonov dans une vidéo filmée, sans question de journalistes. Le parti fondé et dirigé par Slavi, Ima takouv narod (itn, il y a un tel peuple) a obtenu plus de 23 % des voix.
-        <footer class = "blockquote-footer">Le Monde
-          <cite title = "Le Monde"></cite></footer>
-      </blockquote>
-    </div>
-  </div>
+<h1 class = "display-2 text-xs-center m-y-3" id = "speakers">L'Assemblée nationale en Bulgarie</h1>
 
-  <div class = "row container-fluid">
+<div class = "row">
 
-    <div class = "col-md-4">
+  <div class = "col-md-6 col-lg-4">
+    <div class = "card">
       {% if graph1 %}
       {{ graph1 | safe }}
       {% else %}
       <p>no graph1 provided</p>
-      {% endif %}
+      {% endif %}<hr>
+      <div class = "card-block">
+        <h4 class = "card-title">15 avril 2021</h4>
+        <p class = "card-text">des élections parlementaires</p>
+      </div>
     </div>
+  </div>
 
-    <div class = "col-md-4">
+  <div class = "col-md-6 col-lg-4">
+    <div class = "card">
       {% if graph2 %}
       {{ graph2 | safe }}
       {% else %}
       <p>no graph2 provided</p>
-      {% endif %}
+      {% endif %}<hr>
+      <div class = "card-block">
+        <h4 class = "card-title">21 juillet 2021</h4>
+        <p class = "card-text">les premières élections anticipées</p>
+      </div>
     </div>
+  </div>
 
-    <div class = "col-md-4">
+  <div class = "col-md-6 col-lg-4">
+    <div class = "card">
       {% if graph %}
       {{ graph | safe }}
       {% else %}
       <p>no graph provided</p>
-      {% endif %}
+      {% endif %}<hr>
+      <div class = "card-block">
+        <h4 class = "card-title">15 novembre 2021</h4>
+        <p class = "card-text">les secondes élections anticipées (calculées)</p>
+      </div>
     </div>
-    
   </div>
-
+  
 </div>
 
+
+<div class = "row card alert-info">
+  <div class = "card-header">En Bulgarie, les troisièmes élections parlementaires cette année seront le 15 novembre.<p>La participation le 21 juillet a été beaucoup plus faible que lors du vote précédent, 0.39 contre 0.51 en avril. Environ 2 600 000 de Bulgares ont voté le juillet, contre 3 300 000 il y a six mois. Trois électeurs sur cinq ne sont pas allés voter !</p>
+  </div>
+  <div class = "card-body">
+    <blockquote class = "blockquote mb-4">L'Assemblée nationale (en bulgare : Народно събрание) est composée de 240 sièges pourvus pour quatre ans au scrutin proportionnel plurinominal dans 31 circonscriptions électorales de quatre à 16 sièges. Les listes sont ouvertes, avec la possibilité pour les électeurs d'effectuer un vote préférentiel envers un candidat de la liste choisie afin de faire monter sa place dans celle ci. Après décompte des suffrages, la répartition est faite au plus fort reste de Hare entre les listes de candidats ayant atteint le seuil électoral de 4 % des suffrages exprimés au niveau national.
+      <footer class = "blockquote-footer">Wikipedia
+        <cite title = "Le Monde"></cite></footer>
+    </blockquote>
+  </div>
+</div>
 
 {% endblock %}

@@ -251,9 +251,9 @@ def dbload(table = 'bg', pk = 1):
 
 def plotter(table, pk, to_graph = True):
 
-	tit = 'élections bulgares'
+	tit = 'les élections'
 	if pk == 0:	tit = 'vos langages de programmation préférés'
-	elif pk == 1: tit += ' le mai 2021'
+	elif pk == 1: tit += ' parlementaires l\'avril 2021'
 	elif pk == 2: tit += ' anticipées le juillet 2021'
 	elif pk == 3: tit += ' anticipées le november 2021'
 	else: tit = 'unknown'
