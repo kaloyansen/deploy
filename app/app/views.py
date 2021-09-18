@@ -48,9 +48,9 @@ def index(request):
 	request.session['num_visits'] = num_visits + 1
 
 	title = {'fr': 'concepteur développeur d\'applications',
-			 'en': 'backend developer'}
-	about = {'fr': '<p>conception d\'applications</p><p>développement full stack</p><p>analyse de données scientifique</p><p>visualisation en ligne</p>',
-			 'en': '<p>software design</p><p>full stack development</p><p>scientific data analysis</p><p>online visualization</p>'}
+			 'en': 'software design and development'}
+	about = {'fr': '<p class = "row">conception d\'applications</p><p class = "row">développement full stack</p><p class = "row">analyse de données scientifique</p><p class = "row">visualisation en ligne</p>',
+			 'en': '<p class = "row">software solutions</p><p class = "row">full stack development</p><p class = "row">scientific data analysis</p><p class = "row">online visualization</p>'}
 			 
 	opt = get_lang(request)
 	context = {
