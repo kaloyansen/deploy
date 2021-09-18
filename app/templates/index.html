@@ -15,14 +15,14 @@
 <h1>{{ title }}</h1>
 
 <div title = "info info info"
-     class = "card-group container-fluid">
-  <!-- class = "card-group row clearfix"> -->
+     class = "container-fluid card-group"
+     style = "min-width: 100mm">
 
   <div title = "bonjour"
-       class = "card col-md-3 alert-info">
+       class = "card custom col-md-3 alert-info">
     <div class = "card-body">
         <a title = "manifest"
-           class = "card-text btn btn-outline-info rounded-circle"                
+           class = "card-text btn btn-outline-info rounded-circle"
            style = "font-size:9.6mm;"
            data-toggle = "modal"
            data-target = "#bienvenue">
@@ -34,54 +34,60 @@
   </div>
 
   <div title = "about"
-       class = "card col-md-4 alert-info">
+       class = "card custom col-md-4 alert-info">
     <div class = "card-body">
       <div class = "card-title"
            style = "font-size:8mm;">
-        {{ about | safe }}
+        <strong>{{ about | safe }}</strong>
       </div>
     </div>
   </div>
 
   <div title = "langages de programmation"
-       class = "card col-md-2 alert-primary">       
+       class = "card custom col-md-2 alert-primary">       
     <div class = "card-body">
       <div class = "card-title"
            style = "font-size:7mm;">
-        {% if page_en %}programming languages:
-        {% else %}langages de programmation:
-        {% endif %}
+        <strong>
+          {% if page_en %}programming languages:
+          {% else %}langages de programmation:
+          {% endif %}
+        </strong>
       </div>
       <p class = "card-text">{{ lange | safe }}</p>
     </div>
   </div>
 
   <div title = "technologie"
-       class = "card col-md-3 alert-secondary">       
+       class = "card custom col-md-3 alert-secondary">       
     <div class = "card-body">
       <div class = "card-title"
            style = "font-size:8mm;">
-        {% if page_en %}technology:
-        {% else %}technologie:
-        {% endif %}
+        <strong>
+          {% if page_en %}technology:
+          {% else %}technologie:
+          {% endif %}
+        </strong>
       </div>
       <p class = "card-text">{{ techno | safe }}</p>
     </div>
   </div>
 
-</div>
+<!-- </div> -->
 
-<div title = "about me"
-     class = "card-group container-fluid">
+<!-- <div title = "about me" -->
+<!--      class = "card-group container-fluid"> -->
 
   <div title = "expérience"
-       class = "card col-md-3 alert-success">       
+       class = "card custom col-md-3 alert-success">       
     <div class = "card-body">
       <div class = "card-title"
            style = "font-size:8mm;">
-        {% if page_en %}experience:
-        {% else %}expérience:
-        {% endif %}
+        <strong>
+          {% if page_en %}experience:
+          {% else %}expérience:
+          {% endif %}
+        </strong>
       </div>
       <p class = "card-text">CNRS - Grenoble, France </p>
       <p class = "card-text">DESY - Hamburg, Allemagne</p>
@@ -90,13 +96,15 @@
   </div>
 
   <div title = "compétences"
-       class = "card col-md-5 alert-danger">       
+       class = "card custom col-md-5 alert-danger">       
     <div class = "card-body">
       <div class = "card-title"
            style = "font-size:8mm;">
-        {% if page_en %}skills:
-        {% else %}compétences:
-        {% endif %}
+        <strong>
+          {% if page_en %}skills:
+          {% else %}compétences:
+          {% endif %}
+        </strong>
       </div>
       <p class = "card-text">{{ lange | safe }}</p>
       <p class = "card-text">{{ techno | safe }}</p>
@@ -104,13 +112,15 @@
   </div>
 
   <div title = "formation"
-       class = "card col-md-4 alert-warning">       
+       class = "card custom col-md-4 alert-warning">       
     <div class = "card-body">
       <div class = "card-title"
            style = "font-size:8mm;">
-        {% if page_en %}education:
-        {% else %}formation:
-        {% endif %}
+        <strong>
+          {% if page_en %}education:
+          {% else %}formation:
+          {% endif %}
+        </strong>
       </div>
       <p class = "card-text">simplon.co - Grenoble</p>
       <p class = "card-text">la Conservatoire de Grenoble</p>

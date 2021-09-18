@@ -5,7 +5,7 @@ work = {}
 
 
 work[4], cr = Project.objects.get_or_create(pk = 4)
-work[4].title = "visualisation en-ligne des données expérimentales de H1 detector à HERA"
+work[4].title = "visualisation en ligne de données expérimentales de H1 detector à HERA"
 work[4].place = "DESY, Hamburg, ALLEMAGNE"
 work[4].description = "les données sont stoquées d'abord dans la base de donnée oracle à l'aide de sql*loader, puis la visualisation est faite après la demande du client et selon cette demande à l'aide de gnuplpot"
 work[4].technology = "perl, oracle, sql*loader, gnuplot, zsh"
