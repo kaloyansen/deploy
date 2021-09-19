@@ -137,6 +137,13 @@ class Visitor(models.Model):
 		if self.code > 1: return False
 		return True
 
+	def marray_size(self): return len(self.marray())
+	def marray(self):
+		arr = []
+		mag = self.mages.all().order_by('code')
+		for m in mag: arr.append(m.name)
+		return arr
+
 	def __str__(self):
 		return "{} {} {} {} {} {} {}".format(self.id,
 											 self.date.strftime("%y%m%d"),

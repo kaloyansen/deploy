@@ -48,6 +48,7 @@
           <th scope = "col">lang</th>
           <th scope = "col">message</th>
           <th scope = "col">mencrypted</th>
+          <th scope = "col">mage</th>
         </tr>
       </thead>
       <tbody>
@@ -68,6 +69,9 @@
           <td>{{ visa.lang }}</td>
           <td>{{ visa.dessage }}</td>
           <td>{{ visa.mencrypted }}</td>
+          {% if visa.marray_size > 0 %}
+          <td>{{ visa.marray }}</td>
+          {% endif %}
         </tr>
         {% endfor %}
       </tbody>

@@ -162,10 +162,6 @@ url_patterns = [
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
-	# re_path(r'model', TemplateView.as_view(template_name = "model.html", content_type = "text/html"), name = "model"),
-	#path("github.ico", TemplateView.as_view(template_name = "../static/ico/github.ico", content_type = "image/x-icon"), name = "github icon"),
-	#path("cv", TemplateView.as_view(template_name = "pdf/back-end.pdf", content_type = "pdf"), name = "cv"),
-	#path("cv/", serve, {"document_root": 'static/pdf', "path": 'back-end.pdf'}),
 	path("admin/", admin.site.urls)
 ]
 
@@ -180,7 +176,7 @@ static_patterns = static(settings.STATIC_URL, document_root = settings.STATIC_RO
 last_patterns = [
 	re_path(r'tv', TemplateView.as_view(template_name = "erreur.html", content_type = "text/html")),
 	re_path(r'model', views.model, name = "model"),
-	re_path(r'', views.index, name = "index") # returns index if the url is not in patterns
+	re_path(r'', views.index, name = "index") # go down index if the url has not been found in patterns
 ]
 
 
