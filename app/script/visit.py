@@ -38,14 +38,28 @@ else:
 			v.delete()
 
 
-vv = Visitor.objects.all()
-mm = Mage.objects.all()
 
-for m in mm:
-	print(m)
-	for v in vv:
-		if m in v.mages.all():
-			print(v)
+def run():
+	vv = Visitor.objects.all()
+	mm = Mage.objects.all()
+
+	for m in mm:
+		danni = []
+		for v in vv:
+			ipa = v.ip_address
+			if m in v.mages.all():
+				if ipa == '127.5.0.1': pass
+				else: danni.append(ipa)
+
+		if len(danni) > 1: print('{} -> {}'.format(m, danni))
 
 
-def run(): pass
+
+
+
+
+
+run()
+
+
+

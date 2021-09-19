@@ -39,6 +39,9 @@ def linked(title, url, style, label = False):
 	""".format(title, style, url, label)
 
 
+isize = 20
+ssize = '{}mm'.format(isize)
+
 def python(): return limage('python',
 							'https://www.python.org',
 							'/static/svg/python.svg')
@@ -58,11 +61,11 @@ def github(): return limage('github',
 							'https://github.com/kaloyansen/deploy.git',
 							'/static/svg/github.svg')
 #							'/static/ico/github.ico')
-def digitalocean(size = 24): return limage('digitalocean',
-										   'https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge',
-										   '/static/svg/digital.svg',
-										   '{}mm'.format(size))
-def limage(title, url, source, height = '20mm', style = 'info'):
+def digitalocean(size = isize + 5): return limage('digitalocean',
+												  'https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge',
+												  '/static/svg/digital.svg',
+												  '{}mm'.format(size))
+def limage(title, url, source, height = ssize, style = 'info'):
 	return """
 <a title = "automatic generation"
    class = "btn-outline-{}"
