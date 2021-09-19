@@ -12,21 +12,21 @@
 <!DOCTYPE html>
 <html>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="conception, concepteur, développement, développeur, logiciel, python, c++, java, django, pandas, base de donnée">
+  <meta charset = "utf-8">
+  <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+  <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name = "description" content = "conception, concepteur, développement, développeur, logiciel, python, c++, java, django, pandas, base de donnée">
   <meta name = "author" content = "{{ page_author }}">
 
-  <link rel="icon" type="image/x-icon" href="{{ page_ico }}" />
-  <link rel="SHORTCUT ICON" href="{{ page_ico }}" />
+  <link rel = "icon" type = "image/x-icon" href = "{{ page_ico }}" />
+  <link rel = "SHORTCUT ICON" href = "{{ page_ico }}" />
 
   <head>
     <title>{{ page_title }}</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400&family=Train+One&display=swap" rel="stylesheet">
+    <link rel = "preconnect" href = "https://fonts.googleapis.com">
+    <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
+    <link href = "https://fonts.googleapis.com/css2?family=Jost:wght@100;400&family=Train+One&display=swap" rel = "stylesheet">
 
     <style>
       body {
@@ -134,7 +134,7 @@
                        class = "nav-link btn-outline-danger rounded"
                        href = "{% url 'sun' %}">{% trans 'PlotSun' %}</a>
                     <a title = "{% trans 'PlotBg' %}"
-                       class="nav-link btn-outline-warning rounded"
+                       class = "nav-link btn-outline-warning rounded"
                        href = "{% url 'bg' %}">{% trans 'PlotBg' %}</a>
                   </div>
                 </li>
@@ -154,7 +154,7 @@
                     <a title = "django rest framework"
                        class = "nav-link btn-outline-primary rounded"
                        href = "/rest">api rest framework</a>
-                    <a title="warning: administration requires a super user"
+                    <a title = "warning: administration requires a super user"
                        class = "nav-link btn-outline-danger rounded"
                        href = "/admin">django admininstration</a>
                     <a title = "this page is a django application"

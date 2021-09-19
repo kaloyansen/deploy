@@ -3,73 +3,13 @@
 import logging
 from django.http import HttpResponse
 from django.utils import timezone, translation
-from django.utils.translation import ugettext_lazy as _
 from app.otverka import safeStyle, flip_language, tracker, get_visitor
 from app.encdec import encrypt
+from .linked import *
 
 logger = logging.getLogger(__name__)
 
-def linked(title, color, url, label):
-	x = '<a title = "{}"\
-	        class = "btn btn-outline-{} btn-lg rounded-circle"\
-	        href = "{}">{}</a>'
-	return x.format(title, color, url, label)
 
-
-def linkedin():
-	return """
-      <a title = "https://www.linkedin.com/in/kaloyan-k-krastev"
-         class = "btn-outline-info"
-         href = "https://www.linkedin.com/in/kaloyan-k-krastev/">
-        <img src = "https://www.linkedin.com/favicon.ico"
-             height = "20mm"
-             alt = "linkedin"></a>
-	"""
-
-def github():
-	return """
-      <a title = "https://github.com/kaloyansen/deploy"
-         class = "btn-outline-warning"
-         href = "https://github.com/kaloyansen/deploy.git">
-        <img src = "https://www.github.com/favicon.ico"
-             height = "20mm"
-             alt = "https://github.com/kaloyansen/deploy"></a>
-	"""
-
-
-"""
-def digitalocean(request, size = 24):
-	return render(request,
-				  'digitalocean.html',
-				  {'size': size})
-"""
-
-def pause():
-	return """
-<div class = "container-fluid">
-  <div class = "row" id = "pause">
-    <br class = "clear" />
-  </div>
-  <div class = "row" id = "pause">
-    <br class = "clear" />
-  </div>
-</div>
-	"""
-
-
-def digitalocean(request, size = 24):
-	return """
-	<a title = "digitalocean.com/kaloyansen"
-	   class = "btn-outline-info"
-       href = "https://www.digitalocean.com/?refcode=ff8b99f4b98b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
-      <img src = "https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"
-           height = "{}mm"
-           alt = "DigitalOcean Referral Badge" /></a>
-	""".format(size)
-
-
-	
-	
 def get_context(request):
 	""" custom context processor delivers real ip, boolean True if unknown user, user language (fr/en))
 	in addition it is responsible for the quick message if sended and for the user language if changes """
@@ -148,12 +88,12 @@ def get_context(request):
 		'page_not_voted': has_not_voted(request),
 		'page_ip': ip,
 		'page_linkedin': linkedin(),
-		'page_ln_news': linked(_("News"), "primary", "news/", _("News")),
-		'page_ln_work': linked(_("Work"), "info", "work/", _("Work")),
-		'page_ln_about': linked(_("ThisPage"), "success", "work/3/", _("ThisPage")),
-		'page_ln_bg': linked(_("PlotBg"), "info", "memo/bg/", _("Bulgarian")),
-		'page_ln_demo': linked(_("PlotLang"), "danger", "memo/demo/", _("PlotLang")),
-		'page_ln_sun': linked(_("PlotSun"), "warning", "memo/sun/", _("PlotSun")),
+		'page_ln_news': linked_news(),
+		'page_ln_work': linked_work(),
+		'page_ln_about': linked_about(),
+		'page_ln_bg': linked_bg(),
+		'page_ln_demo': linked_demo(),
+		'page_ln_sun': linked_sun(),
 		'page_message': send['message'],
 		'page_newlang': flip_language(send['lang']),
 		'page_oldlang': send['lang'],
@@ -164,6 +104,7 @@ def get_context(request):
 		'page_submit': send['submit'],
 		'page_time': timezone.now(),
 		'page_title': 'Kalo KRASTEV',
+		'page_tothetop': tothetop('warning'),
 		'page_visitor': visitor,
 		'page_voted': has_voted(request)}
 

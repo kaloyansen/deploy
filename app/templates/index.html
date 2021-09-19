@@ -119,8 +119,8 @@
       </div>
       <p class = "card-text">simplon.co - Grenoble</p>
       <p class = "card-text">la Conservatoire de Grenoble</p>
-      <p class = "card-text">Université de Hamburg</p>
-      <p class = "card-text">Université de Sofia</p>
+      <p class = "card-text">Universität Hamburg</p>
+      <p class = "card-text">Sofia University</p>
       <p class = "card-text"><small class = "text-muted">
           <a title = "curriculum vitæ"
              class = "btn btn-outline-success"
@@ -245,11 +245,7 @@
 </div>
 {% endif %}
 
-<a class="btn btn-outline-info"
-   href="#"
-   data-toggle="popover"
-   title="back to top"
-   data-content="the content inside">back to top</a>
+{{ page_tothetop | safe }}
 
 
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-18 20:37+0200\n"
+"POT-Creation-Date: 2021-09-19 07:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kaloyan KRASTEV <kaloyansen@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,35 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/context_processors.py:151 templates/base.html:110
+#: app/context_processors.py:59
+msgid "ToTheTop"
+msgstr "to top of the page"
+
+#: app/context_processors.py:159 templates/base.html:110
 #: templates/base.html:112
 msgid "News"
 msgstr "news"
 
-#: app/context_processors.py:152 templates/base.html:116
+#: app/context_processors.py:160 templates/base.html:116
 #: templates/base.html:118
 msgid "Work"
 msgstr "work"
 
-#: app/context_processors.py:153 templates/base.html:162
+#: app/context_processors.py:161 templates/base.html:162
 msgid "ThisPage"
 msgstr "about this page"
 
-#: app/context_processors.py:154 templates/base.html:136
+#: app/context_processors.py:162 templates/base.html:136
 #: templates/base.html:138
 msgid "PlotBg"
 msgstr "elections in Bulgaria"
 
-#: app/context_processors.py:154
+#: app/context_processors.py:162
 msgid "Bulgarian"
 msgstr "bulgarian"
 
-#: app/context_processors.py:155 templates/base.html:130
+#: app/context_processors.py:163 templates/base.html:130
 #: templates/base.html:132
 msgid "PlotLang"
 msgstr "your programming languages"
 
-#: app/context_processors.py:156 templates/base.html:133
+#: app/context_processors.py:164 templates/base.html:133
 #: templates/base.html:135
 msgid "PlotSun"
 msgstr "3D model of the sun system"
@@ -87,7 +91,7 @@ msgstr "vers la version française"
 msgid "SendMeMessage"
 msgstr "send a message to me"
 
-#: templates/base.html:238
+#: templates/base.html:239
 msgid "LastUpdate"
 msgstr "last updated on"
 
