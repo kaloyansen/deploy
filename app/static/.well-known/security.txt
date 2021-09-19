@@ -4,4 +4,4 @@ Acknowledgments: https://kalodev.site/work/3
 Preferred-Languages: en, fr
 Canonical: https://kalodev.site/.well-known/security.txt
 Policy: https://kalodev.site/
-Hiring: https://kalodev.site/static/pdf/kalo.pdf
+Hiring: https://kalodev.site/cv

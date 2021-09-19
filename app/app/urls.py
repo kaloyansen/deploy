@@ -149,8 +149,9 @@ url_h = "http://ka.lo"
 urlpatterns = [
 	path("", views.index, name = "index"),
 	path("base/", views.base, name = "base"),
-	path("err/", views.erreur, name = "erreur"),
-	path("erreur/", views.erreur, name = "erreur"),
+#	path("err/", views.erreur, name = "erreur"),
+#	path("erreur/", views.erreur, name = "erreur"),
+#	path(".env/", views.erreur, name = "erreur"),
 	path("face/", views.face, name = "face"),
 	path("f/a/c/e/", views.face, name = "face"),
 	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),
@@ -173,13 +174,11 @@ urlpatterns = [
 
 if settings.DEBUG: urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))
 
-urlpatterns += static(settings.STATIC_URL,
-					  document_root = settings.STATIC_ROOT, show_indexes = True)
-urlpatterns += static(settings.ENCRYPT_URL,
-					  document_root = settings.ENCRYPT_ROOT)
-urlpatterns += static(settings.ROBOTS_URL,
-					  document_root = settings.ROBOTS_ROOT)
-urlpatterns += static(settings.FAVICON_URL,
-					  document_root = settings.FAVICON_ROOT)
-urlpatterns += static(settings.CV_URL,
-					  document_root = settings.CV_ROOT)
+parazit = [".env", "wp-login.php", "owa/auth/logon.aspx", "err", "erreur"]
+for url in parazit: urlpatterns.append(path(url + '/', views.erreur, name = "erreur"))
+
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT, show_indexes = True)
+urlpatterns += static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT)
+urlpatterns += static(settings.ROBOTS_URL, document_root = settings.ROBOTS_ROOT)
+urlpatterns += static(settings.FAVICON_URL, document_root = settings.FAVICON_ROOT)
+urlpatterns += static(settings.CV_URL, document_root = settings.CV_ROOT)
