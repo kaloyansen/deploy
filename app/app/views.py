@@ -38,12 +38,13 @@ def get_lang(request):
 
 
 def base(request): return render(request, 'base.html')
+def model(request): return render(request, 'model.html')
 def erreur(request): return render(request, 'erreur.html', {'message': "<p>something wrong or at least not forseen happened</p>if you like it is possible to send an e-mail to"})
 
 
 
 def index(request):
-	logger.info('index')
+	# logger.info('index')
 	num_visits = request.session.get('num_visits', 0)
 	request.session['num_visits'] = num_visits + 1
 

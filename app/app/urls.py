@@ -1,11 +1,12 @@
+import logging
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.models import User
-from django.urls import path, include
+from django.urls import include, path, re_path
 from django.views.generic import RedirectView, TemplateView
 from django.views.static import serve
-
 
 from rest_framework import routers, serializers, viewsets
 import debug_toolbar
@@ -14,6 +15,8 @@ from work.models import Project, Visitor, Mage, ColorStyle
 from news.models import Post, Comment, Category
 from memo.models import Child, Prog, Parent
 from . import views
+
+logger = logging.getLogger(__name__)
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -146,12 +149,8 @@ url_m = "https://freeshell.de/morla"
 url_k = "https://kalodev.site"
 url_h = "http://ka.lo"
 
-urlpatterns = [
-	path("", views.index, name = "index"),
+url_patterns = [
 	path("base/", views.base, name = "base"),
-#	path("err/", views.erreur, name = "erreur"),
-#	path("erreur/", views.erreur, name = "erreur"),
-#	path(".env/", views.erreur, name = "erreur"),
 	path("face/", views.face, name = "face"),
 	path("f/a/c/e/", views.face, name = "face"),
 	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),
@@ -163,22 +162,29 @@ urlpatterns = [
 	path("memo/", include("memo.urls")),
 	path("news/", include("news.urls")),
 	path("work/", include("work.urls")),
-	#path("robots.txt", TemplateView.as_view(template_name = "robots.txt", content_type = "text/plain"), name = "robots"),
-	path("tv", TemplateView.as_view(template_name = "erreur.html", content_type = "text/html"), name = "tv"),
-	path("model/", TemplateView.as_view(template_name = "model.html", content_type = "text/html"), name = "model"),
+	# re_path(r'model', TemplateView.as_view(template_name = "model.html", content_type = "text/html"), name = "model"),
 	#path("github.ico", TemplateView.as_view(template_name = "../static/ico/github.ico", content_type = "image/x-icon"), name = "github icon"),
 	#path("cv", TemplateView.as_view(template_name = "pdf/back-end.pdf", content_type = "pdf"), name = "cv"),
 	#path("cv/", serve, {"document_root": 'static/pdf', "path": 'back-end.pdf'}),
 	path("admin/", admin.site.urls)
 ]
 
-if settings.DEBUG: urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))
+if settings.DEBUG: url_patterns.append(path("__debug__/", include(debug_toolbar.urls)))
 
-parazit = [".env", "wp-login.php", "owa/auth/logon.aspx", "err", "erreur"]
-for url in parazit: urlpatterns.append(path(url + '/', views.erreur, name = "erreur"))
+parazit = [".env", "wp-login.php", "owa/auth/logon.aspx", "err", "erreur", "wlwmanifest.xml"]
+parazit_patterns = []
+for url in parazit: parazit_patterns.append(re_path(r'{}$'.format(url), views.erreur, name = "erreur"))
 
-urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT, show_indexes = True)
-urlpatterns += static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT)
-urlpatterns += static(settings.ROBOTS_URL, document_root = settings.ROBOTS_ROOT)
-urlpatterns += static(settings.FAVICON_URL, document_root = settings.FAVICON_ROOT)
-urlpatterns += static(settings.CV_URL, document_root = settings.CV_ROOT)
+static_patterns = static(settings.STATIC_URL, document_root = settings.STATIC_ROOT, show_indexes = True) + static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT) + static(settings.ROBOTS_URL, document_root = settings.ROBOTS_ROOT) + static(settings.FAVICON_URL, document_root = settings.FAVICON_ROOT) + static(settings.CV_URL, document_root = settings.CV_ROOT)
+
+last_patterns = [
+	re_path(r'tv', TemplateView.as_view(template_name = "erreur.html", content_type = "text/html")),
+	re_path(r'model', views.model, name = "model"),
+	re_path(r'', views.index, name = "index") # returns index if the url is not in patterns
+]
+
+
+urlpatterns = url_patterns + parazit_patterns + static_patterns + last_patterns
+
+
+# for up in urlpatterns: logger.info(up)

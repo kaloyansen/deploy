@@ -20,7 +20,7 @@ msgstr ""
 
 #: app/context_processors.py:59
 msgid "ToTheTop"
-msgstr "to top of the page"
+msgstr "to the top of the page"
 
 #: app/context_processors.py:159 templates/base.html:110
 #: templates/base.html:112
