@@ -1,27 +1,9 @@
 <span class = "text-muted mx-2">|</span>
-
-<a title = "curriculum vitæ"
-   class = "btn-outline-info"
-   href = "/cv">
-  <img title = "curriculum vitæ"
-       src = "/static/svg/cv.svg"
-       srcel = "https://cvwizard.fr/favicon.ico"
-       height = "20mm"
-       alt = "cv"></a>
-
+{{ page_cv | safe }}
 {{ page_github | safe }}
-
 {{ page_linkedin | safe }}
-
-<a title = "stackoverflow.com/users/3566444/morla"
-   class = "btn-outline-info"
-   href = "https://stackoverflow.com/users/3566444/morla">
-  <img src = "https://stackoverflow.com/favicon.ico"
-       height = "20mm"
-       alt = "stackoverflow"></a>
-
+{{ page_stackoverflow | safe }}
+{{ page_python | safe }}
+{{ page_django | safe }}
 {{ page_digitalocean | safe }}
-
 <span class = "text-muted mx-2">|</span>
-
-  
