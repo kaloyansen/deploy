@@ -51,7 +51,7 @@ def get_context(request):
 			send['message'] = 'envoyez un message'
 			send['submit'] = 'ok'
 		elif message_content in actif:
-			send['redirect'] = '/{}'.format(message_content)
+			send['redirect'] = '/{}/'.format(message_content)
 		else:
 			visitor.message = encrypt(message_content)
 			visitor.mencrypted = True

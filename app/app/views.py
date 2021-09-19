@@ -88,6 +88,6 @@ def face(request):
 			   'hostname': socket.gethostname(),
 			   'colcode': [31, 63, 127, 255],
 			   'rainbow': rainbow(),
-			   'visit': Visitor.objects.all().order_by('date')}
+			   'visit': Visitor.objects.all().order_by('-date')}
 	return render(request, 'face.html', context)
 
