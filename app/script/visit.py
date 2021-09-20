@@ -34,13 +34,13 @@ for v in visit:
 		inp_val = input(Fore.RED + '{} {} delete robot (y/n) ? '.format(v, v.marray_size()))
 		if inp_val == 'y': v.delete()
 	elif v.has_message():
-		print(Fore.RED + '{} {}'.format(v, v.dessage()))
+		print(Fore.RED + '{} message: {}'.format(v, v.dessage()))
 	elif v.voted:
 		print(Fore.RED + '{} voted'.format(v))
 	elif v.lang == 'en':
-		print(Fore.RED + '{} language {}'.format(v, v.lang))
-	elif v.lang == 'en':
-		print(Fore.RED + '{} language {}'.format(v, v.lang))
+		print(Fore.RED + '{} changed language'.format(v))
+	elif v.marray_size() > 0:
+		print(Fore.RED + '{} {}'.format(v, v.marray()))
 	else:
 		print(Fore.RED + '{} error'.format(v))
 
