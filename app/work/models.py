@@ -134,7 +134,8 @@ class Visitor(models.Model):
 		if self.voted: return False
 		if self.lang == 'en': return False
 		if self.message != '': return False
-		if self.code > 1: return False
+		if self.marray_size() > 0: return False
+		# if self.code > 1: return False
 		return True
 
 	def marray_size(self): return len(self.marray())
