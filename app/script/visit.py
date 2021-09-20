@@ -27,18 +27,23 @@ roboco = 0
 for v in visit:
 	if v.is_robo(): roboco += 1
 
+if roboco == 0: print(Fore.MAGENTA + Back.CYAN + 'no robots')
+else: print(Fore.MAGENTA + Back.CYAN + '{} robots:'.format(roboco))
+for v in visit:
+	if v.is_robo():
+		inp_val = input(Fore.RED + '{} {} delete robot (y/n) ? '.format(v, v.marray_size()))
+		if inp_val == 'y': v.delete()
+	elif v.has_message():
+		print(Fore.RED + '{} {}'.format(v, v.dessage()))
+	elif v.voted:
+		print(Fore.RED + '{} voted'.format(v))
+	elif v.lang == 'en':
+		print(Fore.RED + '{} language {}'.format(v, v.lang))
+	elif v.lang == 'en':
+		print(Fore.RED + '{} language {}'.format(v, v.lang))
+	else:
+		print(Fore.RED + '{} error'.format(v))
 
-inp_val = 'n'
-if roboco == 0:
-	print(Fore.MAGENTA + Back.CYAN + 'no robots')
-else:
-	print(Fore.MAGENTA + Back.CYAN + '\nrobots:')
-	for v in visit:
-		if v.is_robo(): print(v.ip_address, 'size =', v.marray_size())
-	inp_val = input(Fore.RED + "delete {} robots (y/n) ? ".format(roboco))
-	if inp_val == 'y':
-		for v in visit:
-			if v.is_robo: v.delete()
 
 
 
