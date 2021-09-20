@@ -59,7 +59,7 @@ def run():
 				if ipa == '127.5.0.1': pass
 				else: danni.append(ipa)
 
-		if len(danni) > 1: print('{} -> {}'.format(m, danni))
+		if len(danni) > 0: print('{} -> {}'.format(m, danni))
 
 
 
