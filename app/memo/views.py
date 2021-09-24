@@ -66,7 +66,11 @@ def demo(request):
 
 	party = ''
 	for p in Prog.objects.all():
-		party += '{}: {}, '.format(dicho[p.name], p.code1)
+		party += """
+		<tr class = "bg-warning text-dark">
+		  <th scope = "row">{}</th>
+		  <td>{}</td>
+		</tr>""".format(dicho[p.name], p.code1)
 
 	context = {"form": form,
 			   "graph": plotter("prog", 0),

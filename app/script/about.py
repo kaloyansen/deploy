@@ -9,7 +9,7 @@ Un logiciel opérationnel est la principale mesure d’avancement.
 
 Un site vitrine d'un développeur d'applications. Codé en python 3 avec Django web framework. Le site est 
 
-<ul class = "mr-auto"><li>responsif,</li><li>bilangue anglais/français et</li><li>crypté (secure sockets layer).</li></ul>
+<ul class = "mr-auto"><li>responsif,</li><li>bilingue anglais/français et</li><li>crypté (secure sockets layer).</li></ul>
 
 <strong>kalodev.site</strong>
 <a href = "https://kalodev.site">https://kalodev.site</a>
@@ -25,9 +25,9 @@ www.kalodev.site
 
 Représentation graphique avec <strong>plotly</strong>, python plotting library for collaborative, interactive, publication-quality graphs. 
 
-Le code est deployé d'abord sur <strong>google cloud</strong> après l'avoir containerisé en image <strong>docker</strong> et puis sur <strong>digitalocean.com</strong>. <strong>Gunicorn</strong> est l'outil (serveur) qui permet de mettre en production le site Django. <strong>Nginx</strong> gère les fichiers statiques, comprenez par là les images, *.css, *.js, ...
+Le code est déployé d'abord sur <strong>google cloud</strong> après l'avoir containerisé en image <strong>docker</strong> et puis sur <strong>digitalocean.com</strong>. <strong>Gunicorn</strong> est l'outil (serveur) qui permet de mettre en production le site Django. <strong>Nginx</strong> gère les fichiers statiques, comprenez par là les images, *.css, *.js, ...
 
-Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Django administration</strong> est très utile. L'accès à la base de donnée est réalisé dans un envirenment objet, on code les classes nous-même. Voyez les <a href = "/model">models</a> s'il vous plaît. Une autre possibilté est <strong>django rest framework</strong>. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
+Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Django administration</strong> est très utile. L'accès à la base de donnée est réalisé dans un environnement objet, on code les classes nous-mêmes. Voyez les <a href = "/model">modèles</a> s'il vous plaît. Une autre possibilité est <strong>django rest framework</strong>. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
 """
 work[3].place = "<a href = \"https://simplon.co\">simplon.co</a>, Grenoble, FRANCE"
 work[3].technology = """
@@ -43,6 +43,9 @@ def run():
 Madame, Monsieur,
 
 
+	Je m'appelle Kalo. Je comprends et je sais parler, lire et écrire en français, en anglais et en bulgare. Physicien de formations, de nationalité - bulgare, j'habite en France depuis dix ans. Avant avoir venu j'ai terminé mon doctorat en physique expérimentale à l'Université de Hamburg en Allemagne.
+    Je suis développeur back-end et concepteur d'application. Je m'intéresse de bases de données, d'analyse de données et de visualisation enligne. Mon langage de programmation préféré est python. La programmation orientée objet est facilitée par un ensemble de technologies dédiés : Java, C++, PHP, ... Je préfère des logiciels open source.
+
 Je suis à la recherche d’une entreprise pouvant m’accueillir dans le cadre d’un contrat en alternance
 (contrat d’apprentissage) pour la formation de concepteur développeur d’applications.
 
@@ -50,7 +53,7 @@ Cette formation a commencé le 10 mai 2021 et dure 12 mois. L’alternance est d
 
 Les compétences visées sont maquetter une application, développer une interface utilisateur de type desktop, développer des composants d’accès aux données, développer la partie front-end d’une interface utilisateur web, développer la partie back-end d’une interface utilisateur web, concevoir une base de données, mettre en place une base de données, développer des composants dans le langage d’une base de données, collaborer à la gestion d’un projet informatique et à l’organisation de l’environnement de développement, concevoir une application, développer des composants métier, construire une application organisée en couches, développer une application mobile, préparer et exécuter les plans de tests d’une application, préparer et exécuter le déploiement d’une application.
 
-Le développeur de logiciel a un rôle important dans une entreprise et plus largement dans le cadre de l’évolution de la société. Ce rôle me correspond car je suis responsable et organisé, j’aime le contact avec les gens et je suis efficace dans les missions qui me sont confiées. Je sais apprendre et trouver des solutions aux problèmes complexes. Je suis capable de travailler en autonomie ou en équipe. Je parle, je lis et j’écris l’anglais et le français ainsi que ma langue maternelle, le bulgare.
+La seule limite dans le développement de logiciel sans compter les compétences, est l'imagination de la programmeuse/du programmeur. Je suis responsable et organisé, j’aime le contact avec les gens et je suis efficace dans les missions qui me sont confiées. Je sais apprendre et trouver des solutions aux problèmes complexes. Je suis capable de travailler en autonomie ou en équipe.
 
 Mon parcours me permet d’avoir les compétences de bases pour ce métier mais j’ai à cœur de continuer à me former afin d’être parfaitement opérationnel dans la fonction visée. C’est pourquoi j’espère pouvoir trouver une entreprise qui pourra m’accueillir et à laquelle je pourrais proposer mes connaissances et mon investissement en échange.
 

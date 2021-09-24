@@ -1,72 +1,99 @@
 {% extends "base.html" %}
 {% block page_content %}
 
-{% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
 
+<div class = "container-fluid">
+  <div class = "row">
 
-<div id = "is_valid"
-     class = "row sr-only"
-     color = "red">
-  {% if form.is_valid %}
-  form is valid
-  {% else %}
-  form is not valid
-  {% endif %}
-</div>
-
-
-{% if form.errors %}
-<div title = "errors"
-     id = "errors"
-     class = "row">form errors::{{ form.errors }}</div>
-{% endif %}
-
-<div class = "row">
-
-  <div title = "plot"
-       class = "col-md-6"
-       id = "ploter">
-    {% if graph %}
-    {{ graph | safe }}
-    {% else %}
-    <p>{% trans 'NoGraph' %}</p>
-    {% endif %}
-  </div>
-
-  <div title = "vote"
-       class = "col-md-5"
-       id = "voter">
-    {% if page_not_voted %}
-    <button type = "button"
-            class = "btn btn-outline-danger rounded-circle"
-            data-toggle = "modal"
-            data-target = "#myModal">{% trans 'VoteNow' %}</button>
-    <button type = "button"
-            class = "btn btn-outline-primary rounded"
-            data-toggle = "modal"
-            data-target = "#myModal">{% trans 'VoteNow' %}</button>
-    {% else %}
-    <h4>{% trans 'VoteThanx' %}</h4>
-    {% endif %}
-    <div class = "raw info">
-      <p><label>{% trans 'InDataBase' %}<br />{{ party }}</label>
+    {% if form.errors %}
+    
+    <div id = "is_valid"
+         class = "col-md-3 sr-only"
+         color = "red">
+      {% if form.is_valid %}
+      form is valid
+      {% else %}
+      form is not valid
+      {% endif %}
     </div>
+
+    <div title = "errors"
+         id = "errors"
+         class = "col-md-4">form errors::{{ form.errors }}
+    </div>
+
+    {% endif %}
+
+    <div title = "data"
+         class = "col-md-3"
+         id = "voter">
+
+      
+      <button title = "{% trans 'VoteNow' %}"
+              class = "btn btn-outline-danger"
+              data-toggle = "modal"
+              data-target = "#myModal">{% trans 'VoteNow' %}</button>
+
+      {{ page_pause | safe }}
+      
+      <div title = "SQLite"
+           class = "row table-responsive">
+        <table title = "SQLite"
+               class = "table table-fluid table-hover table-bordered table-dark">
+          <caption>(***){% trans 'InDataBase' %}</caption>
+          <thead>
+            <tr>
+              <th scope = "col">title</th>
+              <td>score ***</td>
+          </tr></thead>
+          <tbody>{{ party | safe }}</tbody>
+        </table>
+      </div>
+
+      {{ page_pause | safe }}
+    
+      <div class = "row">
+        <button title = "{% trans 'VoteNow' %}"
+                class = "btn btn-outline-danger rounded"
+                data-toggle = "modal"
+                data-target = "#myModal">{% trans 'VoteNow' %}</button>
+      </div>
+
+    </div>
+      
+
+    <div title = "plot"
+         class = "col-md-8 offset-md-1"
+         id = "ploter">
+
+      <div class = "row">
+        {% if graph %}
+        {{ graph | safe }}
+        {% else %}
+        <p>{% trans 'NoGraph' %}</p>
+        {% endif %}
+        <button title = "{% trans 'VoteNow' %}"
+                class = "btn btn-outline-danger rounded"
+                data-toggle = "modal"
+                data-target = "#myModal">{% trans 'VoteNow' %}</button>
+      </div>
+
+      {{ page_pause | safe }}
+
+      <div title = "stack overflow"
+           id = "history"
+           class = "row">     
+        <img title = "image from stack overflow"
+             class = "img-fluid"
+             src = "{% static image %}"
+             alt = "{{ image }} not found">
+      </div>
+
+    </div>
+
   </div>
-  
-</div>
-
-{{ page_pause | safe }}
-
-<div title = "stack overflow"
-     id = "history"
-     class = "row">     
-  <img title = "image from stack overflow"
-       class = "img-fluid"
-       src = "{% static image %}"
-       alt = "{{ image }} not found"
-       width = "100%">
 </div>
 
 
@@ -74,7 +101,10 @@
      id = "myModal"
      class = "modal fade">
   <div class = "modal-dialog modal-dialog-centered modal-lg">
-    <div class = "modal-content">{{ page_digitalocean_grand | safe }}
+    <div class = "modal-content bg-dark text-light">{{ page_digitalocean_grand | safe }}
+
+      {% if page_not_voted %}
+
       <form action = ""
             method = "post">
         <div class = "modal-header">
@@ -82,20 +112,34 @@
         </div>
         <div class = "modal-body">
           {% csrf_token %}
-          {% bootstrap_form form layout='inline' form_group_class='w3-input w3-border-100 w3-large' %}
-          <!-- {{ form }} -->
-          <label>{{ party }}</label>
+          {{ form }}
+          <label>this is a label</label>
         </div>
         <div class = "modal-footer">
-          {% buttons %}
-          <button type = "submit"
+          <button title = {% trans 'SendNow' %}
                   class = "btn-outline-info">{% trans 'SendNow' %}</button>
-          <button type = "button"
+          <button title = {% trans 'CancelNow' %}
                   class = "close btn btn-outline-warning"
                   data-dismiss = "modal">{% trans 'CancelNow' %}</button>
-          {% endbuttons %}
         </div>
       </form>
+
+      {% else %}
+
+        <div class = "modal-header">
+          <h5 class = "modal-title">{% trans 'LangQuestion' %}
+        </div>
+        <div class = "modal-body">
+          <label>{% trans 'VoteThanx' %}</label>
+        </div>
+        <div class = "modal-footer">
+          <button title = {% trans 'CancelNow' %}
+                  class = "close btn btn-outline-warning"
+                  data-dismiss = "modal">{% trans 'CancelNow' %}</button>
+        </div>
+
+      {% endif %}
+      
     </div>
   </div>
 </div>

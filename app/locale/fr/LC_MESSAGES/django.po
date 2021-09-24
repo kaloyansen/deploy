@@ -109,7 +109,7 @@ msgstr "marci d'avoir voté"
 
 #: templates/memo_demo.html:54
 msgid "InDataBase"
-msgstr "à la base de données"
+msgstr "de la base de données"
 
 #: templates/memo_demo.html:81
 msgid "LangQuestion"

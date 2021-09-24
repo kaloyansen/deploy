@@ -125,14 +125,14 @@
                      data-toggle = "dropdown"
                      aria-haspopup = "true"
                      aria-expanded = "true">{% trans 'PlotMain' %}</a>
-                  <div class = "dropdown-menu text-light bg-info"
+                  <div class = "dropdown-menu text-light bg-dark"
                        aria-labelledby = "btnGroupDrop">
                     <a title = "{% trans 'PlotLang' %}"
                        class = "nav-link btn-outline-success rounded"
                        href = "{% url 'demo' %}">{% trans 'PlotLang' %}</a>
-                    <a title = "{% trans 'PlotSun' %}"
-                       class = "nav-link btn-outline-danger rounded"
-                       href = "{% url 'sun' %}">{% trans 'PlotSun' %}</a>
+                    <!-- <a title = "{% trans 'PlotSun' %}" -->
+                    <!--    class = "nav-link btn-outline-danger rounded" -->
+                    <!--    href = "{% url 'sun' %}">{% trans 'PlotSun' %}</a> -->
                     <a title = "{% trans 'PlotBg' %}"
                        class = "nav-link btn-outline-warning rounded"
                        href = "{% url 'bg' %}">{% trans 'PlotBg' %}</a>
@@ -146,19 +146,19 @@
                      data-toggle = "dropdown"
                      aria-haspopup = "true"
                      aria-expanded = "true">{% trans 'About' %}</a>
-                  <div class = "dropdown-menu text-light bg-success"
+                  <div class = "dropdown-menu text-light bg-dark"
                        aria-labelledby = "btnGroupDrop">
                     <a title = "curriculum vitæ"
-                       class = "nav-link btn-outline-warning rounded"
+                       class = "nav-link btn-outline-warning"
                        href = "/cv">{% trans 'MyCV' %}</a>
                     <a title = "django rest framework"
-                       class = "nav-link btn-outline-primary rounded"
+                       class = "nav-link btn-outline-primary"
                        href = "/rest">api rest framework</a>
                     <a title = "warning: administration requires a super user"
-                       class = "nav-link btn-outline-danger rounded"
+                       class = "nav-link btn-outline-danger"
                        href = "/admin">django admininstration</a>
                     <a title = "this page is a django application"
-                       class = "nav-link btn-outline-info rounded"
+                       class = "nav-link btn-outline-info"
                        href = "{% url 'work_detail' 3 %}">{% trans 'ThisPage' %}</a>
                     {{ page_digitalocean_grand | safe }}
 
@@ -233,12 +233,14 @@
     <div class = "row">
 
       <small class = "col-md-6">
-        <small>
-          copyleft &#127279; {{ page_author }}
-          <span class = "text-muted mx-2">|</span>
-          {% trans 'LastUpdate' %}
-          {{ page_time | date:"F, jS Y" }}, {{ page_place }}
-        </small>
+          <small>
+            copyleft &#127279;
+            {{ page_author }}
+            <span class = "text-muted mx-2">|</span>
+            {{ page_time | date:"Y" }}
+            <span class = "text-muted mx-2">|</span>
+            {{ page_place }}
+          </small>
       </small>
 
       <div class = "col-md-6 text-md-right">
@@ -257,9 +259,11 @@
               class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
         <small class = "text-light">
           <small>
-            copyleft
-            &#127279; {{ page_author }},
-            le {{ page_time | date:"d/m/Y" }} à {{ page_place }}
+            copyleft &#127279;
+            {{ page_author }},
+            {% trans 'LastUpdate' %}
+            {{ page_time | date:"Y" }},
+            {{ page_place }}
             {% include "social.html" %}
           </small>
 

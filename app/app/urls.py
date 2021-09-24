@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.models import User
-from django.urls import include, path, re_path
+from django.urls import path, re_path, include as incl
 from django.views.generic import RedirectView, TemplateView
 from django.views.static import serve
 
@@ -151,32 +151,33 @@ url_h = "http://ka.lo"
 
 url_patterns = [
 	path("base/", views.base, name = "base"),
-	path("face/", views.face, name = "face"),
-	path("f/a/c/e/", views.face, name = "face"),
 	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),
-	path("on/",	RedirectView.as_view(url = url_k), name = "on"),
-	path("off/", RedirectView.as_view(url = url_h), name = "off"),
-	path("rest/", include(router.urls)),
-	path('i18n/', include('django.conf.urls.i18n')),
-	path("auth/", include("rest_framework.urls", namespace = "rest_framework")),
-	path("memo/", include("memo.urls")),
-	path("news/", include("news.urls")),
-	path("work/", include("work.urls")),
-	path("admin/", admin.site.urls)
+	path("rest/", incl(router.urls)),
+	path('i18n/', incl('django.conf.urls.i18n')),
+	path("auth/", incl("rest_framework.urls", namespace = "rest_framework")),
+	path("memo/", incl("memo.urls")),
+	path("news/", incl("news.urls")),
+	path("work/", incl("work.urls")),
+	path("admin/", admin.site.urls),
+	re_path('^face[/]?$', views.face, name = "face"),
+	re_path('^onn[n]+[/]?$', RedirectView.as_view(url = url_k), name = "on"),
+	re_path('^off[f]+[/]?$', RedirectView.as_view(url = url_h), name = "off"),
 ]
 
-if settings.DEBUG: url_patterns.append(path("__debug__/", include(debug_toolbar.urls)))
+if settings.DEBUG: url_patterns.append(path("__debug__/", incl(debug_toolbar.urls)))
 
 parazit = [".env", "wp-login.php", "owa/auth/logon.aspx", "err", "erreur", "wlwmanifest.xml"]
 parazit_patterns = []
-for url in parazit: parazit_patterns.append(re_path(r'{}$'.format(url), views.erreur, name = "erreur"))
+for url in parazit: parazit_patterns.append(re_path('{}[/]?$'.format(url),
+													views.erreur,
+													name = "erreur"))
 
 static_patterns = static(settings.STATIC_URL, document_root = settings.STATIC_ROOT, show_indexes = True) + static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT) + static(settings.ROBOTS_URL, document_root = settings.ROBOTS_ROOT) + static(settings.FAVICON_URL, document_root = settings.FAVICON_ROOT) + static(settings.CV_URL, document_root = settings.CV_ROOT)
 
 last_patterns = [
-	re_path(r'tv', TemplateView.as_view(template_name = "erreur.html", content_type = "text/html")),
-	re_path(r'model', views.model, name = "model"),
-	re_path(r'', views.index, name = "index") # go down index if the url has not been found in patterns
+	re_path('^tv[/]?$', TemplateView.as_view(template_name = "erreur.html", content_type = "text/html")),
+	re_path('^model[/]?$', views.model, name = "model"),
+	re_path('.*', views.index, name = "index") # back to index if not corрesponding pattern found
 ]
 
 

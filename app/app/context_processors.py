@@ -1,5 +1,4 @@
-#from django.conf import settings
-#from django.shortcuts import redirect, render
+from re import search as rese
 import logging
 from django.http import HttpResponse
 from django.utils import timezone, translation
@@ -42,20 +41,22 @@ def get_context(request):
 		send['submit'] = 'sent'		
 		
 		message_content = request.POST.get("message", None)
-		actif = ['on', 'off', 'morla', 'base', 'face', 'err', 'admin', 'rest', 'news', 'work', 'cv', 'memo/demo', 'memo/spider', 'memo/sun', 'memo/bg']
+		actif = ['^onn[n]+[/]?$', '^off[f]+[/]?$', 'morla', 'base', 'face', 'err[r]+[/]?', 'admin', 'rest', 'news', 'work', 'cv', 'memo/demo', 'memo/spider', 'memo/sun', 'memo/bg']
 		
 		if not visitor:
 			send['message'] = 'error'
 			send['submit'] = 'nul'					
-		elif message_content == '':
-			send['message'] = 'envoyez un message'
-			send['submit'] = 'ok'
-		elif message_content in actif:
-			send['redirect'] = '/{}/'.format(message_content)
 		else:
-			visitor.message = encrypt(message_content)
-			visitor.mencrypted = True
-			visitor.save()
+			if message_content == '':
+				send['message'] = 'envoyez un message'
+				send['submit'] = 'ok'
+			else:
+				if correspond(actif, message_content): # it was <elif message_content in actif>
+					send['redirect'] = '/{}/'.format(message_content)
+				else:
+					visitor.message = encrypt(message_content)
+					visitor.mencrypted = True
+					visitor.save()
 
 	send['lang'] = lang
 	send['iseng'] = False
@@ -127,3 +128,10 @@ def set_voted(request):
 	visitor.voted = True
 	visitor.save()
 	return True
+
+def correspond(arrr, messs):
+	for mot in arrr:
+		if rese(mot, messs): return True
+		else: pass
+	return False
+		
