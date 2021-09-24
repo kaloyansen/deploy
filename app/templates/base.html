@@ -232,12 +232,13 @@
           class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
     <div class = "row">
 
-      <small class = "col-md-6">
+      <small class = "col-md-6 text-md-left">
           <small>
+            <span class = "text-muted mx-2">|</span>
             copyleft &#127279;
             {{ page_author }}
             <span class = "text-muted mx-2">|</span>
-            {{ page_time | date:"Y" }}
+            2008 - {{ page_time | date:"Y" }}
             <span class = "text-muted mx-2">|</span>
             {{ page_place }}
           </small>

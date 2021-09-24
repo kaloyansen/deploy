@@ -39,7 +39,15 @@ def get_lang(request):
 
 def base(request): return render(request, 'base.html')
 def model(request): return render(request, 'model.html')
-def erreur(request): return render(request, 'erreur.html', {'message': "<p>something wrong or at least not forseen happened</p>if you like it is possible to send an e-mail to"})
+def erreur(request): return render(request, 'erreur.html',
+								   {'loco': request.path,
+									'message': "if you wish you are welcome to send a message express (at the right side of the menu bar) or an e-mail to"})
+
+
+
+def mindex(request):
+	logger.info(request.path)
+	return index(request)
 
 
 

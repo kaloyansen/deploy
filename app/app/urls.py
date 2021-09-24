@@ -150,6 +150,7 @@ url_k = "https://kalodev.site"
 url_h = "http://ka.lo"
 
 url_patterns = [
+	path("", views.index, name = "index"),
 	path("base/", views.base, name = "base"),
 	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),
 	path("rest/", incl(router.urls)),
@@ -177,7 +178,10 @@ static_patterns = static(settings.STATIC_URL, document_root = settings.STATIC_RO
 last_patterns = [
 	re_path('^tv[/]?$', TemplateView.as_view(template_name = "erreur.html", content_type = "text/html")),
 	re_path('^model[/]?$', views.model, name = "model"),
-	re_path('.*', views.index, name = "index") # back to index if not corрesponding pattern found
+	# if nothing corрesponding found:
+	#re_path('.*', RedirectView.as_view(url = "/"), name = "mindex")
+	#re_path('.*', views.mindex, name = "mindex") 
+	re_path('.*', views.erreur, name = "erreur") 
 ]
 
 
