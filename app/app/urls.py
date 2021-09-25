@@ -178,9 +178,8 @@ static_patterns = static(settings.STATIC_URL, document_root = settings.STATIC_RO
 last_patterns = [
 	re_path('^tv[/]?$', TemplateView.as_view(template_name = "erreur.html", content_type = "text/html")),
 	re_path('^model[/]?$', views.model, name = "model"),
-	# if nothing corрesponding found:
+	# if no any corрesponding pattern found:
 	#re_path('.*', RedirectView.as_view(url = "/"), name = "mindex")
-	#re_path('.*', views.mindex, name = "mindex") 
 	re_path('.*', views.erreur, name = "erreur") 
 ]
 

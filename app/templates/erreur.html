@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 {% block page_content %}
 
+
 <div class = "accordion"
-     style = "font-size:22mm"
+     style = "font-size:16mm"
      id = "acc0">do not panic
 
   <button title = "error"
-          class = "btn btn-outline-warning rounded-circle"
+          class = "btn btn-outline-warning rounded"
           data-toggle = "collapse"
           data-target = "#acc1">error</button>
   <button title = "location"
-          class = "btn btn-outline-success rounded-circle"
+          class = "btn btn-outline-success rounded"
           data-toggle = "collapse"
           data-target = "#acc2">url</button>
   <button title = "address"
-          class = "btn btn-outline-info rounded-circle"
+          class = "btn btn-outline-info rounded"
           data-toggle = "collapse"
           data-target = "#acc3">address</button>
-  <hr></hr>
+  <hr>
   <div title = "error"
        id = "acc1"
        data-parent = "#acc0"
