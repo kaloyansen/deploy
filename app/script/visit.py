@@ -50,9 +50,9 @@ for v in visit:
 		print('delete robot (y/n) ?',)
 		rlist, _, _ = select([sys.stdin], [], [], timeout) # timeout, seconds
 		if rlist:
-			input_value = sys.stdin.readline()
-			if input_value.strip() == 'y': v.delete()
-			else: print('got <{}>'.format(inp_val))		
+			inp_val = sys.stdin.readline()
+			if inp_val.strip() == 'y': v.delete()
+			else: print('got <{}>'.format(inp_val.strip()))		
 		else: print('timeout {}'.format(timeout))
 
 
