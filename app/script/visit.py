@@ -30,20 +30,20 @@ for v in visit:
 if roboco == 0: print(Fore.MAGENTA + Back.CYAN + 'no robots')
 else: print(Fore.MAGENTA + Back.CYAN + '{} robots:'.format(roboco))
 for v in visit:
+	v.set_bifi()
+	tn = Fore.BLUE + '{} {} '.format(v.ip_address, v.bifistr)
 	if v.is_robo():
-		inp_val = input(Fore.RED + '{} {} delete robot (y/n) ? '.format(v, v.marray_size()))
+		inp_val = input(Fore.RED + 'delete robot (y/n) ? ')
 		if inp_val == 'y': v.delete()
-	elif v.has_message():
-		print(Fore.RED + '{} message: {}'.format(v, v.dessage()))
-	elif v.voted:
-		print(Fore.RED + '{} voted'.format(v))
-	elif v.lang == 'en':
-		print(Fore.RED + '{} changed language'.format(v))
-	elif v.marray_size() > 0:
-		print(Fore.RED + '{} {}'.format(v, v.marray()))
-	else:
-		print(Fore.RED + '{} error'.format(v))
-
+	if v.has_message():
+		tn += Fore.GREEN + 'message: {} '.format(v.dessage())
+	if v.voted:
+		tn += Fore.MAGENTA + 'voted '
+	if v.lang == 'en':
+		tn += Fore.CYAN + 'changed language '
+	if v.marray_size() > 0:
+		tn += Fore.BLUE + 'marray_size: {}, code: {}'.format(v.marray_size(), v.code)
+	print(tn)
 
 
 
