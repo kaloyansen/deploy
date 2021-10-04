@@ -36,13 +36,13 @@
        class = "table-responsive"
        style = "{{ style }}">
     <table title = "table work.visitor"
-           class = "table table-hover table-bordered table-dark"
-           style = "">
+           class = "table table-hover table-bordered table-dark">
       <caption>work.visitor</caption>
       <thead>
         <tr>
           <th scope = "col">date</th>
           <th scope = "col">ip</th>
+          <th scope = "col">bits</th>
           <th scope = "col">code</th>
           <th scope = "col">voted</th>
           <th scope = "col">lang</th>
@@ -53,6 +53,7 @@
       </thead>
       <tbody>
         {% for visa in visit %}
+        {{ visa.set_bifi }}
         {% if visa.is_robo %}
         <tr class = "bg-dark text-light">
         {% elif visa.has_message %}
@@ -64,6 +65,7 @@
           {% endif %}
           <th scope = "row">{{ visa.date }}</th>
           <td>{{ visa.ip_address }}</td>
+          <td>{{ visa.bifistr }}</td>
           <td>{{ visa.code }}</td>
           <td>{{ visa.voted }}</td>
           <td>{{ visa.lang }}</td>

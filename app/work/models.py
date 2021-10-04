@@ -105,6 +105,11 @@ class Mage(models.Model):
 class Visitor(models.Model):
 	ip_address = models.GenericIPAddressField()
 	date = models.DateTimeField(default = timezone.now)
+	bifistr = models.CharField(default = '', max_length = 22)
+	bifi = models.BinaryField(blank = True,
+							  null = True,
+							  editable = True,
+							  verbose_name = 'bitwise array')
 	code = models.IntegerField(blank = False,
 							   default = 0,
 							   verbose_name = 'range')
@@ -121,9 +126,36 @@ class Visitor(models.Model):
 								   related_name = 'mage_visitors')
 
 
+	def getBit(self, offset):
+		mask = 1 << offset
+		return self.bifi & mask > 0
+
+	def setBit(self, offset, do_not_clear = True):
+		mask = 1 << offset
+		if do_not_clear:
+			self.bifi = self.bifi | mask
+		else:
+			mask = ~mask
+			self.bifi = self.bifi & mask
+
+	def set_bifi(self):
+		self.bifi = 2 ** 12
+			
+		self.setBit(0, self.has_message())
+		self.setBit(1, self.mencrypted)
+		self.setBit(2, self.voted)
+		self.setBit(3, self.lang == 'en')
+		self.setBit(4, self.code > 0)
+		self.setBit(5, self.code > 1)
+		self.setBit(6, self.marray_size() > 0)
+		self.setBit(7, self.marray_size() > 1)
+		self.setBit(8, self.is_robo())
+		
+		self.bifistr = '{:b}'.format(self.bifi)
+		
 	def has_message(self):
-		if self.message == '': return False
-		return True
+		if len(self.message) == 0: return False
+		else: return True
 
 	def dessage(self):
 		if self.mencrypted:	return decrypt(self.message)
@@ -131,12 +163,14 @@ class Visitor(models.Model):
 		return self.message
 
 	def is_robo(self):
-		if self.voted: return False
-		if self.lang == 'en': return False
-		if self.message != '': return False
-		if self.marray_size() > 0: return False
-		# if self.code > 1: return False
-		return True
+		rate = 0
+		if self.voted: rate += 1
+		if self.lang == 'en': rate += 1
+		if self.message != '': rate += 1
+		if self.marray_size() > 0: rate += 1
+		if self.code > 9: rate += 1
+		if rate == 0: return True
+		return False
 
 	def marray_size(self): return len(self.marray())
 	def marray(self):
