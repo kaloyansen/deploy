@@ -90,6 +90,7 @@ def index(request, template_file_name = 'index.html'):
 
 @user_passes_test(lambda u: u.is_superuser)
 def face(request):
+	for v in Visitor.objects.all(): v.set_bifi()
 	context = {'style': safeStyle('zero'),
 			   'style1': safeStyle('une'),
 			   'style2': safeStyle('deux'),

@@ -53,14 +53,15 @@
       </thead>
       <tbody>
         {% for visa in visit %}
-        {{ visa.set_bifi }}
+
+        <!-- {{ visa.set_bifi }} -->
         {% if visa.is_robo %}
         <tr class = "bg-dark text-light">
-        {% elif visa.has_message %}
+          {% elif visa.has_message %}
         <tr class = "bg-warning">
-        {% elif visa.voted %}
+          {% elif visa.voted %}
         <tr class = "bg-danger text-warning">
-        {% else %}
+          {% else %}
         <tr class = "bg-light text-dark">
           {% endif %}
           <th scope = "row">{{ visa.date }}</th>

@@ -139,19 +139,21 @@ class Visitor(models.Model):
 			self.bifi = self.bifi & mask
 
 	def set_bifi(self):
+		# if len(self.bifistr) > 0: return '*'
 		self.bifi = 2 ** 12
 			
 		self.setBit(0, self.has_message())
 		self.setBit(1, self.mencrypted)
 		self.setBit(2, self.voted)
 		self.setBit(3, self.lang == 'en')
-		self.setBit(4, self.code > 0)
-		self.setBit(5, self.code > 1)
-		self.setBit(6, self.marray_size() > 0)
-		self.setBit(7, self.marray_size() > 1)
+		self.setBit(4, self.code > 5)
+		self.setBit(5, self.code > 15)
+		self.setBit(6, self.marray_size() > 5)
+		self.setBit(7, self.marray_size() > 15)
 		self.setBit(8, self.is_robo())
 		
 		self.bifistr = '{:b}'.format(self.bifi)
+		return '*'
 		
 	def has_message(self):
 		if len(self.message) == 0: return False
