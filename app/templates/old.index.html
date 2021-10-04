@@ -14,30 +14,27 @@
 
 <h1>{{ title }}</h1>
 
-{{ page_pause | safe }}
-
 <div title = "info info info"
      class = "container-fluid card-group"
-     id = "mother"
      style = "min-width: 100mm">
 
   <div title = "bonjour"
        class = "card custom col-md-3 alert-info">
     <div class = "card-body">
-      <a title = "manifest"
-         class = "card-text btn btn-outline-info rounded-circle"
-         style = "font-size:9.6mm;"
-         data-toggle = "modal"
-         data-target = "#bienvenue">
-        <img title = "Kaloyan KRASTEV"
-             class = "card-img-top rounded-circle"
-             src = "{% static image %}"
-             alt = "{{ image }} not found"></a>
+        <a title = "manifest"
+           class = "card-text btn btn-outline-info rounded-circle"
+           style = "font-size:9.6mm;"
+           data-toggle = "modal"
+           data-target = "#bienvenue">
+          <img title = "Kaloyan KRASTEV"
+               class = "card-img-top rounded-circle"
+               src = "{% static image %}"
+               alt = "{{ image }} not found"></a>
     </div>
   </div>
 
   <div title = "about"
-       class = "card custom col-md-3 alert-info">
+       class = "card custom col-md-5 alert-info">
     <div class = "card-body">
       <div class = "card-title"
            style = "font-size:8mm;">
@@ -46,109 +43,93 @@
     </div>
   </div>
 
-  <div class = "col-md-7">
-    <div class = "row">
-      <div class = "list-group list-group-horizontal text-center"
-           id = "list-tab"
-           style = "font-size:6mm;"
-           role = "tablist">
-        <a class = "list-group-item btn-outline-dark rounded-circle active"
-           id = "list-prog-list"
-           data-toggle = "list"
-           href = "#list-prog"
-           role = "tab"
-           aria-controls = "prog">
-          {% if page_en %}languages
-          {% else %}langages
-          {% endif %}</a>
-        <a class = "list-group-item btn-outline-dark rounded-circle"
-           id = "list-tech-list"
-           data-toggle = "list"
-           href = "#list-tech"
-           role = "tab"
-           aria-controls = "tech">
-          {% if page_en %}technology
-          {% else %}technologie
-          {% endif %}</a>
-        <a class = "list-group-item btn-outline-dark rounded-circle"
-           id = "list-expo-list"
-           data-toggle = "list"
-           href = "#list-expo"
-           role = "tab"
-           aria-controls = "expo">
-          {% if page_en %}experience
-          {% else %}expérience
-          {% endif %}</a>
-        <a class = "list-group-item  btn-outline-dark rounded-circle"
-           id = "list-comp-list"
-           data-toggle = "list"
-           href = "#list-comp"
-           role = "tab"
-           aria-controls = "comp">
-          {% if page_en %}skills
-          {% else %}compétences
-          {% endif %}</a>
-        <a class = "list-group-item  btn-outline-dark rounded-circle"
-           id = "list-form-list"
-           data-toggle = "list"
-           href = "#list-form"
-           role = "tab"
-           aria-controls = "form">
-          {% if page_en %}education
-          {% else %}formation
-          {% endif %}</a>
+  <div title = "langages de programmation"
+       class = "card custom col-md-2 alert-primary">       
+    <div class = "card-body">
+      <div class = "card-title"
+           style = "font-size:7mm;">
+        <strong>
+          {% if page_en %}programming languages:
+          {% else %}langages de programmation:
+          {% endif %}
+        </strong>
       </div>
-    </div>
-
-    {{ page_pause | safe }}
-
-    <div class = "row">
-      <div class = "tab-content text-center"
-           id = "nav-tabContent">
-        <div class = "tab-pane fade show active"
-             id = "list-prog"
-             role = "tabpanel"
-             aria-labelledby = "list-prog-list">{{ lange | safe }}
-        </div>
-        <div class = "tab-pane fade"
-             id = "list-tech"
-             role = "tabpanel"
-             aria-labelledby = "list-tech-list">{{ techno | safe }}
-        </div>
-        <div class = "tab-pane fade"
-             id = "list-expo"
-             role = "tabpanel"
-             aria-labelledby = "list-expo-list">
-          <p>CNRS - Grenoble, France</p>
-          <p>DESY - Hamburg, Allemagne</p>
-          <p>INRNE - BAS - Sofia, Bulgarie</p>
-        </div>
-        <div class = "tab-pane fade"
-             id = "list-comp"
-             role = "tabpanel"
-             aria-labelledby = "list-comp-list">
-          <p>{{ lange | safe }}</p>
-          <p>{{ techno | safe }}</p>
-        </div>
-        <div class = "tab-pane fade"
-             id = "list-form"
-             role = "tabpanel"
-             aria-labelledby = "list-form-list">
-          <p>simplon.co - Grenoble</p>
-          <p>la Conservatoire de Grenoble</p>
-          <p>Universität Hamburg</p>
-          <p>Sofia University</p>
-        </div>
-
-      </div>
-      
+      <p class = "card-text">{{ lange | safe }}</p>
     </div>
   </div>
-</div>
 
-{{ page_pause | safe }}
+  <div title = "technologie"
+       class = "card custom col-md-3 alert-secondary">       
+    <div class = "card-body">
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        <strong>
+          {% if page_en %}technology:
+          {% else %}technologie:
+          {% endif %}
+        </strong>
+      </div>
+      <p class = "card-text">{{ techno | safe }}</p>
+    </div>
+  </div>
 
+  <div title = "expérience"
+       class = "card custom col-md-6 alert-success">       
+    <div class = "card-body">
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        <strong>
+          {% if page_en %}experience:
+          {% else %}expérience:
+          {% endif %}
+        </strong>
+      </div>
+      <p class = "card-text">CNRS - Grenoble, France </p>
+      <p class = "card-text">DESY - Hamburg, Allemagne</p>
+      <p class = "card-text">INRNE - BAS - Sofia, Bulgarie</p>
+    </div>
+  </div>
 
+  <div title = "compétences"
+       class = "card custom col-md-3 alert-danger">       
+    <div class = "card-body">
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        <strong>
+          {% if page_en %}skills:
+          {% else %}compétences:
+          {% endif %}
+        </strong>
+      </div>
+      <p class = "card-text">{{ lange | safe }}</p>
+      <p class = "card-text">{{ techno | safe }}</p>
+    </div>
+  </div>
+
+  <div title = "formation"
+       class = "card custom col-md-4 alert-warning">       
+    <div class = "card-body">
+      <div class = "card-title"
+           style = "font-size:8mm;">
+        <strong>
+          {% if page_en %}education:
+          {% else %}formation:
+          {% endif %}
+        </strong>
+      </div>
+      <p class = "card-text">simplon.co - Grenoble</p>
+      <p class = "card-text">la Conservatoire de Grenoble</p>
+      <p class = "card-text">Universität Hamburg</p>
+      <p class = "card-text">Sofia University</p>
+      <p class = "card-text"><small>
+          {% include "social.html" %}
+      </small></p>
+    </div>
+  </div>
+
+  {{ page_pause | safe }}
+
+  
 <div id = "carexind"
      class = "container-fluid row carousel slide"
      title = "class  =  row carousel slide"

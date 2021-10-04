@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+
+<div class = "accordion justify-content-between"
+     style = "font-size:33px"
+     id = "acc0">biographie
+
+  <div title = "bio bouton group"
+       class = "btn-group btn-group-lg"
+       role = "group"
+       aria-label = "btn-group aria-label">{# #}
+    <button title = "résumé"
+            class = "btn btn-outline-dark rounded"
+            data-toggle = "collapse"
+            data-target = "#acc1">résumé</button>
+    <button title = "bio"
+            class = "btn btn-outline-success rounded"
+            data-toggle = "collapse"
+            data-target = "#acc2">bio</button>
+    <button title = "développement"
+            class = "btn btn-outline-info rounded"
+            data-toggle = "collapse"
+            data-target = "#acc3">développement</button>
+  </div>
+
+  {{ page_pause | safe }}
+
+  <div title = "résumé"
+       id = "acc1"
+       data-parent = "#acc0"
+       class = "collapse text-monospace user-select-none shadow show">Je m'appelle Kaloyan KRASTEV. Je suis né le premier janvier 1976 en Burgas, une ville à côté de la mer noire en Bulgarie. Physicien de formation j'ai travaillé dans la physique des particules en Bulgarie, en Allemagne et en France. Mes compétences informatiques sont développé pendant mes recherches scientifiques c'est-à-dire des calcules, des simulations, de l'analyse et de la visualisation de données. 
+    
+  </div>
+  
+  <div title = "bio"
+       id = "acc2"
+       data-parent = "#acc0"
+       class = "collapse"><p>Je m'appelle Kalo. Je comprends et je sais parler, lire et écrire en français, en anglais et en bulgare. Phisicien de formations, de nationalité - bulgare, j'habite en France depuis dix ans. Avant avoir venu j'ai terminé mon doctorat en physique des particules experimentale à l'Université de Hamburg en Allemagne.</p><p>Je suis développeur back-end et concepteur d'application. Je m'intéresse de bases de données, d'analyse de données et de visualistion en-ligne. Mon langage de programmation préféré est python. La programmation orientée objet est facilitée par un ensemble de technologies dédiés : <mark role = "button">Java, C++, PHP, </mark>... Je préfère des logiciels open source.</p>
+  </div>
+
+  <div title = "développement"
+       id = "acc3"
+       data-parent = "#acc0"
+       class = "collapse"><p>Je m'appelle Kalo, de nationalité bulgare, physicien de formation. J'ai travaillé dans la recherche scientifique en Bulgarie, en Allemagne et en France au CNRS.</p><p>J'ai commencé à programmer en fortran l'année 2000 pour ma thèse. Mon doctorat était consacré à l'analyse des données expérimentales. Le code de l'analyse était écrit en C++ dans un environnement objet. Dans le laboratoire du CNRS nous avons programmé en c. Mon langage de programmation préféré est python.</p><p>Je souhaite travailler dans le domaine du développement des logiciels. Je suis actuellement une formation de concepteur développeur d'applications à l'école simplon.co. Je suis en recherche d'un contrat d'alternance pour trois semaines sur quatre pendant onze mois.</p>
+      {% include "social.html" %}
+
+  </div>  
+  
+</div>
+
+
+
+
+{% endblock %}

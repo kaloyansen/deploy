@@ -151,6 +151,7 @@ url_h = "http://ka.lo"
 
 url_patterns = [
 	path("", views.index, name = "index"),
+	path("mindex/", views.mindex, name = "mindex"),
 	path("base/", views.base, name = "base"),
 	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),
 	path("rest/", incl(router.urls)),
@@ -176,7 +177,7 @@ for url in parazit: parazit_patterns.append(re_path('{}[/]?$'.format(url),
 static_patterns = static(settings.STATIC_URL, document_root = settings.STATIC_ROOT, show_indexes = True) + static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT) + static(settings.ROBOTS_URL, document_root = settings.ROBOTS_ROOT) + static(settings.FAVICON_URL, document_root = settings.FAVICON_ROOT) + static(settings.CV_URL, document_root = settings.CV_ROOT)
 
 last_patterns = [
-	re_path('^tv[/]?$', TemplateView.as_view(template_name = "erreur.html", content_type = "text/html")),
+	re_path('^bio[/]?$', TemplateView.as_view(template_name = "bio.html", content_type = "text/html"), name = "bio"),
 	re_path('^model[/]?$', views.model, name = "model"),
 	# if no any corрesponding pattern found:
 	#re_path('.*', RedirectView.as_view(url = "/"), name = "mindex")

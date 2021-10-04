@@ -37,6 +37,7 @@ def get_lang(request):
 	return visitor.lang[:2]
 
 
+def bio(request): return render(request, 'bio.html')
 def base(request): return render(request, 'base.html')
 def model(request): return render(request, 'model.html')
 def erreur(request): return render(request, 'erreur.html',
@@ -47,11 +48,11 @@ def erreur(request): return render(request, 'erreur.html',
 
 def mindex(request):
 	logger.info(request.path)
-	return index(request)
+	return index(request, 'mindex.html')
 
 
 
-def index(request):
+def index(request, template_file_name = 'index.html'):
 	# logger.info('index')
 	num_visits = request.session.get('num_visits', 0)
 	request.session['num_visits'] = num_visits + 1
@@ -84,7 +85,7 @@ def index(request):
 		'techno': 'django, pandas, gnuplot, emacs, oracle, mysql, sql*loader, symfony, vue.js, react.js, angular, CGI, WSGI',
 		'num_visits': num_visits
 	}
-	return render(request, 'index.html', context)
+	return render(request, template_file_name, context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
