@@ -167,7 +167,7 @@ class Visitor(models.Model):
 		if self.voted: rate += 1
 		if self.lang == 'en': rate += 1
 		if self.message != '': rate += 1
-		if self.marray_size() > 1: rate += 1
+		if self.marray_size() > 2: rate += 1
 		if self.code > 9: rate += 1
 		if rate == 0: return True
 		return False
