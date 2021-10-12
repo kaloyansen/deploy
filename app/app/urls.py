@@ -150,38 +150,39 @@ url_k = "https://kalodev.site"
 url_h = "http://ka.lo"
 
 url_patterns = [
-	path("", views.index, name = "index"),
-	path("mindex/", views.mindex, name = "mindex"),
-	path("base/", views.base, name = "base"),
-	path("morla/", RedirectView.as_view(url = url_m), name = "morla"),
-	path("rest/", incl(router.urls)),
+	path('', views.index, name = 'index'),
+	path('mindex/', views.mindex, name = 'mindex'),
+	path('base/', views.base, name = 'base'),
+	path('rest/', incl(router.urls)),
 	path('i18n/', incl('django.conf.urls.i18n')),
-	path("auth/", incl("rest_framework.urls", namespace = "rest_framework")),
-	path("memo/", incl("memo.urls")),
-	path("news/", incl("news.urls")),
-	path("work/", incl("work.urls")),
-	path("admin/", admin.site.urls),
-	re_path('^face[/]?$', views.face, name = "face"),
-	re_path('^onn[n]+[/]?$', RedirectView.as_view(url = url_k), name = "on"),
-	re_path('^off[f]+[/]?$', RedirectView.as_view(url = url_h), name = "off"),
+	path('auth/', incl('rest_framework.urls', namespace = 'rest_framework')),
+	re_path('^memo[/]?', incl('memo.urls')),
+	re_path('^news[/]?', incl('news.urls')),
+	re_path('^work[/]?', incl('work.urls')),
+	re_path('^admin[/]?', admin.site.urls),
+	re_path('^face[/]?$', views.face, name = 'face'),
+	re_path('^onn[n]+[/]?$', RedirectView.as_view(url = url_k), name = 'on'),
+	re_path('^off[f]+[/]?$', RedirectView.as_view(url = url_h), name = 'off'),
+	re_path('^morla[/]?$', RedirectView.as_view(url = url_m), name = 'morla')
 ]
 
-if settings.DEBUG: url_patterns.append(path("__debug__/", incl(debug_toolbar.urls)))
+if settings.DEBUG: url_patterns.append(path('__debug__/', incl(debug_toolbar.urls)))
 
-parazit = [".env", "wp-login.php", "owa/auth/logon.aspx", "err", "erreur", "wlwmanifest.xml"]
+parazit = ['.env', 'wp-login.php', 'owa/auth/logon.aspx', 'err', 'erreur', 'wlwmanifest.xml']
 parazit_patterns = []
 for url in parazit: parazit_patterns.append(re_path('{}[/]?$'.format(url),
 													views.erreur,
-													name = "erreur"))
+													name = 'erreur'))
 
 static_patterns = static(settings.STATIC_URL, document_root = settings.STATIC_ROOT, show_indexes = True) + static(settings.ENCRYPT_URL, document_root = settings.ENCRYPT_ROOT) + static(settings.ROBOTS_URL, document_root = settings.ROBOTS_ROOT) + static(settings.FAVICON_URL, document_root = settings.FAVICON_ROOT) + static(settings.CV_URL, document_root = settings.CV_ROOT)
 
 last_patterns = [
-	re_path('^bio[/]?$', TemplateView.as_view(template_name = "bio.html", content_type = "text/html"), name = "bio"),
-	re_path('^model[/]?$', views.model, name = "model"),
+	re_path('^bio[/]?$', views.bio, name = 'bio'),
+	# re_path('^bio[/]?$', TemplateView.as_view(template_name = 'bio.html', content_type = 'text/html'), name = 'bio'),
+	re_path('^model[/]?$', views.model, name = 'model'),
 	# if no any corрesponding pattern found:
-	#re_path('.*', RedirectView.as_view(url = "/"), name = "mindex")
-	re_path('.*', views.erreur, name = "erreur") 
+	#re_path('.*', RedirectView.as_view(url = '/'), name = 'mindex')
+	re_path('.*', views.erreur, name = 'erreur') 
 ]
 
 

@@ -13,7 +13,7 @@ from app.context_processors import set_voted
 
 def bg(request):
 	redirection = True
-	redire = '/memo/bg/bg/bg'
+	redire = '/memo/bg/bg/bg/'
 	stay_time = 34 # sec
 	loop = stay_time * 1.8
 	dim = 44

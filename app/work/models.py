@@ -130,9 +130,9 @@ class Visitor(models.Model):
 		mask = 1 << offset
 		return self.bifi & mask > 0
 
-	def setBit(self, offset, do_not_clear = True):
+	def setBit(self, offset, do_not_clear_bit = True):
 		mask = 1 << offset
-		if do_not_clear:
+		if do_not_clear_bit:
 			self.bifi = self.bifi | mask
 		else:
 			mask = ~mask

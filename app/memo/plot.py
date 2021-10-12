@@ -233,9 +233,12 @@ def dbload(table = 'bg', pk = 1):
 	elif table == 'prog': objs = Prog.objects.all()
 	else: x = 'go to hell'
 
-	for c in objs: #Child.objects.all():
-		#parent = c.mother
+	for c in objs:
 		if c.mother.name != table: continue
+		#if pk == 0 and c.code1 == 0: continue
+		if pk == 1 and c.code1 == 0: continue
+		if pk == 2 and c.code2 == 0: continue
+		if pk == 3 and c.code3 == 0: continue
 		if table == 'bg': labos.append(c.name)
 		elif table == 'prog': labos.append(dicho[c.name])
 		else: x = 'go to hell'
@@ -263,11 +266,14 @@ def plotter(table, pk, to_graph = True):
 	pie = go.Pie(labels = labos,
 				 values = valos,
 				 hole = 0.0,
-				 pull = [0.1] * len(labos),
+				 pull = [0.134] * len(labos),
+				 #autopct='%1.1f%%',
+				 #startangle = 90,
 				 sort = False,
 				 insidetextorientation = 'radial')
 
 	fig = go.Figure(data = [pie],
+					#figsize = (4, 3),
 					layout = go.Layout(title = tit,
 									   showlegend = False))
 
@@ -278,7 +284,8 @@ def plotter(table, pk, to_graph = True):
 									line = dict(color = 'black',
 												width = 2)))
 
-	data = plot(fig, output_type = "div")
+	data = plot(fig,
+				output_type = "div")
 	#auto_open = False,
 	#include_plotlyjs=False,
 

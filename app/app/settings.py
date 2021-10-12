@@ -204,7 +204,7 @@ ROBOTS_URL = '/robots.txt/'
 ROBOTS_ROOT = STATIC_ROOT / 'robots.txt'
 FAVICON_URL = '/favicon.ico/'
 FAVICON_ROOT = STATIC_ROOT / 'ico/favicon.ico'
-CV_URL = '/cv/'
+CV_URL = '/cv'
 CV_ROOT = STATIC_ROOT / 'pdf/back-end.pdf'
 LOGIN_URL = '/admin/login/'
 

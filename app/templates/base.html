@@ -74,15 +74,20 @@
       title = ""
       role = "alert">
 
+  <!-- <img title = "earth and moon to scale" -->
+  <!--      src = "/static/svg/earth.moon.svg" -->
+  <!--      class = "img-fluid" -->
+  <!--      alt = "not found"> -->
   <hr>
-  <div class = "header-nav">
+  <div title = "header-nav"
+       class = "header-nav">
     <div class = "container-fluid">
-      <header>        
+      <header title = "header">
         <nav title = "navbar fixed-top"
-             class = "navbar fixed-top navbar-expand-lg navbar-info bg-dark">
-          
-          <div class = "container-fluid">
-
+             style = "background-image: url('{% static page_bg %}'); background-size: 100% 100%;"
+             class = "navbar fixed-top navbar-expand-lg navbar-info">
+          <div title = "navigator division"
+               class = "container-fluid">
             <a title = "home"
                class = "navbar-brand btn-outline-secondary"
                href = "{% url 'index' %}">
@@ -230,10 +235,12 @@
   {{ page_pause | safe }}
 
 
+
   <hr>
   <footer title = "footer fixed-bottom sticky-bottom"
           class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
-    <div class = "row">
+    <div title = "footer division"
+         class = "row">
 
       <small class = "col-md-6 text-md-left">
           <small>

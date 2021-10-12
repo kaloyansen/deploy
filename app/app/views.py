@@ -40,6 +40,7 @@ def get_lang(request):
 def bio(request): return render(request, 'bio.html')
 def base(request): return render(request, 'base.html')
 def model(request): return render(request, 'model.html')
+def bio(request): return render(request, 'bio.html')
 def erreur(request): return render(request, 'erreur.html',
 								   {'loco': request.path,
 									'message': "if you wish you are welcome to send a message express (at the right side of the menu bar) or an e-mail to"})

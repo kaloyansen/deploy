@@ -78,6 +78,7 @@ def get_context(request):
 
 	context = { # these are accesible from everywhere
 		'page_author': 'Kaloyan KRASTEV',
+		'page_bg': '/svg/earth.moon.svg',
 		'page_brand': '/img/kalodev.png',
 		'page_cv': mycv(),
 		'page_digitalocean': digitalocean(),
