@@ -36,7 +36,7 @@ for v in visit:
 	print(tn)
 
 if roboco == 0: print(Fore.MAGENTA + Back.CYAN + 'no robots')
-else: print(Fore.MAGENTA + Back.CYAN + '{} robots: run\n' +
+else: print(Fore.MAGENTA + Back.CYAN + '{} robots: run\n'.format(roboco) +
 			Fore.CYAN + Back.MAGENTA + 'manage.py shell -c ' +
 			"'import script.delete_robo'" +
 			Fore.MAGENTA + Back.CYAN + '\nto delete robot records\n'.format(roboco))
