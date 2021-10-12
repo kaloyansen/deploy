@@ -4,7 +4,7 @@ from pathlib import Path
 from colorama import init, Fore, Back, Style
 from work.models import Visitor, Mage
 
-timeout = 4
+debug = False
 
 init(autoreset = True)
 print(Fore.BLACK + Back.CYAN + '******* {} *******'.format(Path(__file__)))
@@ -33,7 +33,7 @@ for v in visit:
 		roboco += 1
 		tn += Fore.RED + '(-robo-)'
 
-	print(tn)
+	if debug: print(tn)
 
 if roboco == 0: print(Fore.MAGENTA + Back.CYAN + 'no robots')
 else: print(Fore.MAGENTA + Back.CYAN + '{} robots: run\n'.format(roboco) +
@@ -55,7 +55,7 @@ def run():
 
 		if len(danni) > 0: print('{} -> {}'.format(m, danni))
 
-# run()
+if debug: run()
 
 
 

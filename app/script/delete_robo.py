@@ -1,7 +1,6 @@
 import sys
 from colorama import init, Fore, Back, Style
 from pathlib import Path
-from select import select
 from work.models import Visitor, Mage
 
 init(autoreset = True)
@@ -12,22 +11,34 @@ timeout = 16 # seconds
 visitall = Visitor.objects.all()
 visit = visitall.order_by('-date')
 
+def ask_for_y(question = 'y(es) or no?', timeout = 10):
+	from select import select
+	print(question)
+	rlist, _, _ = select([sys.stdin], [], [], timeout)
+	if rlist:
+		inp_val = sys.stdin.readline()
+		inp_val_strip = inp_val.strip()
+		if inp_val_strip == 'y':
+			print('(+)')
+			return True
+		else: print('(-) {}'.format(inp_val_strip))		
+	else: print('timeout {}'.format(timeout))
+	return False
+
+
 roboco = 0
 for v in visit:
 	if v.is_robo():	roboco += 1
 
-if roboco == 0: print(Fore.MAGENTA + Back.CYAN + 'no robots')
+if roboco == 10: print(Fore.MAGENTA + Back.CYAN + 'no robots')
 else:
 	print(Fore.MAGENTA + Back.CYAN + '{} robots:'.format(roboco))
-	if True:
-		print('delete robots (y/n) ?',)
-		rlist, _, _ = select([sys.stdin], [], [], timeout)
-		if rlist:
-			inp_val = sys.stdin.readline()
-			if inp_val.strip() == 'y': bouchon = False
-			else: print('négatif'.format(inp_val.strip()))		
-		else: print('timeout {}'.format(timeout))
-	else: pass
+	bouchon = not ask_for_y('delete robots y(es)/no?', 16)
+
+mess = 'protection de données '
+if bouchon: mess += 'activée'
+else: mess += 'déactivée'
+# print(mess)
 
 for v in visit:
 	v.set_bifi()
