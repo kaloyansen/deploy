@@ -10,22 +10,16 @@ init(autoreset = True)
 print(Fore.BLACK + Back.CYAN + '******* {} *******'.format(Path(__file__)))
 
 visitall = Visitor.objects.all()
-
 visit = visitall.order_by('-date')
 print(Fore.GREEN + 'total {}'.format(visit.count()))
-
 visivote = Visitor.objects.filter(voted=True)
 print(Back.BLUE + '\n{} voted'.format(visivote.count()))
-
 for v in visivote: print(v.ip_address)
-
 visimess = Visitor.objects.exclude(message='')
 print(Back.MAGENTA + '\n{} messages'.format(visimess.count()))
-for v in visimess:
-	print('message[{}] = {} {}'.format(v.ip_address,
-									v.dessage(),
-									len(v.mages.all())))
-
+for v in visimess: print('message[{}] = {} {}'.format(v.ip_address,
+													  v.dessage(),
+													  len(v.mages.all())))
 
 roboco = 0
 for v in visit:
@@ -42,7 +36,10 @@ for v in visit:
 	print(tn)
 
 if roboco == 0: print(Fore.MAGENTA + Back.CYAN + 'no robots')
-else: print(Fore.MAGENTA + Back.CYAN + "{} robots: try\nmanage.py shell -c 'import script.delete_robo'\nto delete robot records".format(roboco))
+else: print(Fore.MAGENTA + Back.CYAN + '{} robots: run\n' +
+			Fore.CYAN + Back.MAGENTA + 'manage.py shell -c ' +
+			"'import script.delete_robo'" +
+			Fore.MAGENTA + Back.CYAN + '\nto delete robot records\n'.format(roboco))
 
 def run():
 	vv = Visitor.objects.all()
@@ -57,12 +54,6 @@ def run():
 				else: danni.append(ipa)
 
 		if len(danni) > 0: print('{} -> {}'.format(m, danni))
-
-
-
-
-
-
 
 # run()
 
