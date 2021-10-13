@@ -235,19 +235,24 @@ def dbload(table = 'bg', pk = 1):
 
 	for c in objs:
 		if c.mother.name != table: continue
-		#if pk == 0 and c.code1 == 0: continue
-		if pk == 1 and c.code1 == 0: continue
-		if pk == 2 and c.code2 == 0: continue
-		if pk == 3 and c.code3 == 0: continue
+		if pk == 0:
+			# if c.code1 < 1: continue
+			valos.append(c.code1)
+		elif pk == 1:
+			if c.code1 < 1: continue # do not want
+			else: valos.append(c.code1)
+		elif pk == 2:
+			if c.code2 < 1: continue # to plot parties
+			else: valos.append(c.code2)
+		elif pk == 3:
+			if c.code3 < 1: continue # without a deputy
+			else: valos.append(c.code3)
+		else: x = 4 #?
+		
 		if table == 'bg': labos.append(c.name)
 		elif table == 'prog': labos.append(dicho[c.name])
 		else: x = 'go to hell'
 		colors.append(c.color)
-		if pk == 0: valos.append(c.code1)
-		elif pk == 1: valos.append(c.code1)
-		elif pk == 2: valos.append(c.code2)
-		elif pk == 3: valos.append(c.code3)
-		else: x = 4  #?
 
 	return colors, labos, valos
 
