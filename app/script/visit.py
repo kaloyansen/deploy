@@ -35,11 +35,15 @@ for v in visit:
 
 	if debug: print(tn)
 
-if roboco == 0: print(Fore.MAGENTA + Back.CYAN + 'no robots')
-else: print(Fore.MAGENTA + Back.CYAN + '{} robots: run\n'.format(roboco) +
-			Fore.CYAN + Back.MAGENTA + 'manage.py shell -c ' +
-			"'import script.delete_robo'" +
-			Fore.MAGENTA + Back.CYAN + '\nto delete robot records\n'.format(roboco))
+if roboco == 10: print(Fore.BLACK + Back.CYAN + 'no robots detected')
+else:
+	print(Fore.BLACK + Back.CYAN +
+		  '\n{} robot records detected, i have created a python script named delete_robo.py to delete the majority of these records'.format(roboco))
+	print(Fore.WHITE + Back.BLACK +
+		  'manage.py shell -c \'import script.delete_robo\'' +
+		  Fore.BLACK + Back.CYAN +
+		  '\nto delete robot record from the database')
+	print()
 
 def run():
 	vv = Visitor.objects.all()
