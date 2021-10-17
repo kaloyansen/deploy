@@ -37,6 +37,8 @@ def bgbgbg(request):
 											'red': redire})
 
 
+def strategy(request):	return render(request, 'strategy.html')
+
 def sun(request):
 	context = {'graph': solar_system()}
 	return render(request, 'memo_sun.html', context)

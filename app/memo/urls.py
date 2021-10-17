@@ -8,6 +8,7 @@ urlpatterns = [
 	re_path('^bg[/]?$', views.bg, name = 'bg'),
 	re_path('^bg/bg/bg[/]?$', views.bgbgbg, name = 'bgbgbg'),
 	re_path('^spider[/]?$', views.spider, name = 'spider'),
+	re_path('^strategy[/]?$', views.strategy, name = 'strategy'),
 	re_path('^sun[/]?$', views.sun, name = 'sun'),
 	re_path('.*', errr, name = 'erreur')
 ]

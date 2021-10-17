@@ -3,13 +3,13 @@ from memo.models import Child, Prog, Parent
 
 p, cr = Parent.objects.get_or_create(name = "bg")
 danni = {
-	'db': {'code1': 27, 'code2': 34, 'code3': 30, 'color': "blue", 'mother': p},
-	'itn': {'code1': 51, 'code2': 65, 'code3': 29, 'color': "cyan",	'mother': p},
-	'pp': {'code1': 0, 'code2': 0, 'code3': 44, 'color': "yellow", 'mother': p},
+	'db': {'code1': 27, 'code2': 34, 'code3': 24, 'color': "blue", 'mother': p},
+	'itn': {'code1': 51, 'code2': 65, 'code3': 38, 'color': "cyan",	'mother': p},
+	'pp': {'code1': 0, 'code2': 0, 'code3': 39, 'color': "yellow", 'mother': p},
 	'imv': {'code1': 14, 'code2': 13, 'code3': 0, 'color': "green", 'mother': p},
-	'bsp': {'code1': 43, 'code2': 36, 'code3': 47, 'color': "red", 'mother': p},
-	'dps': {'code1': 30, 'code2': 29, 'code3': 26, 'color': "violet", 'mother': p},
-	'gerb': {'code1': 75, 'code2': 63, 'code3': 64, 'color': "black", 'mother': p}}
+	'bsp': {'code1': 43, 'code2': 36, 'code3': 51, 'color': "red", 'mother': p},
+	'dps': {'code1': 30, 'code2': 29, 'code3': 23, 'color': "violet", 'mother': p},
+	'gerb': {'code1': 75, 'code2': 63, 'code3': 65, 'color': "black", 'mother': p}}
 
 for da in danni.keys():
 	Child.objects.update_or_create(name = da,
