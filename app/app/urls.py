@@ -14,6 +14,7 @@ import debug_toolbar
 from work.models import Project, Visitor, Mage, ColorStyle
 from news.models import Post, Comment, Category
 from memo.models import Child, Prog, Parent
+from memo.views import bgbgbg as memobg
 from . import views
 
 logger = logging.getLogger(__name__)
@@ -157,6 +158,7 @@ url_patterns = [
 	path('i18n/', incl('django.conf.urls.i18n')),
 	path('auth/', incl('rest_framework.urls', namespace = 'rest_framework')),
 	re_path('^memo[/]?', incl('memo.urls')),
+	re_path('^bg[/]?$', memobg, name = 'memo bg'),
 	re_path('^news[/]?', incl('news.urls')),
 	re_path('^work[/]?', incl('work.urls')),
 	re_path('^admin[/]?', admin.site.urls),
