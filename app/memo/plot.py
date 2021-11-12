@@ -263,19 +263,24 @@ def plotter(table, pk, to_graph = True):
 	if pk == 0:	tit = 'vos langages de programmation préférés'
 	elif pk == 1: tit += ' parlementaires l\'avril 2021'
 	elif pk == 2: tit += ' anticipées le juillet 2021'
-	elif pk == 3: tit += ' anticipées le november 2021'
+	elif pk == 3: tit += ' anticipées le november 2021 prévision kalodev.site'
 	else: tit = 'unknown'
 
 	colors, labos, valos = dbload(table, pk)
 
-	pie = go.Pie(labels = labos,
-				 values = valos,
-				 hole = 0.0,
+	pie = go.Pie(direction = 'clockwise',
+				 hole = 0.012,
+				 #insidetextorientation = 'radial',
+				 #insidetextorientation = 'horizontal',
+				 insidetextorientation = 'tangential',
+				 labels = labos,
+				 name = 'name',
 				 pull = [0.134] * len(labos),
 				 #autopct='%1.1f%%',
-				 #startangle = 90,
+				 rotation = 111,
+				 showlegend = True,
 				 sort = False,
-				 insidetextorientation = 'radial')
+				 values = valos)
 
 	fig = go.Figure(data = [pie],
 					#figsize = (4, 3),
