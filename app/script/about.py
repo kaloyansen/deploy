@@ -30,6 +30,9 @@ Le code est déployé d'abord sur <strong>google cloud</strong> après l'avoir c
 Il existe plusieurs des façons à gérer le contenu de la page web. <strong>Django administration</strong> est très utile. L'accès à la base de donnée est réalisé dans un environnement objet, on code les classes nous-mêmes. Voyez les <a href = "/model">modèles</a> s'il vous plaît. Une autre possibilité est <strong>django rest framework</strong>. C'est un api rest, un ensemble de définitions et de protocoles qui facilite la création et l'intégration de logiciels d'applications.
 """
 work[3].place = "<a href = \"https://simplon.co\">simplon.co</a>, Grenoble, FRANCE"
+work[3].place = """
+regarder la <a href = \"https://drive.google.com/file/d/1cR4m8cVExCUln61emXFGgh7wMqYzZ4kG/view?usp=sharing">présentation video</a>
+"""
 work[3].technology = """
 python3.8, Django-3.2.4, Django REST framework 3.12.4, Debug Toolbar 3.2.2, jupiterlab 0.1.1, SQLite 3, bootstrap/4.1.3, Docker version 20.10.6-ce, nginx/1.18.0, gunicorn (version 20.0.4), certbot 0.40.0, powered by <a href = "https://digitalocean.com">https://digitalocean.com</a>, logo: kalo web development(<a href = "https://www.kalo.dev">https://www.kalo.dev</a>), git version 2.32.0, git repository: <a href = "https://github.com/kaloyansen/deploy">https://github.com/kaloyansen/deploy</a>
 """
