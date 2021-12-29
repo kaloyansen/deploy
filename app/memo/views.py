@@ -25,6 +25,9 @@ def bg(request):
 											'red': redire})
 
 
+def bgbg(request): return render(request, 'memo_bgbg.html', {})
+
+
 def bgbgbg(request):
 	redirection = True
 	redire = '/memo/bg'
