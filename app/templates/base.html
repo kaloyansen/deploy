@@ -1,9 +1,4 @@
 {% load bootstrap4 %}
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
 
 {% load static %}
 {% load i18n %}
@@ -24,42 +19,25 @@
   <head>
     <title>{{ page_title }}</title>
 
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+
+    {% bootstrap_javascript jquery='full' %}
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
     <link rel = "preconnect" href = "https://fonts.googleapis.com">
     <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
     <link href = "https://fonts.googleapis.com/css2?family=Jost:wght@100;400&family=Train+One&display=swap" rel = "stylesheet">
-
-    <style>
-      body {
-          overflow-x: auto;
-          font-family: 'Jost', sans-serif;
-          font-size: 7mm;
-          mont-mamily: 'Train One', cursive;
-      }
-
-      .container-fluid {
-          width: 100%;
-          padding-right: 66px;
-          padding-left: 66px;
-          margin-right: 0px;
-          margin-left: 0px;
-      }
-
-      .custom {
-          min-width: 77mm;
-          overflow-x: visible;
-      }
-
-      .scroller {
-          overflow: scroll;
-      }
-    </style>        
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel = "stylesheet" href = "{% static page_css %}">
 
   </head>
 
   <script>
-      function initnow() {
-          window.location.href = "{{ page_redirect }}";
-      }
+    function initnow() {
+    window.location.href = "{{ page_redirect }}";
+    }
   </script>
 
   {{ page_pause | safe }}
@@ -84,7 +62,6 @@
     <div class = "container-fluid">
       <header title = "header">
         <nav title = "navbar fixed-top"
-             style = "background-image: url('{% static page_bg %}'); background-size: 100% 100%;"
              class = "navbar fixed-top navbar-expand-lg navbar-info">
           <div title = "navigator division"
                class = "container-fluid">
@@ -195,7 +172,8 @@
               <div class = "nav_item col-md-3 offset-md-1">
                 <form title = "form"
                       method = "post"
-                      class = "d-flex">{% csrf_token %}
+                      class = "d-flex">
+                      {% csrf_token %}
                   <input title = "{% trans 'SendMeMessage' %}"
                          style = "{{ page_style }}"
                          class = "form-control me-2 rounded text-center"
@@ -237,20 +215,20 @@
 
   <hr>
   <footer title = "{{ page_author }}"
-          class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-light">
+          class = "footer fixed-bottom sticky-bottom text-light bg-dark text-right text-center text-light">
     <div title = "{{ page_author }}"
          class = "row">
 
       <small class = "col-md-6 text-md-left">
-          <small>
-            <span class = "text-muted mx-2">|</span>
-            copyleft &#127279;
-            {{ page_author }}
-            <span class = "text-muted mx-2">|</span>
-            2012 - {{ page_time | date:"Y" }}
-            <span class = "text-muted mx-2">|</span>
-            {{ page_place }}
-          </small>
+        <small>
+          <span class = "text-muted mx-2">|</span>
+          copyleft &#127279;
+          {{ page_author }}
+          <span class = "text-muted mx-2">|</span>
+          2012 - {{ page_time | date:"Y" }}
+          <span class = "text-muted mx-2">|</span>
+          {{ page_place }}
+        </small>
       </small>
 
       <div class = "col-md-6 text-md-right">

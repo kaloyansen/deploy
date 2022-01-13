@@ -80,6 +80,7 @@ def get_context(request):
 		'page_author': 'Kaloyan KRASTEV',
 		'page_bg': '/svg/earth.moon.svg',
 		'page_brand': '/img/kalodev.png',
+		'page_css': '/css/style.css',
 		'page_cv': mycv(),
 		'page_digitalocean': digitalocean(),
 		'page_digitalocean_grand': digitalocean(70),
@@ -109,7 +110,7 @@ def get_context(request):
 		'page_style': safeStyle('page'),
 		'page_submit': send['submit'],
 		'page_time': timezone.now(),
-		'page_title': 'Kalo KRASTEV',
+		'page_title': 'Kaloyan KRASTEV',
 		'page_tothetop': tothetop('warning'),
 		'page_visitor': visitor,
 		'page_voted': has_voted(request)}

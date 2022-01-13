@@ -16,16 +16,24 @@
 {% endif %}
 
 
-<h1 title = "title"
-    class = "text-xs-center"
-    id = "speakers">Les deux cent quarante sièges de l'Assemblée nationale bulgare 2021</h1>
+<header>
+  <h1 title = "title"
+      class = "text-xs-center"
+      id = "speakers">Les deux cent quarante sièges de l'Assemblée nationale bulgare 2021</h1>
+</header>
 
 <a title = "dynamique"
    class = "btn btn-outline-warning text-right"
    href = "{% url 'bgbg' %}">dynamique</a>
 
-<div class = "row">
+<hr>
 
+<div class = "mother">
+  <div class = "child">{{ graph1 | safe }}</div>
+  <div class = "child">{{ graph2 | safe }}</div>
+  <div class = "child">{{ graph | safe }}</div>
+
+  <!--
   <div class = "col-md-6 col-lg-4">
     <div class = "card">
       {% if graph1 %}
@@ -67,7 +75,7 @@
       </div>
     </div>
   </div>
-  
+  -->
 </div>
 
 
@@ -83,5 +91,7 @@
 </div>
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/7846277"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+
 
 {% endblock %}

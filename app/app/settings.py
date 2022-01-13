@@ -41,8 +41,9 @@ else: # is_dev:
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False # SSL_REDIRECT = True does not work, but ...
 # SECURE_HSTS_SECONDS = 6 # ... one may try with SECURE_HSTS_SECONDS
-X_FRAME_OPTIONS = 'SAMEORIGIN' # enable frames
+
 X_FRAME_OPTIONS = 'DENY' # disable frames
+X_FRAME_OPTIONS = 'SAMEORIGIN' # enable frames
 
 LOGGING = {
     'version': 1,

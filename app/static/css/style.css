@@ -1,12 +1,93 @@
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    overflow-x: auto;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.66vw;
+    /* 
+    color: Tomato;
+    background-color: LightGray;
     color: #ffffff;
     text-align: center;
-    background-color: #3d3d3d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Courier New", Courier, monospace;
+    font-family: "Sofia", sans-serif;
+    font-mamily: 'Train One', cursive;
+   */
 }
 
+nav {
+    background-image: url('../svg/earth.moon.svg');
+    background-size: 100% 100%;
+}
+
+h1 {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 4vw;
+    text-align: center;
+    text-shadow: 12px solid black;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+
 img {
-    border-radius: 3px;
+    border-radius: 1px;
     border: 1px solid white;
+}
+
+p {
+    font-size: 1.23vw;
+    text-align: justify;
+    border: 1px double rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 3px 3px 3px 12px;
+    padding: 3px 25px 3px 25px;
+}
+
+div {
+    border: 2px double rgba(0, 0, 0, 0.012);
+    border-radius: 11px;
+    opacity: 1;
+}
+
+a {
+    display: block;
+    display: inline;
+}
+
+table {
+    overflow-x:auto;
+}
+
+.custom {
+    min-width: 77mm;
+    overflow-x: visible;
+}
+
+.scroller {
+    overflow: scroll;
+}
+
+.child {
+    width: 27vw;
+    height: 27vw;
+    border: 3px solid white;
+    border-radius: 2.8vw;
+    margin: 1vw;
+    padding: 1vw;
+}
+
+.mother {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: baseline;
+    border: 2px solid white;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 66px;
+    padding-left: 66px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
